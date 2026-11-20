@@ -10,7 +10,7 @@
 <img src="https://img.shields.io/badge/Level-Beginner_→_Pro-7B5CFF?style=for-the-badge" alt="Beginner to pro">
 <a href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky/commits/master"><img src="https://img.shields.io/github/last-commit/ABVicky/Prompt-Engineering-by-Vicky?style=for-the-badge&label=Updated&color=FF6B3D" alt="Last updated"></a>
 
-<h3>
+<p><b>
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/">🚀 Start learning</a>
   <span> · </span>
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/">📖 All lessons</a>
@@ -20,7 +20,7 @@
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-b-prompt-library.html">🧰 60 templates</a>
   <span> · </span>
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-d-final-exam.html">🎓 Final exam</a>
-</h3>
+</b></p>
 
 <p><i>A free, complete course that teaches you to talk to AI models so they reliably do what you want,<br>from your very first prompt to tested, secure, production-ready systems.</i></p>
 
