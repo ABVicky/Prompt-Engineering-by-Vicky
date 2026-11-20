@@ -204,4 +204,4 @@ Score ≥ 40/50 on Part 5 + ≥ 32/40 on MCQs = **🏆 Course Complete with Dist
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.

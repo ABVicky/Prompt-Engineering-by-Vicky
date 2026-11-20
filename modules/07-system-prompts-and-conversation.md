@@ -247,5 +247,5 @@ Use **structured memory**: extract stable facts (name, grade, subjects, weak top
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 06](06-structured-output.md) · ➡️ [Module 08 — Prompt Chaining & Workflows](08-prompt-chaining-workflows.md)

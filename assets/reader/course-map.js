@@ -1,13 +1,16 @@
 /* Course structure for the browser reader.
    Add a new module here (and run build.py) to make it appear in the reader.
-   (c) 2026 Vicky Prasad Mahato - abvicky.in */
+   (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
 window.PE_MAP = {
   title: "Prompt Engineering",
   subtitle: "Zero to Pro",
   author: "Vicky Prasad Mahato",
+  authorSite: "https://abvicky.in",
   avatar: "https://avatars.githubusercontent.com/u/103195071?v=4",
-  site: "https://abvicky.in",
-  siteLabel: "abvicky.in",
+  copyright: "Manikarnika Technologies",
+  copyrightUrl: "https://www.manikarnikatechnologies.in/",
+  site: "https://www.manikarnikatechnologies.in/",
+  siteLabel: "manikarnikatechnologies.in",
   about: { p: "README.md", n: "i", t: "About this course", i: "📘", d: "Overview, curriculum, how to read, copyright." },
   stages: [
     {

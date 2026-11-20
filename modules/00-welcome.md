@@ -224,5 +224,5 @@ Seeing your own before/after is the fastest way to internalize what changed. Mos
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in) · All rights reserved.
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ➡️ Next: [Module 01 — How Large Language Models Work](01-how-llms-work.md)

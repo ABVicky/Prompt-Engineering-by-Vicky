@@ -259,5 +259,5 @@ no regressions in safety set (40/40).
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 14](14-safety-security-ethics.md) · ➡️ [Module 16 — Domain Playbooks](16-domain-playbooks.md)

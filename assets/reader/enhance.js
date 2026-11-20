@@ -1,5 +1,5 @@
 /* Prompt Engineering: Zero to Pro · Content enhancements, search palette, lightbox
-   (c) 2026 Vicky Prasad Mahato - abvicky.in */
+   (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
 (function () {
   "use strict";
   const PE = (window.PE = window.PE || {});

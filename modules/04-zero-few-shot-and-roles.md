@@ -288,5 +288,5 @@ messages = [
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 03](03-core-principles.md) · ➡️ [Module 05 — Reasoning Techniques](05-reasoning-techniques.md)

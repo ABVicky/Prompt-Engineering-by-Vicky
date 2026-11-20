@@ -296,5 +296,5 @@ Question: {{question}}
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 08](08-prompt-chaining-workflows.md) · ➡️ [Module 10 — Tool Use, Function Calling & Agents](10-tool-use-and-agents.md)

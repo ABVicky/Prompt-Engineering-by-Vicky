@@ -257,5 +257,5 @@ Check `stop_reason`/`finish_reason`: if it's `max_tokens`/`length`, raise `max_t
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 11](11-multimodal-and-image-prompting.md) · ➡️ [Module 13 — Evaluation & Testing](13-evaluation-and-testing.md)

@@ -1,5 +1,5 @@
 /* Prompt Engineering: Zero to Pro · Reader core (navigation, pages, progress)
-   (c) 2026 Vicky Prasad Mahato - abvicky.in */
+   (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
 (function () {
   "use strict";
   const PE = window.PE;
@@ -141,7 +141,7 @@
           `<div class="side-items">${s.items.map((i) => `<a class="side-item" data-p="${i.p}" href="#/${i.p}"><span class="num"><span>${esc(i.n)}</span></span><span class="t">${esc(i.t)}</span></a>`).join("")}</div></section>`;
       }).join("") +
       `</div>` +
-      `<div class="side-foot">${avatar("sm")}<span>© 2026 <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.author)}</a><br>${esc(MAP.siteLabel)} · All rights reserved.</span></div>`;
+      `<div class="side-foot">${avatar("sm")}<span>© 2026 <a href="${MAP.site}" target="_blank" rel="noopener">Manikarnika Technologies</a><br>${esc(MAP.siteLabel)} · All rights reserved.</span></div>`;
     markSidebar();
   }
   function markSidebar() {
@@ -177,7 +177,7 @@
   }
 
   /* ---------- Shared fragments ---------- */
-  const footerHTML = () => `<footer class="site-footer"><span>© 2026 <strong>${esc(MAP.author)}</strong> · All rights reserved.</span><span>Prompt Engineering: Zero to Pro · <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.siteLabel)}</a></span></footer>`;
+  const footerHTML = () => `<footer class="site-footer"><span>© 2026 <a href="${MAP.site}" target="_blank" rel="noopener"><strong>${esc(MAP.copyright || "Manikarnika Technologies")}</strong></a> · All rights reserved.</span><span>Prompt Engineering: Zero to Pro · Designed & Developed by <a href="${MAP.site}" target="_blank" rel="noopener"><strong>Manikarnika Technologies</strong></a></span></footer>`;
   const card = (i) => `<a class="mod-card${done.has(i.p) ? " done" : ""}" href="#/${i.p}">` +
     `<div class="mod-top"><span class="mod-icon">${i.i}</span><span class="mod-num">${esc(i.n)}</span></div>` +
     `<h3>${esc(i.t)}</h3><p>${esc(i.d)}</p>` +
@@ -205,7 +205,7 @@
       `<p class="lead">Learn to communicate with AI models so they reliably do what you want, from your very first prompt to tested, secure, production-ready systems.</p>` +
       `<div class="hero-actions"><a class="btn primary" href="#/${cont.p}">${PE.icon("play")}${n ? "Continue learning" : "Start the course"}</a>` +
       `<a class="btn ghost" href="#/appendix/A-cheat-sheet.md">${PE.icon("bulb")}Cheat sheet</a></div>` +
-      `<div class="hero-by">${avatar()}<span>Created by <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.author)}</a><br>${esc(MAP.siteLabel)}</span></div>` +
+      `<div class="hero-by">${avatar()}<span>Course by <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc(MAP.author)}</a><br>Designed & Developed by <a href="${MAP.site}" target="_blank" rel="noopener"><strong>${esc(MAP.copyright || "Manikarnika Technologies")}</strong></a></span></div>` +
       `</div><div class="hero-art"><img src="assets/cover.svg" alt="" width="640" height="520"></div></section>` +
       `<section class="stats-row">` +
       [["📚", "18", "modules in 4 stages"], ["🧰", "60", "prompt templates"], ["🎓", "40", "exam questions + 5 tasks"], ["⏱️", "~48 h", "of guided learning"]]
@@ -243,8 +243,8 @@
       `<section class="home-section"><h2 class="sec-title">What's inside every module</h2><p class="sec-sub">Everything you need in one place, so you never have to look elsewhere.</p>` +
       `<div class="feature-grid">${features.map(([i, b, s]) => `<div class="feature"><span class="f-ico">${i}</span><b>${b}</b><span>${s}</span></div>`).join("")}</div></section>` +
       `<section class="author-card">${avatar()}<div><h3>${esc(MAP.author)}</h3>` +
-      `<p>Author of <strong>Prompt Engineering: Zero to Pro</strong> · <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.siteLabel)}</a></p>` +
-      `<p>© 2026 ${esc(MAP.author)}. All rights reserved. <a href="#/${ABOUT.p}">About this course →</a></p></div></section>` +
+      `<p>Course author: <strong>${esc(MAP.author)}</strong> (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">abvicky.in</a>) · Designed & Developed by <a href="${MAP.site}" target="_blank" rel="noopener"><strong>${esc(MAP.copyright || "Manikarnika Technologies")}</strong></a></p>` +
+      `<p>© 2026 <a href="${MAP.site}" target="_blank" rel="noopener"><strong>${esc(MAP.copyright || "Manikarnika Technologies")}</strong></a> · All rights reserved. <a href="#/${ABOUT.p}">About this course →</a></p></div></section>` +
       footerHTML();
     view.querySelectorAll(".aud-choice-btn").forEach((btn) => {
       btn.addEventListener("click", () => setAudience(btn.dataset.aud));

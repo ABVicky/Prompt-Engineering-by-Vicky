@@ -324,5 +324,5 @@ and make sure everything passes before finishing.
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 09](09-context-engineering-rag.md) · ➡️ [Module 11 — Multimodal & Image Prompting](11-multimodal-and-image-prompting.md)

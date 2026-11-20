@@ -270,5 +270,5 @@ Expected answer: `ZeroDivisionError` on an empty list; fix by returning `None`/`
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 01](01-how-llms-work.md) · ➡️ [Module 03 — Core Principles](03-core-principles.md)

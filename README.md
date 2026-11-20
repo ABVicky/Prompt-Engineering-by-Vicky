@@ -147,20 +147,24 @@ Prompt Engineering/
 
 ---
 
-## 🧑‍🏫 About the Author
+## 🧑‍🏫 About the Author & Developer
 
 <p align="center">
   <img src="https://avatars.githubusercontent.com/u/103195071?v=4" alt="Vicky Prasad Mahato" width="128">
 </p>
 
-**Vicky Prasad Mahato** builds and teaches practical AI. This course brings together the techniques, patterns and habits that make prompts work reliably, from everyday use to production systems.
+**Vicky Prasad Mahato** ([abvicky.in](https://abvicky.in)) builds and teaches practical AI.
 
-🌐 **[abvicky.in](https://abvicky.in)**
+This course is designed and developed by **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**.
+
+🌐 **[manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)** · **[abvicky.in](https://abvicky.in)**
 
 ---
 
 ## ©️ Copyright
 
-© 2026 **Vicky Prasad Mahato** ([abvicky.in](https://abvicky.in)). All rights reserved.
+© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved.
 
-This course, including its text, structure, illustrations and exercises, is the intellectual property of Vicky Prasad Mahato. You may use it for personal learning. Redistribution, resale, or republication, in whole or in part, requires written permission from the author. Third-party product names mentioned are trademarks of their respective owners and are used for identification only.
+Designed and developed by **Manikarnika Technologies** ([manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)). Course author: **Vicky Prasad Mahato** ([abvicky.in](https://abvicky.in)).
+
+This course, including its text, structure, illustrations and exercises, is the intellectual property of Manikarnika Technologies. You may use it for personal learning. Redistribution, resale, or republication, in whole or in part, requires written permission from Manikarnika Technologies. Third-party product names mentioned are trademarks of their respective owners and are used for identification only.

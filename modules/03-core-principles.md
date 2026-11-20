@@ -277,5 +277,5 @@ then a 40-word closing paragraph. Tone: energetic, confident, no exaggerated cla
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 02](02-anatomy-of-a-prompt.md) · ➡️ [Module 04 — Zero-Shot, Few-Shot & Role Prompting](04-zero-few-shot-and-roles.md)

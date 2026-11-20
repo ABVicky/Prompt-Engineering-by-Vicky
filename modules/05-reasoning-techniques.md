@@ -290,5 +290,5 @@ and a one-sentence <reason>.
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 04](04-zero-few-shot-and-roles.md) · ➡️ [Module 06 — Structured Output](06-structured-output.md)

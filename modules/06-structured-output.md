@@ -300,5 +300,5 @@ Models generate left-to-right. Writing the evidence first acts as a mini chain-o
 
 ---
 
-> © 2026 **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
 > ⬅️ [Module 05](05-reasoning-techniques.md) · ➡️ [Module 07 — System Prompts & Conversation Design](07-system-prompts-and-conversation.md)
