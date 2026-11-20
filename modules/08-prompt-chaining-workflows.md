@@ -23,6 +23,16 @@ A single "do everything" prompt is like asking one person to research, write, ed
 | **Cost** | Use cheap models for easy steps, strong ones for hard steps |
 | **Reuse** | Steps become modular building blocks |
 
+> 👔 **Non-Tech Lens · Interactive Chat Chaining in 3 Steps:**
+> Never try to force ChatGPT or Claude to do an entire multi-phase project in a single giant prompt. Instead, treat it like an interactive collaboration:
+> 1. *Step 1 (Extract):* "Read this 10-page report and extract the 5 biggest customer complaints."
+> 2. *Step 2 (Draft):* "Based on those 5 complaints, draft a bulleted proposal on how we can address each one."
+> 3. *Step 3 (Refine):* "Critique this draft against our company values: is it realistic, empathetic, and actionable? Revise it based on your critique."
+> You retain full editorial control at every step, and the output quality is vastly superior.
+
+> 💻 **Tech Lens · Deterministic DAGs vs Fragile Monolithic Prompts:**
+> When building backend pipelines, represent workflows as Directed Acyclic Graphs (DAGs). Combine parallel branches using `asyncio.gather()`, route intents using lightweight classifier models (e.g. Claude Haiku or GPT-4o mini), and gate transitions with deterministic Pydantic validators. Deterministic chained pipelines have predictable latency, clear error boundaries, and eliminate runaway token loops.
+
 ---
 
 ## 2. Pattern 1 — Sequential Chain

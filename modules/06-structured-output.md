@@ -15,6 +15,12 @@
 
 When a human reads the output, "mostly right" formatting is fine. When **code** reads it, one missing comma breaks your app. Structured output turns an LLM into a reliable component.
 
+> 👔 **Non-Tech Lens · Copy-Paste Tables for Excel & Google Sheets:**
+> You don't need to know JSON or programming to get structured data. In ChatGPT or Claude, prompt: *"Format the extracted data into a Markdown table with columns: Date, Vendor, Category, Amount. Underneath, output the exact same data in a raw CSV code block so I can copy and paste directly into Google Sheets or Excel."* This converts messy meeting transcripts, PDFs, or receipts into spreadsheets instantly.
+
+> 💻 **Tech Lens · Type-Safe Contracts & Constrained Sampling:**
+> Relying on prompt instructions alone to get valid JSON will fail in production at high token volumes. Use schema-constrained decoding (`response_format={"type": "json_schema", "json_schema": {...}}` or Pydantic with `Instructor`/`Outlines`). Constrained decoding modifies the logit mask at each generation step to forbid tokens that would violate the context-free grammar, guaranteeing 100% syntactic schema validity.
+
 ```mermaid
 flowchart LR
     T["Unstructured text<br/>'The invoice is from Acme,<br/>total about 4,200…'"] --> L["🤖 LLM + schema"] --> J["{ vendor: 'Acme',<br/>total: 4200,<br/>currency: 'INR' }"] --> DB["🗄️ Database / API / UI"]

@@ -27,6 +27,12 @@
 | 11 | **Match your prompt style to the desired output** | Formal prompt → formal answer |
 | 12 | **Iterate and test** | First drafts are hypotheses |
 
+> 👔 **Non-Tech Lens · The Manager's Delegation Secret:**
+> Think of these 12 principles as how top executives delegate to staff: they never say *"Make this look nice"*; they say *"Draft an executive memo for Friday's board meeting, maximum 1 page, highlight Q3 revenue growth in bold, and explain why customer churn dropped 4%."* Clarity in instructions guarantees quality in execution.
+
+> 💻 **Tech Lens · Prompts as Interface Specifications:**
+> Treat prompt authoring with the same rigor as designing an API interface. Principles 1–4 define input preconditions; Principles 6–7 define the schema contract; Principle 10 defines failure mode handling; and Principle 12 defines integration testing. Ambiguity in prompts produces non-deterministic bugs in downstream parsers.
+
 ---
 
 ## 1. Be Clear and Direct

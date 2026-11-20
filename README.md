@@ -33,59 +33,83 @@ You'll learn how Large Language Models actually work, how to write prompts that 
 
 ---
 
+## 🎯 Two Tailored Tracks: Non-Tech vs Tech
+
+This course is designed with dual pathways so that whether you are writing business memos in a web browser or shipping production LLM microservices in Python, every lesson gives you actionable, relevant depth.
+
+```mermaid
+flowchart TD
+    User["Learner Profile"] --> NonTech["👔 Non-Tech Track<br/>Business, Creators & Leaders"]
+    User --> Tech["💻 Tech Track<br/>Developers & Engineers"]
+
+    NonTech --> NTFocus["• Everyday workplace mental models<br/>• Zero-code prompting in ChatGPT / Claude<br/>• Copy-paste templates for writing & analysis<br/>• Custom Instructions & Claude Projects<br/>• Fast-track 4-week timeline"]
+
+    Tech --> TFocus["• Tokenization math, embeddings & attention<br/>• Pydantic schemas & strict JSON enforcement<br/>• Tool-use, MCP & autonomous agent loops<br/>• Hybrid RAG & vector database search<br/>• Automated eval suites & PromptOps CI/CD"]
+```
+
+| Dimension | 👔 Non-Tech Track | 💻 Tech Track |
+|---|---|---|
+| **Audience** | Product managers, marketers, writers, founders, analysts, educators | Software engineers, full-stack devs, data scientists, ML architects |
+| **Primary Tools** | ChatGPT, Claude Projects, Google Gemini, MS Copilot | Python / Node SDKs, OpenAI/Anthropic APIs, Pydantic, Ollama, Git |
+| **Prerequisites** | None! Clear communication and domain knowledge | Basic comfort with Python or JavaScript |
+| **Core Modules** | 00–08, 09 (doc chat), 11, 14 (privacy), 16 (playbooks), 17 | All 18 modules (00–17) with deep focus on 06, 09, 10, 12, 13, 14, 15 |
+| **Deliverable** | High-leverage workflow prompts, Custom GPTs, business playbook | Production-tested prompt pipelines, function-calling agents, eval suites |
+
+---
+
 ## 🗺️ Curriculum
 
 ![Course roadmap](assets/roadmap.svg)
 
 ### 🟢 Stage 1: Foundations
 
-| # | Module | You'll learn |
-|---|---|---|
-| 00 | [Welcome & How to Use This Course](modules/00-welcome.md) | Roadmap, setup, study plans, the pro mindset |
-| 01 | [How Large Language Models Work](modules/01-how-llms-work.md) | Tokens, context windows, attention, temperature, training, limitations |
-| 02 | [Anatomy of a Prompt](modules/02-anatomy-of-a-prompt.md) | Role, task, context, input, examples, format; message roles; delimiters |
-| 03 | [Core Principles](modules/03-core-principles.md) | The 12 principles behind every good prompt |
-| 04 | [Zero-Shot, Few-Shot & Role Prompting](modules/04-zero-few-shot-and-roles.md) | Examples, personas, prefilling |
+| # | Module | You'll learn | Track Fit |
+|---|---|---|---|
+| 00 | [Welcome & How to Use This Course](modules/00-welcome.md) | Roadmap, dual lab setup, study plans, the pro mindset | 🌟 Both |
+| 01 | [How Large Language Models Work](modules/01-how-llms-work.md) | Tokens, context windows, attention, temperature, training, limits | 🌟 Both (plain analogies + math) |
+| 02 | [Anatomy of a Prompt](modules/02-anatomy-of-a-prompt.md) | Role, task, context, input, examples, format; delimiters | 🌟 Both (Executive brief + API schemas) |
+| 03 | [Core Principles](modules/03-core-principles.md) | The 12 principles behind every good prompt | 🌟 Both |
+| 04 | [Zero-Shot, Few-Shot & Role Prompting](modules/04-zero-few-shot-and-roles.md) | Examples, personas, prefilling, in-context learning | 🌟 Both |
 
 ### 🔵 Stage 2: Intermediate
 
-| # | Module | You'll learn |
-|---|---|---|
-| 05 | [Reasoning Techniques](modules/05-reasoning-techniques.md) | CoT, self-consistency, ToT, step-back, self-critique, reasoning models |
-| 06 | [Structured Output](modules/06-structured-output.md) | JSON, schemas, XML, tables, validation |
-| 07 | [System Prompts & Conversation Design](modules/07-system-prompts-and-conversation.md) | Personas, memory, edge cases, escalation |
-| 08 | [Prompt Chaining & Workflows](modules/08-prompt-chaining-workflows.md) | Sequential, routing, parallel, orchestrator, evaluator patterns |
-| 09 | [Context Engineering & RAG](modules/09-context-engineering-rag.md) | Long context, retrieval, grounding, citations |
+| # | Module | You'll learn | Track Fit |
+|---|---|---|---|
+| 05 | [Reasoning Techniques](modules/05-reasoning-techniques.md) | CoT, self-consistency, ToT, reasoning models (o1/o3/Claude 3.7) | 🌟 Both |
+| 06 | [Structured Output](modules/06-structured-output.md) | JSON schemas, Pydantic, XML, Markdown tables, CSVs | 👔 Tables/CSVs · 💻 Strict Schemas |
+| 07 | [System Prompts & Conversation Design](modules/07-system-prompts-and-conversation.md) | Personas, Custom Instructions, memory, state management | 👔 Projects · 💻 State serialization |
+| 08 | [Prompt Chaining & Workflows](modules/08-prompt-chaining-workflows.md) | Sequential, routing, parallel, evaluator patterns | 👔 Chat chains · 💻 DAG pipelines |
+| 09 | [Context Engineering & RAG](modules/09-context-engineering-rag.md) | Long context, retrieval, grounding, citations, vector DBs | 👔 Doc uploads · 💻 Embeddings/hybrid search |
 
 ### 🟣 Stage 3: Advanced
 
-| # | Module | You'll learn |
-|---|---|---|
-| 10 | [Tool Use, Function Calling & Agents](modules/10-tool-use-and-agents.md) | Tool definitions, agent loops, MCP, multi-agent |
-| 11 | [Multimodal & Image Prompting](modules/11-multimodal-and-image-prompting.md) | Vision, image/video/audio generation |
-| 12 | [Model Parameters, APIs & Cost](modules/12-parameters-apis-and-cost.md) | Parameters, SDKs, streaming, cost & latency |
-| 13 | [Evaluation & Testing](modules/13-evaluation-and-testing.md) | Test sets, graders, LLM-as-judge, metrics |
-| 14 | [Safety, Security & Ethics](modules/14-safety-security-ethics.md) | Prompt injection, jailbreaks, hallucinations, responsible AI |
+| # | Module | You'll learn | Track Fit |
+|---|---|---|---|
+| 10 | [Tool Use, Function Calling & Agents](modules/10-tool-use-and-agents.md) | Tool schemas, ReAct loop, MCP, guardrails | 👔 Agent capabilities · 💻 Full code |
+| 11 | [Multimodal & Image Prompting](modules/11-multimodal-and-image-prompting.md) | Vision, image generation, video/audio prompts | 🌟 Both |
+| 12 | [Model Parameters, APIs & Cost](modules/12-parameters-apis-and-cost.md) | Sampling settings, SDKs, streaming, cost & latency | 👔 Cost tuning · 💻 SDKs & streaming |
+| 13 | [Evaluation & Testing](modules/13-evaluation-and-testing.md) | Test sets, rubrics, LLM-as-judge, automated metrics | 👔 Rubrics/A-B · 💻 Automated CI/CD |
+| 14 | [Safety, Security & Ethics](modules/14-safety-security-ethics.md) | Prompt injection, jailbreaks, data privacy, responsible AI | 👔 Data privacy · 💻 Red teaming & defenses |
 
 ### 🌟 Stage 4: Pro
 
-| # | Module | You'll learn |
-|---|---|---|
-| 15 | [Production Prompt Engineering](modules/15-production-promptops.md) | Versioning, templates, observability, migrations |
-| 16 | [Domain Playbooks](modules/16-domain-playbooks.md) | Code, writing, marketing, data, research, education, business… |
-| 17 | [Becoming a Pro](modules/17-becoming-a-pro.md) | Meta-prompting, optimization, portfolio, interviews, career |
+| # | Module | You'll learn | Track Fit |
+|---|---|---|---|
+| 15 | [Production Prompt Engineering](modules/15-production-promptops.md) | Versioning, telemetry, observability, PromptOps | 👔 Team prompt libraries · 💻 PromptOps |
+| 16 | [Domain Playbooks](modules/16-domain-playbooks.md) | Code, writing, marketing, data, research, education, business | 🌟 Both (customized by domain) |
+| 17 | [Becoming a Pro](modules/17-becoming-a-pro.md) | Meta-prompting, optimization, portfolio, dual career paths | 🌟 Both (AI Champion vs AI Engineer) |
 
 ### 📚 Appendices
 
-| | Appendix |
-|---|---|
-| A | [Cheat Sheet](appendix/A-cheat-sheet.md) |
-| B | [Prompt Pattern Library (60 templates)](appendix/B-prompt-library.md) |
-| C | [Glossary](appendix/C-glossary.md) |
-| D | [Final Exam](appendix/D-final-exam.md) |
-| E | [Capstone Projects](appendix/E-capstone-projects.md) |
-| F | [Troubleshooting Guide](appendix/F-troubleshooting.md) |
-| G | [Resources, Papers & Practice Plan](appendix/G-resources.md) |
+| | Appendix | Track Fit |
+|---|---|---|
+| A | [Cheat Sheet](appendix/A-cheat-sheet.md) | 🌟 Both (dual checklists) |
+| B | [Prompt Pattern Library (60 templates)](appendix/B-prompt-library.md) | 👔 Business templates · 💻 Code/Dev templates |
+| C | [Glossary](appendix/C-glossary.md) | 🌟 Both (plain English + technical definitions) |
+| D | [Final Exam](appendix/D-final-exam.md) | 🌟 Both (Part 1 Foundations · Part 2 Engineering) |
+| E | [Capstone Projects](appendix/E-capstone-projects.md) | 👔 3 Non-Tech Capstones · 💻 3 Tech Capstones |
+| F | [Troubleshooting Guide](appendix/F-troubleshooting.md) | 🌟 Both |
+| G | [Resources, Papers & Practice Plan](appendix/G-resources.md) | 🌟 Both |
 
 ---
 

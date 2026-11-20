@@ -30,6 +30,18 @@
 
 > ⚠️ Parameter names, ranges and availability differ by provider and model. Reasoning modes may ignore or restrict temperature. Always check the docs for the model you use.
 
+> 👔 **Non-Tech Lens · Model Tiers & Budgeting for Your Team:**
+> You don't need the most expensive model for every task:
+> - **Lightweight Tier (GPT-4o mini, Claude Haiku, Gemini Flash):** 10x faster and 20x cheaper. Perfect for daily tasks like summarizing emails, reformatting notes, translating, or generating social drafts.
+> - **Flagship Tier (Claude 3.7 Sonnet, GPT-4o):** Best for executive ghostwriting, deep document synthesis, contract analysis, and strategic problem-solving.
+> Matching the right tier to each job keeps your monthly AI spend lean while maximizing quality.
+
+> 💻 **Tech Lens · Token Economics, Streaming & Batch Optimization:**
+> Production cost and latency require deliberate system architecture:
+> 1. **Server-Sent Events (SSE) Streaming:** Always stream tokens to client UIs to minimize Time To First Token (TTFT < 800ms) and eliminate client-side timeout risks.
+> 2. **Batch API:** Process background tasks (dataset labeling, periodic report generation, batch evals) using provider Batch endpoints for an automatic 50% discount and higher rate limits.
+> 3. **Semantic Caching:** Cache deterministic query embeddings in Redis/vector store; identical or near-identical queries return cached completions in < 15ms at $0 token cost.
+
 ---
 
 ## 2. The Same Call in Four Ecosystems

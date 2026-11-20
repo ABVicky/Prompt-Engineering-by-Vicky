@@ -30,6 +30,20 @@ Good:
 
 Criteria should be **specific, measurable, achievable, and relevant** to real users.
 
+> 👔 **Non-Tech Lens · The 5-Sample Blind A/B Test:**
+> When improving a prompt for your business or team, never trust gut feel. Use a quick blind review:
+> 1. Collect 5 real representative inputs (e.g. 5 real customer inquiry emails).
+> 2. Run them through your existing prompt (Version A) and your updated prompt (Version B).
+> 3. Paste the pairs side by side into a doc without labeling which is which.
+> 4. Ask a teammate (or grade yourself blindly) on a 1–5 scale for: *Clarity*, *Accuracy*, and *Actionability*.
+> Only adopt Version B if it consistently beats Version A on measurable criteria.
+
+> 💻 **Tech Lens · Automated Regression Test Suites in CI/CD:**
+> Prompt changes are code changes. Never deploy a prompt update without running an automated regression test suite (using frameworks like `Promptfoo`, `Deepeval`, or custom `pytest` runners):
+> 1. **Deterministic Assertions:** Verify valid JSON schema parsing, latency ceilings, and token length limits.
+> 2. **LLM-as-a-Judge:** Use a flagship model (GPT-4o / Claude 3.7) with explicit scoring rubrics (G-Eval methodology: produce chain-of-thought critique first, then output integer score 1–5).
+> 3. **Gate in CI:** Block pull requests if the overall pass rate drops below baseline (e.g. regression $> 2\%$).
+
 ---
 
 ## 2. Build an Evaluation Dataset

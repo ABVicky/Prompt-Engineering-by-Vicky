@@ -27,6 +27,12 @@ flowchart TB
     SP --> TL["Tool-use policy"]
 ```
 
+> 👔 **Non-Tech Lens · Custom GPTs & Claude Projects Without Code:**
+> You don't need code to deploy this system prompt. In ChatGPT, open *Explore GPTs → Create*, or in Claude, click *Projects → Set custom instructions*. Paste the structured template below into the instructions box and upload your brand guide or product FAQ into Knowledge. You will instantly have a specialized assistant that writes in your exact brand voice and respects company rules across every conversation.
+
+> 💻 **Tech Lens · Prompt Caching & State Optimization:**
+> Large system prompts (containing catalogs, schemas, and guidelines) should be structured to exploit API **Prompt Caching** (e.g. Anthropic `cache_control: {"type": "ephemeral"}`). Keep the system prompt byte-identical across requests by placing all invariant instructions first and appending dynamic user session turns at the end. This slashes Time-To-First-Token (TTFT) by up to 80% and reduces API input cost by 50–90%.
+
 ---
 
 ## 2. A Production System Prompt Template

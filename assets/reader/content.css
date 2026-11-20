@@ -50,6 +50,98 @@
 .md .callout.sec { --c: var(--ok); --callout-title: var(--ok); }
 .md .callout.deep { --c: var(--border-strong); --callout-title: var(--text-primary); }
 .md .callout.note { --c: var(--border-strong); --callout-title: var(--text-secondary); }
+.md .callout.non-tech { --c: var(--color-primary); --callout-title: var(--primary-ink); background: color-mix(in srgb, var(--color-primary) 12%, var(--surface)); border-left: 5px solid var(--color-primary); }
+.md .callout.tech { --c: var(--color-secondary); --callout-title: var(--link); background: color-mix(in srgb, var(--color-secondary) 12%, var(--surface)); border-left: 5px solid var(--color-secondary); }
+
+/* Audience track lens active states */
+:root[data-audience="non-tech"] .md .callout.non-tech {
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow);
+  position: relative;
+}
+:root[data-audience="non-tech"] .md .callout.non-tech::after {
+  content: "★ Your Track Focus";
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--primary-ink);
+  background: var(--highlight);
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-primary);
+}
+:root[data-audience="non-tech"] .md .callout.tech {
+  opacity: .78;
+}
+
+:root[data-audience="tech"] .md .callout.tech {
+  box-shadow: 0 0 0 2px var(--color-secondary), var(--shadow);
+  position: relative;
+}
+:root[data-audience="tech"] .md .callout.tech::after {
+  content: "★ Your Track Focus";
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--link);
+  background: color-mix(in srgb, var(--color-secondary) 16%, var(--surface));
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--color-secondary);
+}
+:root[data-audience="tech"] .md .callout.non-tech {
+  opacity: .78;
+}
+
+/* Document audience bar */
+.doc-audience-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+  flex-wrap: wrap;
+}
+.dab-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--text-secondary);
+}
+.dab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all .18s ease;
+}
+.dab-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--text);
+}
+.dab-btn.active {
+  background: var(--highlight);
+  border-color: var(--color-primary);
+  color: var(--primary-ink);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
 
 /* ---------- Section cards: objectives, takeaways, exercises, quiz ---------- */
 .md .sec-card {

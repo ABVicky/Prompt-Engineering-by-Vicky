@@ -48,6 +48,12 @@ Title:
 
 ### What examples teach (whether you intend it or not)
 
+> 👔 **Non-Tech Lens · Show, Don't Just Tell:**
+> Describing your personal writing style or company tone with vague adjectives ("professional yet approachable, concise but detailed") almost always leaves the AI guessing. Instead, paste 2 or 3 examples of previous emails, reports, or social media posts that you love. The model absorbs the rhythm, length, vocabulary, and formatting instantly.
+
+> 💻 **Tech Lens · In-Context Learning Dynamics & Assistant Prefilling:**
+> Few-shot prompting guides transformer attention maps without weight updates. Ensure balanced class frequency in classification examples to prevent majority-class prediction skew. When calling chat APIs (such as Anthropic or local models), use *Assistant Prefilling* (e.g. `messages=[..., {"role": "assistant", "content": "{"}]`) to force output generation to start immediately with valid JSON, bypassing conversational conversational filler.
+
 ```mermaid
 mindmap
   root((Your examples teach))

@@ -4,6 +4,9 @@
 > **Passing score:** 32/40 (80%). Time yourself: 60 minutes for the MCQs.
 > Answers and explanations are hidden at the end of each section.
 
+> 👔 **Non-Tech Track Focus:** Questions 1–20 (Foundations & Core Techniques), Questions 31–40 (Domains, Safety & Evaluation), and Practical Tasks 1 & 4.
+> 💻 **Tech Track Focus:** All 40 questions (including structured JSON, function calling, RAG architectures, and PromptOps) and all 5 practical tasks.
+
 ---
 
 ## Part 1 — Foundations (Modules 01–04)

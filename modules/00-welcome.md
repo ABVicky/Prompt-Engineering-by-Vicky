@@ -60,25 +60,42 @@ flowchart LR
 
 ---
 
-## 🧰 Prerequisites
+## 🧰 Prerequisites & Audience Tracks
 
-- **None for Stage 1–2.** If you can write a clear email, you can start.
-- **For Stage 3–4:** basic comfort reading Python or JavaScript helps. Every code sample is explained line by line, and all core ideas also work in chat interfaces without code.
+This course is built from the ground up for two distinct audiences:
+
+> 👔 **Non-Tech Track · Everyday & Business:**
+> If you are a marketer, product manager, writer, analyst, founder, teacher, or everyday professional, you need zero coding experience. You will learn to use AI chat apps (ChatGPT, Claude, Gemini, Copilot) as power tools for writing, analysis, research, and daily workflow automation. Your focus is high-leverage prompting without touching code.
+
+> 💻 **Tech Track · Developer & Engineering:**
+> If you are a software engineer, data scientist, or ML practitioner, you will learn to treat prompts as software components: deterministic output schemas (JSON/Pydantic), tool calling, autonomous agent loops, hybrid RAG pipelines, automated eval suites (G-Eval, assertion testing), and production PromptOps CI/CD.
+
+| Track | Who it is for | Primary tools | What you master |
+|---|---|---|---|
+| 👔 **Non-Tech** | Creators, managers, analysts, domain experts | ChatGPT, Claude Projects, Copilot, Gemini | 5-part prompt briefs, few-shot templates, custom GPTs, document Q&A, workflow chains |
+| 💻 **Tech** | Developers, engineers, architects, data scientists | Python/Node SDKs, APIs, Pydantic, Vector DBs, Git | API parameters, structured output, function calling, agent loops, RAG, automated evals, PromptOps |
 
 ---
 
 ## 🛠️ Set Up Your Practice Lab
 
-You need *one* place to run prompts. Pick any:
+Choose the setup that fits your track:
 
-| Option | Good for | Cost |
-|---|---|---|
-| **Chat apps** (Claude.ai, ChatGPT, Gemini, Copilot, etc.) | Modules 00–09, quick experiments | Free tiers available |
-| **Provider playgrounds / consoles** (Anthropic Console, OpenAI Playground, Google AI Studio) | Controlling system prompts, temperature, max tokens | Free tier / pay-as-you-go |
-| **API + code** (Python or Node.js) | Modules 10–17: tools, agents, evaluation, production | Pay per token (cents for this whole course) |
-| **Local open models** (Ollama, LM Studio + Llama / Mistral / Qwen / Gemma) | Privacy, offline practice, comparing models | Free (needs a decent computer) |
+### 👔 Non-Tech Track Setup (Zero Code · 5 minutes)
 
-### Minimal Python setup (for later modules)
+You only need access to at least one modern conversational AI tool. Free versions work, but paid subscriptions offer higher-tier reasoning models and document upload capabilities:
+
+1. **Pick your primary assistant:**
+   - **Claude.ai** (Anthropic) — excellent for nuanced writing, complex reasoning, and large document analysis with *Projects*.
+   - **ChatGPT** (OpenAI) — great for web browsing, code interpreter / data analysis, image generation, and *Custom GPTs*.
+   - **Google Gemini** or **Microsoft Copilot** — strong for workspace integration, deep search, and multimodal inputs.
+2. **Set up a personal prompt notebook:**
+   - Create a folder in Notion, Apple Notes, Obsidian, or Google Docs named `Prompt Engineering Lab`.
+   - Save your prompt templates, versions, and interesting model outputs as you practice each module.
+
+### 💻 Tech Track Setup (Code & APIs · 10 minutes)
+
+For developers building applications with LLMs, set up a local development environment:
 
 ```bash
 # 1. Create a project folder and a virtual environment
@@ -87,7 +104,7 @@ python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 
 # 2. Install SDKs (install the ones you will use)
-pip install anthropic openai google-genai python-dotenv
+pip install anthropic openai google-genai pydantic python-dotenv
 
 # 3. Store your API key in a .env file (never commit this file!)
 echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
@@ -129,6 +146,8 @@ Every module follows the same rhythm so you always know where you are:
 
 | Icon | Meaning |
 |---|---|
+| 👔 | **Non-Tech Track** — Business & everyday productivity lens |
+| 💻 | **Tech Track** — Developer, architecture & code lens |
 | 💡 | Tip / insight |
 | ⚠️ | Warning / common mistake |
 | 🧪 | Try it yourself |
@@ -140,20 +159,31 @@ Every module follows the same rhythm so you always know where you are:
 
 ---
 
-## 📅 Suggested Study Plans
+## 📅 Suggested Study Plans by Track
 
-### 🐢 Steady — 8 weeks (≈ 6 h/week)
+### 👔 Non-Tech Track — 4 Weeks (≈ 4–5 h/week)
+*Goal: Automate everyday work, write high-leverage prompts, master Claude Projects & Custom GPTs.*
 
-| Week | Modules | Milestone |
+| Week | Focus Modules | Key Milestone |
 |---|---|---|
-| 1 | 00, 01, 02 | Explain tokens & temperature to a friend |
-| 2 | 03, 04 | Build your personal prompt template |
-| 3 | 05, 06 | Get valid JSON from a model 10/10 times |
-| 4 | 07, 08 | Ship a multi-step prompt chain |
-| 5 | 09, 10 | Build a mini RAG bot or a tool-using agent |
-| 6 | 11, 12, 13 | Run your first prompt evaluation with a test set |
-| 7 | 14, 15 | Red-team your own app; version your prompts |
-| 8 | 16, 17 + Capstone | Publish a portfolio project |
+| 1 | 00, 01 (concepts), 02, 03 | Write 5-part executive prompts; fix vague outputs |
+| 2 | 04, 05, 06 (tables/CSVs) | Build role-based templates; format Excel-ready tables |
+| 3 | 07, 08, 09 (doc chat), 11 | Set up Claude Projects/GPTs; chain multi-step tasks |
+| 4 | 14 (privacy), 16, 17 + Capstone | Build a team prompt playbook or content engine (Project 1, 4 or 6) |
+
+### 💻 Tech Track — 8 Weeks (≈ 6 h/week)
+*Goal: Build production LLM systems with code, function calling, RAG, and eval suites.*
+
+| Week | Focus Modules | Key Milestone |
+|---|---|---|
+| 1 | 00, 01, 02, 03 | Tokens, logits, temperature math, message roles |
+| 2 | 04, 05, 06 | Few-shot prefilling, reasoning models, strict Pydantic JSON schemas |
+| 3 | 07, 08 | System prompt caching, multi-turn state, DAG workflow chaining |
+| 4 | 09, 10 | Hybrid RAG with vector DBs; tool-calling agents & MCP |
+| 5 | 11, 12 | Multimodal inputs, API streaming, token cost & latency profiling |
+| 6 | 13, 14 | Automated eval test suites (LLM-as-judge, assertions); injection defenses |
+| 7 | 15, 16 | PromptOps (Git versioning, Langfuse tracing, CI/CD gates); domain playbooks |
+| 8 | 17 + Capstone | Ship a production-grade portfolio agent or RAG system (Project 2, 3 or 5) |
 
 ### 🐇 Intensive — 2 weeks (≈ 25 h/week)
 Do two modules per day, exercises included, and spend the last three days on a capstone.

@@ -148,7 +148,17 @@ mindmap
 
 ---
 
-## 5. Building Your Portfolio
+## 5. Building Your Portfolio & Career Pathways
+
+> 👔 **Non-Tech Career Path · The AI Operations & Strategy Leader:**
+> - **Job Titles:** AI Champion, AI Workflow Strategist, Prompt Architect (Content & Operations), Executive AI Specialist.
+> - **Core Value:** Translating messy human business processes into repeatable prompt templates and custom assistants. You build team prompt wikis, create company custom GPTs/Projects, and coach non-technical colleagues to reclaim 10+ hours a week.
+> - **Portfolio Focus:** Case studies showing business impact (e.g. "Automated customer email classification from 4 hours/day to 15 mins with 94% accuracy").
+
+> 💻 **Tech Career Path · The Production AI Engineer:**
+> - **Job Titles:** AI Engineer, LLM Application Architect, PromptOps / MLOps Engineer, GenAI Software Developer.
+> - **Core Value:** Architecting scalable, secure, type-safe software powered by LLMs. You implement function calling, MCP servers, hybrid RAG with vector databases, streaming API backends, automated CI/CD eval gates, and prompt injection defenses.
+> - **Portfolio Focus:** GitHub repositories with full code, Pydantic schemas, unit test eval suites, and architectural diagrams.
 
 Employers and clients want **evidence**. Build 3–5 projects that each show a different skill (see **Appendix E — Capstone Projects**).
 

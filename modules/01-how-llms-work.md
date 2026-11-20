@@ -28,6 +28,14 @@ That's it. Translation, coding, summarizing, reasoning, role-play — all of it 
 
 Your phone keyboard suggests the next word. An LLM is like that — but trained on a large fraction of the public internet, books, and code, with billions of parameters, and able to consider **hundreds of thousands of tokens** of context at once. The difference in scale produces a difference in kind: it can follow instructions, keep a persona, write working programs, and reason through multi-step problems.
 
+> 👔 **Non-Tech Lens · The Brilliant Intern with Amnesia:**
+> Think of an LLM not as a computer program that looks up answers in a database, but as a brilliant intern who has read millions of books but has amnesia between conversations. If you give them a vague one-sentence task ("Write a marketing email"), they have to guess what you want, producing bland, generic output. If you give them clear constraints, target audience, tone, and examples, they perform at an expert executive level.
+
+> 💻 **Tech Lens · Autoregressive Transformer Architecture:**
+> Modern LLMs are decoder-only Transformers. Given token sequence $x_1, \dots, x_t$, the model computes next-token logits $z_{t+1} \in \mathbb{R}^{|V|}$ using causal multi-head self-attention:
+> $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+> During generation, previously computed keys and values are stored in a **KV-cache**. This makes prompt processing (prefill) parallel and compute-bound ($O(N)$ in tokens), whereas token generation (decode) is memory-bandwidth bound ($O(1)$ per step).
+
 > 💡 **Why this matters for you:** a prompt is the *beginning of a document* the model will continue. The better your "beginning" describes the document you want, the better the continuation.
 
 ---
@@ -98,6 +106,12 @@ After the model computes probabilities, it **samples** one token, appends it, an
 | **Stop sequences** | Strings that end generation early | e.g. `"\n\nUser:"`, `"</answer>"` | Clean cut-offs |
 
 > ⚠️ **Temperature 0 is not perfectly deterministic** on most hosted models (batching and floating-point effects), but it is *much* more consistent. Some newer reasoning models fix or ignore temperature — check your provider's docs.
+
+> 👔 **Non-Tech Lens · Setting Your AI's Personality:**
+> Think of Temperature as a "Focus Dial". If you are drafting a legal clause, financial summary, or extracting data from a table, you want temperature near `0` (conservative, factual, consistent). If you are naming a brand, writing ad copy, or brainstorming marketing campaigns, set it to `0.7–1.0` (exploratory, varied, creative).
+
+> 💻 **Tech Lens · Softmax Temperature & Nucleus Sampling:**
+> Given logits $z_i$, probability is defined as $P(w_i) = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}$. As $T \to 0$, $P(w)$ collapses to greedy $\operatorname{argmax}$. Top-P (nucleus sampling) filters the tail by selecting the smallest token set with cumulative probability $\ge p$. In production APIs, use $T=0$ for JSON schema validation, classification, and code; adjust either $T$ or Top-P, never both.
 
 ---
 

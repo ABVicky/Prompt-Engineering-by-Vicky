@@ -4,6 +4,12 @@
 
 Ready-to-use strategies and prompts for the domains where prompt engineering is used most. Each playbook gives: **what works**, **pitfalls**, and **templates**.
 
+> 👔 **Non-Tech Track Playbooks:**
+> Jump directly to **Section 2 (Writing)**, **Section 3 (Marketing & Sales)**, **Section 7 (Business & Strategy)**, **Section 8 (Customer Support)**, **Section 9 (HR)**, and **Section 11 (Productivity)**. These focus on immediate workplace productivity without writing a line of code.
+
+> 💻 **Tech Track Playbooks:**
+> Focus on **Section 1 (Software Development)**, **Section 4 (Data Analysis & SQL)**, and **Section 5 (Technical Research & Architecture)**. These cover code generation, debugging stack traces, Pydantic data schemas, query optimization, and technical RFC reviews.
+
 ## 🎯 Learning Objectives
 
 - Apply course techniques to **coding, writing, marketing, data analysis, research, education, business, customer support, HR, legal/medical/finance (with caution), and personal productivity**

@@ -37,7 +37,9 @@
     help: '<circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>',
     star: '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
     play: '<path d="M7 4v16l13-8z"/>',
-    hash: '<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>'
+    hash: '<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>',
+    briefcase: '<rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+    terminal: '<polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/>'
   };
   PE.icon = (name) => `<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${ICONS[name] || ""}</svg>`;
   PE.hydrateIcons = (root) => (root || document).querySelectorAll("[data-icon]").forEach((el) => { el.innerHTML = PE.icon(el.dataset.icon); });
@@ -83,7 +85,9 @@
   /* ---------- Content transforms ---------- */
   const CALLOUTS = [
     [/^💡/u, "tip", "Tip", "bulb"], [/^⚠/u, "warn", "Watch out", "alert"], [/^🔑/u, "key", "Key idea", "key"],
-    [/^🧪/u, "try", "Try it", "flask"], [/^🧠/u, "deep", "Deep dive", "layers"], [/^🛡/u, "sec", "Security", "shield"]
+    [/^🧪/u, "try", "Try it", "flask"], [/^🧠/u, "deep", "Deep dive", "layers"], [/^🛡/u, "sec", "Security", "shield"],
+    [/^👔/u, "non-tech", "Non-Tech Track · Everyday & Business", "briefcase"],
+    [/^💻/u, "tech", "Tech Track · Developer & Engineering", "terminal"]
   ];
   const SECTIONS = [
     [/learning objectives/i, "objectives", "target"], [/key takeaways/i, "takeaways", "star"],
@@ -164,7 +168,7 @@
       if (p.closest(".callout, details, td, li")) return;
       const t = p.textContent.trim();
       const hit = CALLOUTS.find(([re]) => re.test(t));
-      if (hit && /^(💡|🧪|⚠)/u.test(t)) {
+      if (hit && /^(💡|🧪|⚠|👔|💻)/u.test(t)) {
         const div = document.createElement("div");
         p.before(div); div.appendChild(p); makeCallout(div, hit[1], hit[2], hit[3]);
         return;

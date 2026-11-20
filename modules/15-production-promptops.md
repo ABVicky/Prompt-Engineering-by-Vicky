@@ -20,6 +20,18 @@ flowchart LR
     E --> G["🗄️ Deprecate"]
 ```
 
+> 👔 **Non-Tech Lens · Building a Shared Team Prompt Wiki:**
+> Without organization, team members waste hours rewriting prompts or getting inconsistent outputs for the same job. Build a shared "Prompt Library" in Notion or Google Workspace:
+> - Document the 5-part brief, tested examples, and model recommendations.
+> - Add a simple change log: *"March 2026 update: Added rule to format pricing in local currency."*
+> - Designate an internal "AI Lead" to review and approve prompt templates for team-wide use.
+
+> 💻 **Tech Lens · Production PromptOps Infrastructure & Telemetry:**
+> In engineering organizations, prompts are version-controlled assets. Practice modern PromptOps:
+> 1. **Decoupled Architecture:** Store prompts as versioned Markdown or Jinja templates in Git; never hardcode prompts inside application source files.
+> 2. **Telemetry & Tracing:** Instrument all LLM calls with tracing tools (Langfuse, Arize Phoenix, or OpenTelemetry) to track latency (TTFT), token consumption, model IDs, and downstream errors.
+> 3. **Canary Rollouts:** Gradually shift traffic from `prompt:v1` to `prompt:v2` using feature flags, monitoring user thumbs-up/down ratings and error rates in real time.
+
 ---
 
 ## 2. Prompts as Code

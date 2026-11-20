@@ -26,6 +26,12 @@
 
 > 💡 **Task and Context are the two most important blocks.** Role and Format are cheap upgrades. Examples are the most powerful but cost the most tokens. Input is whatever data the task needs.
 
+> 👔 **Non-Tech Lens · The Workplace Briefing Method:**
+> If you delegate a project to a junior colleague or freelance contractor, you wouldn't just say *"Write our newsletter"*. You would specify: who the audience is, what the goal is, key updates to include, tone (friendly vs formal), length limit, and what sections to create. Treat your AI prompt with that same managerial clarity.
+
+> 💻 **Tech Lens · Decoupling Instructions from Dynamic Data:**
+> In production backends, always separate static instructions from untrusted user data. Treating user inputs as unescaped raw strings inside instructions creates delimiter confusion and prompt injection vulnerabilities. Wrap dynamic user variables in explicit XML tags (e.g., `<user_query>{{query}}</user_query>`) and reference them unambiguously in your system prompt.
+
 ### Before / after
 
 ❌ **Weak**

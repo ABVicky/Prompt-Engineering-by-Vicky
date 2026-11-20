@@ -33,6 +33,15 @@
 ### Why injection is hard
 LLMs process instructions and data in the **same channel** (text). There is no fully reliable way for a model to tell "this text is data" from "this text is a command." Defense must therefore be **layered** and must not depend on the model alone.
 
+> 👔 **Non-Tech Lens · The Golden Rule of Workplace AI Privacy:**
+> Never paste confidential customer records, employee passwords, unannounced financial figures, or proprietary code into free or public consumer AI tools. Public chat apps may retain conversation logs for training unless your company has an enterprise agreement with Zero Data Retention (ZDR) enabled. Before pasting real documents, sanitize PII: replace names with *"[Client A]"*, numbers with *"[XXXX]"*, and company names with *"[Acme Corp]"*.
+
+> 💻 **Tech Lens · Indirect Injection & Dual-LLM Defense Architecture:**
+> Indirect prompt injection occurs when an untrusted external document (webpage, customer email, uploaded PDF) contains hidden instructions that hijack the agent loop. Mitigate with defense-in-depth:
+> 1. **Dual-LLM Architecture:** A low-privilege "Reader LLM" ingests untrusted text and returns only validated JSON fields; the "Executive LLM" acts solely on structured JSON and has no raw token exposure to external text.
+> 2. **Least Privilege & Human-in-the-Loop (HITL):** Read tools can execute automatically; irreversible write/transfer tools (e.g., database writes, sending emails, API webhooks) must require human confirmation.
+> 3. **Output Sanitization:** Always sanitize model output before rendering in HTML (XSS prevention) or executing in SQL/Bash interpreters.
+
 ---
 
 ## 2. OWASP Top 10 for LLM Applications (2025 edition, summarized)

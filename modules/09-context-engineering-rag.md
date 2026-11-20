@@ -34,6 +34,18 @@ Principles:
 4. **Order deliberately.** Long documents first, instructions & question last.
 5. **Budget tokens.** Leave room for the answer (and thinking).
 
+> 👔 **Non-Tech Lens · Safe Document Q&A in Chat Apps:**
+> When uploading PDFs, vendor contracts, or reports into Claude or ChatGPT:
+> - Give a strict grounding rule: *"Answer using ONLY facts directly stated in the attached document. If the document doesn't explicitly answer the question, state 'Not mentioned in document'—never guess."*
+> - Demand verbatim citations: *"For each point in your answer, quote the exact sentence from the text and provide the page number."*
+> This eliminates 95% of hallucinations and makes the output immediately auditable for your team.
+
+> 💻 **Tech Lens · Production RAG Pipeline Architecture:**
+> Long context windows (128k–1M+ tokens) do not eliminate the need for RAG due to cost, TTFT latency, and the "Lost in the Middle" attention degradation phenomenon. Production RAG relies on:
+> 1. **Hybrid Retrieval:** Dense vector embeddings (e.g. `text-embedding-3-small` / Voyage) combined with sparse BM25 keyword search via Reciprocal Rank Fusion (RRF).
+> 2. **Cross-Encoder Re-ranking:** Filter the top-30 retrieved candidates down to the top-5 most relevant chunks using a reranker model (e.g., Cohere Rerank / BGE).
+> 3. **Structured Grounding:** Feed re-ranked chunks into XML tags with strict schema-constrained refusal thresholds.
+
 ---
 
 ## 2. Long-Context Prompting

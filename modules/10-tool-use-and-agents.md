@@ -34,6 +34,15 @@ sequenceDiagram
 
 > 🔑 The model never executes anything. It outputs a structured request. **You** decide whether and how to run it — which is where safety lives.
 
+> 👔 **Non-Tech Lens · How Agents Work in ChatGPT & Claude:**
+> When you see ChatGPT "Browsing the web" or "Analyzing data with Python", you are watching tool use in action. The model itself cannot browse or calculate; it writes a query to a search engine tool or writes Python code to an execution sandbox. Knowing this helps you steer it: instead of asking *"What are current AI trends?"*, instruct it: *"Search Google for '2026 enterprise AI adoption survey', find 3 authoritative reports, and summarize their key findings."*
+
+> 💻 **Tech Lens · The Autonomous ReAct Loop & Model Context Protocol (MCP):**
+> Agents operate via the **ReAct (Reason + Act)** loop: Thought → Action (tool selection & argument serialization) → Observation (tool return value) → Repeat until termination condition. To prevent runaway costs and infinite loops, always enforce:
+> 1. Strict `max_iterations` counter (typically 5–10 steps).
+> 2. Total token budget cap per run.
+> 3. Standardized tool integration via **Model Context Protocol (MCP)**, which exposes tools, resources, and prompt templates over JSON-RPC across heterogeneous backends.
+
 ---
 
 ## 2. Anatomy of a Tool Definition

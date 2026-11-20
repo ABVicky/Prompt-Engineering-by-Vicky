@@ -21,6 +21,15 @@ flowchart LR
     Q --> S1["Step 1"] --> S2["Step 2"] --> S3["Step 3"] --> A["✅ Answer"]
 ```
 
+> 👔 **Non-Tech Lens · How to Get Deep Insights Instead of Fluff:**
+> When you need help with business decisions, competitor analysis, or pricing calculations, never just ask: *"Which vendor should we choose?"*
+> Instead, ask: *"Before recommending a vendor, list the pros, cons, hidden costs, and operational risks of each option step-by-step. Once you've analyzed the trade-offs, state your final recommendation."* Forcing the AI to 'think out loud' first prevents hasty, superficial conclusions.
+
+> 💻 **Tech Lens · Test-Time Compute Scaling & Dedicated Reasoning Models:**
+> Chain-of-Thought works because it scales *test-time compute*: every intermediate token acts as additional transformer feed-forward computation, expanding working memory.
+> In newer reasoning models (OpenAI o1/o3, Claude 3.7 Sonnet with extended thinking, DeepSeek R1), the model produces internal hidden reasoning chains optimized via reinforcement learning (RL).
+> **Best practice for reasoning models:** State high-level goals and constraints; do NOT micromanage step-by-step CoT prompts (e.g. avoid manual few-shot thinking steps), and regulate depth via `budget_tokens` or `reasoning_effort` settings.
+
 ---
 
 ## 2. Chain-of-Thought (CoT)

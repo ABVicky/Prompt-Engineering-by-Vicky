@@ -69,6 +69,30 @@
   const setFocus = (on) => { document.body.classList.toggle("focus", on); $("#focus-btn").classList.toggle("on", on); PE.store.set("pe-focus", on); };
   $("#focus-btn").addEventListener("click", () => { const on = !document.body.classList.contains("focus"); setFocus(on); toast(on ? "Focus mode on" : "Focus mode off"); });
 
+  /* Audience preference: "all" | "non-tech" | "tech" */
+  const curAudience = () => PE.store.get("pe-audience", "all");
+  const setAudience = (aud, showToast = true) => {
+    root.setAttribute("data-audience", aud);
+    PE.store.set("pe-audience", aud);
+    document.querySelectorAll(".dab-btn, .aud-choice-btn").forEach((btn) => {
+      btn.classList.toggle("active", btn.dataset.aud === aud);
+      if (btn.classList.contains("btn")) {
+        btn.classList.toggle("primary", btn.dataset.aud === aud);
+        btn.classList.toggle("ghost", btn.dataset.aud !== aud);
+      }
+    });
+    document.querySelectorAll(".track-card").forEach((card) => {
+      const match = card.querySelector(`.aud-choice-btn[data-aud="${aud}"]`);
+      card.classList.toggle("active", !!match);
+    });
+    if (showToast) {
+      if (aud === "non-tech") toast("👔 Non-Tech Track active · Focusing on practical business & no-code prompts");
+      else if (aud === "tech") toast("💻 Tech Track active · Focusing on code, schemas, APIs & architecture");
+      else toast("🌟 Both Tracks active · Showing full comprehensive content");
+    }
+  };
+  root.setAttribute("data-audience", curAudience());
+
   let toastTimer = null;
   function toast(msg) {
     const t = $("#toast");
@@ -170,6 +194,24 @@
       `<small>${n ? `Continue where you left off · ${pct}% complete` : "Your first step"}</small><h3>${esc(label(cont))}</h3>` +
       `<div class="pbar"><span style="width:${Math.max(pct, 2)}%"></span></div></div>` +
       `<a class="btn primary" href="#/${cont.p}">${n ? "Resume" : "Start"} ${PE.icon("arrowRight")}</a></section>` +
+      `<section class="tracks-banner">` +
+      `<div class="tracks-header"><h2>Tailored for Two Audiences</h2><p>Whether you're automating business workflows or shipping production code, follow the track that fits your background.</p></div>` +
+      `<div class="tracks-grid">` +
+      `<div class="track-card ${curAudience() === "non-tech" ? "active" : ""}">` +
+      `<div class="tc-badge">👔 Non-Tech Track</div>` +
+      `<h3>For Business, Creators & Leaders</h3>` +
+      `<p>For product managers, marketers, writers, founders, analysts, and everyday professionals. Master prompting in ChatGPT, Claude, and Gemini to automate reports, draft content, analyze data, and build custom GPTs without writing code.</p>` +
+      `<ul class="tc-list"><li>✨ Plain-English mental models & analogies</li><li>📋 Copy-paste business prompt templates</li><li>💬 No-code chat, Projects & Custom Instructions</li></ul>` +
+      `<button type="button" class="btn ${curAudience() === "non-tech" ? "primary" : "ghost"} aud-choice-btn" data-aud="non-tech">Set Non-Tech Track</button>` +
+      `</div>` +
+      `<div class="track-card ${curAudience() === "tech" ? "active" : ""}">` +
+      `<div class="tc-badge">💻 Tech Track</div>` +
+      `<h3>For Developers & Engineers</h3>` +
+      `<p>For software engineers, data scientists, and ML architects. Build production LLM systems with structured output (JSON Schema/Pydantic), function calling, autonomous agent loops, RAG pipelines, automated evals, and prompt security.</p>` +
+      `<ul class="tc-list"><li>⚙️ API payloads, SDKs (Python/Node) & tokens</li><li>🧱 Structured schemas & function calling</li><li>🛡️ Injection defense, Evals & PromptOps</li></ul>` +
+      `<button type="button" class="btn ${curAudience() === "tech" ? "primary" : "ghost"} aud-choice-btn" data-aud="tech">Set Tech Track</button>` +
+      `</div>` +
+      `</div></section>` +
       `<section class="home-section"><h2 class="sec-title">Your learning path</h2><p class="sec-sub">Four stages from fundamentals to professional practice, plus a reference library you'll keep coming back to.</p>` +
       `<div class="path">${STAGES.map((s, k) => `<a class="path-step" href="#/" data-scroll="stage-${s.id}"><span class="ps-dot">${s.id === "ref" ? "★" : k + 1}</span>` +
         `<b>${esc(s.name)}</b><small>${esc(s.d)}</small><div class="pbar"><span style="width:${Math.round((100 * doneCount(s.items)) / s.items.length)}%"></span></div></a>`).join("")}</div></section>` +
@@ -183,6 +225,9 @@
       `<p>Author of <strong>Prompt Engineering: Zero to Pro</strong> · <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.siteLabel)}</a></p>` +
       `<p>© 2026 ${esc(MAP.author)}. All rights reserved. <a href="#/${ABOUT.p}">About this course →</a></p></div></section>` +
       footerHTML();
+    view.querySelectorAll(".aud-choice-btn").forEach((btn) => {
+      btn.addEventListener("click", () => setAudience(btn.dataset.aud));
+    });
     document.title = "Prompt Engineering: Zero to Pro · Vicky Prasad Mahato";
     $("#toc").innerHTML = "";
     if (pendingScroll) { const el = document.getElementById(pendingScroll); pendingScroll = null; if (el) { el.scrollIntoView(); return; } }
@@ -219,12 +264,22 @@
     const body = window.marked ? marked.parse(md, { gfm: true }) : `<div class="callout warn"><p>The Markdown renderer couldn't load (are you offline?). Showing plain text.</p></div><pre><code>${esc(md)}</code></pre>`;
     const pg = (i, dir) => i ? `<a class="${dir}" href="#/${i.p}"><span class="pg-ico">${i.i}</span><span class="pg-body"><small>${dir === "prev" ? "← Previous" : "Next →"}</small><b>${esc(label(i))}</b></span></a>` : "";
 
+    const curAud = curAudience();
+    const audBar = `<div class="doc-audience-bar" role="group" aria-label="Filter content by audience">` +
+      `<span class="dab-label">Lens:</span>` +
+      `<button type="button" class="dab-btn${curAud === "all" ? " active" : ""}" data-aud="all" title="Show all perspectives">🌟 Both Tracks</button>` +
+      `<button type="button" class="dab-btn${curAud === "non-tech" ? " active" : ""}" data-aud="non-tech" title="Highlight Non-Tech & Business content">👔 Non-Tech Focus</button>` +
+      `<button type="button" class="dab-btn${curAud === "tech" ? " active" : ""}" data-aud="tech" title="Highlight Developer & Engineering content">💻 Tech Focus</button>` +
+      `</div>`;
+
     view.innerHTML =
       `<article class="doc">` +
       `<header class="doc-hero"><div class="doc-hero-top"><a class="stage-pill" href="#/" ${s ? `data-scroll-home="stage-${s.id}"` : ""}>${s ? `${esc(s.label)} · ${esc(s.name)}` : "Overview"}</a><span class="pos">${pos}</span></div>` +
       `<div class="doc-hero-main"><div class="doc-icon">${item.i}${item.n !== "i" ? `<span>${esc(item.n)}</span>` : ""}</div><div><h1>${esc(item.t)}</h1><p>${esc(item.d)}</p></div></div>` +
       `<div class="doc-hero-chips"><span class="chip">${PE.icon("clock")}${esc(study)}</span><span class="chip">${PE.icon("book")}${mins} min read</span>` +
-      `<span class="chip ok" id="done-chip"${isDone ? "" : " hidden"}>${PE.icon("check")}Completed</span></div></header>` +
+      `<span class="chip ok" id="done-chip"${isDone ? "" : " hidden"}>${PE.icon("check")}Completed</span></div>` +
+      audBar +
+      `</header>` +
       `<div class="md" id="md">${body}</div>` +
       (s ? `<section class="complete-card${isDone ? " done" : ""}" id="complete-card"><span class="cc-emoji">${isDone ? "🎉" : "🏁"}</span>` +
         `<div class="cc-body"><h3>${isDone ? "Nice work, this one's done!" : "Finished this page?"}</h3><p>${isDone ? "It's marked complete in your progress." : "Mark it complete to track your progress across the course."}</p></div>` +
@@ -234,6 +289,9 @@
 
     const box = $("#md");
     PE.enhance(box, item.p);
+    view.querySelectorAll(".dab-btn").forEach((b) => {
+      b.addEventListener("click", () => setAudience(b.dataset.aud));
+    });
     const sections = box.querySelectorAll("h2").length;
     PE.buildToc(box, item.p, `<b>${mins} min</b> read · <b>${sections}</b> sections${s ? `<br>${esc(s.label)} · ${esc(s.name)}` : ""}`);
     document.title = `${label(item)} · Prompt Engineering: Zero to Pro`;

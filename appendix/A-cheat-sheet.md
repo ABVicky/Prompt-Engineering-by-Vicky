@@ -2,6 +2,20 @@
 
 > Print it. Pin it. Re-read it before every important prompt.
 
+> 👔 **Non-Tech Quick Rules (Chat & Workplace):**
+> 1. **Brief like a manager:** Give the AI a clear role, audience, constraints, and tone.
+> 2. **Show past examples:** Paste 1–2 previous emails/reports you love instead of describing style with adjectives.
+> 3. **Chain interactively:** Step 1 (Extract) → Step 2 (Draft) → Step 3 (Polish).
+> 4. **Get spreadsheets:** Always append *"Provide this as a Markdown table and as a raw CSV code block for Excel."*
+> 5. **Privacy first:** Strip names, card numbers, and secret company data before pasting.
+
+> 💻 **Tech Quick Rules (API & Production):**
+> 1. **Strict schemas:** Enforce Pydantic/JSON Schema structured outputs at the API decoding level.
+> 2. **Delimiter hygiene:** Wrap all dynamic variables in XML tags (`<user_data>...</user_data>`) to prevent injection.
+> 3. **Exploit prompt caching:** Keep static instructions at the prompt head; append dynamic turns at the end.
+> 4. **Safe agent loops:** Cap iterations (`max_steps <= 10`), set token ceilings, and require human confirmation for write/send tools.
+> 5. **Automate evals:** Run golden test sets in CI/CD on every Git pull request to detect regressions.
+
 ---
 
 ## ✅ The 10-Second Checklist

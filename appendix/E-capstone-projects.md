@@ -2,6 +2,18 @@
 
 > Pick at least **one** project (two or more for a strong portfolio). Each has levels so you can start simple and grow.
 
+> 👔 **Non-Tech Track Capstones:**
+> - **Project 1 (Basic/Intermediate):** Team Prompt Library & Qualitative Evaluation Suite
+> - **Project 4:** Multi-Format Content Repurposing Pipeline with Rubric Gates
+> - **Project 6:** Multimodal Creative Brand Kit & Visual Style Guide
+> *(Deliverables can be created entirely in ChatGPT, Claude Projects, and Notion/Google Docs without writing code.)*
+
+> 💻 **Tech Track Capstones:**
+> - **Project 2:** Production Document Q&A Assistant (Hybrid RAG with Vector DB)
+> - **Project 3:** Tool-Using Agent with MCP & Function Calling
+> - **Project 5:** Red-Teaming & Security Hardening Framework
+> *(Deliverables require Python/TypeScript code, API integrations, and automated test evaluation.)*
+
 Every capstone must include a **write-up** with: problem · approach · prompts (with versions) · evaluation (test set + metrics + before/after) · safety analysis · demo · lessons learned.
 
 ---
