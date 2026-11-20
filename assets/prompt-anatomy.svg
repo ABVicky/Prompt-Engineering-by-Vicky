@@ -2,88 +2,88 @@
   <title>Anatomy of a great prompt: role, task, context, input, examples, format</title>
   <defs>
     <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff" fill-opacity=".07"/></pattern>
-    <radialGradient id="g1" cx=".9" cy=".05" r=".7"><stop offset="0" stop-color="#7c3aed" stop-opacity=".32"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
-    <radialGradient id="g2" cx=".05" cy="1" r=".6"><stop offset="0" stop-color="#06b6d4" stop-opacity=".2"/><stop offset="1" stop-color="#06b6d4" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g1" cx=".9" cy=".05" r=".7"><stop offset="0" stop-color="#F3B552" stop-opacity=".25"/><stop offset="1" stop-color="#F3B552" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g2" cx=".05" cy="1" r=".6"><stop offset="0" stop-color="#407EBF" stop-opacity=".2"/><stop offset="1" stop-color="#407EBF" stop-opacity="0"/></radialGradient>
     <filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000" flood-opacity=".45"/></filter>
   </defs>
-  <rect width="960" height="530" rx="22" fill="#0b1024"/>
+  <rect width="960" height="530" rx="22" fill="#17191F"/>
   <rect width="960" height="530" rx="22" fill="url(#dots)"/>
   <rect width="960" height="530" rx="22" fill="url(#g1)"/>
   <rect width="960" height="530" rx="22" fill="url(#g2)"/>
 
-  <text x="36" y="50" fill="#f8fafc" font-size="24" font-weight="800" letter-spacing="-.4">Anatomy of a Great Prompt</text>
-  <text x="36" y="74" fill="#94a0c6" font-size="13.5">Six building blocks. Not every prompt needs all six, but every great prompt chooses deliberately.</text>
+  <text x="36" y="50" fill="#F4F1EA" font-size="24" font-weight="800" letter-spacing="-.4">Anatomy of a Great Prompt</text>
+  <text x="36" y="74" fill="#A8A9B0" font-size="13.5">Six building blocks. Not every prompt needs all six, but every great prompt chooses deliberately.</text>
 
   <!-- Prompt document -->
   <g filter="url(#sh)">
-    <rect x="36" y="96" width="520" height="410" rx="18" fill="#0e1530" stroke="#ffffff" stroke-opacity=".12"/>
+    <rect x="36" y="96" width="520" height="410" rx="18" fill="#22252D" stroke="#393D47"/>
   </g>
   <path d="M36 132h520" stroke="#fff" stroke-opacity=".08"/>
-  <circle cx="58" cy="114" r="5" fill="#f87171"/><circle cx="74" cy="114" r="5" fill="#fbbf24"/><circle cx="90" cy="114" r="5" fill="#34d399"/>
-  <text x="536" y="119" fill="#8b93b8" font-size="12" text-anchor="end" font-family="'JetBrains Mono', Menlo, monospace">prompt.md</text>
+  <circle cx="58" cy="114" r="5" fill="#F08A7E"/><circle cx="74" cy="114" r="5" fill="#F3B552"/><circle cx="90" cy="114" r="5" fill="#6CC79A"/>
+  <text x="536" y="119" fill="#A8A9B0" font-size="12" text-anchor="end" font-family="'JetBrains Mono', Menlo, monospace">prompt.md</text>
 
   <g font-size="13.5">
-    <rect x="56" y="146" width="480" height="50" rx="10" fill="#22d3ee" fill-opacity=".12"/><rect x="56" y="146" width="5" height="50" rx="2.5" fill="#22d3ee"/>
-    <text x="76" y="176" fill="#22d3ee" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">ROLE</text>
-    <text x="172" y="176" fill="#dfe4f7">You are a senior financial analyst.</text>
+    <rect x="56" y="146" width="480" height="50" rx="10" fill="#6AA6E3" fill-opacity=".12"/><rect x="56" y="146" width="5" height="50" rx="2.5" fill="#6AA6E3"/>
+    <text x="76" y="176" fill="#6AA6E3" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">ROLE</text>
+    <text x="172" y="176" fill="#F4F1EA">You are a senior financial analyst.</text>
 
-    <rect x="56" y="204" width="480" height="50" rx="10" fill="#60a5fa" fill-opacity=".12"/><rect x="56" y="204" width="5" height="50" rx="2.5" fill="#60a5fa"/>
-    <text x="76" y="234" fill="#60a5fa" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">TASK</text>
-    <text x="172" y="234" fill="#dfe4f7">Summarize the quarterly report below.</text>
+    <rect x="56" y="204" width="480" height="50" rx="10" fill="#F3B552" fill-opacity=".12"/><rect x="56" y="204" width="5" height="50" rx="2.5" fill="#F3B552"/>
+    <text x="76" y="234" fill="#F3B552" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">TASK</text>
+    <text x="172" y="234" fill="#F4F1EA">Summarize the quarterly report below.</text>
 
-    <rect x="56" y="262" width="480" height="50" rx="10" fill="#a78bfa" fill-opacity=".13"/><rect x="56" y="262" width="5" height="50" rx="2.5" fill="#a78bfa"/>
-    <text x="76" y="292" fill="#a78bfa" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">CONTEXT</text>
-    <text x="172" y="292" fill="#dfe4f7">For board members, non-technical, one page.</text>
+    <rect x="56" y="262" width="480" height="50" rx="10" fill="#82B7EC" fill-opacity=".13"/><rect x="56" y="262" width="5" height="50" rx="2.5" fill="#82B7EC"/>
+    <text x="76" y="292" fill="#82B7EC" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">CONTEXT</text>
+    <text x="172" y="292" fill="#F4F1EA">For board members, non-technical, one page.</text>
 
-    <rect x="56" y="320" width="480" height="50" rx="10" fill="#e879f9" fill-opacity=".12"/><rect x="56" y="320" width="5" height="50" rx="2.5" fill="#e879f9"/>
-    <text x="76" y="350" fill="#e879f9" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">INPUT</text>
-    <text x="172" y="350" fill="#dfe4f7" font-family="'JetBrains Mono', Menlo, monospace" font-size="13">&lt;report&gt; …quarterly data… &lt;/report&gt;</text>
+    <rect x="56" y="320" width="480" height="50" rx="10" fill="#9FC3EA" fill-opacity=".12"/><rect x="56" y="320" width="5" height="50" rx="2.5" fill="#9FC3EA"/>
+    <text x="76" y="350" fill="#9FC3EA" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">INPUT</text>
+    <text x="172" y="350" fill="#F4F1EA" font-family="'JetBrains Mono', Menlo, monospace" font-size="13">&lt;report&gt; …quarterly data… &lt;/report&gt;</text>
 
-    <rect x="56" y="378" width="480" height="50" rx="10" fill="#f472b6" fill-opacity=".12"/><rect x="56" y="378" width="5" height="50" rx="2.5" fill="#f472b6"/>
-    <text x="76" y="408" fill="#f472b6" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">EXAMPLES</text>
-    <text x="172" y="408" fill="#dfe4f7">Here is one ideal summary: …</text>
+    <rect x="56" y="378" width="480" height="50" rx="10" fill="#E5A33F" fill-opacity=".12"/><rect x="56" y="378" width="5" height="50" rx="2.5" fill="#E5A33F"/>
+    <text x="76" y="408" fill="#E5A33F" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">EXAMPLES</text>
+    <text x="172" y="408" fill="#F4F1EA">Here is one ideal summary: …</text>
 
-    <rect x="56" y="436" width="480" height="50" rx="10" fill="#fbbf24" fill-opacity=".12"/><rect x="56" y="436" width="5" height="50" rx="2.5" fill="#fbbf24"/>
-    <text x="76" y="466" fill="#fbbf24" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">FORMAT</text>
-    <text x="172" y="466" fill="#dfe4f7">5 bullets, ≤ 20 words each, then a verdict.</text>
+    <rect x="56" y="436" width="480" height="50" rx="10" fill="#F3B552" fill-opacity=".12"/><rect x="56" y="436" width="5" height="50" rx="2.5" fill="#F3B552"/>
+    <text x="76" y="466" fill="#F3B552" font-weight="800" font-family="'JetBrains Mono', Menlo, monospace" font-size="12.5">FORMAT</text>
+    <text x="172" y="466" fill="#F4F1EA">5 bullets, ≤ 20 words each, then a verdict.</text>
   </g>
 
   <!-- Connectors -->
   <g stroke-width="1.5" stroke-dasharray="3 5" fill="none" stroke-opacity=".6">
-    <path d="M536 171h64" stroke="#22d3ee"/><path d="M536 229h64" stroke="#60a5fa"/><path d="M536 287h64" stroke="#a78bfa"/>
-    <path d="M536 345h64" stroke="#e879f9"/><path d="M536 403h64" stroke="#f472b6"/><path d="M536 461h64" stroke="#fbbf24"/>
+    <path d="M536 171h64" stroke="#6AA6E3"/><path d="M536 229h64" stroke="#F3B552"/><path d="M536 287h64" stroke="#82B7EC"/>
+    <path d="M536 345h64" stroke="#9FC3EA"/><path d="M536 403h64" stroke="#E5A33F"/><path d="M536 461h64" stroke="#F3B552"/>
   </g>
 
   <!-- Annotations -->
   <g>
-    <rect x="600" y="146" width="324" height="50" rx="12" fill="#fff" fill-opacity=".04" stroke="#22d3ee" stroke-opacity=".35"/>
-    <circle cx="624" cy="171" r="12" fill="#22d3ee"/><text x="624" y="176" fill="#0b1024" font-size="13" font-weight="800" text-anchor="middle">1</text>
-    <text x="646" y="167" fill="#f1f4ff" font-size="14" font-weight="700">Who should the model be?</text>
-    <text x="646" y="185" fill="#8f99c2" font-size="12">Optional · sets tone and expertise</text>
+    <rect x="600" y="146" width="324" height="50" rx="12" fill="#22252D" stroke="#6AA6E3" stroke-opacity=".45"/>
+    <circle cx="624" cy="171" r="12" fill="#6AA6E3"/><text x="624" y="176" fill="#17191F" font-size="13" font-weight="800" text-anchor="middle">1</text>
+    <text x="646" y="167" fill="#F4F1EA" font-size="14" font-weight="700">Who should the model be?</text>
+    <text x="646" y="185" fill="#A8A9B0" font-size="12">Optional · sets tone and expertise</text>
 
-    <rect x="600" y="204" width="324" height="50" rx="12" fill="#fff" fill-opacity=".04" stroke="#60a5fa" stroke-opacity=".35"/>
-    <circle cx="624" cy="229" r="12" fill="#60a5fa"/><text x="624" y="234" fill="#0b1024" font-size="13" font-weight="800" text-anchor="middle">2</text>
-    <text x="646" y="225" fill="#f1f4ff" font-size="14" font-weight="700">What exactly must it do?</text>
-    <text x="646" y="243" fill="#8f99c2" font-size="12">Essential · start with a clear verb</text>
+    <rect x="600" y="204" width="324" height="50" rx="12" fill="#22252D" stroke="#F3B552" stroke-opacity=".45"/>
+    <circle cx="624" cy="229" r="12" fill="#F3B552"/><text x="624" y="234" fill="#17191F" font-size="13" font-weight="800" text-anchor="middle">2</text>
+    <text x="646" y="225" fill="#F4F1EA" font-size="14" font-weight="700">What exactly must it do?</text>
+    <text x="646" y="243" fill="#A8A9B0" font-size="12">Essential · start with a clear verb</text>
 
-    <rect x="600" y="262" width="324" height="50" rx="12" fill="#fff" fill-opacity=".04" stroke="#a78bfa" stroke-opacity=".4"/>
-    <circle cx="624" cy="287" r="12" fill="#a78bfa"/><text x="624" y="292" fill="#0b1024" font-size="13" font-weight="800" text-anchor="middle">3</text>
-    <text x="646" y="283" fill="#f1f4ff" font-size="14" font-weight="700">Why, for whom, what limits?</text>
-    <text x="646" y="301" fill="#8f99c2" font-size="12">Essential · usually the biggest lever</text>
+    <rect x="600" y="262" width="324" height="50" rx="12" fill="#22252D" stroke="#82B7EC" stroke-opacity=".45"/>
+    <circle cx="624" cy="287" r="12" fill="#82B7EC"/><text x="624" y="292" fill="#17191F" font-size="13" font-weight="800" text-anchor="middle">3</text>
+    <text x="646" y="283" fill="#F4F1EA" font-size="14" font-weight="700">Why, for whom, what limits?</text>
+    <text x="646" y="301" fill="#A8A9B0" font-size="12">Essential · usually the biggest lever</text>
 
-    <rect x="600" y="320" width="324" height="50" rx="12" fill="#fff" fill-opacity=".04" stroke="#e879f9" stroke-opacity=".35"/>
-    <circle cx="624" cy="345" r="12" fill="#e879f9"/><text x="624" y="350" fill="#0b1024" font-size="13" font-weight="800" text-anchor="middle">4</text>
-    <text x="646" y="341" fill="#f1f4ff" font-size="14" font-weight="700">What material to work on?</text>
-    <text x="646" y="359" fill="#8f99c2" font-size="12">Wrap data in tags, apart from instructions</text>
+    <rect x="600" y="320" width="324" height="50" rx="12" fill="#22252D" stroke="#9FC3EA" stroke-opacity=".45"/>
+    <circle cx="624" cy="345" r="12" fill="#9FC3EA"/><text x="624" y="350" fill="#17191F" font-size="13" font-weight="800" text-anchor="middle">4</text>
+    <text x="646" y="341" fill="#F4F1EA" font-size="14" font-weight="700">What material to work on?</text>
+    <text x="646" y="359" fill="#A8A9B0" font-size="12">Wrap data in tags, apart from instructions</text>
 
-    <rect x="600" y="378" width="324" height="50" rx="12" fill="#fff" fill-opacity=".04" stroke="#f472b6" stroke-opacity=".35"/>
-    <circle cx="624" cy="403" r="12" fill="#f472b6"/><text x="624" y="408" fill="#0b1024" font-size="13" font-weight="800" text-anchor="middle">5</text>
-    <text x="646" y="399" fill="#f1f4ff" font-size="14" font-weight="700">What does good look like?</text>
-    <text x="646" y="417" fill="#8f99c2" font-size="12">Most powerful signal · costs tokens</text>
+    <rect x="600" y="378" width="324" height="50" rx="12" fill="#22252D" stroke="#E5A33F" stroke-opacity=".45"/>
+    <circle cx="624" cy="403" r="12" fill="#E5A33F"/><text x="624" y="408" fill="#17191F" font-size="13" font-weight="800" text-anchor="middle">5</text>
+    <text x="646" y="399" fill="#F4F1EA" font-size="14" font-weight="700">What does good look like?</text>
+    <text x="646" y="417" fill="#A8A9B0" font-size="12">Most powerful signal · costs tokens</text>
 
-    <rect x="600" y="436" width="324" height="50" rx="12" fill="#fff" fill-opacity=".04" stroke="#fbbf24" stroke-opacity=".35"/>
-    <circle cx="624" cy="461" r="12" fill="#fbbf24"/><text x="624" y="466" fill="#0b1024" font-size="13" font-weight="800" text-anchor="middle">6</text>
-    <text x="646" y="457" fill="#f1f4ff" font-size="14" font-weight="700">What shape is the answer?</text>
-    <text x="646" y="475" fill="#8f99c2" font-size="12">Structure, length and style</text>
+    <rect x="600" y="436" width="324" height="50" rx="12" fill="#22252D" stroke="#F3B552" stroke-opacity=".45"/>
+    <circle cx="624" cy="461" r="12" fill="#F3B552"/><text x="624" y="466" fill="#17191F" font-size="13" font-weight="800" text-anchor="middle">6</text>
+    <text x="646" y="457" fill="#F4F1EA" font-size="14" font-weight="700">What shape is the answer?</text>
+    <text x="646" y="475" fill="#A8A9B0" font-size="12">Structure, length and style</text>
   </g>
 </svg>

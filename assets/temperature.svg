@@ -2,54 +2,54 @@
   <title>Temperature reshapes the next-token probabilities: focused, balanced, creative</title>
   <defs>
     <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff" fill-opacity=".07"/></pattern>
-    <radialGradient id="g1" cx=".85" cy="0" r=".7"><stop offset="0" stop-color="#7c3aed" stop-opacity=".3"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
-    <linearGradient id="c1" x1="0" x2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
-    <linearGradient id="c2" x1="0" x2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
-    <linearGradient id="c3" x1="0" x2="1"><stop offset="0" stop-color="#db2777"/><stop offset="1" stop-color="#f472b6"/></linearGradient>
+    <radialGradient id="g1" cx=".85" cy="0" r=".7"><stop offset="0" stop-color="#F3B552" stop-opacity=".25"/><stop offset="1" stop-color="#F3B552" stop-opacity="0"/></radialGradient>
+    <linearGradient id="c1" x1="0" x2="1"><stop offset="0" stop-color="#407EBF"/><stop offset="1" stop-color="#6AA6E3"/></linearGradient>
+    <linearGradient id="c2" x1="0" x2="1"><stop offset="0" stop-color="#6AA6E3"/><stop offset="1" stop-color="#F3B552"/></linearGradient>
+    <linearGradient id="c3" x1="0" x2="1"><stop offset="0" stop-color="#E5A33F"/><stop offset="1" stop-color="#F3B552"/></linearGradient>
   </defs>
-  <rect width="960" height="384" rx="22" fill="#0b1024"/>
+  <rect width="960" height="384" rx="22" fill="#17191F"/>
   <rect width="960" height="384" rx="22" fill="url(#dots)"/>
   <rect width="960" height="384" rx="22" fill="url(#g1)"/>
 
-  <text x="36" y="50" fill="#f8fafc" font-size="24" font-weight="800" letter-spacing="-.4">Temperature Reshapes the Next-Token Odds</text>
-  <text x="36" y="74" fill="#94a0c6" font-size="13.5">Same prompt, “My favourite fruit is”, at three temperatures (illustrative probabilities)</text>
+  <text x="36" y="50" fill="#F4F1EA" font-size="24" font-weight="800" letter-spacing="-.4">Temperature Reshapes the Next-Token Odds</text>
+  <text x="36" y="74" fill="#A8A9B0" font-size="13.5">Same prompt, “My favourite fruit is”, at three temperatures (illustrative probabilities)</text>
 
   <!-- Panel 1 -->
-  <rect x="36" y="98" width="280" height="256" rx="18" fill="#fff" fill-opacity=".04" stroke="#22d3ee" stroke-opacity=".4"/>
-  <text x="56" y="132" fill="#22d3ee" font-size="20" font-weight="800">T = 0.2</text>
-  <rect x="216" y="114" width="80" height="26" rx="13" fill="#22d3ee" fill-opacity=".16"/><text x="256" y="132" fill="#a5f3fc" font-size="12" font-weight="700" text-anchor="middle">Focused</text>
-  <g font-size="13" fill="#dfe4f7">
-    <text x="56" y="176">mango</text><rect x="122" y="164" width="138" height="16" rx="5" fill="url(#c1)"/><text x="266" y="177" fill="#a5f3fc" font-size="12">92%</text>
-    <text x="56" y="204">apple</text><rect x="122" y="192" width="9" height="16" rx="4" fill="url(#c1)" opacity=".8"/><text x="137" y="205" fill="#a5f3fc" font-size="12">6%</text>
-    <text x="56" y="232">kiwi</text><rect x="122" y="220" width="3" height="16" rx="1.5" fill="url(#c1)" opacity=".7"/><text x="131" y="233" fill="#a5f3fc" font-size="12">1.5%</text>
-    <text x="56" y="260">durian</text><rect x="122" y="248" width="2" height="16" rx="1" fill="url(#c1)" opacity=".6"/><text x="130" y="261" fill="#a5f3fc" font-size="12">0.5%</text>
+  <rect x="36" y="98" width="280" height="256" rx="18" fill="#22252D" stroke="#6AA6E3" stroke-opacity=".45"/>
+  <text x="56" y="132" fill="#6AA6E3" font-size="20" font-weight="800">T = 0.2</text>
+  <rect x="216" y="114" width="80" height="26" rx="13" fill="#6AA6E3" fill-opacity=".16"/><text x="256" y="132" fill="#9FC3EA" font-size="12" font-weight="700" text-anchor="middle">Focused</text>
+  <g font-size="13" fill="#F4F1EA">
+    <text x="56" y="176">mango</text><rect x="122" y="164" width="138" height="16" rx="5" fill="url(#c1)"/><text x="266" y="177" fill="#9FC3EA" font-size="12">92%</text>
+    <text x="56" y="204">apple</text><rect x="122" y="192" width="9" height="16" rx="4" fill="url(#c1)" opacity=".8"/><text x="137" y="205" fill="#9FC3EA" font-size="12">6%</text>
+    <text x="56" y="232">kiwi</text><rect x="122" y="220" width="3" height="16" rx="1.5" fill="url(#c1)" opacity=".7"/><text x="131" y="233" fill="#9FC3EA" font-size="12">1.5%</text>
+    <text x="56" y="260">durian</text><rect x="122" y="248" width="2" height="16" rx="1" fill="url(#c1)" opacity=".6"/><text x="130" y="261" fill="#9FC3EA" font-size="12">0.5%</text>
   </g>
-  <text x="56" y="298" fill="#f1f4ff" font-size="13" font-weight="600">→ “mango” almost every run</text>
-  <text x="56" y="326" fill="#8f99c2" font-size="12">Best for extraction, code, facts</text>
+  <text x="56" y="298" fill="#F4F1EA" font-size="13" font-weight="600">→ “mango” almost every run</text>
+  <text x="56" y="326" fill="#A8A9B0" font-size="12">Best for extraction, code, facts</text>
 
   <!-- Panel 2 -->
-  <rect x="340" y="98" width="280" height="256" rx="18" fill="#fff" fill-opacity=".04" stroke="#a78bfa" stroke-opacity=".45"/>
-  <text x="360" y="132" fill="#a78bfa" font-size="20" font-weight="800">T = 0.7</text>
-  <rect x="520" y="114" width="80" height="26" rx="13" fill="#a78bfa" fill-opacity=".16"/><text x="560" y="132" fill="#ddd6fe" font-size="12" font-weight="700" text-anchor="middle">Balanced</text>
-  <g font-size="13" fill="#dfe4f7">
-    <text x="360" y="176">mango</text><rect x="426" y="164" width="72" height="16" rx="5" fill="url(#c2)"/><text x="504" y="177" fill="#ddd6fe" font-size="12">48%</text>
-    <text x="360" y="204">apple</text><rect x="426" y="192" width="45" height="16" rx="5" fill="url(#c2)" opacity=".85"/><text x="477" y="205" fill="#ddd6fe" font-size="12">30%</text>
-    <text x="360" y="232">kiwi</text><rect x="426" y="220" width="23" height="16" rx="5" fill="url(#c2)" opacity=".7"/><text x="455" y="233" fill="#ddd6fe" font-size="12">15%</text>
-    <text x="360" y="260">durian</text><rect x="426" y="248" width="11" height="16" rx="4" fill="url(#c2)" opacity=".6"/><text x="443" y="261" fill="#ddd6fe" font-size="12">7%</text>
+  <rect x="340" y="98" width="280" height="256" rx="18" fill="#22252D" stroke="#82B7EC" stroke-opacity=".45"/>
+  <text x="360" y="132" fill="#82B7EC" font-size="20" font-weight="800">T = 0.7</text>
+  <rect x="520" y="114" width="80" height="26" rx="13" fill="#82B7EC" fill-opacity=".16"/><text x="560" y="132" fill="#C9C7C2" font-size="12" font-weight="700" text-anchor="middle">Balanced</text>
+  <g font-size="13" fill="#F4F1EA">
+    <text x="360" y="176">mango</text><rect x="426" y="164" width="72" height="16" rx="5" fill="url(#c2)"/><text x="504" y="177" fill="#C9C7C2" font-size="12">48%</text>
+    <text x="360" y="204">apple</text><rect x="426" y="192" width="45" height="16" rx="5" fill="url(#c2)" opacity=".85"/><text x="477" y="205" fill="#C9C7C2" font-size="12">30%</text>
+    <text x="360" y="232">kiwi</text><rect x="426" y="220" width="23" height="16" rx="5" fill="url(#c2)" opacity=".7"/><text x="455" y="233" fill="#C9C7C2" font-size="12">15%</text>
+    <text x="360" y="260">durian</text><rect x="426" y="248" width="11" height="16" rx="4" fill="url(#c2)" opacity=".6"/><text x="443" y="261" fill="#C9C7C2" font-size="12">7%</text>
   </g>
-  <text x="360" y="298" fill="#f1f4ff" font-size="13" font-weight="600">→ usually mango, sometimes apple</text>
-  <text x="360" y="326" fill="#8f99c2" font-size="12">Best for everyday writing, chat</text>
+  <text x="360" y="298" fill="#F4F1EA" font-size="13" font-weight="600">→ usually mango, sometimes apple</text>
+  <text x="360" y="326" fill="#A8A9B0" font-size="12">Best for everyday writing, chat</text>
 
   <!-- Panel 3 -->
-  <rect x="644" y="98" width="280" height="256" rx="18" fill="#fff" fill-opacity=".04" stroke="#f472b6" stroke-opacity=".45"/>
-  <text x="664" y="132" fill="#f472b6" font-size="20" font-weight="800">T = 1.3</text>
-  <rect x="824" y="114" width="80" height="26" rx="13" fill="#f472b6" fill-opacity=".16"/><text x="864" y="132" fill="#fbcfe8" font-size="12" font-weight="700" text-anchor="middle">Creative</text>
-  <g font-size="13" fill="#dfe4f7">
-    <text x="664" y="176">mango</text><rect x="730" y="164" width="45" height="16" rx="5" fill="url(#c3)"/><text x="781" y="177" fill="#fbcfe8" font-size="12">30%</text>
-    <text x="664" y="204">apple</text><rect x="730" y="192" width="41" height="16" rx="5" fill="url(#c3)" opacity=".9"/><text x="777" y="205" fill="#fbcfe8" font-size="12">27%</text>
-    <text x="664" y="232">kiwi</text><rect x="730" y="220" width="35" height="16" rx="5" fill="url(#c3)" opacity=".8"/><text x="771" y="233" fill="#fbcfe8" font-size="12">23%</text>
-    <text x="664" y="260">durian</text><rect x="730" y="248" width="30" height="16" rx="5" fill="url(#c3)" opacity=".7"/><text x="766" y="261" fill="#fbcfe8" font-size="12">20%</text>
+  <rect x="644" y="98" width="280" height="256" rx="18" fill="#22252D" stroke="#F3B552" stroke-opacity=".45"/>
+  <text x="664" y="132" fill="#F3B552" font-size="20" font-weight="800">T = 1.3</text>
+  <rect x="824" y="114" width="80" height="26" rx="13" fill="#F3B552" fill-opacity=".16"/><text x="864" y="132" fill="#F3B552" font-size="12" font-weight="700" text-anchor="middle">Creative</text>
+  <g font-size="13" fill="#F4F1EA">
+    <text x="664" y="176">mango</text><rect x="730" y="164" width="45" height="16" rx="5" fill="url(#c3)"/><text x="781" y="177" fill="#F3B552" font-size="12">30%</text>
+    <text x="664" y="204">apple</text><rect x="730" y="192" width="41" height="16" rx="5" fill="url(#c3)" opacity=".9"/><text x="777" y="205" fill="#F3B552" font-size="12">27%</text>
+    <text x="664" y="232">kiwi</text><rect x="730" y="220" width="35" height="16" rx="5" fill="url(#c3)" opacity=".8"/><text x="771" y="233" fill="#F3B552" font-size="12">23%</text>
+    <text x="664" y="260">durian</text><rect x="730" y="248" width="30" height="16" rx="5" fill="url(#c3)" opacity=".7"/><text x="766" y="261" fill="#F3B552" font-size="12">20%</text>
   </g>
-  <text x="664" y="298" fill="#f1f4ff" font-size="13" font-weight="600">→ varied, sometimes surprising</text>
-  <text x="664" y="326" fill="#8f99c2" font-size="12">Best for brainstorming, fiction</text>
+  <text x="664" y="298" fill="#F4F1EA" font-size="13" font-weight="600">→ varied, sometimes surprising</text>
+  <text x="664" y="326" fill="#A8A9B0" font-size="12">Best for brainstorming, fiction</text>
 </svg>
