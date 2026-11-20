@@ -57,7 +57,7 @@
     var theme = t ? JSON.parse(t) : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "dark" ? "#17191F" : "#F5F4F9");
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#111318" : "#F5F4F9");
     if (s) document.documentElement.setAttribute("data-size", JSON.parse(s));
     if (a) document.documentElement.setAttribute("data-audience", JSON.parse(a));
   } catch (e) {}

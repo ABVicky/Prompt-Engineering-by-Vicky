@@ -39,7 +39,7 @@
     const dark = PE.isDark();
     $("#theme-btn").innerHTML = PE.icon(dark ? "sun" : "moon");
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", dark ? "#17191F" : "#F5F4F9");
+    if (meta) meta.setAttribute("content", dark ? "#111318" : "#F5F4F9");
   };
   $("#theme-btn").addEventListener("click", () => {
     root.classList.add("theme-anim");

@@ -5,19 +5,19 @@
    (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
 
 :root {
-  --cine-gold: #F3B552;
-  --cine-ember: #F08A5D;
-  --cine-blue: #407EBF;
-  --cine-violet: #8B7BE8;
-  --cine-aurora-opacity: .55;
-  --cine-grain-opacity: .05;
+  --cine-gold: #F7AE2E;
+  --cine-ember: #FF6B3D;
+  --cine-blue: #2F7FE0;
+  --cine-violet: #7B5CFF;
+  --cine-aurora-opacity: .6;
+  --cine-grain-opacity: .025;
   --cine-ease: cubic-bezier(.2, .8, .2, 1);
   --cine-grad: linear-gradient(100deg, var(--cine-gold) 0%, var(--cine-ember) 35%, var(--cine-violet) 65%, var(--cine-blue) 100%);
 }
 :root[data-theme="dark"] {
-  --cine-blue: #6AA6E3;
-  --cine-aurora-opacity: .7;
-  --cine-grain-opacity: .07;
+  --cine-blue: #5AA2F5;
+  --cine-aurora-opacity: .8;
+  --cine-grain-opacity: .035;
 }
 
 /* ---------- Ambient aurora behind the whole app ---------- */
@@ -29,12 +29,12 @@
   position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%;
   will-change: transform; /* gradients are already soft: no filter, so it stays cheap */
 }
-.cine-aurora span:nth-child(1) { left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(243, 181, 82, .55), transparent 70%); animation: cineDriftA 26s ease-in-out infinite alternate; }
-.cine-aurora span:nth-child(2) { right: -20vmax; top: 10vh; background: radial-gradient(circle, rgba(64, 126, 191, .45), transparent 70%); animation: cineDriftB 32s ease-in-out infinite alternate; }
-.cine-aurora span:nth-child(3) { left: 25vw; bottom: -30vmax; background: radial-gradient(circle, rgba(139, 123, 232, .35), transparent 70%); animation: cineDriftC 38s ease-in-out infinite alternate; }
-:root[data-theme="dark"] .cine-aurora span:nth-child(1) { background: radial-gradient(circle, rgba(243, 181, 82, .32), transparent 70%); }
-:root[data-theme="dark"] .cine-aurora span:nth-child(2) { background: radial-gradient(circle, rgba(106, 166, 227, .30), transparent 70%); }
-:root[data-theme="dark"] .cine-aurora span:nth-child(3) { background: radial-gradient(circle, rgba(139, 123, 232, .28), transparent 70%); }
+.cine-aurora span:nth-child(1) { left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(247, 174, 46, .55), transparent 70%); animation: cineDriftA 26s ease-in-out infinite alternate; }
+.cine-aurora span:nth-child(2) { right: -20vmax; top: 10vh; background: radial-gradient(circle, rgba(47, 127, 224, .42), transparent 70%); animation: cineDriftB 32s ease-in-out infinite alternate; }
+.cine-aurora span:nth-child(3) { left: 25vw; bottom: -30vmax; background: radial-gradient(circle, rgba(123, 92, 255, .30), transparent 70%); animation: cineDriftC 38s ease-in-out infinite alternate; }
+:root[data-theme="dark"] .cine-aurora span:nth-child(1) { background: radial-gradient(circle, rgba(247, 174, 46, .30), transparent 70%); }
+:root[data-theme="dark"] .cine-aurora span:nth-child(2) { background: radial-gradient(circle, rgba(90, 162, 245, .32), transparent 70%); }
+:root[data-theme="dark"] .cine-aurora span:nth-child(3) { background: radial-gradient(circle, rgba(123, 92, 255, .30), transparent 70%); }
 
 @keyframes cineDriftA { to { transform: translate3d(18vw, 14vh, 0) scale(1.15); } }
 @keyframes cineDriftB { to { transform: translate3d(-22vw, 20vh, 0) scale(.9); } }
@@ -75,19 +75,19 @@
   --mx: 70%; --my: 20%;
   background:
     radial-gradient(600px circle at var(--mx) var(--my), rgba(243, 181, 82, .16), transparent 45%),
-    radial-gradient(100% 120% at 100% 0%, rgba(240, 138, 93, .18) 0%, transparent 55%),
-    radial-gradient(90% 120% at 0% 100%, rgba(64, 126, 191, .26) 0%, transparent 60%),
-    radial-gradient(60% 80% at 50% 120%, rgba(139, 123, 232, .22) 0%, transparent 70%),
-    linear-gradient(160deg, #2A2C33 0%, #1B1D23 55%, #14161B 100%);
+    radial-gradient(100% 120% at 100% 0%, rgba(255, 107, 61, .22) 0%, transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(47, 127, 224, .32) 0%, transparent 60%),
+    radial-gradient(60% 80% at 50% 120%, rgba(123, 92, 255, .26) 0%, transparent 70%),
+    linear-gradient(160deg, #24262D 0%, #16181D 55%, #0E1014 100%);
   box-shadow: 0 40px 80px -30px rgba(20, 22, 27, .65), 0 0 0 1px rgba(255, 255, 255, .05) inset;
 }
 :root[data-theme="dark"] .home-hero {
   background:
     radial-gradient(600px circle at var(--mx) var(--my), rgba(243, 181, 82, .14), transparent 45%),
-    radial-gradient(100% 120% at 100% 0%, rgba(240, 138, 93, .16) 0%, transparent 55%),
-    radial-gradient(90% 120% at 0% 100%, rgba(106, 166, 227, .22) 0%, transparent 60%),
-    radial-gradient(60% 80% at 50% 120%, rgba(139, 123, 232, .2) 0%, transparent 70%),
-    linear-gradient(160deg, #23262E 0%, #181A20 55%, #111317 100%);
+    radial-gradient(100% 120% at 100% 0%, rgba(255, 107, 61, .2) 0%, transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(90, 162, 245, .28) 0%, transparent 60%),
+    radial-gradient(60% 80% at 50% 120%, rgba(123, 92, 255, .24) 0%, transparent 70%),
+    linear-gradient(160deg, #1F222A 0%, #13151A 55%, #0B0D10 100%);
 }
 /* Slow light sweep across the frame */
 .home-hero::after {
@@ -212,6 +212,14 @@
 .doc-hero { position: relative; }
 .doc-hero .doc-icon { animation: cinePop .8s var(--cine-ease) .1s both; }
 @keyframes cinePop { from { opacity: 0; transform: scale(.6) rotate(-12deg); } to { opacity: 1; transform: none; } }
+
+/* Crisper text on light surfaces: deeper gradient stops where text sits on white */
+:root:not([data-theme="dark"]) .doc-hero h1, :root:not([data-theme="dark"]) .md h1 {
+  background-image: linear-gradient(100deg, var(--text) 0%, var(--text) 55%, #D98A00 75%, #1F5A9E 100%);
+}
+:root:not([data-theme="dark"]) .stat-card b {
+  background-image: linear-gradient(100deg, #C77A00 0%, #E2552A 40%, #5B3FE0 70%, #1F5A9E 100%);
+}
 
 /* ---------- Respect reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
