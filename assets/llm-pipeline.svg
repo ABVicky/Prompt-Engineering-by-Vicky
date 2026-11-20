@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title>How an LLM turns a prompt into an answer: tokenize, embed, transformer, probabilities, sample, repeat</title>
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#fff" fill-opacity=".07"/></pattern>
+    <radialGradient id="g1" cx=".85" cy="0" r=".7"><stop offset="0" stop-color="#7c3aed" stop-opacity=".32"/><stop offset="1" stop-color="#7c3aed" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g2" cx="0" cy="1" r=".6"><stop offset="0" stop-color="#06b6d4" stop-opacity=".2"/><stop offset="1" stop-color="#06b6d4" stop-opacity="0"/></radialGradient>
+    <marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#8f99c2"/></marker>
+    <marker id="ap" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#fbbf24"/></marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="140%"><feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#000" flood-opacity=".4"/></filter>
+  </defs>
+  <rect width="960" height="400" rx="22" fill="#0b1024"/>
+  <rect width="960" height="400" rx="22" fill="url(#dots)"/>
+  <rect width="960" height="400" rx="22" fill="url(#g1)"/>
+  <rect width="960" height="400" rx="22" fill="url(#g2)"/>
+
+  <text x="36" y="50" fill="#f8fafc" font-size="24" font-weight="800" letter-spacing="-.4">How an LLM Turns Your Prompt into an Answer</text>
+  <text x="36" y="74" fill="#94a0c6" font-size="13.5">One token at a time: every new token is appended and the whole loop runs again.</text>
+
+  <g filter="url(#sh)">
+    <rect x="36" y="104" width="160" height="132" rx="16" fill="#0f1a33" stroke="#22d3ee" stroke-opacity=".45"/>
+    <rect x="218" y="104" width="160" height="132" rx="16" fill="#0f1a33" stroke="#60a5fa" stroke-opacity=".45"/>
+    <rect x="400" y="104" width="160" height="132" rx="16" fill="#0f1a33" stroke="#818cf8" stroke-opacity=".45"/>
+    <rect x="582" y="104" width="160" height="132" rx="16" fill="#0f1a33" stroke="#c084fc" stroke-opacity=".5"/>
+    <rect x="764" y="104" width="160" height="132" rx="16" fill="#0f1a33" stroke="#f472b6" stroke-opacity=".5"/>
+  </g>
+  <g font-size="11" font-weight="800" letter-spacing="1.2">
+    <text x="54" y="130" fill="#22d3ee">STEP 1</text><text x="236" y="130" fill="#60a5fa">STEP 2</text><text x="418" y="130" fill="#818cf8">STEP 3</text><text x="600" y="130" fill="#c084fc">STEP 4</text><text x="782" y="130" fill="#f472b6">STEP 5</text>
+  </g>
+  <g fill="#f8fafc" font-size="16" font-weight="800">
+    <text x="54" y="154">Your prompt</text><text x="236" y="154">Tokenize</text><text x="418" y="154">Embed</text><text x="600" y="154">Transformer</text><text x="782" y="154">Probabilities</text>
+  </g>
+
+  <!-- 1 prompt -->
+  <rect x="54" y="170" width="124" height="34" rx="8" fill="#22d3ee" fill-opacity=".12"/>
+  <text x="116" y="192" fill="#cffafe" font-size="13" text-anchor="middle">“The cat sat on”</text>
+  <text x="54" y="224" fill="#8f99c2" font-size="11.5">plain text in</text>
+  <!-- 2 tokens -->
+  <g font-family="'JetBrains Mono', Menlo, monospace" font-size="11.5" fill="#dbeafe">
+    <rect x="236" y="170" width="36" height="24" rx="6" fill="#60a5fa" fill-opacity=".2"/><text x="254" y="186" text-anchor="middle">The</text>
+    <rect x="276" y="170" width="38" height="24" rx="6" fill="#60a5fa" fill-opacity=".2"/><text x="295" y="186" text-anchor="middle">·cat</text>
+    <rect x="318" y="170" width="40" height="24" rx="6" fill="#60a5fa" fill-opacity=".2"/><text x="338" y="186" text-anchor="middle">·sat</text>
+    <rect x="236" y="198" width="34" height="24" rx="6" fill="#60a5fa" fill-opacity=".2"/><text x="253" y="214" text-anchor="middle">·on</text>
+  </g>
+  <text x="280" y="214" fill="#8f99c2" font-size="11.5">4 tokens</text>
+  <!-- 3 embeddings -->
+  <g fill="#818cf8">
+    <rect x="418" y="172" width="8" height="30" rx="2" opacity=".9"/><rect x="430" y="180" width="8" height="22" rx="2" opacity=".7"/><rect x="442" y="168" width="8" height="34" rx="2" opacity=".95"/><rect x="454" y="186" width="8" height="16" rx="2" opacity=".6"/>
+    <rect x="474" y="176" width="8" height="26" rx="2" fill="#a5b4fc"/><rect x="486" y="170" width="8" height="32" rx="2" fill="#a5b4fc" opacity=".8"/><rect x="498" y="184" width="8" height="18" rx="2" fill="#a5b4fc" opacity=".6"/><rect x="510" y="178" width="8" height="24" rx="2" fill="#a5b4fc" opacity=".9"/>
+  </g>
+  <text x="418" y="224" fill="#8f99c2" font-size="11.5">each token → a vector</text>
+  <!-- 4 attention -->
+  <g stroke="#c084fc" stroke-opacity=".7" stroke-width="1.4" fill="none">
+    <path d="M612 200 Q 640 160 668 200"/><path d="M612 200 Q 662 150 712 200"/><path d="M640 200 Q 676 168 712 200"/><path d="M668 200 Q 690 182 712 200"/>
+  </g>
+  <g fill="#e9d5ff"><circle cx="612" cy="200" r="5"/><circle cx="640" cy="200" r="5"/><circle cx="668" cy="200" r="5"/><circle cx="712" cy="200" r="6" fill="#f0abfc"/></g>
+  <text x="600" y="224" fill="#8f99c2" font-size="11.5">attention mixes context</text>
+  <!-- 5 probabilities -->
+  <g font-size="11.5" fill="#fce7f3" font-family="'JetBrains Mono', Menlo, monospace">
+    <text x="782" y="182">·the</text><rect x="822" y="172" width="80" height="12" rx="4" fill="#f472b6"/><text x="906" y="182" fill="#f9a8d4" font-family="Inter, sans-serif" font-size="10.5" text-anchor="end"> </text>
+    <text x="782" y="200">·a</text><rect x="822" y="190" width="28" height="12" rx="4" fill="#f472b6" fill-opacity=".7"/>
+    <text x="782" y="218">·my</text><rect x="822" y="208" width="9" height="12" rx="4" fill="#f472b6" fill-opacity=".5"/>
+  </g>
+  <g font-size="10.5" fill="#f9a8d4"><text x="858" y="200">21%</text><text x="837" y="218">6%</text><text x="864" y="182" fill="#fff" font-weight="700">62%</text></g>
+
+  <g stroke="#8f99c2" stroke-width="2" marker-end="url(#a)">
+    <line x1="197" y1="170" x2="214" y2="170"/><line x1="379" y1="170" x2="396" y2="170"/><line x1="561" y1="170" x2="578" y2="170"/><line x1="743" y1="170" x2="760" y2="170"/>
+  </g>
+
+  <!-- 6 sampling + loop -->
+  <g filter="url(#sh)"><rect x="582" y="276" width="342" height="92" rx="16" fill="#1a1530" stroke="#fbbf24" stroke-opacity=".55"/></g>
+  <text x="600" y="302" fill="#fbbf24" font-size="11" font-weight="800" letter-spacing="1.2">STEP 6</text>
+  <text x="600" y="326" fill="#f8fafc" font-size="16" font-weight="800">Sample one token, append, repeat</text>
+  <text x="600" y="350" fill="#c9cfe8" font-size="12.5">temperature and top-p pick “ the” → “The cat sat on the”</text>
+  <path d="M844 237 L844 272" stroke="#8f99c2" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M582 322 L116 322 L116 242" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#ap)"/>
+  <rect x="226" y="308" width="252" height="28" rx="14" fill="#0b1024" stroke="#fbbf24" stroke-opacity=".4"/>
+  <text x="352" y="327" fill="#fde68a" font-size="12.5" font-weight="600" text-anchor="middle">autoregressive loop until a stop</text>
+</svg>
