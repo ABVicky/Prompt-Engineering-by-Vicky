@@ -8,7 +8,7 @@ Almost anyone can learn to steer, press the accelerator, and stop at a red light
 
 A professional rally driver, however, operates on a completely different level. They understand vehicle weight transfer, tire friction on wet gravel, how to brake without locking the wheels, and how to navigate hairpin mountain turns at speed without flinching.
 
-You have now completed the core curriculum of prompt engineering. You understand tokens, prompt anatomy, few-shot examples, reasoning models, structured schemas, RAG pipelines, agents, and security guardrails.
+You have now worked through the core of prompt engineering. You understand tokens, prompt anatomy, few-shot examples, reasoning models, structured schemas, RAG pipelines, agents, and security guardrails.
 
 Becoming a true pro is not about memorizing more "hacks" or copying so-called "magic prompts" from social media. It is about cultivating the disciplined instincts, meta-prompting skills, and rigorous habits of an empirical engineer.
 
@@ -24,7 +24,7 @@ By the end of this module, you will be able to:
 - Adopt the **10 daily habits** of top-tier prompt engineers.
 - Build a compelling, metrics-driven **portfolio** for either a Non-Tech or Tech career track.
 - Master answers to the top 12 AI engineering and prompt design interview questions.
-- Execute a practical **30-day mastery roadmap** after completing this course.
+- Execute a practical **30-day mastery roadmap** after finishing this guide.
 
 ---
 

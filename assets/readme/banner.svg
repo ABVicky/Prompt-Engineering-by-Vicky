@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
-  <title>Prompt Engineering: Zero to Pro, a free course by Vicky</title>
+  <title>Prompt Engineering: Zero to Pro, a free study guide by Vicky</title>
   <defs>
     <clipPath id="frame"><rect width="1280" height="440" rx="28"/></clipPath>
     <radialGradient id="gGold" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F7AE2E" stop-opacity=".55"/><stop offset="1" stop-color="#F7AE2E" stop-opacity="0"/></radialGradient>
@@ -42,7 +42,7 @@
     <!-- eyebrow -->
     <g transform="translate(72 70)">
       <rect width="392" height="38" rx="19" fill="#F7AE2E" fill-opacity=".12" stroke="#F7AE2E" stroke-opacity=".45"/>
-      <text x="20" y="25" fill="#F7AE2E" font-size="14" font-weight="700" letter-spacing="2.2">✦ FREE COURSE · BEGINNER TO PRO</text>
+      <text x="20" y="25" fill="#F7AE2E" font-size="14" font-weight="700" letter-spacing="2.2">✦ MY STUDY GUIDE · BEGINNER TO PRO</text>
     </g>
 
     <!-- title -->

@@ -198,7 +198,7 @@ A) Measured before/after eval results with write-up  B) A flashy demo  C) A list
 
 **P5 reference mitigations:** treat email bodies as untrusted data; drafts only, never auto-send (a human approves each one); no access to unrelated tools; don't render external images/links in drafts; log and flag emails containing instruction-like text; redact sensitive data in logs.
 
-Score ≥ 40/50 on Part 5 + ≥ 32/40 on MCQs = **🏆 Course Complete with Distinction**.
+Score ≥ 40/50 on Part 5 + ≥ 32/40 on MCQs = **🏆 Guide Complete with Distinction**.
 
 </details>
 

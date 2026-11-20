@@ -1,6 +1,6 @@
 # 🔗 Appendix G — Resources, Papers & Practice Plan
 
-> This course is designed to be complete on its own. This appendix lists the primary sources behind its ideas, for when you want to go deeper or check a claim.
+> This guide is designed to be complete on its own. This appendix lists the primary sources behind its ideas, for when you want to go deeper or check a claim.
 
 ---
 

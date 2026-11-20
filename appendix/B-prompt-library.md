@@ -1,6 +1,6 @@
 # 📚 Appendix B — Prompt Pattern Library (60 Templates)
 
-> Copy, fill the `{{variables}}`, test, adapt. Each template follows the course principles.
+> Copy, fill the `{{variables}}`, test, adapt. Each template follows the principles from this guide.
 
 > 👔 **Non-Tech Track Favorites:** Writing & Editing (#7–12), Summarizing & Extracting (#13–18), Analysis & Strategy (#19–24), Business & Marketing (#37–42), Personal Productivity (#55–60).
 > 💻 **Tech Track Favorites:** Code Generation & Review (#25–30), Data & SQL (#31–36), Meta-Prompting (#49–54), and Structured Schema Extraction (#13, #17).

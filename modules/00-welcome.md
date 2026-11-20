@@ -1,9 +1,9 @@
-# 🚀 Module 00 — Welcome & How to Use This Course
+# 🚀 Module 00 — Welcome & How to Use This Guide
 
-> **Prompt Engineering: Zero to Pro** — a complete, self-contained course
+> **Prompt Engineering: Zero to Pro** — my study guide, from the basics to real-world skill
 > Author: **Vicky** · [abvicky.in](https://abvicky.in) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/)
 
-![Course roadmap](../assets/roadmap.svg)
+![Learning roadmap](../assets/roadmap.svg)
 
 ---
 
@@ -17,20 +17,30 @@ That is what prompt engineering is. It is simply the skill of communicating with
 
 ---
 
+## ✍️ Why I Put This Together
+
+When I decided to learn prompt engineering properly, I struggled to find good study material. What I found was either a list of "magic prompts" that stopped working the moment my task changed, or research papers that never showed how to use the ideas in real work. Nothing took me from the basics to the point where I could actually rely on it at work.
+
+So I started building my own study notes as I learned: how models work, what makes a prompt reliable, and how to use these techniques on real tasks. This guide is those notes, organized from zero to pro. I wrote it to learn the skill myself and to use it in my work, and I'm sharing it in case it saves you the same search.
+
+— **Vicky**
+
+---
+
 ## 🎯 Learning Objectives
 
 By the end of this module, you will be able to:
-- Understand how this course takes you step-by-step from beginner to pro.
+- Understand how this guide takes you step by step from beginner to pro.
 - Pick the right track (Non-Tech or Tech) for your goals.
 - Set up your practice environment in five minutes.
 - Follow essential safety rules so you never leak private data into an AI tool.
-- Run your baseline prompt to measure your growth across the course.
+- Run your baseline prompt so you can measure your growth as you go.
 
 ---
 
 ## 1. What You Will Learn (From Ground Zero to Pro)
 
-You might write software for a living, or you might never have written a line of code. Either way, this course is built so you can learn everything here, without hunting for other tutorials.
+You might write software for a living, or you might never have written a line of code. Either way, everything you need is here, so you don't have to go hunting for other tutorials the way I did.
 
 ```mermaid
 flowchart LR
@@ -53,7 +63,7 @@ Here is how your progression works:
 
 ## 2. Choose Your Track
 
-You can take this course through two different lenses. Switch between them anytime using the toggle on the top navigation bar.
+You can read this guide through two different lenses. Switch between them anytime using the toggle on the top navigation bar.
 
 > 👔 **Non-Tech Track · Everyday & Business:**
 > If you are a marketer, manager, creator, teacher, accountant, or founder, you do not need code. You will use everyday chat tools like ChatGPT, Claude, and Gemini to draft executive briefs, analyze reports, polish customer emails, and build custom assistants that save you hours every week.
@@ -79,7 +89,7 @@ You learn prompting by doing, not by passively reading. Let's get your setup rea
    - [Google Gemini](https://gemini.google.com): handy for quick searches and Google Workspace tasks.
 2. **Open a clean notebook:**
    - Create a single document in Google Docs, Apple Notes, or Notion called `My Prompt Notebook`.
-   - Every time you find a prompt that works well in this course, paste it there. By the end, you will have your own personal productivity toolkit.
+   - Every time you find a prompt that works well in this guide, paste it there. By the end, you will have your own personal productivity toolkit.
 
 ### 💻 For Tech Learners (Code & APIs)
 If you plan to complete the coding exercises, set up a Python environment:

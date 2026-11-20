@@ -130,7 +130,7 @@
   /* ---------- Sidebar ---------- */
   function renderSidebar() {
     const n = doneCount(TRACKED), pct = Math.round((100 * n) / TRACKED.length), C = 2 * Math.PI * 22;
-    const msg = n === TRACKED.length ? "Course complete! 🎉" : n ? "Keep going, great progress" : "Start with Module 00";
+    const msg = n === TRACKED.length ? "All done! 🎉" : n ? "Keep going, great progress" : "Start with Module 00";
     $("#sidebar").innerHTML =
       `<div class="side-content" id="side-content">` +
       `<div class="side-progress"><div class="ring"><svg viewBox="0 0 52 52" aria-hidden="true">` +
@@ -204,10 +204,10 @@
     ];
     view.innerHTML =
       `<section class="home-hero"><div class="hero-text">` +
-      `<span class="eyebrow">✦ Complete course · 2026 edition</span>` +
+      `<span class="eyebrow">✦ My study guide · 2026 edition</span>` +
       `<h1>Prompt Engineering<br><span class="grad-text">Zero to Pro</span></h1>` +
       `<p class="lead">Learn to communicate with AI models so they reliably do what you want, from your very first prompt to tested, secure, production-ready systems.</p>` +
-      `<div class="hero-actions"><a class="btn primary" href="#/${cont.p}">${PE.icon("play")}${n ? "Continue learning" : "Start the course"}</a>` +
+      `<div class="hero-actions"><a class="btn primary" href="#/${cont.p}">${PE.icon("play")}${n ? "Continue learning" : "Start learning"}</a>` +
       `<a class="btn ghost" href="#/appendix/A-cheat-sheet.md">${PE.icon("bulb")}Cheat sheet</a></div>` +
       `<div class="hero-by">${avatar()}<span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a></span></div>` +
       `</div><div class="hero-art"><img src="assets/cover.svg" alt="" width="640" height="520"></div></section>` +
@@ -247,9 +247,9 @@
       `<section class="home-section"><h2 class="sec-title">What's inside every module</h2><p class="sec-sub">Everything you need in one place, so you never have to look elsewhere.</p>` +
       `<div class="feature-grid">${features.map(([i, b, s]) => `<div class="feature"><span class="f-ico">${i}</span><b>${b}</b><span>${s}</span></div>`).join("")}</div></section>` +
       `<section class="author-card">${avatar()}<div><h3>${esc(MAP.authorFullName || MAP.author)}</h3>` +
-      `<p>Course author: <strong>${esc(MAP.authorFullName || MAP.author)}</strong> · System Architect (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc((MAP.authorSite || 'https://abvicky.in').replace('https://',''))}</a> · <a href="${MAP.authorLinkedIn || 'https://www.linkedin.com/in/abvicky/'}" target="_blank" rel="noopener">LinkedIn</a> · <a href="${MAP.authorGitHub || 'https://github.com/ABVicky'}" target="_blank" rel="noopener">GitHub</a>)</p>` +
+      `<p>Author: <strong>${esc(MAP.authorFullName || MAP.author)}</strong> · System Architect (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc((MAP.authorSite || 'https://abvicky.in').replace('https://',''))}</a> · <a href="${MAP.authorLinkedIn || 'https://www.linkedin.com/in/abvicky/'}" target="_blank" rel="noopener">LinkedIn</a> · <a href="${MAP.authorGitHub || 'https://github.com/ABVicky'}" target="_blank" rel="noopener">GitHub</a>)</p>` +
       `<p>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a> (<a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformSiteLabel || 'manikarnikatechnologies.in')}</a>)</p>` +
-      `<p>© 2026 <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformBuilder || "Manikarnika Technologies")}</a> · All rights reserved. <a href="#/${ABOUT.p}">About this course →</a></p></div></section>` +
+      `<p>© 2026 <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformBuilder || "Manikarnika Technologies")}</a> · All rights reserved. <a href="#/${ABOUT.p}">About this guide →</a></p></div></section>` +
       footerHTML();
     view.querySelectorAll(".aud-choice-btn").forEach((btn) => {
       btn.addEventListener("click", () => setAudience(btn.dataset.aud));
@@ -276,7 +276,7 @@
     try { md = await getFile(item.p); }
     catch (e) {
       view.innerHTML = `<div class="md"><div class="callout warn"><div class="callout-title">${PE.icon("alert")}Couldn't load this page</div>` +
-        `<p>The bundled content file <code>course-data.js</code> is missing or out of date. In the course folder run <code>python3 build.py</code>, then reload.</p></div></div>`;
+        `<p>The bundled content file <code>course-data.js</code> is missing or out of date. In the project folder run <code>python3 build.py</code>, then reload.</p></div></div>`;
       return;
     }
     if (seq !== renderSeq) return;
@@ -298,7 +298,7 @@
       `<span class="chip ok" id="done-chip"${isDone ? "" : " hidden"}>${PE.icon("check")}Completed</span></div></header>` +
       `<div class="md" id="md">${body}</div>` +
       (s ? `<section class="complete-card${isDone ? " done" : ""}" id="complete-card"><span class="cc-emoji">${isDone ? "🎉" : "🏁"}</span>` +
-        `<div class="cc-body"><h3>${isDone ? "Nice work, this one's done!" : "Finished this page?"}</h3><p>${isDone ? "It's marked complete in your progress." : "Mark it complete to track your progress across the course."}</p></div>` +
+        `<div class="cc-body"><h3>${isDone ? "Nice work, this one's done!" : "Finished this page?"}</h3><p>${isDone ? "It's marked complete in your progress." : "Mark it complete to track your progress across the guide."}</p></div>` +
         `<button class="btn${isDone ? " is-done" : ""}" id="complete-btn" type="button">${PE.icon("check")}${isDone ? "Completed" : "Mark as complete"}</button></section>` : "") +
       `<nav class="pager" aria-label="Previous and next">${pg(prev, "prev")}${pg(next, "next")}</nav>` +
       footerHTML() + `</article>`;
@@ -329,7 +329,7 @@
     cardEl.classList.toggle("done", now);
     cardEl.querySelector(".cc-emoji").textContent = now ? "🎉" : "🏁";
     cardEl.querySelector("h3").textContent = now ? "Nice work, this one's done!" : "Finished this page?";
-    cardEl.querySelector("p").textContent = now ? "It's marked complete in your progress." : "Mark it complete to track your progress across the course.";
+    cardEl.querySelector("p").textContent = now ? "It's marked complete in your progress." : "Mark it complete to track your progress across the guide.";
     btn.classList.toggle("is-done", now);
     btn.innerHTML = `${PE.icon("check")}${now ? "Completed" : "Mark as complete"}`;
     if (chip) chip.hidden = !now;
@@ -337,7 +337,7 @@
     if (now) {
       const n = doneCount(TRACKED);
       const nx = nextUp();
-      toast(n === TRACKED.length ? "🏆 You've completed the whole course!" : `🎉 Marked complete · Up next: ${label(nx)}`);
+      toast(n === TRACKED.length ? "🏆 You've finished the whole guide!" : `🎉 Marked complete · Up next: ${label(nx)}`);
     }
   }
 

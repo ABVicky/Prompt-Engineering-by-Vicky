@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
-  <title>Course roadmap: Foundations, Intermediate, Advanced, Pro, Capstone</title>
+  <title>Learning roadmap: Foundations, Intermediate, Advanced, Pro, Capstone</title>
   <defs>
     <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity=".07"/></pattern>
     <radialGradient id="g1" cx=".85" cy="0" r=".7"><stop offset="0" stop-color="#F3B552" stop-opacity=".25"/><stop offset="1" stop-color="#F3B552" stop-opacity="0"/></radialGradient>

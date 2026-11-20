@@ -245,7 +245,7 @@ PAGE = """<!doctype html>
   <a class="btn" href="{reader}">Open in reader</a>
 </div></header>
 <main>
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › {label}</nav>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> › <a href="index.html">All chapters</a> › {label}</nav>
 <article>
 <div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="{reader}">Read interactively</a><a class="btn ghost" href="{repo}">⭐ Star on GitHub</a></div>
 {toc}
@@ -263,7 +263,7 @@ PAGE = """<!doctype html>
 
 def page_title(item):
     kind = "Appendix" if item["p"].startswith("appendix/") else "Module"
-    return f'{item["t"]}: Prompt Engineering Course ({kind} {item["n"]})'
+    return f'{item["t"]}: Prompt Engineering Guide ({kind} {item["n"]})'
 
 
 def build():
@@ -290,13 +290,13 @@ def build():
                 f'<li><a href="#{h}">{html.escape(t)}</a></li>' for lvl, h, t in toc if lvl == 2) + "</ul></details>"
         url = SITE + "learn/" + slug(it["p"])
         title = page_title(it)
-        desc = f'{it["d"]} Free lesson from {COURSE}, a complete prompt engineering course for beginners to pros.'
+        desc = f'{it["d"]} A chapter from {COURSE}, a free prompt engineering study guide from beginner to pro.'
         jsonld = {
             "@context": "https://schema.org", "@type": "LearningResource",
             "name": f'{kind} {it["n"]}: {it["t"]}', "description": it["d"], "url": url,
-            "inLanguage": "en", "isAccessibleForFree": True, "learningResourceType": "Lesson",
+            "inLanguage": "en", "isAccessibleForFree": True, "learningResourceType": "Study guide chapter",
             "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"},
-            "isPartOf": {"@type": "Course", "name": COURSE, "url": SITE},
+            "isPartOf": {"@type": "LearningResource", "name": COURSE, "url": SITE},
             "image": SITE + "assets/social-card.png",
         }
         prev = (f'<a class="btn ghost" href="{slug(items[k - 1]["p"])}">← {html.escape(items[k - 1]["t"])}</a>'
@@ -315,16 +315,16 @@ def build():
         f'<li><a href="{slug(it["p"])}">{it["i"]} {"Appendix" if it["p"].startswith("appendix/") else "Module"} '
         f'{it["n"]}: {html.escape(it["t"])}</a><br><small>{html.escape(it["d"])}</small></li>' for it in items)
     idx_json = {
-        "@context": "https://schema.org", "@type": "ItemList", "name": f"{COURSE}: all lessons",
+        "@context": "https://schema.org", "@type": "ItemList", "name": f"{COURSE}: all chapters",
         "itemListElement": [{"@type": "ListItem", "position": n + 1, "url": SITE + "learn/" + slug(it["p"]),
                              "name": it["t"]} for n, it in enumerate(items)],
     }
     page = PAGE.format(
-        title="All Lessons: Free Prompt Engineering Course, Beginner to Pro",
-        desc=html.escape(f"All {len(items)} lessons of {COURSE}: 18 modules and 7 appendices covering prompting basics, "
+        title="All Chapters: Free Prompt Engineering Study Guide, Beginner to Pro",
+        desc=html.escape(f"All {len(items)} chapters of {COURSE}: 18 modules and 7 appendices covering prompting basics, "
                          "chain-of-thought, structured output, RAG, agents, evaluation, security and careers."),
-        url=SITE + "learn/", site=SITE, course=COURSE, reader="../index.html", repo=REPO, label="All lessons",
-        toc="", body=f"<h1>All lessons</h1><ol>{lis}</ol>", prev="", next="", css=CSS,
+        url=SITE + "learn/", site=SITE, course=COURSE, reader="../index.html", repo=REPO, label="All chapters",
+        toc="", body=f"<h1>All chapters</h1><ol>{lis}</ol>", prev="", next="", css=CSS,
         jsonld=json.dumps(idx_json, ensure_ascii=False))
     (out_dir / "index.html").write_text(page, encoding="utf-8")
 

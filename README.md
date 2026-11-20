@@ -4,7 +4,7 @@
 
 ![Prompt Engineering: Zero to Pro](assets/cover.svg)
 
-> 💡 **Welcome to the course!** Every concept, technique, blueprint, and template you need is inside this reader. There are no paid upgrades, no locked chapters, and no hidden dependencies. Whether you are leading a team or writing backend code, this guide was built to take you from day one to professional mastery.
+> ✍️ **Why this exists:** When I set out to learn prompt engineering, I struggled to find good study material. Most of it was either "magic prompt" lists that broke as soon as my task changed, or research papers that never showed how to use the ideas at work. So I wrote my own notes as I learned, and organized them from zero to pro so I could build the skill and use it in my work. This is that guide. Everything is in one place, free, with nothing locked. I'm sharing it in case it helps you too. — *Vicky*
 
 ---
 
@@ -16,7 +16,7 @@ Much of the advice online swings between two extremes:
 - **Superficial "magic prompt cheat sheets"** that break down the moment your task changes.
 - **Dense academic papers** filled with equations that never explain how to solve real problems at work.
 
-This course takes a practical path. It treats prompts as **clear interface contracts** between your intent and probabilistic language models. 
+These notes take a practical path. It treats prompts as **clear interface contracts** between your intent and probabilistic language models. 
 
 Once you understand what's going on underneath (how tokens work, how the model decides what to pay attention to, how to pin down the shape of an answer, and how to break big jobs into steps), prompting stops being a guessing game. It becomes a reliable, repeatable craft.
 
@@ -31,7 +31,7 @@ flowchart LR
 
 ## 2. Two Tailored Pathways: Non-Tech vs. Tech
 
-We designed this course with dual pathways so every lesson gives you direct, actionable depth regardless of your technical background. 
+I wrote these notes with two tracks, so every chapter gives you practical depth whatever your background. 
 
 You can switch between tracks anytime using the **audience switcher on the top navigation bar** (`🌟 All`, `👔 Non-Tech`, `💻 Tech`):
 
@@ -53,15 +53,15 @@ You can switch between tracks anytime using the **audience switcher on the top n
 
 ---
 
-## 3. The 4-Stage Curriculum Roadmap
+## 3. The 4-Stage Learning Roadmap
 
-The curriculum is divided into four sequential stages, plus an extensive reference vault. You can complete the full course in sequence or jump directly to the modules you need today:
+The guide is divided into four stages, plus a reference vault. You can work through it in order or jump straight to the modules you need today:
 
-![Course Roadmap](assets/roadmap.svg)
+![Learning Roadmap](assets/roadmap.svg)
 
 ### 🟢 Stage 1: Foundations (Modules 00–04)
 *Build reliable mental models and master core prompt mechanics.*
-- **[Module 00: Welcome & How to Use This Course](modules/00-welcome.md)** — The professional mindset, setting up your 5-minute practice lab (no-code or Python), study plans, and privacy rules.
+- **[Module 00: Welcome & How to Use This Guide](modules/00-welcome.md)** — The professional mindset, setting up your 5-minute practice lab (no-code or Python), study plans, and privacy rules.
 - **[Module 01: How Large Language Models Work](modules/01-how-llms-work.md)** — Tokens, context windows, next-token prediction, temperature, top-p, training stages, and why models hallucinate.
 - **[Module 02: Anatomy of a Prompt](modules/02-anatomy-of-a-prompt.md)** — The six essential prompt elements, delimiters, dynamic variable separation, and clear task framing.
 - **[Module 03: Core Principles](modules/03-core-principles.md)** — The 12 battle-tested rules behind every high-performing prompt.
@@ -107,7 +107,7 @@ We built this learning environment to be fast, distraction-free, and respectful 
 
 - 🏠 **Home Hub:** View overall progress, continue from your last read module, and scan stage overviews.
 - 🎯 **Track Lens Switcher:** Toggle between **🌟 All**, **👔 Non-Tech**, and **💻 Tech** at any time. Content and Table of Contents update immediately.
-- 🔎 **Instant Search:** Press **⌘K** or **/** anywhere in the app to find any term, prompt pattern, or section across the entire curriculum.
+- 🔎 **Instant Search:** Press **⌘K** or **/** anywhere in the app to find any term, prompt pattern, or section across the whole guide.
 - 🌗 **High-Contrast Design System:** Custom light and dark themes using a focused Mustard (`#F3B552`), Navy Blue (`#407EBF`), and Charcoal palette tested for readability.
 - 📱 **100% Offline & Private:** Zero third-party trackers, zero cookies, zero analytics. Your module completion progress stays in your local browser storage.
 - ⌨️ **Keyboard-First Navigation:** Use the **←** and **→** arrow keys to step between modules, and **Esc** to dismiss palettes or zoom windows.
@@ -122,7 +122,7 @@ We built this learning environment to be fast, distraction-free, and respectful 
   </div>
   <div class="profile-body">
     <h3>Vicky Prasad Mahato</h3>
-    <span class="profile-role">Course Author · System Architect</span>
+    <span class="profile-role">Author · System Architect</span>
     <p>
       Vicky Prasad Mahato (online as <strong>abvicky</strong>) is a system architect, software engineer, and digital product builder based in Kolkata, India. He builds resilient digital systems and software tools, with a strong focus on offline-first architectures, personal data sovereignty, and practical artificial intelligence.
     </p>
@@ -169,7 +169,7 @@ We built this learning environment to be fast, distraction-free, and respectful 
 
 © 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved.
 
-- **Course Author:** **[Vicky Prasad Mahato](https://abvicky.in)** ([LinkedIn](https://www.linkedin.com/in/abvicky/) · [GitHub](https://github.com/ABVicky))
+- **Author:** **[Vicky Prasad Mahato](https://abvicky.in)** ([LinkedIn](https://www.linkedin.com/in/abvicky/) · [GitHub](https://github.com/ABVicky))
 - **Platform Architecture & Development:** **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**
 
-This course, including its text, diagrams, exercises, code examples, and instructional designs, is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. All product names, logos, and brands mentioned are property of their respective owners and are used solely for identification and educational reference.
+This guide, including its text, diagrams, exercises, code examples, and instructional designs, is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. All product names, logos, and brands mentioned are property of their respective owners and are used solely for identification and educational reference.

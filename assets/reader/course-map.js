@@ -1,4 +1,4 @@
-/* Course structure for the browser reader.
+/* Guide structure for the browser reader.
    Add a new module here (and run build.py) to make it appear in the reader.
    (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
 window.PE_MAP = {
@@ -18,13 +18,13 @@ window.PE_MAP = {
   copyrightUrl: "https://www.manikarnikatechnologies.in/",
   site: "https://www.manikarnikatechnologies.in/",
   siteLabel: "manikarnikatechnologies.in",
-  about: { p: "README.md", n: "i", t: "About this course", i: "📘", d: "Overview, curriculum, how to read, copyright." },
+  about: { p: "README.md", n: "i", t: "About this guide", i: "📘", d: "Overview, curriculum, how to read, copyright." },
   stages: [
     {
       id: "s1", label: "Stage 1", name: "Foundations",
       d: "How LLMs work and how to write clear, complete prompts.",
       items: [
-        { p: "modules/00-welcome.md", n: "00", t: "Welcome & How to Use This Course", i: "🚀", time: "30 min", d: "Roadmap, practice lab setup, study plans and the pro mindset." },
+        { p: "modules/00-welcome.md", n: "00", t: "Welcome & How to Use This Guide", i: "🚀", time: "30 min", d: "Roadmap, practice lab setup, study plans and the pro mindset." },
         { p: "modules/01-how-llms-work.md", n: "01", t: "How Large Language Models Work", i: "🧠", time: "2 h", d: "Tokens, context windows, attention, temperature and limits." },
         { p: "modules/02-anatomy-of-a-prompt.md", n: "02", t: "Anatomy of a Prompt", i: "🧩", time: "1.5 h", d: "Role, task, context, input, examples and format." },
         { p: "modules/03-core-principles.md", n: "03", t: "Core Principles", i: "📏", time: "2 h", d: "The 12 principles behind every effective prompt." },

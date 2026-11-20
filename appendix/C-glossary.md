@@ -1,6 +1,6 @@
 # 📖 Appendix C — Glossary
 
-> Every term used in the course, A–Z. The module number shows where it's covered in depth.
+> Every term used in this guide, A–Z. The module number shows where it's covered in depth.
 
 > 👔 **Non-Tech Focus Terms:** Prompt, Persona, Few-Shot, Delimiter, Hallucination, Grounding, Custom Instructions, Temperature, and Document Q&A.
 > 💻 **Tech Focus Terms:** Embeddings, Attention, Autoregressive logits, KV-Cache, JSON Schema, Function Calling, ReAct loop, MCP, Cosine Similarity, and G-Eval.

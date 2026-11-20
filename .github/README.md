@@ -1,10 +1,10 @@
 <div align="center">
 
-<a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="../assets/readme/banner.svg" alt="Prompt Engineering: Zero to Pro, a free prompt engineering course from beginner to pro" width="100%"></a>
+<a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="../assets/readme/banner.svg" alt="Prompt Engineering: Zero to Pro, a free prompt engineering study guide from beginner to pro" width="100%"></a>
 
 <br>
 
-<a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="https://img.shields.io/badge/Read_the_course-online-F7AE2E?style=for-the-badge&logo=readthedocs&logoColor=111318" alt="Read the course online"></a>
+<a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="https://img.shields.io/badge/Read_the_guide-online-F7AE2E?style=for-the-badge&logo=readthedocs&logoColor=111318" alt="Read the guide online"></a>
 <a href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky/stargazers"><img src="https://img.shields.io/github/stars/ABVicky/Prompt-Engineering-by-Vicky?style=for-the-badge&logo=github&label=Stars&color=2F7FE0" alt="GitHub stars"></a>
 <img src="https://img.shields.io/badge/Price-Free-3DD68C?style=for-the-badge" alt="Free">
 <img src="https://img.shields.io/badge/Level-Beginner_→_Pro-7B5CFF?style=for-the-badge" alt="Beginner to pro">
@@ -13,7 +13,7 @@
 <p><b>
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/">🚀 Start learning</a>
   <span> · </span>
-  <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/">📖 All lessons</a>
+  <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/">📖 All chapters</a>
   <span> · </span>
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-a-cheat-sheet.html">📋 Cheat sheet</a>
   <span> · </span>
@@ -22,7 +22,7 @@
   <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-d-final-exam.html">🎓 Final exam</a>
 </b></p>
 
-<p><i>A free, complete course that teaches you to talk to AI models so they reliably do what you want,<br>from your very first prompt to tested, secure, production-ready systems.</i></p>
+<p><i>The study guide I wrote while learning prompt engineering myself:<br>from your very first prompt to tested, secure, production-ready AI systems.</i></p>
 
 </div>
 
@@ -33,11 +33,15 @@
 <br>
 
 > [!TIP]
-> **⭐ Star this repo** to save it for later. It's free, and it helps other learners find the course.
+> **⭐ Star this repo** to save it for later. It's free, and it helps other people find it.
 
-## ✨ Why this course
+## ✍️ Why I made this
 
-Most prompt engineering material is either a list of "magic prompts" that breaks the moment your task changes, or a research paper that never shows you how to use it at work. This course sits in between: it explains **why** prompts work, then turns that into habits you can use every day.
+When I set out to learn prompt engineering, I had a hard time finding good study material. Most of what I found was either a list of "magic prompts" that broke the moment my task changed, or a research paper that never showed how to use the ideas at work. Nothing took me from the basics to the point where I could rely on it in my own work.
+
+So I started writing my own notes as I learned. This guide is those notes, organized from zero to pro: it explains **why** prompts work, then turns that into habits you can use every day. I wrote it to learn the skill and use it at work, and I'm sharing it in case it saves you the same search.
+
+## ✨ What's inside
 
 <table>
 <tr>
@@ -63,7 +67,7 @@ Side-by-side weak and strong prompts in every module, so you see exactly what ch
 <tr>
 <td width="33%" valign="top">
 
-### 🧭 Two tracks, one course
+### 🧭 Two tracks, one guide
 Switch between **👔 Non-Tech** (chat tools, no code) and **💻 Tech** (SDKs, schemas, agents, evals) with one click.
 
 </td>
@@ -86,12 +90,12 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 
 <table>
 <tr>
-<td width="50%"><a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="../assets/readme/home-dark.jpg" alt="Course home page in dark mode"></a></td>
-<td width="50%"><a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/02-anatomy-of-a-prompt.html"><img src="../assets/readme/lesson-light.jpg" alt="A lesson page in light mode"></a></td>
+<td width="50%"><a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="../assets/readme/home-dark.jpg" alt="Home page in dark mode"></a></td>
+<td width="50%"><a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/02-anatomy-of-a-prompt.html"><img src="../assets/readme/lesson-light.jpg" alt="A chapter page in light mode"></a></td>
 </tr>
 <tr>
 <td align="center"><sub><b>Home</b>: your progress, learning path and next step</sub></td>
-<td align="center"><sub><b>Lessons</b>: clear structure, table of contents, light and dark themes</sub></td>
+<td align="center"><sub><b>Chapters</b>: clear structure, table of contents, light and dark themes</sub></td>
 </tr>
 </table>
 
@@ -134,17 +138,17 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 
 > **New to all of this?** Start with the Non-Tech track. Every concept is explained from zero, and you can switch tracks any time.
 
-## 🗺️ Curriculum
+## 🗺️ Learning roadmap
 
-<p align="center"><img src="../assets/roadmap.svg" alt="Prompt engineering course roadmap: Foundations, Intermediate, Advanced, Pro" width="100%"></p>
+<p align="center"><img src="../assets/roadmap.svg" alt="Prompt engineering learning roadmap: Foundations, Intermediate, Advanced, Pro" width="100%"></p>
 
 <details open>
 <summary><b>🟢 Stage 1: Foundations</b> · How LLMs work and how to write clear, complete prompts.</summary>
 <br>
 
-| | Lesson | What you'll learn | Time |
+| | Chapter | What you'll learn | Time |
 |:--|:--|:--|:--|
-| 🚀 **00** | [Welcome & How to Use This Course](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/00-welcome.html) | Roadmap, practice lab setup, study plans and the pro mindset. | 30 min |
+| 🚀 **00** | [Welcome & How to Use This Guide](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/00-welcome.html) | Roadmap, practice lab setup, study plans and the pro mindset. | 30 min |
 | 🧠 **01** | [How Large Language Models Work](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/01-how-llms-work.html) | Tokens, context windows, attention, temperature and limits. | 2 h |
 | 🧩 **02** | [Anatomy of a Prompt](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/02-anatomy-of-a-prompt.html) | Role, task, context, input, examples and format. | 1.5 h |
 | 📏 **03** | [Core Principles](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/03-core-principles.html) | The 12 principles behind every effective prompt. | 2 h |
@@ -156,7 +160,7 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 <summary><b>🔵 Stage 2: Intermediate</b> · Reasoning, structure, system prompts, chains and context.</summary>
 <br>
 
-| | Lesson | What you'll learn | Time |
+| | Chapter | What you'll learn | Time |
 |:--|:--|:--|:--|
 | 🧮 **05** | [Reasoning Techniques](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/05-reasoning-techniques.html) | Chain-of-thought, self-consistency, ToT and reasoning models. | 3 h |
 | 🧱 **06** | [Structured Output](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/06-structured-output.html) | Reliable JSON, schemas, XML tags, tables and validation. | 2 h |
@@ -170,7 +174,7 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 <summary><b>🟣 Stage 3: Advanced</b> · Agents, multimodal, APIs, evaluation and security.</summary>
 <br>
 
-| | Lesson | What you'll learn | Time |
+| | Chapter | What you'll learn | Time |
 |:--|:--|:--|:--|
 | 🤖 **10** | [Tool Use & Agents](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/10-tool-use-and-agents.html) | Function calling, agent loops, MCP and guardrails. | 3.5 h |
 | 🖼️ **11** | [Multimodal & Image Prompting](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/11-multimodal-and-image-prompting.html) | Vision, image, audio and video generation prompts. | 2.5 h |
@@ -184,7 +188,7 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 <summary><b>🌟 Stage 4: Pro</b> · Production practice, domain playbooks and your career.</summary>
 <br>
 
-| | Lesson | What you'll learn | Time |
+| | Chapter | What you'll learn | Time |
 |:--|:--|:--|:--|
 | 🏭 **15** | [Production PromptOps](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/15-production-promptops.html) | Versioning, templates, observability and migrations. | 3 h |
 | 🧭 **16** | [Domain Playbooks](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/16-domain-playbooks.html) | Code, writing, marketing, data, research, education and more. | 4 h |
@@ -196,7 +200,7 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 <summary><b>📚 Reference: Appendices</b> · Cheat sheet, templates, glossary, exam and projects.</summary>
 <br>
 
-| | Lesson | What you'll learn | Time |
+| | Chapter | What you'll learn | Time |
 |:--|:--|:--|:--|
 | 📋 **A** | [Cheat Sheet](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-a-cheat-sheet.html) | The one-page checklist, technique picker and anti-patterns. | reference |
 | 🧰 **B** | [Prompt Library](https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-b-prompt-library.html) | 60 ready-to-use templates across 10 categories. | reference |
@@ -219,6 +223,12 @@ No sign-up, no paywall, no tracking. Read it online, or clone the repo and open 
 **Suggested pace:** one module every two or three days takes about six weeks. Short on time? Do Modules 00–04 and the cheat sheet in a weekend, and you'll already prompt better than most people.
 
 ## ❓ FAQ
+
+<details>
+<summary><b>Is this a course?</b></summary>
+<br>
+No. It's my personal study guide: the notes I wrote while learning prompt engineering myself, organized so anyone can follow the same path from zero to pro.
+</details>
 
 <details>
 <summary><b>Is it really free?</b></summary>
@@ -247,12 +257,12 @@ About 48 hours of guided learning in total. Each module shows its study time, an
 <details>
 <summary><b>Will it go out of date?</b></summary>
 <br>
-The course teaches principles (clear instructions, examples, structure, evaluation, security) that carry over from one model generation to the next, and it is updated as the field moves.
+The guide focuses on principles (clear instructions, examples, structure, evaluation, security) that carry over from one model generation to the next, and I keep updating it as I keep learning.
 </details>
 
-## 💛 Support the course
+## 💛 Support this project
 
-- ⭐ **[Star the repo](https://github.com/ABVicky/Prompt-Engineering-by-Vicky)** so more learners can find it
+- ⭐ **[Star the repo](https://github.com/ABVicky/Prompt-Engineering-by-Vicky)** so more people can find it
 - 🔗 **Share it** with a friend, colleague or study group
 - 🐛 **[Open an issue](https://github.com/ABVicky/Prompt-Engineering-by-Vicky/issues)** if you spot a mistake or have an idea
 
@@ -263,7 +273,7 @@ The course teaches principles (clear instructions, examples, structure, evaluati
 <td width="120" align="center" valign="top"><a href="https://abvicky.in"><img src="https://avatars.githubusercontent.com/u/103195071?v=4" width="96" height="96" alt="Vicky Prasad Mahato"></a></td>
 <td valign="top">
 
-**Vicky Prasad Mahato** · Course author, system architect and software engineer, Kolkata, India
+**Vicky Prasad Mahato** · Author, system architect and software engineer, Kolkata, India
 
 [🌐 abvicky.in](https://abvicky.in) · [💼 LinkedIn](https://www.linkedin.com/in/abvicky/) · [💻 GitHub](https://github.com/ABVicky)
 
@@ -275,11 +285,11 @@ Platform built by **[Manikarnika Technologies](https://www.manikarnikatechnologi
 
 ## © Copyright
 
-© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved. This course is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. See the [full terms](../README.md#7-copyright--terms-of-use).
+© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved. This guide is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. See the [full terms](../README.md#7-copyright--terms-of-use).
 
 <div align="center">
 <br>
 <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="https://img.shields.io/badge/Start_learning_now-→-F7AE2E?style=for-the-badge" alt="Start learning now"></a>
 <br><br>
-<sub>Made with care for learners everywhere · If it helped you, a ⭐ means a lot</sub>
+<sub>Written while learning, shared for anyone on the same path · If it helped you, a ⭐ means a lot</sub>
 </div>
