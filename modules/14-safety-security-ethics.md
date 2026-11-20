@@ -256,5 +256,5 @@ Create identical resumes differing only in name (signalling gender/religion/regi
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 13](13-evaluation-and-testing.md) · ➡️ [Module 15 — Production Prompt Engineering](15-production-promptops.md)

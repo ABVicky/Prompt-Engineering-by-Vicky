@@ -296,5 +296,5 @@ Pick your own profession. Write one high-quality, reusable prompt template with 
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 15](15-production-promptops.md) · ➡️ [Module 17 — Becoming a Pro](17-becoming-a-pro.md)

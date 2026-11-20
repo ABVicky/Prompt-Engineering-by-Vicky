@@ -231,5 +231,5 @@ You can build chains without heavy code using tools such as n8n, Zapier/Make AI 
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 07](07-system-prompts-and-conversation.md) · ➡️ [Module 09 — Context Engineering & RAG](09-context-engineering-rag.md)

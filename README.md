@@ -2,9 +2,9 @@
 
 ### The complete course: from your first prompt to production AI systems
 
-| ✍️ Author | 🌐 Website | 📅 Edition | 📈 Level | ⏱️ Duration |
+| ✍️ Author | 🌐 Author Website | 🛠️ Platform Built By | 📅 Edition | 📈 Level |
 |---|---|---|---|---|
-| **Vicky Prasad Mahato** | [abvicky.in](https://abvicky.in) | 2026 | Absolute beginner → Professional | ~45–50 h + capstone |
+| **Vicky** | [abvicky.in](https://abvicky.in) | [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) | 2026 | Absolute beginner → Professional |
 
 ![Prompt Engineering: Zero to Pro](assets/cover.svg)
 
@@ -147,15 +147,17 @@ Prompt Engineering/
 
 ---
 
-## 🧑‍🏫 About the Author & Developer
+## 🧑‍🏫 Course Author & Platform Developer
 
 <p align="center">
-  <img src="https://avatars.githubusercontent.com/u/103195071?v=4" alt="Vicky Prasad Mahato" width="128">
+  <img src="https://avatars.githubusercontent.com/u/103195071?v=4" alt="Vicky" width="128">
 </p>
 
-**Vicky Prasad Mahato** ([abvicky.in](https://abvicky.in)) builds and teaches practical AI.
+- **Course Author:** **Vicky** ([abvicky.in](https://abvicky.in))
+  Vicky builds and teaches practical AI, bringing together the techniques, patterns, and habits that make prompts work reliably, from everyday use to production systems.
 
-This course is designed and developed by **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**.
+- **Platform Built By:** **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**
+  The course reader platform, design tokens, interactive learning tools, and technical infrastructure are designed and built by Manikarnika Technologies.
 
 🌐 **[manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)** · **[abvicky.in](https://abvicky.in)**
 
@@ -165,6 +167,6 @@ This course is designed and developed by **[Manikarnika Technologies](https://ww
 
 © 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved.
 
-Designed and developed by **Manikarnika Technologies** ([manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)). Course author: **Vicky Prasad Mahato** ([abvicky.in](https://abvicky.in)).
+Course authored by **Vicky** ([abvicky.in](https://abvicky.in)). Platform designed and built by **Manikarnika Technologies** ([manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)).
 
-This course, including its text, structure, illustrations and exercises, is the intellectual property of Manikarnika Technologies. You may use it for personal learning. Redistribution, resale, or republication, in whole or in part, requires written permission from Manikarnika Technologies. Third-party product names mentioned are trademarks of their respective owners and are used for identification only.
+This course, including its text, structure, illustrations and exercises, is for personal learning. Redistribution, resale, or republication, in whole or in part, requires written permission from Manikarnika Technologies. Third-party product names mentioned are trademarks of their respective owners and are used for identification only.

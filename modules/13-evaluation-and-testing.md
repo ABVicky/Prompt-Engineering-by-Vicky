@@ -268,5 +268,5 @@ Run every pairwise comparison twice with the order swapped; count a win only if 
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 12](12-parameters-apis-and-cost.md) · ➡️ [Module 14 — Safety, Security & Ethics](14-safety-security-ethics.md)

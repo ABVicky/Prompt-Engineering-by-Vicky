@@ -279,5 +279,5 @@ You've completed all 18 modules. Next steps:
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 16](16-domain-playbooks.md) · ➡️ [Appendix A — Cheat Sheet](../appendix/A-cheat-sheet.md)

@@ -183,5 +183,5 @@ window, steam curling upward, soft morning light, cozy mood, cinematic, 6 second
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 10](10-tool-use-and-agents.md) · ➡️ [Module 12 — Model Parameters, APIs & Cost](12-parameters-apis-and-cost.md)

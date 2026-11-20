@@ -253,5 +253,5 @@ Many models will invent a plausible summary for the first prompt (less often for
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ⬅️ [Module 00](00-welcome.md) · ➡️ [Module 02 — Anatomy of a Prompt](02-anatomy-of-a-prompt.md)

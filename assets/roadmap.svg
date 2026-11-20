@@ -17,7 +17,7 @@
   <rect width="960" height="380" rx="22" fill="url(#g2)"/>
 
   <text x="36" y="52" fill="#F4F1EA" font-size="24" font-weight="800" letter-spacing="-.4">Your Roadmap: Zero → Pro</text>
-  <text x="36" y="76" fill="#A8A9B0" font-size="13.5">18 modules · 4 stages · capstone projects · by Vicky Prasad Mahato (abvicky.in)</text>
+  <text x="36" y="76" fill="#A8A9B0" font-size="13.5">18 modules · 4 stages · capstone projects · by Vicky · Built by Manikarnika Technologies</text>
 
   <line x1="116" y1="134" x2="860" y2="134" stroke="url(#line)" stroke-width="6" stroke-linecap="round" opacity=".9"/>
   <line x1="116" y1="134" x2="860" y2="134" stroke="url(#line)" stroke-width="18" stroke-linecap="round" opacity=".15"/>

@@ -1,7 +1,7 @@
 # 🚀 Module 00 — Welcome & How to Use This Course
 
 > **Prompt Engineering: Zero to Pro** — a complete, self-contained course
-> Author: **Vicky Prasad Mahato** · [abvicky.in](https://abvicky.in)
+> Author: **Vicky** · [abvicky.in](https://abvicky.in) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/)
 
 ![Course roadmap](../assets/roadmap.svg)
 
@@ -224,5 +224,5 @@ Seeing your own before/after is the fastest way to internalize what changed. Mos
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
 > ➡️ Next: [Module 01 — How Large Language Models Work](01-how-llms-work.md)

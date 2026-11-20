@@ -147,9 +147,9 @@ Link / screenshots / video.
 What surprised you? What would you do differently?
 
 ---
-Built after completing "Prompt Engineering: Zero to Pro" by Vicky Prasad Mahato (abvicky.in)
+Built after completing "Prompt Engineering: Zero to Pro" by Vicky (abvicky.in) · Platform built by Manikarnika Technologies (manikarnikatechnologies.in)
 ```
 
 ---
 
-> © 2026 [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · All rights reserved.
+> Author: **Vicky** ([abvicky.in](https://abvicky.in)) · Platform built by [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) · © 2026 All rights reserved.
