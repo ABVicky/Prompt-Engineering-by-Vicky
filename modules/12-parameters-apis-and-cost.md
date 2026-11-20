@@ -37,6 +37,12 @@ Think of a restaurant:
 
 With an API, you pay only for the exact number of words (tokens) you send and receive. You don't pay a flat monthly consumer subscription.
 
+> 👔 **Non-Tech Lens · What to Take From This Module:**
+> You can skip the code samples here and still get the important parts. Read the parameter table in Section 2, because chat apps and "playground" screens use the same dials (temperature, maximum length). Read the cost math in Section 5, because it helps you judge quotes from vendors and decide whether an AI idea is affordable at your company's scale. When a developer on your team says "we'll use a smaller model for this step", Section 6 explains why that saves money.
+
+> 💻 **Tech Lens · Same Concepts, Different Field Names:**
+> Every provider's SDK takes the same ingredients: a model ID, system instructions, a list of messages, sampling parameters, a token limit, and optional tools. Learn one SDK well and the rest is mostly renaming. Treat every model ID in the samples as a placeholder, and check the provider's model list before you ship.
+
 ---
 
 ## 2. The Core Parameter Levers
@@ -51,7 +57,7 @@ Whenever you send a message to an AI through an API or developer playground, you
 | **Stop Sequences** | Specific text strings that immediately halt generation. | `["</answer>", "\n\nUser:"]` | Guarantees clean cutoff boundaries without trailing commentary. |
 | **Frequency Penalty** | Penalizes words that have already appeared frequently in the text. | `0.0 – 0.4` | Stops models from getting stuck in repetitive loops during long prose. |
 
-> ⚠️ **Reasoning Model Note:** Frontier thinking models (like o1 or Claude 3.7 Sonnet Thinking) often lock or ignore temperature. Instead, you control their depth of thought using a **thinking budget** or **reasoning effort** parameter (such as `low`, `medium`, or `high`).
+> ⚠️ **Reasoning Model Note:** Reasoning ("thinking") models often lock or ignore temperature. Instead, you control their depth of thought using a **thinking budget** or **reasoning effort** parameter (such as `low`, `medium`, or `high`).
 
 ---
 
@@ -80,7 +86,7 @@ from openai import OpenAI
 
 client = OpenAI()
 response = client.chat.completions.create(
-    model="gpt-4o-mini",
+    model="YOUR_OPENAI_MODEL",  # pick a current model from OpenAI's model list
     max_tokens=300,
     temperature=0.2,
     messages=[
@@ -97,7 +103,7 @@ from google import genai
 
 client = genai.Client()
 response = client.models.generate_content(
-    model="gemini-2.0-flash",
+    model="YOUR_GEMINI_MODEL",  # pick a current model from Google's model list
     contents="Explain unit economics in 2 sentences.",
     config={"system_instruction": "You are a concise business analyst.", "temperature": 0.2}
 )
@@ -170,8 +176,8 @@ Now look at what happens if you route simple tickets to a lightweight model (\$0
 ```mermaid
 flowchart TD
     Req["Incoming User Request"] --> Classify{"Is it a simple query<br/>or complex analysis?"}
-    Classify -->|Simple: FAQ, spelling, categorization| Cheap["🐇 Lightweight Model<br/>(e.g. GPT-4o mini, Haiku, Gemini Flash)<br/>Cost: ₹0.02 / call"]
-    Classify -->|Complex: Coding, legal review, strategy| Smart["🦉 Frontier Model<br/>(e.g. Claude Sonnet, GPT-4o)<br/>Cost: ₹0.40 / call"]
+    Classify -->|Simple: FAQ, spelling, categorization| Cheap["🐇 Lightweight Model<br/>(e.g. Claude Haiku, a GPT 'mini' tier, Gemini Flash)<br/>Cost: ₹0.02 / call"]
+    Classify -->|Complex: Coding, legal review, strategy| Smart["🦉 Frontier Model<br/>(e.g. Claude Sonnet or Opus, a full GPT model)<br/>Cost: ₹0.40 / call"]
     Cheap & Smart --> Finish["Delivered to User"]
 ```
 
@@ -271,19 +277,19 @@ Calculate the monthly cost in USD and INR (assume \$1 = ₹85).
    - C) Because output tokens use more electricity on the user's laptop.
 2. What does an HTTP 429 status code indicate?
    - A) Your prompt contained a spelling error.
-   - B) You exceeded the API's rate limit for requests or tokens per minute.
-   - C) The server has permanently deleted your account.
+   - B) The server has permanently deleted your account.
+   - C) You exceeded the API's rate limit for requests or tokens per minute.
 3. Where should your API key be stored in a production application?
-   - A) In your public HTML header.
-   - B) Inside secure backend environment variables or a secrets manager.
+   - A) Inside secure backend environment variables or a secrets manager.
+   - B) In your public HTML header.
    - C) In the user's browser local storage.
 
 <details>
 <summary>View Answers</summary>
 
 1. **B** — Autoregressive decoding is memory-bandwidth bound and occurs one step at a time, making it far more compute-intensive than parallel prefill.
-2. **B** — A 429 response means you are sending requests faster than your account tier allows.
-3. **B** — API keys must remain strictly on the backend to prevent theft and unauthorized use.
+2. **C** — A 429 response means you are sending requests faster than your account tier allows.
+3. **A** — API keys must remain strictly on the backend to prevent theft and unauthorized use.
 
 </details>
 

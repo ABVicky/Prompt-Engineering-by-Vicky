@@ -24,7 +24,7 @@ By the end of this module, you will be able to:
 - Guide the model's reasoning process using structured step-by-step checklists.
 - Apply advanced techniques like **Self-Consistency**, **Tree of Thoughts**, and **Step-Back Prompting**.
 - Use `<thinking>` and `<answer>` tags to keep reasoning clean and parseable.
-- Adjust your prompting strategy for modern **reasoning ("thinking") models** like o1, Claude 3.7 Sonnet Thinking, and Gemini Thinking.
+- Adjust your prompting strategy for modern **reasoning ("thinking") models**, such as Claude with extended thinking, OpenAI's reasoning models and Gemini's thinking models.
 
 ---
 
@@ -32,7 +32,7 @@ By the end of this module, you will be able to:
 
 When an LLM generates text, every word it writes becomes part of its context for the next word. 
 
-Writing out reasoning steps is not just a stylistic choice; it physically scales **test-time compute**. Each intermediate token gives the neural network an extra layer of calculation before it commits to the final answer.
+Asking for the steps changes more than the style of the answer. The model does roughly the same amount of work for every token it writes, so a longer worked answer means more computation spent on the problem (people call this **test-time compute**). Each step it writes down also becomes part of the text it reads before writing the next one, so later steps can build on earlier ones instead of jumping straight to a guess.
 
 ```mermaid
 flowchart LR
@@ -44,14 +44,14 @@ flowchart LR
 > If you ask a business analyst: *"Should we open a second retail store in Indiranagar?"*, you would never accept a one-word answer: *"Yes."* You want to see their working: footfall estimates, rent, staffing costs, and breakeven timelines. Treat the AI the same way. Ask for the analysis before the conclusion.
 
 > 💻 **Tech Lens · Test-Time Compute & Reasoning Models:**
-> Autoregressive inference generates tokens sequentially. With Chain-of-Thought, intermediate tokens act as working memory in the attention KV-cache. In modern dedicated reasoning models (such as OpenAI o1/o3, Claude 3.7 Sonnet with extended thinking, or DeepSeek R1), this reasoning happens internally via hidden chains. With these models, state high-level goals and constraints; do not micromanage individual reasoning steps.
+> Autoregressive inference generates tokens sequentially. With Chain-of-Thought, intermediate tokens act as working memory in the attention KV-cache. In modern dedicated reasoning models (such as Claude with extended thinking, OpenAI's reasoning models, Gemini's thinking models or DeepSeek's R-series), this reasoning happens internally via hidden chains. With these models, state high-level goals and constraints; do not micromanage individual reasoning steps.
 
 ---
 
 ## 2. Chain-of-Thought (CoT) Prompting
 
 ### Zero-Shot CoT: The Magic Phrase
-In 2022, AI researchers discovered that simply adding one phrase—*"Think step by step"*—radically improved accuracy on math and logic benchmarks.
+In 2022, researchers found that adding one short phrase, *"Let's think step by step"*, made models noticeably better at math and logic problems (Kojima et al., 2022).
 
 ❌ **Without CoT**
 ```text
@@ -203,7 +203,7 @@ After drafting:
 
 ## 8. Prompting Modern Reasoning ("Thinking") Models
 
-Newer frontier models (like OpenAI's o1 and o3, Claude 3.7 Sonnet with Thinking mode enabled, and Gemini 2.0 Flash Thinking) have built-in reasoning mechanisms. They spend real-time compute thinking through problems *before* outputting their first token.
+Many current models (Claude with extended thinking turned on, OpenAI's reasoning models, Gemini's thinking models) have reasoning built in. They spend real-time compute thinking through problems *before* outputting their first token.
 
 When prompting reasoning models, change your habits:
 
@@ -321,24 +321,24 @@ Now evaluate whether a B2B project management software company in India should o
 ## ✅ Quick Quiz
 
 1. Why does generating intermediate reasoning steps improve an LLM's accuracy on math problems?
-   - A) Because the model reads the user's mind while writing.
-   - B) Because each generated token expands working memory and conditions the next calculation step.
+   - A) Because each generated token expands working memory and conditions the next calculation step.
+   - B) Because the model reads the user's mind while writing.
    - C) Because it allows the model to search Google behind the scenes.
 2. What is the core mechanism behind Self-Consistency?
-   - A) Generating multiple independent reasoning paths and selecting the majority answer.
-   - B) Asking the model twice if it is certain.
+   - A) Asking the model twice if it is certain.
+   - B) Generating multiple independent reasoning paths and selecting the majority answer.
    - C) Using two different models at the same time.
-3. How should you prompt dedicated reasoning models (like o1 or Claude 3.7 Sonnet Thinking) differently from standard models?
+3. How should you prompt dedicated reasoning models (such as Claude with extended thinking) differently from standard models?
    - A) You must write 10 few-shot examples for every prompt.
-   - B) You specify the high-level goal, boundaries, and success criteria, rather than micromanaging their step-by-step thinking.
-   - C) You must write your prompt in all capital letters.
+   - B) You must write your prompt in all capital letters.
+   - C) You specify the high-level goal, boundaries, and success criteria, rather than micromanaging their step-by-step thinking.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — In autoregressive language generation, intermediate tokens store calculation states that feed into subsequent token probabilities.
-2. **A** — Self-consistency runs multiple samples at non-zero temperature and takes the majority consensus.
-3. **B** — Reasoning models do their own chain-of-thought internally. Overly prescriptive steps can degrade their problem-solving path.
+1. **A** — In autoregressive language generation, intermediate tokens store calculation states that feed into subsequent token probabilities.
+2. **B** — Self-consistency runs multiple samples at non-zero temperature and takes the majority consensus.
+3. **C** — Reasoning models do their own chain-of-thought internally. Overly prescriptive steps can degrade their problem-solving path.
 
 </details>
 

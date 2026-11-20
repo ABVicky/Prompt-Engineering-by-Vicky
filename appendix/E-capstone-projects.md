@@ -110,7 +110,7 @@ flowchart LR
 
 **Skills:** Modules 04, 11, 17
 
-Create a brand kit for a fictional business using AI: logo concepts, social images, product photos, a 15-second video storyboard, and a jingle description — all from prompts you design and iterate.
+Create a brand kit for a fictional business using AI: logo concepts, social images, product photos, a 15-second video storyboard, and a jingle description. Make all of it from prompts you design and improve yourself.
 
 **Deliverable:** a prompt log showing iterations (one change at a time), final assets, and a style guide for prompts so others can produce consistent images.
 

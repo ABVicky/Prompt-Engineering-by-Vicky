@@ -12,7 +12,7 @@ That is the fundamental security dilemma of artificial intelligence. Large langu
 
 To the model, instructions and data travel across the **exact same channel**: plain text.
 
-In this module, you will learn the security vulnerabilities unique to AI systems—especially **prompt injection**, **data exfiltration**, and **jailbreaks**—and how to build a defense-in-depth architecture that keeps your systems safe and compliant.
+In this module you'll learn the security problems that are specific to AI systems, especially **prompt injection**, **data exfiltration** and **jailbreaks**. You'll also learn how to stack several layers of defense so that no single failure puts your users or data at risk.
 
 ---
 
@@ -212,8 +212,8 @@ List 3 distinct security threats to this system and provide a concrete defense f
 ## ✅ Quick Quiz
 
 1. Why is prompt injection uniquely difficult to prevent in large language models compared to traditional SQL injection?
-   - A) Because language models are slower than SQL databases.
-   - B) Because instructions and untrusted data are processed together in the exact same text channel.
+   - A) Because instructions and untrusted data are processed together in the exact same text channel.
+   - B) Because language models are slower than SQL databases.
    - C) Because prompt injection only happens in Python.
 2. What is indirect prompt injection?
    - A) When an attacker hacks the data center directly.
@@ -221,15 +221,15 @@ List 3 distinct security threats to this system and provide a concrete defense f
    - C) When an API key expires.
 3. How should high-risk actions (like deleting data or issuing refunds) be handled in autonomous AI systems?
    - A) Let the AI execute them at maximum temperature.
-   - B) Require human-in-the-loop approval before the action is executed.
-   - C) Hide the action in a system prompt.
+   - B) Hide the action in a system prompt.
+   - C) Require human-in-the-loop approval before the action is executed.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — In natural language processing, instructions and data share a single text stream, making it impossible for the model to mathematically separate commands from raw data with 100% certainty.
+1. **A** — In natural language processing, instructions and data share a single text stream, making it impossible for the model to mathematically separate commands from raw data with 100% certainty.
 2. **B** — Indirect injection sneaks instructions into untrusted data sources that the AI reads while performing tasks.
-3. **B** — Irreversible or financial actions should always be guarded by a human confirmation step.
+3. **C** — Irreversible or financial actions should always be guarded by a human confirmation step.
 
 </details>
 

@@ -8,7 +8,13 @@ However, if you take that same pocket knife into a surgical theater or an aircra
 
 Prompt engineering works the exact same way. While the foundational principles (clarity, context, structure, examples) remain universal, every industry has its own specialized workflows, jargon, edge cases, and safety risks. 
 
-In this module, you will find ready-to-use playbooks for eleven distinct professions—from software engineering and marketing to education, HR, and high-stakes fields like legal and healthcare administration.
+In this module, you will find ready-to-use playbooks for eleven professions, from software engineering and marketing to education, HR, and high-stakes fields like legal and healthcare administration.
+
+> 👔 **Non-Tech Lens · Start With Your Own Job:**
+> You don't need to read all eleven playbooks. Jump to the one closest to your work (writing, marketing, teaching, business, support, HR or personal productivity), copy one template, and use it on a real task this week. Every template here works in an ordinary chat app.
+
+> 💻 **Tech Lens · Templates Become Product Features:**
+> If you build tools for other teams, each playbook is a starting spec. Turn a template into a parameterized prompt (Module 15), add a small test set for it (Module 13), and you have a reliable feature instead of a one-off chat.
 
 ---
 
@@ -345,11 +351,11 @@ Requirements:
 
 1. Why should you ask an AI model to write Python or SQL code when doing data analysis, rather than asking it to calculate sums directly?
    - A) Because Python code uses fewer tokens than English.
-   - B) Because language models can hallucinate math calculations, but executing verified code guarantees arithmetic precision.
-   - C) Because SQL is easier for humans to read than English.
+   - B) Because SQL is easier for humans to read than English.
+   - C) Because language models can hallucinate math calculations, but executing verified code guarantees arithmetic precision.
 2. In high-stakes domains like medicine or law, what is the proper role of an AI model?
-   - A) Autonomous decision-maker that replaces doctors and lawyers.
-   - B) An assistant that drafts summaries, highlights key issues, and prepares questions for qualified human experts.
+   - A) An assistant that drafts summaries, highlights key issues, and prepares questions for qualified human experts.
+   - B) Autonomous decision-maker that replaces doctors and lawyers.
    - C) An automated judge that signs off on legal filings.
 3. How can you most effectively teach an AI model to write in your unique personal voice?
    - A) Tell it to write like a genius.
@@ -359,8 +365,8 @@ Requirements:
 <details>
 <summary>View Answers</summary>
 
-1. **B** — LLMs predict tokens probabilistically; executing deterministic code eliminates arithmetic calculation mistakes.
-2. **B** — AI models should serve as research and drafting accelerators, keeping licensed professionals in the loop for final judgment.
+1. **C** — LLMs predict tokens probabilistically; executing deterministic code eliminates arithmetic calculation mistakes.
+2. **A** — AI models should serve as research and drafting accelerators, keeping licensed professionals in the loop for final judgment.
 3. **B** — Few-shot voice samples communicate rhythm, vocabulary, and sentence length far better than abstract adjectives.
 
 </details>

@@ -328,23 +328,23 @@ All four examples are Positive. The model's attention mechanism is heavily biase
 
 1. When should you choose few-shot prompting over zero-shot prompting?
    - A) When you want to save money on API tokens.
-   - B) When zero-shot fails to capture your exact format, style, or tricky edge cases.
-   - C) Only when writing computer code.
+   - B) Only when writing computer code.
+   - C) When zero-shot fails to capture your exact format, style, or tricky edge cases.
 2. What happens if you include a typo or factual mistake in one of your few-shot examples?
-   - A) The model automatically corrects it for you.
-   - B) The model treats the mistake as an intentional pattern and may replicate it in future answers.
+   - A) The model treats the mistake as an intentional pattern and may replicate it in future answers.
+   - B) The model automatically corrects it for you.
    - C) The prompt crashes the server.
 3. Why is "You are a direct-response copywriter for fintech startups" better than "You are the smartest writer on earth"?
-   - A) Because the first role provides concrete domain context and stylistic expectations, while the second is empty hype.
-   - B) Because the word "smartest" is filtered out by safety filters.
+   - A) Because the word "smartest" is filtered out by safety filters.
+   - B) Because the first role provides concrete domain context and stylistic expectations, while the second is empty hype.
    - C) It is not better; both work the same.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Few-shot is ideal when you need to teach subtle formatting, tone, or specific categorization rules that instructions alone fail to communicate.
-2. **B** — Models are relentless pattern copiers; errors in examples teach the model that errors are acceptable.
-3. **A** — Specific roles shape vocabulary, tone, and practical constraints. Flattering adjectives provide no useful guidance.
+1. **C** — Few-shot is ideal when you need to teach subtle formatting, tone, or specific categorization rules that instructions alone fail to communicate.
+2. **A** — Models are relentless pattern copiers; errors in examples teach the model that errors are acceptable.
+3. **B** — Specific roles shape vocabulary, tone, and practical constraints. Flattering adjectives provide no useful guidance.
 
 </details>
 

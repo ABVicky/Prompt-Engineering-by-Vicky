@@ -41,6 +41,10 @@ flowchart LR
 > 💻 **Tech Lens · Autoregressive Transformers:**
 > Modern LLMs are decoder-only Transformers. Given a sequence of tokens $x_1, \dots, x_t$, the model calculates logits across its entire vocabulary using causal self-attention. It predicts one token at a time in an autoregressive loop. Because token generation is memory-bandwidth bound, the system stores previous key-value states in a KV-cache to avoid recomputing past tokens.
 
+Here is the whole trip in one picture, from the text you type to the word that comes back. Notice the loop at the bottom: each new word is added to the input and the process runs again, one word at a time.
+
+![LLM pipeline](../assets/llm-pipeline.svg)
+
 ---
 
 ## 2. Tokens — The Real Building Blocks of AI Text
@@ -92,7 +96,7 @@ After calculating the odds for the next word, the model doesn't always pick the 
 
 The **context window** is the maximum amount of text the model can consider at one single moment.
 
-Think of it like a physical desk. Everything you want the model to think about—your instructions, the background information, any documents you uploaded, and the conversation so far—must fit on this desk.
+Think of it like a physical desk. Your instructions, the background information, any documents you uploaded and the whole conversation so far all have to fit on this desk at the same time.
 
 ```text
 ┌──────────────────────── Your Context Window (Desk Space) ────────────────────────┐
@@ -238,23 +242,23 @@ State the policy clearly. If you cannot answer a detail from these bullet points
 
 1. What is an LLM doing mathematically when it outputs text?
    - A) Retrieving pre-written answers from a database.
-   - B) Predicting the most likely next token based on training and context.
-   - C) Translating thoughts into human speech.
+   - B) Translating thoughts into human speech.
+   - C) Predicting the most likely next token based on training and context.
 2. What does setting temperature to 0 do?
-   - A) Turns off the model completely.
-   - B) Makes the model faster by skipping grammar checks.
-   - C) Makes the output more consistent and conservative by picking the highest-probability tokens.
+   - A) Makes the output more consistent and conservative by picking the highest-probability tokens.
+   - B) Turns off the model completely.
+   - C) Makes the model faster by skipping grammar checks.
 3. If you open a brand new chat window and ask *"What was the first thing I asked you?"*, what will the model do?
-   - A) It cannot tell you, because each new conversation starts with an empty context window.
-   - B) It will check its internal hard drive and tell you.
+   - A) It will check its internal hard drive and tell you.
+   - B) It cannot tell you, because each new conversation starts with an empty context window.
    - C) It will call your browser's history.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — The model predicts the next token based on probabilities learned from its training data and your prompt.
-2. **C** — Low temperature reduces randomness, keeping responses focused and reproducible.
-3. **A** — LLMs are stateless. Each new chat starts with a clean context window unless the application specifically injects past memory.
+1. **C** — The model predicts the next token based on probabilities learned from its training data and your prompt.
+2. **A** — Low temperature reduces randomness, keeping responses focused and reproducible.
+3. **B** — LLMs are stateless. Each new chat starts with a clean context window unless the application specifically injects past memory.
 
 </details>
 

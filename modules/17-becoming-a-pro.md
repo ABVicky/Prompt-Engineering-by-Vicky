@@ -123,7 +123,7 @@ flowchart LR
 
 ## 4. Career Pathways: Two Paths to Pro
 
-Prompt engineering is rarely a standalone title anymore. It is a high-impact capability that supercharges two distinct career paths:
+Prompt engineering is rarely a standalone title anymore. It's more often a skill that makes people much better at two kinds of work:
 
 ```mermaid
 flowchart TD
@@ -174,7 +174,7 @@ Practice answering these core interview questions aloud:
 ### 2. "How would you cut the cost of our production LLM system by 50% without hurting quality?"
 *Model Answer Structure:*
 "I implement a three-tiered approach:
-1. **Model Routing:** I classify incoming queries with a fast classifier, sending routine tasks to lightweight models (like GPT-4o mini or Claude Haiku) and reserving frontier models for complex edge cases.
+1. **Model Routing:** I classify incoming queries with a fast classifier, sending routine tasks to lightweight models (like Claude Haiku or a 'mini'/'Flash' tier) and reserving frontier models for complex edge cases.
 2. **Prompt Caching:** I place static system prompts, schemas, and reference documents at the very start of the prompt prefix to take advantage of provider cache discounts.
 3. **Output Brevity:** Since output tokens cost 3 to 4 times more than input tokens, I tighten output formatting instructions to eliminate conversational filler."
 
@@ -242,7 +242,7 @@ Write down your personal 30-day prompt engineering roadmap:
 ```markdown
 # 30-Day Prompt Engineering Commitment
 - **Selected Track:** 💻 Tech Track (Production AI Engineering)
-- **Workplace Project:** Building an automated customer feedback triage pipeline for our Indian retail app using FastAPI, Claude 3.5 Haiku, and Pydantic.
+- **Workplace Project:** Building an automated customer feedback triage pipeline for our Indian retail app using FastAPI, Claude Haiku, and Pydantic.
 - **Capstone Project:** Project 2 (Document Q&A Assistant with Hybrid RAG and Citation Verification).
 - **Target Completion Date:** 30 days from today.
 ```
@@ -254,24 +254,24 @@ Write down your personal 30-day prompt engineering roadmap:
 ## ✅ Quick Quiz
 
 1. What is the primary benefit of meta-prompting?
-   - A) It eliminates the need to learn prompt engineering.
-   - B) It uses the model's pattern recognition to generate, critique, and optimize prompt structures faster than manual drafting.
+   - A) It uses the model's pattern recognition to generate, critique, and optimize prompt structures faster than manual drafting.
+   - B) It eliminates the need to learn prompt engineering.
    - C) It makes API calls completely free.
 2. In an AI engineering job interview, what carries more weight with hiring managers?
    - A) Showing a video of a flashy prototype with no test data.
    - B) Showing an evaluation table detailing baseline pass rates, specific failure analyses, and measured accuracy improvements on a golden dataset.
    - C) Memorizing model release dates.
 3. Why should you always test automatically optimized prompts on a held-out test set?
-   - A) Because optimizers can easily overfit to small training sets, performing well on known examples but failing on new real-world queries.
-   - B) Because held-out sets reduce latency.
-   - C) Because DSPy requires two computers.
+   - A) Because held-out sets reduce latency.
+   - B) Because DSPy requires two computers.
+   - C) Because optimizers can easily overfit to small training sets, performing well on known examples but failing on new real-world queries.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Meta-prompting uses the LLM as an expert assistant to identify ambiguities and draft standardized prompt components.
+1. **A** — Meta-prompting uses the LLM as an expert assistant to identify ambiguities and draft standardized prompt components.
 2. **B** — Empirical evaluation and clear debugging methodology prove genuine engineering competence.
-3. **A** — Automated prompt optimizers risk overfitting to specific test inputs; held-out evaluation guarantees real-world generalization.
+3. **C** — Automated prompt optimizers risk overfitting to specific test inputs; held-out evaluation guarantees real-world generalization.
 
 </details>
 

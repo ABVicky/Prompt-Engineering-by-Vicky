@@ -93,7 +93,7 @@ owner: vicky@company.example
 
 ### The Rules of Versioning
 1. **Never mutate an existing version:** When you change a single word, create `system.v4.md`. Never edit `system.v3.md` in place.
-2. **Pin Prompt and Model Together:** A prompt designed for Claude 3.7 Sonnet will behave differently on GPT-4o. Always pin the model ID inside the configuration file.
+2. **Pin Prompt and Model Together:** A prompt tuned for one model can behave differently on another, even a newer version from the same provider. Always pin the model ID inside the configuration file.
 3. **Mandatory Changelogs:** Every update must state: *What changed*, *Why it changed*, and *Evaluation results on the golden test set*.
 
 ---
@@ -159,7 +159,7 @@ In traditional software, you log database query execution times and HTTP status 
 | Pattern | How it protects your system |
 |---|---|
 | **Exponential Backoff with Jitter** | Retries 429 rate limits after 1s, 2s, 4s with random microsecond variation to avoid thundering-herd spikes. |
-| **Fallback Models** | If your primary model encounters an outage or returns a 503 error, automatically route the request to a secondary provider (e.g. falling back from Claude to GPT-4o). |
+| **Fallback Models** | If your primary model encounters an outage or returns a 503 error, automatically route the request to a secondary provider (e.g. falling back from one provider's model to another's). |
 | **Circuit Breakers** | If an API dependency fails 5 times in 60 seconds, pause all calls for 30 seconds and return cached answers rather than stalling user threads. |
 | **Validation & Self-Repair** | Validate JSON outputs with Pydantic; if validation fails, send the error back to the model for an immediate one-turn correction. |
 | **Feature Flags / Kill Switches** | A remote toggle that lets you disable an AI feature in under 5 seconds without redeploying backend code. |
@@ -191,7 +191,7 @@ flowchart TD
 | Mistake | What goes wrong | The Fix |
 |---|---|---|
 | Hardcoding Prompts | Embedding prompt text deep inside Python code. Updating a prompt requires a full code deployment. | Move prompts into separate `.md` or `.jinja` files loaded at runtime. |
-| Blind Upgrades | Switching from `gpt-4o-mini` to a newer model overnight. Formatting breaks for 10% of users. | Follow the 4-step migration playbook: Evals → Shadow → Canary → Rollout. |
+| Blind Upgrades | Switching your production model to a newer version overnight. Formatting breaks for 10% of users. | Follow the 4-step migration playbook: Evals → Shadow → Canary → Rollout. |
 | Missing Spend Caps | A crawler hits your AI endpoint and runs 50,000 queries, billing you \$2,000 in one night. | Enforce per-user rate limits and set hard monthly spend ceilings in your provider billing dashboard. |
 
 ---
@@ -263,19 +263,19 @@ The change: Added a rule requiring all refund amounts to be formatted in Indian 
    - C) Because Git cannot track strings inside code.
 2. What is "shadow testing" in model migration?
    - A) Running the AI model late at night in dark mode.
-   - B) Running a new prompt or model on live traffic in the background without showing the results to users, allowing side-by-side performance comparisons.
-   - C) Hiding the model behind an encrypted password.
+   - B) Hiding the model behind an encrypted password.
+   - C) Running a new prompt or model on live traffic in the background without showing the results to users, allowing side-by-side performance comparisons.
 3. What does Jinja2's `StrictUndefined` setting do?
-   - A) Automatically translates prompts into Spanish.
-   - B) Raises an immediate error if a template variable is missing, preventing half-empty prompts from reaching the model.
+   - A) Raises an immediate error if a template variable is missing, preventing half-empty prompts from reaching the model.
+   - B) Automatically translates prompts into Spanish.
    - C) Deletes unused files.
 
 <details>
 <summary>View Answers</summary>
 
 1. **B** — Decoupling prompts allows prompt engineers to iterate, version, and evaluate prompts without requiring full application rebuilds.
-2. **B** — Shadow testing provides real-world production validation without exposing users to potential regressions.
-3. **B** — StrictUndefined prevents silent failures by ensuring all required variables are supplied before prompt execution.
+2. **C** — Shadow testing provides real-world production validation without exposing users to potential regressions.
+3. **A** — StrictUndefined prevents silent failures by ensuring all required variables are supplied before prompt execution.
 
 </details>
 

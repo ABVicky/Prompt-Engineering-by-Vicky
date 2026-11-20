@@ -18,7 +18,7 @@ Much of the advice online swings between two extremes:
 
 This course takes a practical path. It treats prompts as **clear interface contracts** between your intent and probabilistic language models. 
 
-When you learn the underlying mechanics — how tokens work, how attention directs generation, how to constrain outputs with schemas, and how to chain steps together — prompting stops being a guessing game. It becomes a reliable, repeatable craft.
+Once you understand what's going on underneath (how tokens work, how the model decides what to pay attention to, how to pin down the shape of an answer, and how to break big jobs into steps), prompting stops being a guessing game. It becomes a reliable, repeatable craft.
 
 ```mermaid
 flowchart LR
@@ -69,7 +69,7 @@ The curriculum is divided into four sequential stages, plus an extensive referen
 
 ### 🔵 Stage 2: Intermediate Techniques (Modules 05–09)
 *Solve complex problems, enforce formats, and connect private data.*
-- **[Module 05: Reasoning Techniques](modules/05-reasoning-techniques.md)** — Chain-of-Thought (CoT), Tree of Thoughts, and working with modern test-time compute reasoning models (o1, o3, Claude 3.7 Sonnet).
+- **[Module 05: Reasoning Techniques](modules/05-reasoning-techniques.md)** — Chain-of-Thought (CoT), Tree of Thoughts, and working with modern test-time compute reasoning ("thinking") models.
 - **[Module 06: Structured Output](modules/06-structured-output.md)** — Clean tables and CSVs for spreadsheets, strict JSON Schemas, Pydantic validation, and XML boundaries.
 - **[Module 07: System Prompts & Conversation Design](modules/07-system-prompts-and-conversation.md)** — Custom Instructions, Claude Projects, prompt caching, conversation state, and memory.
 - **[Module 08: Prompt Chaining & Workflows](modules/08-prompt-chaining-workflows.md)** — Step-by-step chat workflows, deterministic DAG pipelines, routing, parallel execution, and evaluator gates.
@@ -130,7 +130,7 @@ We built this learning environment to be fast, distraction-free, and respectful 
       As the founder of the <strong>Coders' Club at BBIT Kolkata</strong> and former student coordinator at the Innovation and Incubation Center (IIC) and Entrepreneurship Development Cell (EDC), Vicky has mentored hundreds of student developers in software design, problem solving, and modern development practices. He is also the creator of open-source projects including <em>Mera Paisaa</em>, an offline-first personal expense and financial tracking system.
     </p>
     <p>
-      <strong>Author's Teaching Philosophy:</strong> <em>"Prompt engineering is not about finding 'magic spells' — it is the engineering discipline of providing clear, unambiguous interface contracts to generative models. When you understand how language models interpret context, you gain an unfair advantage in whatever work you do."</em>
+      <strong>Author's Teaching Philosophy:</strong> <em>"Prompt engineering is not about finding 'magic spells'. It is the engineering discipline of providing clear, unambiguous interface contracts to generative models. When you understand how language models interpret context, you gain an unfair advantage in whatever work you do."</em>
     </p>
     <div class="profile-pills">
       <a class="pill-btn primary" href="https://abvicky.in" target="_blank" rel="noopener">🌐 abvicky.in</a>

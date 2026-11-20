@@ -205,7 +205,7 @@ If the handbook does not explicitly mention contract staff, state: "The provided
 
 ## 11. Avoid Leading the Model (Avoid Flattery & Bias)
 
-Models have a known tendency called **sycophancy**—they tend to agree with whatever opinion you suggest in your prompt.
+Models have a known tendency called **sycophancy**: they tend to agree with whatever opinion you suggest in your prompt.
 
 ❌ **Leading prompt:** *"Don't you think our brand should switch to a bright neon logo to appeal to teenagers?"*
 *(The AI will agree: "Yes, neon colors are vibrant and create immediate youth appeal...")*
@@ -338,19 +338,19 @@ Constraints:
    - C) Because negative words cost twice as many tokens.
 2. Where should the model's step-by-step reasoning be placed relative to the final answer on a complex problem?
    - A) After the final answer as a footnote.
-   - B) Before the final answer, so the reasoning informs the token prediction of the result.
-   - C) It makes no difference.
+   - B) It makes no difference.
+   - C) Before the final answer, so the reasoning informs the token prediction of the result.
 3. If an AI model repeatedly agrees with your flawed assumptions during a brainstorming session, what principle did you violate?
-   - A) Principle 7 (Specify format).
-   - B) Principle 11 (Avoid leading the model / avoid sycophancy).
+   - A) Principle 11 (Avoid leading the model / avoid sycophancy).
+   - B) Principle 7 (Specify format).
    - C) Principle 1 (Be clear and direct).
 
 <details>
 <summary>View Answers</summary>
 
 1. **B** — Telling an AI what to do provides a specific, narrow target. Telling it what *not* to do leaves all other possibilities open.
-2. **B** — Because autoregressive models generate text from left to right, thinking through the steps *first* ensures that the final tokens are calculated based on sound intermediate logic.
-3. **B** — Asking leading questions invites the model's natural sycophancy. Ask neutrally and explicitly request opposing arguments.
+2. **C** — Because autoregressive models generate text from left to right, thinking through the steps *first* ensures that the final tokens are calculated based on sound intermediate logic.
+3. **A** — Asking leading questions invites the model's natural sycophancy. Ask neutrally and explicitly request opposing arguments.
 
 </details>
 

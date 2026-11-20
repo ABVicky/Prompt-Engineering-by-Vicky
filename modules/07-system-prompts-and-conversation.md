@@ -242,11 +242,11 @@ Help patients schedule appointments with Dr. Rao (Pediatrics) or Dr. Lakshmi (Ge
 
 1. Why should rules inside a system prompt be arranged in priority order?
    - A) Because the model processes the file in alphabetical order.
-   - B) So the model knows which instruction takes precedence when two rules seem to conflict.
-   - C) Priority numbers reduce the total token count.
+   - B) Priority numbers reduce the total token count.
+   - C) So the model knows which instruction takes precedence when two rules seem to conflict.
 2. What is the safest way to prevent an AI chatbot from trapping a frustrated customer in an unhelpful loop?
-   - A) Telling the model to always say "I am sorry".
-   - B) Programming a clear escalation rule that triggers a human support link when frustration is detected.
+   - A) Programming a clear escalation rule that triggers a human support link when frustration is detected.
+   - B) Telling the model to always say "I am sorry".
    - C) Lowering the temperature to 0.
 3. Why is it dangerous to put database credentials or API secrets inside a system prompt?
    - A) Because system prompts are publicly indexed on Google.
@@ -256,8 +256,8 @@ Help patients schedule appointments with Dr. Rao (Pediatrics) or Dr. Lakshmi (Ge
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Priority ordering provides a clear tie-breaker when constraints compete (for example, safety vs. helpfulness).
-2. **B** — A clear escalation path ensures that frustrated users can reach a human rather than getting stuck in a repetitive loop.
+1. **C** — Priority ordering provides a clear tie-breaker when constraints compete (for example, safety vs. helpfulness).
+2. **A** — A clear escalation path ensures that frustrated users can reach a human rather than getting stuck in a repetitive loop.
 3. **B** — Language models cannot reliably maintain secrets placed within their prompt context. Keep all credentials server-side.
 
 </details>

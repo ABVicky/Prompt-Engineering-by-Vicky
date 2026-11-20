@@ -152,7 +152,7 @@ test_cases = [
     {"input": "How many reward points do I earn per ₹100 spent?", "expected": "loyalty_program"},
 ]
 
-def run_evaluation(prompt_template, model_name="gpt-4o-mini"):
+def run_evaluation(prompt_template, model_name="claude-haiku-5-5"):
     passed = 0
     failures = []
     
@@ -246,11 +246,11 @@ Output JSON: {"reasoning": string, "score": 1 | 2 | 3 | 4 | 5}
 
 1. What is the most dangerous consequence of "vibe-based development"?
    - A) It costs too little money.
-   - B) Tweaking a prompt to fix one bug often silently breaks five other use cases without your knowledge.
-   - C) It makes the model generate too fast.
+   - B) It makes the model generate too fast.
+   - C) Tweaking a prompt to fix one bug often silently breaks five other use cases without your knowledge.
 2. What are the three essential categories that belong in an evaluation dataset?
-   - A) Easy, Medium, Hard.
-   - B) Typical cases, Edge cases, and Adversarial cases.
+   - A) Typical cases, Edge cases, and Adversarial cases.
+   - B) Easy, Medium, Hard.
    - C) Marketing, Sales, Engineering.
 3. What is "position bias" in LLM judges?
    - A) The model prefers options from certain geographic countries.
@@ -260,8 +260,8 @@ Output JSON: {"reasoning": string, "score": 1 | 2 | 3 | 4 | 5}
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Without regression testing, prompt edits frequently fix one specific failure while introducing silent regressions across other scenarios.
-2. **B** — A balanced golden set needs standard typical traffic, boundary edge cases, and security adversarial tests.
+1. **C** — Without regression testing, prompt edits frequently fix one specific failure while introducing silent regressions across other scenarios.
+2. **A** — A balanced golden set needs standard typical traffic, boundary edge cases, and security adversarial tests.
 3. **B** — LLM judges naturally favor Option A over Option B; swapping the order cancels out position bias.
 
 </details>

@@ -1,6 +1,6 @@
 # 🔗 Appendix G — Resources, Papers & Practice Plan
 
-> This course is designed to be complete on its own. This appendix lists the primary sources behind its ideas — for when you want to go deeper or verify a claim.
+> This course is designed to be complete on its own. This appendix lists the primary sources behind its ideas, for when you want to go deeper or check a claim.
 
 ---
 
@@ -63,7 +63,7 @@
 | Image/video/audio | Midjourney, GPT image models, Imagen, Stable Diffusion/Flux, Firefly, Ideogram, Runway, Veo, Sora-style models, ElevenLabs, Whisper |
 | Security | Prompt-injection classifiers, guardrail libraries (e.g., NeMo Guardrails, Guardrails AI), garak / PyRIT for red-teaming |
 
-> Tools evolve quickly — choose by the **pattern** you need (Modules 08–15), not by hype.
+> Tools change quickly, so choose by the **pattern** you need (Modules 08–15), not by hype.
 
 ---
 

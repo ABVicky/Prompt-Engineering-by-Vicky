@@ -258,8 +258,8 @@ Start now by welcoming me and asking your first question.
 ## ✅ Quick Quiz
 
 1. Which two prompt components are the most critical for getting a useful result?
-   - A) Role and Examples
-   - B) Task and Context
+   - A) Task and Context
+   - B) Role and Examples
    - C) Delimiters and Temperature
 2. Why are delimiters like `<data>...</data>` useful in prompts?
    - A) They make the text look like HTML code.
@@ -267,15 +267,15 @@ Start now by welcoming me and asking your first question.
    - C) They automatically encrypt your prompt.
 3. What is the fastest way to get a customized, non-generic answer from an AI chat model on a complex topic?
    - A) Ask it to write at a PhD level.
-   - B) Ask the model to interview you with clarifying questions before writing.
-   - C) Type in ALL CAPS so it knows it is important.
+   - B) Type in ALL CAPS so it knows it is important.
+   - C) Ask the model to interview you with clarifying questions before writing.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Task and Context define what you want and the real-world conditions the answer must satisfy.
+1. **A** — Task and Context define what you want and the real-world conditions the answer must satisfy.
 2. **B** — Delimiters clearly separate your operational instructions from raw source text or user data.
-3. **B** — Asking the model to interview you extracts the exact context needed to produce a tailored response.
+3. **C** — Asking the model to interview you extracts the exact context needed to produce a tailored response.
 
 </details>
 

@@ -30,7 +30,7 @@ By the end of this module, you will be able to:
 
 ## 1. What You Will Learn (From Ground Zero to Pro)
 
-Whether you write software for a living or haven't written a single line of code in your life, this course was designed so you never need another tab open.
+You might write software for a living, or you might never have written a line of code. Either way, this course is built so you can learn everything here, without hunting for other tutorials.
 
 ```mermaid
 flowchart LR
@@ -74,9 +74,9 @@ You learn prompting by doing, not by passively reading. Let's get your setup rea
 
 ### 👔 For Non-Tech Learners (Zero Code)
 1. **Choose one free chat app:**
-   - [Claude](https://claude.ai) (Anthropic) — exceptional for thoughtful writing, clear explanations, and analyzing pasted documents.
-   - [ChatGPT](https://chatgpt.com) (OpenAI) — great all-rounder with web search and data handling.
-   - [Google Gemini](https://gemini.google.com) — handy for quick searches and Google Workspace tasks.
+   - [Claude](https://claude.ai) (Anthropic): strong for thoughtful writing, clear explanations, and analyzing pasted documents.
+   - [ChatGPT](https://chatgpt.com) (OpenAI): a good all-rounder with web search and data handling.
+   - [Google Gemini](https://gemini.google.com): handy for quick searches and Google Workspace tasks.
 2. **Open a clean notebook:**
    - Create a single document in Google Docs, Apple Notes, or Notion called `My Prompt Notebook`.
    - Every time you find a prompt that works well in this course, paste it there. By the end, you will have your own personal productivity toolkit.
@@ -218,15 +218,15 @@ You will learn how to build all of these elements naturally in the next three mo
    - B) Because the AI predicts the most statistically common response when it lacks specific constraints.
    - C) Because free AI tools intentionally degrade answer quality.
 2. What should you do before pasting an internal company document into a public AI chat?
-   - A) Check company policy, remove sensitive names or financials, and ensure training data sharing is disabled.
-   - B) Translate it to another language first.
-   - C) Add a sentence saying "Please keep this confidential".
+   - A) Translate it to another language first.
+   - B) Add a sentence saying "Please keep this confidential".
+   - C) Check company policy, remove sensitive names or financials, and ensure training data sharing is disabled.
 
 <details>
 <summary>View Answers</summary>
 
 1. **B** — Large language models predict the next most likely words. Without constraints, the most likely words are broad, average generalizations.
-2. **A** — AI models cannot read contractual non-disclosure requests in your prompt text. You must actively clean sensitive data and configure your privacy settings.
+2. **C** — AI models cannot read contractual non-disclosure requests in your prompt text. You must actively clean sensitive data and configure your privacy settings.
 
 </details>
 

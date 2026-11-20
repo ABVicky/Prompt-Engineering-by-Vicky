@@ -106,6 +106,10 @@ A tool definition is simply a prompt written in JSON. The model reads your descr
 
 ## 3. Building an Agent Loop in Python
 
+An agent is simply a model that keeps going round this loop until the job is done: it thinks about what to do next, calls a tool, looks at what came back, and decides whether it's finished. The guardrails on the right are what keep that loop safe.
+
+![Agent loop](../assets/agent-loop.svg)
+
 Here is a clean, minimal agent loop using Python and the Anthropic SDK:
 
 ```python
@@ -309,11 +313,11 @@ Requirements:
 
 1. Who actually runs the external code or API during a tool call?
    - A) The neural network weights inside the LLM.
-   - B) Your application backend.
-   - C) The browser's JavaScript engine automatically.
+   - B) The browser's JavaScript engine automatically.
+   - C) Your application backend.
 2. What happens if you do not enforce a `max_steps` limit on an agent loop?
-   - A) The agent becomes smarter.
-   - B) An unexpected API error could cause the model to loop repeatedly, consuming your token budget and freezing your app.
+   - A) An unexpected API error could cause the model to loop repeatedly, consuming your token budget and freezing your app.
+   - B) The agent becomes smarter.
    - C) Nothing, agents automatically stop after 2 steps.
 3. What is the Model Context Protocol (MCP)?
    - A) A new programming language for data scientists.
@@ -323,8 +327,8 @@ Requirements:
 <details>
 <summary>View Answers</summary>
 
-1. **B** — The LLM outputs a structured request string; your application code inspects, validates, and executes the real action.
-2. **B** — Without a hard step counter, an agent can get stuck in a reasoning loop and rapidly drain your API quota.
+1. **C** — The LLM outputs a structured request string; your application code inspects, validates, and executes the real action.
+2. **A** — Without a hard step counter, an agent can get stuck in a reasoning loop and rapidly drain your API quota.
 3. **B** — MCP acts as the universal standard for exposing data and functions to AI agents.
 
 </details>

@@ -2,7 +2,7 @@
 
 > 🔵 Stage 2 · Intermediate · ⏱️ ~2.5 hours
 
-Imagine cooking a traditional feast—like a festive Hyderabadi biryani—for twenty guests.
+Imagine cooking a festive Hyderabadi biryani for twenty guests.
 
 You would never throw raw rice, whole onions, unmarinated meat, yogurt, and saffron into a single giant pot all at once, turn on the heat, and hope for a masterpiece. 
 
@@ -49,7 +49,7 @@ By the end of this module, you will be able to:
 > This interactive approach keeps you in the driver's seat and produces vastly superior work.
 
 > 💻 **Tech Lens · Deterministic DAGs vs Fragile Prompts:**
-> In production backends, represent multi-step workflows as Directed Acyclic Graphs (DAGs). Combine parallel branches using `asyncio.gather()`, route intents using lightweight classifier models (like Claude Haiku or GPT-4o mini), and gate state transitions with deterministic Pydantic schema validation. A deterministic pipeline delivers predictable latency, isolated error boundaries, and zero risk of infinite runaway loops.
+> In production backends, represent multi-step workflows as Directed Acyclic Graphs (DAGs). Combine parallel branches using `asyncio.gather()`, route intents using lightweight classifier models (like Claude Haiku or another small, fast model), and gate state transitions with deterministic Pydantic schema validation. A deterministic pipeline delivers predictable latency, isolated error boundaries, and zero risk of infinite runaway loops.
 
 ---
 
@@ -314,8 +314,8 @@ Paragraph 3: Key blockers and immediate deadlines.
 ## ✅ Quick Quiz
 
 1. What is the primary advantage of breaking a complex prompt into a sequential chain?
-   - A) It makes the prompt sound more academic.
-   - B) Each step has a single focused task, making the system easier to test, debug, and optimize for cost.
+   - A) Each step has a single focused task, making the system easier to test, debug, and optimize for cost.
+   - B) It makes the prompt sound more academic.
    - C) It guarantees zero token usage.
 2. What is a "gate" in a prompt workflow?
    - A) A password that unlocks the model.
@@ -323,15 +323,15 @@ Paragraph 3: Key blockers and immediate deadlines.
    - C) A type of database index.
 3. When should you choose an Evaluator-Optimizer pattern?
    - A) For simple, one-line classification tasks.
-   - B) For high-value generation (like code or marketing copy) where outputs can be scored against a clear rubric and iteratively improved.
-   - C) Whenever you want the fastest possible latency.
+   - B) Whenever you want the fastest possible latency.
+   - C) For high-value generation (like code or marketing copy) where outputs can be scored against a clear rubric and iteratively improved.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Chaining isolates failure modes, enables targeted debugging, and allows pairing smaller models with simpler subtasks.
+1. **A** — Chaining isolates failure modes, enables targeted debugging, and allows pairing smaller models with simpler subtasks.
 2. **B** — A gate inspects intermediate outputs and prevents errors from propagating down the workflow.
-3. **B** — Evaluator-optimizer workflows shine when quality criteria are explicit and iterative critiques lead to measurable improvements.
+3. **C** — Evaluator-optimizer workflows shine when quality criteria are explicit and iterative critiques lead to measurable improvements.
 
 </details>
 

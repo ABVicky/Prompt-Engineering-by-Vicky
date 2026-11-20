@@ -21,19 +21,19 @@ A) 100  B) 225  C) 400  D) 1,200
 A) 0–0.3  B) 0.7  C) 1.0  D) 1.5
 
 **4.** Why do LLMs struggle to count letters in a word?
-A) No math ability  B) They see tokens, not characters  C) Temperature too high  D) Context window too small
+A) They see tokens, not characters  B) No math ability  C) Temperature too high  D) Context window too small
 
 **5.** Which prompt block most often has the biggest impact?
-A) Role  B) Emoji  C) Context  D) Sign-off
+A) Role  B) Context  C) Emoji  D) Sign-off
 
 **6.** What's the main purpose of delimiters like `<document>` tags?
-A) Decoration  B) Separate instructions from data  C) Reduce tokens  D) Increase temperature
+A) Decoration  B) Reduce tokens  C) Separate instructions from data  D) Increase temperature
 
 **7.** "Don't use jargon" is weaker than "Use everyday words" because:
-A) It's longer  B) Negative instructions don't specify the desired behavior  C) Models ignore the word "don't" entirely  D) It uses more tokens
+A) It's longer  B) Models ignore the word "don't" entirely  C) It uses more tokens  D) Negative instructions don't specify the desired behavior
 
 **8.** Few-shot examples should be:
-A) Identical in structure and topic  B) Diverse, correct and representative  C) All edge cases  D) As long as possible
+A) Diverse, correct and representative  B) Identical in structure and topic  C) All edge cases  D) As long as possible
 
 **9.** Prefilling the assistant's response with `{` mainly helps to:
 A) Increase creativity  B) Force JSON output to start immediately  C) Lower cost  D) Avoid tool calls
@@ -44,7 +44,7 @@ A) Adds physics knowledge  B) Guarantees accuracy  C) May shift tone, but adds n
 <details>
 <summary>✅ Answers Part 1</summary>
 
-1-B · 2-C (300 × 1.33 ≈ 400) · 3-A · 4-B · 5-C · 6-B · 7-B · 8-B · 9-B · 10-C
+1-B · 2-C (300 × 1.33 ≈ 400) · 3-A · 4-A · 5-B · 6-C · 7-D · 8-A · 9-B · 10-C
 
 </details>
 
@@ -53,39 +53,39 @@ A) Adds physics knowledge  B) Guarantees accuracy  C) May shift tone, but adds n
 ## Part 2 — Intermediate (Modules 05–09)
 
 **11.** Chain-of-thought reasoning should be placed:
-A) After the answer  B) Before the answer  C) In the system prompt only  D) It doesn't matter
+A) After the answer  B) In the system prompt only  C) It doesn't matter  D) Before the answer
 
 **12.** Self-consistency requires:
-A) Temperature 0 and one sample  B) Multiple samples and a vote  C) A vector database  D) Fine-tuning
+A) Multiple samples and a vote  B) Temperature 0 and one sample  C) A vector database  D) Fine-tuning
 
 **13.** Step-back prompting means:
 A) Undoing the previous message  B) Asking a general principle question first  C) Reducing temperature  D) Removing examples
 
 **14.** With reasoning ("thinking") models, you should usually:
-A) Add "think step by step" everywhere  B) Give goals, constraints and success criteria  C) Use temperature 2  D) Provide 50 examples
+A) Add "think step by step" everywhere  B) Use temperature 2  C) Give goals, constraints and success criteria  D) Provide 50 examples
 
 **15.** The most reliable way to get schema-valid JSON is:
-A) Asking politely  B) Native structured outputs / forced tool schemas + validation  C) High temperature  D) Longer prompts
+A) Asking politely  B) High temperature  C) Longer prompts  D) Native structured outputs / forced tool schemas + validation
 
 **16.** Why place an `"evidence"` field before `"label"` in a JSON schema?
-A) Alphabetical order  B) The label is then conditioned on evidence  C) Parsers require it  D) It reduces tokens
+A) The label is then conditioned on evidence  B) Alphabetical order  C) Parsers require it  D) It reduces tokens
 
 **17.** Where should rules that apply to every turn of a chatbot go?
 A) The user message  B) The system prompt  C) The assistant prefill  D) A stop sequence
 
 **18.** Which pattern classifies inputs and sends them to specialized prompts?
-A) Routing  B) Evaluator-optimizer  C) Self-consistency  D) Prefill
+A) Evaluator-optimizer  B) Self-consistency  C) Routing  D) Prefill
 
 **19.** For long documents, place the question:
-A) Before the document  B) After the document  C) In the middle  D) In a separate API call only
+A) Before the document  B) In the middle  C) In a separate API call only  D) After the document
 
 **20.** Most RAG failures are caused by:
-A) The LLM's grammar  B) Retrieval problems  C) Temperature  D) Too few tokens in the answer
+A) Retrieval problems  B) The LLM's grammar  C) Temperature  D) Too few tokens in the answer
 
 <details>
 <summary>✅ Answers Part 2</summary>
 
-11-B · 12-B · 13-B · 14-B · 15-B · 16-B · 17-B · 18-A · 19-B · 20-B
+11-D · 12-A · 13-B · 14-C · 15-D · 16-A · 17-B · 18-C · 19-D · 20-A
 
 </details>
 
@@ -97,13 +97,13 @@ A) The LLM's grammar  B) Retrieval problems  C) Temperature  D) Too few tokens i
 A) The model  B) Your application code  C) The vector DB  D) The tokenizer
 
 **22.** A good tool description includes:
-A) Only the name  B) When to use it, parameter formats, and what it returns  C) The API key  D) Marketing copy
+A) Only the name  B) The API key  C) When to use it, parameter formats, and what it returns  D) Marketing copy
 
 **23.** The best first guardrail for an agent that can delete files:
-A) Higher temperature  B) Human approval for destructive actions  C) More examples  D) Longer system prompt
+A) Higher temperature  B) More examples  C) Longer system prompt  D) Human approval for destructive actions
 
 **24.** MCP standardizes:
-A) Tokenization  B) How apps expose tools/resources/prompts to LLM clients  C) Image generation  D) Model training
+A) How apps expose tools/resources/prompts to LLM clients  B) Tokenization  C) Image generation  D) Model training
 
 **25.** For image-generation prompts, you should write:
 A) Instructions to a programmer  B) A visual description: subject, style, composition, lighting  C) JSON only  D) A single keyword
@@ -112,36 +112,36 @@ A) Instructions to a programmer  B) A visual description: subject, style, compos
 A) Free  B) Cheaper than input tokens  C) More expensive than input tokens  D) Priced the same everywhere
 
 **27.** A 429 error means:
-A) Bad request  B) Rate limited — retry with backoff  C) Auth failure  D) Content filtered
+A) Bad request  B) Auth failure  C) Content filtered  D) Rate limited — retry with backoff
 
 **28.** To benefit from prompt caching, put:
-A) Dynamic content first  B) Static content first  C) Timestamps at the top  D) Random IDs in the system prompt
+A) Static content first  B) Dynamic content first  C) Timestamps at the top  D) Random IDs in the system prompt
 
 **29.** LLM-as-judge position bias is mitigated by:
 A) Using temperature 1  B) Swapping the order and checking consistency  C) Longer answers  D) Removing the rubric
 
 **30.** Every bug found in production should become:
-A) A new system prompt  B) A test case in the eval set  C) A fine-tuning run  D) Nothing
+A) A new system prompt  B) A fine-tuning run  C) A test case in the eval set  D) Nothing
 
 **31.** A healthy eval set includes:
-A) Only typical cases  B) Typical, edge and adversarial cases  C) Only adversarial cases  D) Only cases the prompt passes
+A) Only typical cases  B) Only adversarial cases  C) Only cases the prompt passes  D) Typical, edge and adversarial cases
 
 **32.** Indirect prompt injection comes from:
-A) The developer  B) Content the model processes, like web pages or emails  C) The tokenizer  D) Temperature
+A) Content the model processes, like web pages or emails  B) The developer  C) The tokenizer  D) Temperature
 
 **33.** Why can't injection be fully solved by prompts?
 A) Prompts are too short  B) Instructions and data share the same text channel  C) Models can't read XML  D) It's illegal
 
 **34.** Rendering model-generated external images can cause:
-A) Faster loading  B) Data exfiltration via URLs  C) Lower cost  D) Better accuracy
+A) Faster loading  B) Lower cost  C) Data exfiltration via URLs  D) Better accuracy
 
 **35.** Which is NOT a hallucination-reduction technique?
-A) Grounding in sources  B) Permission to say "I don't know"  C) Raising temperature to 1.5  D) Quote-then-answer
+A) Grounding in sources  B) Permission to say "I don't know"  C) Quote-then-answer  D) Raising temperature to 1.5
 
 <details>
 <summary>✅ Answers Part 3</summary>
 
-21-B · 22-B · 23-B · 24-B · 25-B · 26-C · 27-B · 28-B · 29-B · 30-B · 31-B · 32-B · 33-B · 34-B · 35-C
+21-B · 22-C · 23-D · 24-A · 25-B · 26-C · 27-D · 28-A · 29-B · 30-C · 31-D · 32-A · 33-B · 34-C · 35-D
 
 </details>
 
@@ -150,24 +150,24 @@ A) Grounding in sources  B) Permission to say "I don't know"  C) Raising tempera
 ## Part 4 — Pro (Modules 15–17)
 
 **36.** Why pin the model version together with the prompt version?
-A) Billing  B) Behavior depends on both  C) Legal requirement  D) Faster responses
+A) Behavior depends on both  B) Billing  C) Legal requirement  D) Faster responses
 
 **37.** Safe model migration order:
 A) Switch 100% immediately  B) Offline eval → shadow → canary → full rollout  C) Canary → offline eval  D) Fine-tune first
 
 **38.** For data analysis, the model should ideally:
-A) Compute numbers mentally  B) Write and run code, then report verified results  C) Guess trends  D) Avoid charts
+A) Compute numbers mentally  B) Guess trends  C) Write and run code, then report verified results  D) Avoid charts
 
 **39.** In high-stakes domains (legal/medical/financial), LLMs should:
-A) Make final decisions  B) Assist and draft; qualified humans decide  C) Never be used  D) Be used without review
+A) Make final decisions  B) Never be used  C) Be used without review  D) Assist and draft; qualified humans decide
 
 **40.** The strongest portfolio evidence is:
-A) A flashy demo  B) Measured before/after eval results with write-up  C) A list of tools used  D) Number of prompts written
+A) Measured before/after eval results with write-up  B) A flashy demo  C) A list of tools used  D) Number of prompts written
 
 <details>
 <summary>✅ Answers Part 4</summary>
 
-36-B · 37-B · 38-B · 39-B · 40-B
+36-A · 37-B · 38-C · 39-D · 40-A
 
 </details>
 
@@ -196,7 +196,7 @@ A) A flashy demo  B) Measured before/after eval results with write-up  C) A list
 | Edge cases / uncertainty handled | 2 |
 | Safety / verification considered | 2 |
 
-**P5 reference mitigations:** treat email bodies as untrusted data; drafts only — never auto-send (human approval); no access to unrelated tools; don't render external images/links in drafts; log and flag emails containing instruction-like text; redact sensitive data in logs.
+**P5 reference mitigations:** treat email bodies as untrusted data; drafts only, never auto-send (a human approves each one); no access to unrelated tools; don't render external images/links in drafts; log and flag emails containing instruction-like text; redact sensitive data in logs.
 
 Score ≥ 40/50 on Part 5 + ≥ 32/40 on MCQs = **🏆 Course Complete with Distinction**.
 

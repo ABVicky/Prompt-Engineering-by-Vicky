@@ -39,6 +39,12 @@ Vision models don't just recognize cats and dogs; they act as analytical assista
 | **Code from Wireframe** | *"Convert this hand-drawn whiteboard sketch into responsive HTML and Tailwind CSS classes."* |
 | **Physical Troubleshooting** | *"Based on the pattern of yellowing leaves on this money plant, identify the two most likely care mistakes."* |
 
+> 👔 **Non-Tech Lens · Your Phone Camera Is Now a Prompt:**
+> You don't need any code for this part. In the Claude, ChatGPT or Gemini app, tap the attachment button, add a photo or screenshot, and type your instruction underneath. Try it with a restaurant bill ("split this between four people, including tax"), a confusing electricity bill, or a screenshot of a spreadsheet you want explained. Before you upload, crop out anything private, like card numbers, addresses or other people's faces.
+
+> 💻 **Tech Lens · Images Are Just Another Content Block:**
+> In the API, an image is sent as a content block (base64 data or a URL) inside the same `messages` list as your text, and it costs tokens like text does, roughly in proportion to its pixel size. Resize large images before sending, put the image before the question in the content list, and validate any extracted fields with a schema, exactly as you would for text extraction in Module 06.
+
 ---
 
 ## 1. The Rules of High-Accuracy Vision Prompts
@@ -95,7 +101,7 @@ print(response.content[0].text)
 
 ## Part B — Image Generation
 
-While text models follow conversational instructions, text-to-image models (like Midjourney, DALL-E 3, Flux, and Stable Diffusion) respond to **rich visual descriptions**. 
+While text models follow conversational instructions, text-to-image models (like Midjourney, OpenAI's image models, Imagen, Flux and Stable Diffusion) respond to **rich visual descriptions**. 
 
 Telling an image generator *"Make it look nice"* does nothing. You must describe what the camera sees.
 
@@ -162,7 +168,7 @@ When using models like Whisper to transcribe audio, feed an initial **context vo
 ### 5. Text-to-Speech (TTS) Voice Prompting
 Writing for voice requires writing for the human ear:
 - Use short sentences with clear rhythm.
-- Avoid URLs, parenthetical acronyms, and emojis—they sound bizarre when read aloud.
+- Avoid URLs, parenthetical acronyms, and emojis. They sound strange when read aloud.
 - Use phonetic spelling for uncommon names: *"Vicky (pronounced VICK-ee)"*.
 
 ### 6. Video Generation (Prompting for Motion)
@@ -242,8 +248,8 @@ Modern industrial interior with exposed brick and indoor plants, captured on a 3
 ## ✅ Quick Quiz
 
 1. How do image generation prompts differ fundamentally from conversational LLM prompts?
-   - A) Image prompts must be written in Python.
-   - B) Image prompts describe visual scenes (subject, lens, lighting, medium) rather than conversational commands.
+   - A) Image prompts describe visual scenes (subject, lens, lighting, medium) rather than conversational commands.
+   - B) Image prompts must be written in Python.
    - C) Image prompts cannot exceed 5 words.
 2. What is the most effective way to prevent a vision model from hallucinating numbers when reading an invoice?
    - A) Upload a low-resolution thumbnail.
@@ -251,15 +257,15 @@ Modern industrial interior with exposed brick and indoor plants, captured on a 3
    - C) Ask the model if it feels confident.
 3. Why should you supply a context prompt when using speech-to-text models like Whisper?
    - A) To make the audio louder.
-   - B) To prime the model's vocabulary with correct spellings of technical jargon, company names, and regional proper nouns.
-   - C) To translate the audio to Latin.
+   - B) To translate the audio to Latin.
+   - C) To prime the model's vocabulary with correct spellings of technical jargon, company names, and regional proper nouns.
 
 <details>
 <summary>View Answers</summary>
 
-1. **B** — Diffusion models respond to descriptive physical parameters (camera, light, texture) rather than back-and-forth dialogue.
+1. **A** — Diffusion models respond to descriptive physical parameters (camera, light, texture) rather than back-and-forth dialogue.
 2. **B** — Forcing the model to quote visible text directly anchors its attention layers on verified pixels.
-3. **B** — Providing proper nouns in a context prompt resolves phonetic ambiguity during transcription.
+3. **C** — Providing proper nouns in a context prompt resolves phonetic ambiguity during transcription.
 
 </details>
 

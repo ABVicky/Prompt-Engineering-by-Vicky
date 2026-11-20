@@ -117,7 +117,7 @@ client = OpenAI()
 
 # The API guarantees that completion matches InvoiceData perfectly
 completion = client.beta.chat.completions.parse(
-    model="gpt-4o-mini",
+    model="YOUR_OPENAI_MODEL",  # any current OpenAI model that supports structured outputs
     messages=[
         {"role": "system", "content": "Extract invoice fields accurately."},
         {"role": "user", "content": f"Invoice text:\n{raw_invoice_text}"}
@@ -339,19 +339,19 @@ def clean_and_parse_json(raw_text: str) -> dict:
    - C) Because JSON requires strings before booleans.
 2. What does native structured output (schema-constrained decoding) guarantee?
    - A) That the extracted numbers are 100% factually accurate.
-   - B) That the output strictly adheres to the requested JSON schema syntax without parsing errors.
-   - C) That the model runs twice as fast.
+   - B) That the model runs twice as fast.
+   - C) That the output strictly adheres to the requested JSON schema syntax without parsing errors.
 3. If an input text does not contain a requested field, what should you instruct the model to do?
-   - A) Invent a believable value.
-   - B) Leave the JSON key out entirely.
-   - C) Return `null` explicitly and do not guess.
+   - A) Return `null` explicitly and do not guess.
+   - B) Invent a believable value.
+   - C) Leave the JSON key out entirely.
 
 <details>
 <summary>View Answers</summary>
 
 1. **B** — Writing evidence first acts as an in-schema chain of thought, improving the classification accuracy of subsequent fields.
-2. **B** — Schema-constrained decoding guarantees syntactic validity, but not factual correctness.
-3. **C** — Returning `null` explicitly prevents the model from hallucinating plausible filler data.
+2. **C** — Schema-constrained decoding guarantees syntactic validity, but not factual correctness.
+3. **A** — Returning `null` explicitly prevents the model from hallucinating plausible filler data.
 
 </details>
 

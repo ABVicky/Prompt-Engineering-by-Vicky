@@ -180,7 +180,7 @@ When you need an AI to know your company's data, which approach should you pick?
 | **Fine-Tuning (Model Training)** | When you need to teach a model a specific writing style, unique programming syntax, or narrow output format at scale. | **Terrible for factual recall.** Expensive to update, prone to hallucination, and cannot cite specific source pages. |
 
 > 🔑 **The Industry Rule of Thumb:** 
-> Start with prompt engineering. Add **RAG** when the model needs private, changing factual knowledge. Use **fine-tuning** only to change behavior, tone, or formatting—never to teach factual knowledge.
+> Start with prompt engineering. Add **RAG** when the model needs private, changing factual knowledge. Use **fine-tuning** only to change behavior, tone, or formatting. Never use it to teach facts.
 
 ---
 
@@ -281,19 +281,19 @@ List three potential causes in the RAG pipeline that caused this failure.
    - C) In the middle of your sentences.
 2. What are the four core steps of RAG offline indexing?
    - A) Prompt, Chat, Repeat, Save.
-   - B) Load, Chunk, Embed, Store in a vector database.
-   - C) Write, Format, Test, Publish.
+   - B) Write, Format, Test, Publish.
+   - C) Load, Chunk, Embed, Store in a vector database.
 3. Why is fine-tuning generally a poor choice for teaching an AI your company's daily product pricing?
-   - A) Because fine-tuning is too easy.
-   - B) Because fine-tuning models cannot reliably memorize exact changing numbers, cannot cite source pages, and is expensive to retrain daily.
+   - A) Because fine-tuning models cannot reliably memorize exact changing numbers, cannot cite source pages, and is expensive to retrain daily.
+   - B) Because fine-tuning is too easy.
    - C) Because fine-tuning only works for image models.
 
 <details>
 <summary>View Answers</summary>
 
 1. **B** — Placing long documents first and instructions last counters the "lost in the middle" attention drop.
-2. **B** — Offline indexing loads documents, splits them into chunks, embeds them into vectors, and stores them in a vector database.
-3. **B** — Fine-tuning adapts style and format, but is brittle for fast-changing factual knowledge. RAG is the industry standard for factual retrieval.
+2. **C** — Offline indexing loads documents, splits them into chunks, embeds them into vectors, and stores them in a vector database.
+3. **A** — Fine-tuning adapts style and format, but is brittle for fast-changing factual knowledge. RAG is the industry standard for factual retrieval.
 
 </details>
 
