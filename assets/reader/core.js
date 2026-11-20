@@ -83,10 +83,14 @@
       mobBtn.title = `Audience track: ${aud === "non-tech" ? "Non-Tech" : aud === "tech" ? "Tech" : "All"}`;
     }
     document.querySelectorAll(".aud-choice-btn").forEach((btn) => {
-      btn.classList.toggle("active", btn.dataset.aud === aud);
+      const isActive = btn.dataset.aud === aud;
+      btn.classList.toggle("active", isActive);
       if (btn.classList.contains("btn")) {
-        btn.classList.toggle("primary", btn.dataset.aud === aud);
-        btn.classList.toggle("ghost", btn.dataset.aud !== aud);
+        btn.classList.toggle("primary", isActive);
+        btn.classList.toggle("ghost", !isActive);
+        btn.textContent = isActive
+          ? (aud === "non-tech" ? "✓ Non-Tech Track Active" : "✓ Tech Track Active")
+          : (btn.dataset.aud === "non-tech" ? "Set Non-Tech Track" : "Set Tech Track");
       }
     });
     document.querySelectorAll(".track-card").forEach((card) => {
@@ -94,9 +98,9 @@
       card.classList.toggle("active", !!match);
     });
     if (showToast) {
-      if (aud === "non-tech") toast("👔 Non-Tech Track active · Focusing on practical business & no-code prompts");
-      else if (aud === "tech") toast("💻 Tech Track active · Focusing on code, schemas, APIs & architecture");
-      else toast("🌟 Both Tracks active · Showing full comprehensive content");
+      if (aud === "non-tech") toast("👔 Non-Tech Track active · Tech content hidden");
+      else if (aud === "tech") toast("💻 Tech Track active · Non-tech content hidden");
+      else toast("🌟 Both Tracks active · Showing all content");
     }
   };
   root.setAttribute("data-audience", curAudience());

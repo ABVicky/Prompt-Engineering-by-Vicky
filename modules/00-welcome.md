@@ -72,7 +72,7 @@ You can take this course through two different lenses. Switch between them anyti
 
 You learn prompting by doing, not by passively reading. Let's get your setup ready right now.
 
-### For Non-Tech Learners (Zero Code)
+### 👔 For Non-Tech Learners (Zero Code)
 1. **Choose one free chat app:**
    - [Claude](https://claude.ai) (Anthropic) — exceptional for thoughtful writing, clear explanations, and analyzing pasted documents.
    - [ChatGPT](https://chatgpt.com) (OpenAI) — great all-rounder with web search and data handling.
@@ -81,7 +81,7 @@ You learn prompting by doing, not by passively reading. Let's get your setup rea
    - Create a single document in Google Docs, Apple Notes, or Notion called `My Prompt Notebook`.
    - Every time you find a prompt that works well in this course, paste it there. By the end, you will have your own personal productivity toolkit.
 
-### For Tech Learners (Code & APIs)
+### 💻 For Tech Learners (Code & APIs)
 If you plan to complete the coding exercises, set up a Python environment:
 
 ```bash

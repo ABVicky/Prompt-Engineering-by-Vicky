@@ -159,6 +159,24 @@
       h.insertAdjacentHTML("afterbegin", `<span class="sec-ico">${PE.icon(hit[2])}</span>`);
     });
 
+    // 3b. Track-specific sections (headings starting with 👔 or 💻)
+    box.querySelectorAll("h3").forEach((h) => {
+      const text = h.textContent.trim();
+      const isNonTech = text.startsWith("👔");
+      const isTech = text.startsWith("💻");
+      if (!isNonTech && !isTech) return;
+      const wrap = document.createElement("div");
+      wrap.className = `track-section ${isNonTech ? "track-non-tech" : "track-tech"}`;
+      h.before(wrap);
+      wrap.appendChild(h);
+      let next = wrap.nextElementSibling;
+      while (next && !["H1", "H2", "H3", "HR"].includes(next.tagName)) {
+        const n = next.nextElementSibling;
+        wrap.appendChild(next);
+        next = n;
+      }
+    });
+
     // 4. Callouts from blockquotes and emoji-led paragraphs.
     box.querySelectorAll("blockquote").forEach((bq) => {
       const hit = CALLOUTS.find(([re]) => re.test(bq.textContent.trim()));
@@ -241,6 +259,18 @@
       const li = cb.closest("li");
       if (li) li.classList.toggle("checked", cb.checked);
       cb.addEventListener("change", () => { PE.store.set(key, cb.checked); if (li) li.classList.toggle("checked", cb.checked); });
+    });
+    box.querySelectorAll("tr").forEach((tr) => {
+      const first = tr.firstElementChild;
+      if (!first) return;
+      const t = first.textContent.trim();
+      if (t.startsWith("👔")) tr.classList.add("track-non-tech");
+      else if (t.startsWith("💻")) tr.classList.add("track-tech");
+    });
+    box.querySelectorAll("li").forEach((li) => {
+      const t = li.textContent.trim();
+      if (t.startsWith("👔")) li.classList.add("track-non-tech");
+      else if (t.startsWith("💻")) li.classList.add("track-tech");
     });
   };
 
@@ -336,7 +366,10 @@
     if (hs.length < 2) { toc.innerHTML = metaHTML ? `<div class="toc-meta">${metaHTML}</div>` : ""; return; }
     const label = (h) => [...h.childNodes].filter((n) => !(n.nodeType === 1 && n.matches(".h-num, .h-anchor, .sec-ico"))).map((n) => n.textContent).join("").trim();
     toc.innerHTML = `<div class="toc-title">${PE.icon("list")}On this page</div><nav class="toc-list">` +
-      hs.map((h) => `<a class="${h.tagName.toLowerCase()}" data-anchor="${h.id}" href="#/${path}#${h.id}">${PE.esc(label(h))}</a>`).join("") +
+      hs.map((h) => {
+        const trackCls = h.closest(".track-tech") ? " track-tech" : (h.closest(".track-non-tech") ? " track-non-tech" : "");
+        return `<a class="${h.tagName.toLowerCase()}${trackCls}" data-anchor="${h.id}" href="#/${path}#${h.id}">${PE.esc(label(h))}</a>`;
+      }).join("") +
       `</nav>${metaHTML ? `<div class="toc-meta">${metaHTML}</div>` : ""}`;
     const links = new Map([...toc.querySelectorAll("a")].map((a) => [a.dataset.anchor, a]));
     tocObserver = new IntersectionObserver((entries) => {

@@ -73,9 +73,6 @@
   border-radius: 999px;
   border: 1px solid var(--color-primary);
 }
-:root[data-audience="non-tech"] .md .callout.tech {
-  opacity: .78;
-}
 
 :root[data-audience="tech"] .md .callout.tech {
   box-shadow: 0 0 0 2px var(--color-secondary), var(--shadow);
@@ -96,8 +93,20 @@
   border-radius: 999px;
   border: 1px solid var(--color-secondary);
 }
-:root[data-audience="tech"] .md .callout.non-tech {
-  opacity: .78;
+
+/* Hide opposite track elements completely when a specific audience track is active */
+:root[data-audience="non-tech"] .callout.tech,
+:root[data-audience="non-tech"] .track-tech,
+:root[data-audience="non-tech"] .tech-only,
+:root[data-audience="non-tech"] .toc-list a.track-tech {
+  display: none !important;
+}
+
+:root[data-audience="tech"] .callout.non-tech,
+:root[data-audience="tech"] .track-non-tech,
+:root[data-audience="tech"] .non-tech-only,
+:root[data-audience="tech"] .toc-list a.track-non-tech {
+  display: none !important;
 }
 
 /* ---------- Section cards: objectives, takeaways, exercises, quiz ---------- */
