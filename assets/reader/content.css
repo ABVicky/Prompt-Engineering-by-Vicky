@@ -216,14 +216,17 @@
 .md .profile-avatar {
   flex: none;
 }
-.md .profile-avatar img.platform-logo-img {
+.md img.platform-logo,
+.md img[src*="icon_logo"] {
+  display: inline-block;
   width: 96px;
   height: 96px;
-  border-radius: 22px;
   object-fit: contain;
-  background: var(--surface-2);
   padding: 8px;
-  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--color-secondary), 0 10px 24px -8px rgba(64, 126, 191, .4);
+  border-radius: 22px;
+  background: var(--surface-2);
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--surface), 0 10px 24px -8px rgba(64, 126, 191, .35);
 }
 .md .profile-badge-icon {
   width: 96px;

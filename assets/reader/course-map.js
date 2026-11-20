@@ -12,7 +12,6 @@ window.PE_MAP = {
   avatar: "https://avatars.githubusercontent.com/u/103195071?v=4",
   platformBuilder: "Manikarnika Technologies",
   platformLogo: "https://www.manikarnikatechnologies.in/_next/image?url=%2Ficon_logo.png&w=96&q=75",
-  platformLogoLocal: "assets/manikarnika-logo.png",
   platformSite: "https://www.manikarnikatechnologies.in/",
   platformSiteLabel: "manikarnikatechnologies.in",
   copyright: "Manikarnika Technologies",

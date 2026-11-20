@@ -146,7 +146,7 @@ We built this learning environment to be fast, distraction-free, and respectful 
 
 <div class="profile-card">
   <div class="profile-avatar">
-    <img class="platform-logo-img" src="https://www.manikarnikatechnologies.in/_next/image?url=%2Ficon_logo.png&w=96&q=75" alt="Manikarnika Technologies Logo" width="104" height="104">
+    <img class="platform-logo" src="https://www.manikarnikatechnologies.in/_next/image?url=%2Ficon_logo.png&w=96&q=75" alt="Manikarnika Technologies Logo" width="96" height="96">
   </div>
   <div class="profile-body">
     <h3>Manikarnika Technologies</h3>
