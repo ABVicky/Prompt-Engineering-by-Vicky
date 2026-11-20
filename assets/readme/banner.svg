@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="440" viewBox="0 0 1280 440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Helvetica, Arial, sans-serif">
+  <title>Prompt Engineering: Zero to Pro, a free course by Vicky</title>
+  <defs>
+    <clipPath id="frame"><rect width="1280" height="440" rx="28"/></clipPath>
+    <radialGradient id="gGold" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#F7AE2E" stop-opacity=".55"/><stop offset="1" stop-color="#F7AE2E" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gEmber" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FF6B3D" stop-opacity=".35"/><stop offset="1" stop-color="#FF6B3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gBlue" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#2F7FE0" stop-opacity=".55"/><stop offset="1" stop-color="#2F7FE0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gViolet" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7B5CFF" stop-opacity=".45"/><stop offset="1" stop-color="#7B5CFF" stop-opacity="0"/></radialGradient>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#24262D"/><stop offset=".55" stop-color="#16181D"/><stop offset="1" stop-color="#0E1014"/></linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#F7AE2E"/><stop offset=".35" stop-color="#FF6B3D"/><stop offset=".65" stop-color="#9B7BFF"/><stop offset="1" stop-color="#5AA2F5"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#fff" fill-opacity=".09"/></pattern>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <mask id="dotMask"><rect width="1280" height="440" fill="url(#fade)"/></mask>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="440" fill="url(#base)"/>
+    <!-- drifting aurora -->
+    <circle cx="1080" cy="40" r="360" fill="url(#gGold)">
+      <animateTransform attributeName="transform" type="translate" values="0 0; -120 60; 0 0" dur="18s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="900" cy="420" r="300" fill="url(#gEmber)">
+      <animateTransform attributeName="transform" type="translate" values="0 0; 80 -50; 0 0" dur="22s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="80" cy="460" r="380" fill="url(#gBlue)">
+      <animateTransform attributeName="transform" type="translate" values="0 0; 140 -40; 0 0" dur="24s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="560" cy="520" r="300" fill="url(#gViolet)">
+      <animateTransform attributeName="transform" type="translate" values="0 0; -90 -70; 0 0" dur="28s" repeatCount="indefinite"/>
+    </circle>
+    <rect width="1280" height="440" fill="url(#dots)" mask="url(#dotMask)"/>
+    <!-- light sweep -->
+    <rect x="-600" y="-100" width="420" height="640" fill="url(#shine)" transform="rotate(18)">
+      <animate attributeName="x" values="-700;1500;1500" keyTimes="0;.5;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- eyebrow -->
+    <g transform="translate(72 70)">
+      <rect width="392" height="38" rx="19" fill="#F7AE2E" fill-opacity=".12" stroke="#F7AE2E" stroke-opacity=".45"/>
+      <text x="20" y="25" fill="#F7AE2E" font-size="14" font-weight="700" letter-spacing="2.2">✦ FREE COURSE · BEGINNER TO PRO</text>
+    </g>
+
+    <!-- title -->
+    <text x="70" y="190" fill="#FBF9F4" font-size="76" font-weight="800" letter-spacing="-2.5">Prompt Engineering</text>
+    <text x="70" y="276" font-size="76" font-weight="800" letter-spacing="-2.5" fill="url(#title)">Zero to Pro</text>
+
+    <text x="72" y="328" fill="#E2E0DA" font-size="22">From your first prompt to tested, secure, production-ready AI systems.</text>
+
+    <!-- chips -->
+    <g font-size="15" font-weight="600" fill="#FBF9F4">
+      <g transform="translate(72 360)"><rect width="150" height="36" rx="18" fill="#ffffff" fill-opacity=".08" stroke="#ffffff" stroke-opacity=".14"/><text x="75" y="23" text-anchor="middle">18 modules</text></g>
+      <g transform="translate(234 360)"><rect width="150" height="36" rx="18" fill="#ffffff" fill-opacity=".08" stroke="#ffffff" stroke-opacity=".14"/><text x="75" y="23" text-anchor="middle">60 templates</text></g>
+      <g transform="translate(396 360)"><rect width="150" height="36" rx="18" fill="#ffffff" fill-opacity=".08" stroke="#ffffff" stroke-opacity=".14"/><text x="75" y="23" text-anchor="middle">RAG &amp; agents</text></g>
+      <g transform="translate(558 360)"><rect width="200" height="36" rx="18" fill="#ffffff" fill-opacity=".08" stroke="#ffffff" stroke-opacity=".14"/><text x="100" y="23" text-anchor="middle">Non-tech + tech tracks</text></g>
+    </g>
+
+    <!-- prompt card -->
+    <g transform="translate(880 92)">
+      <animateTransform attributeName="transform" type="translate" values="880 92; 880 80; 880 92" dur="7s" repeatCount="indefinite"/>
+      <rect width="320" height="200" rx="16" fill="#111318" stroke="#F7AE2E" stroke-opacity=".55"/>
+      <circle cx="22" cy="22" r="5" fill="#FF6B5F"/><circle cx="40" cy="22" r="5" fill="#F7AE2E"/><circle cx="58" cy="22" r="5" fill="#3DD68C"/>
+      <text x="300" y="26" fill="#8E909A" font-size="12" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">prompt.md</text>
+      <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15">
+        <text x="22" y="66"><tspan fill="#5AA2F5">&lt;role&gt;</tspan><tspan fill="#E4E2DD"> senior analyst</tspan></text>
+        <text x="22" y="92"><tspan fill="#F7AE2E">&lt;task&gt;</tspan><tspan fill="#E4E2DD"> summarize report</tspan></text>
+        <text x="22" y="118"><tspan fill="#9B7BFF">&lt;context&gt;</tspan><tspan fill="#E4E2DD"> for the board</tspan></text>
+        <text x="22" y="144"><tspan fill="#FF6B3D">&lt;format&gt;</tspan><tspan fill="#E4E2DD"> 5 bullets</tspan></text>
+        <rect x="22" y="160" width="9" height="18" fill="#F7AE2E">
+          <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;.5;.5;1" dur="1.1s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+    </g>
+    <!-- answer card -->
+    <g transform="translate(1000 300)">
+      <animateTransform attributeName="transform" type="translate" values="1000 300; 1000 310; 1000 300" dur="6s" repeatCount="indefinite"/>
+      <rect width="220" height="84" rx="14" fill="#13201A" stroke="#3DD68C" stroke-opacity=".6"/>
+      <circle cx="24" cy="26" r="9" fill="#3DD68C"/>
+      <path d="M19.5 26l3 3 5.5-6" stroke="#0E1014" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="42" y="31" fill="#FBF9F4" font-size="14" font-weight="700">Reliable answer</text>
+      <rect x="18" y="50" width="184" height="6" rx="3" fill="#ffffff" fill-opacity=".2"/>
+      <rect x="18" y="64" width="0" height="6" rx="3" fill="#3DD68C">
+        <animate attributeName="width" values="0;140;140" keyTimes="0;.6;1" dur="4s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    <!-- sparkles -->
+    <g fill="#F7AE2E">
+      <path d="M1236 70l4 10 10 4-10 4-4 10-4-10-10-4 10-4z"><animate attributeName="opacity" values=".2;1;.2" dur="3s" repeatCount="indefinite"/></path>
+      <path d="M846 330l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"><animate attributeName="opacity" values="1;.2;1" dur="4s" repeatCount="indefinite"/></path>
+    </g>
+  </g>
+  <rect x=".5" y=".5" width="1279" height="439" rx="27.5" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+</svg>
