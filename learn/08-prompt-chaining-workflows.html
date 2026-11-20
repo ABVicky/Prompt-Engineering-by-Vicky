@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Chaining &amp; Workflows: Prompt Engineering Course (Module 08)</title>
+<meta name="description" content="Sequential, routing, parallel and evaluator patterns. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/08-prompt-chaining-workflows.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Prompt Chaining &amp; Workflows: Prompt Engineering Course (Module 08)">
+<meta property="og:description" content="Sequential, routing, parallel and evaluator patterns. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/08-prompt-chaining-workflows.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Chaining &amp; Workflows: Prompt Engineering Course (Module 08)">
+<meta name="twitter:description" content="Sequential, routing, parallel and evaluator patterns. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 08: Prompt Chaining & Workflows", "description": "Sequential, routing, parallel and evaluator patterns.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/08-prompt-chaining-workflows.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/08-prompt-chaining-workflows.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 08</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/08-prompt-chaining-workflows.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-why-chaining-beats-one-giant-prompt">1. Why Chaining Beats One Giant Prompt</a></li><li><a href="#2-pattern-1--the-sequential-chain">2. Pattern 1 — The Sequential Chain</a></li><li><a href="#3-pattern-2--routing">3. Pattern 2 — Routing</a></li><li><a href="#4-pattern-3--parallelization-sectioning-and-voting">4. Pattern 3 — Parallelization (Sectioning and Voting)</a></li><li><a href="#5-pattern-4--orchestrator-workers">5. Pattern 4 — Orchestrator-Workers</a></li><li><a href="#6-pattern-5--evaluator-optimizer-the-feedback-loop">6. Pattern 5 — Evaluator-Optimizer (The Feedback Loop)</a></li><li><a href="#7-workflow-vs-agent-when-to-choose-which">7. Workflow vs. Agent: When to Choose Which</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>🔗 Module 08: Prompt Chaining &amp; Workflows</h1>
+<blockquote><p>🔵 Stage 2 · Intermediate · ⏱️ ~2.5 hours</p></blockquote>
+<p>Imagine cooking a festive Hyderabadi biryani for twenty guests.</p>
+<p>You would never throw raw rice, whole onions, unmarinated meat, yogurt, and saffron into a single giant pot all at once, turn on the heat, and hope for a masterpiece.</p>
+<p>Instead, you break the recipe into distinct, orderly stages:</p>
+<ol><li>You marinate the meat with yogurt and spices so the flavors sink in.</li><li>You slice and fry the onions until golden.</li><li>You parboil the fragrant rice with whole spices until it is exactly 70% cooked.</li><li>You layer the meat, fried onions, herbs, and rice in a heavy pot.</li><li>You seal the lid with dough and cook on low heat (<em>dum</em>).</li></ol>
+<p>At every step, you can taste, check, and adjust. If the rice is undercooked in step 3, you fix it before it ever touches the meat.</p>
+<p>Prompt chaining does the exact same thing for AI tasks. When you force a model to research, outline, write, fact-check, format, and translate an entire document in one single mega-prompt, it rushes through each step and produces mediocre results.</p>
+<p>When you chain prompts together, each step gets 100% of the model's focus, and you get complete control over the quality of the final output.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Break complex multi-stage tasks into modular <strong>prompt chains</strong>.</li><li>Master the five core workflow patterns: <strong>Sequential, Routing, Parallelization, Orchestrator-Workers, and Evaluator-Optimizer</strong>.</li><li>Insert automated validation <strong>gates</strong> between steps to catch mistakes early.</li><li>Know exactly when a deterministic workflow is better than an autonomous agent.</li><li>Run multi-step chains interactively in free chat apps or automated with code.</li></ul>
+<hr>
+<h2 id="1-why-chaining-beats-one-giant-prompt">1. Why Chaining Beats One Giant Prompt</h2>
+<div class="table-wrap"><table><thead><tr><th>What happens in a "Do-Everything" Prompt</th><th>What happens in a Prompt Chain</th></tr></thead><tbody><tr><td>The model tries to juggle 12 instructions at once and forgets half of them.</td><td>Each prompt has one clear, focused objective.</td></tr><tr><td>If the output is bad, you have to throw the whole thing out and restart.</td><td>You can see exactly which step failed and tweak only that prompt.</td></tr><tr><td>You must use your most expensive, powerful model for the whole task.</td><td>You can use fast, inexpensive models for easy steps and reserve frontier models for complex analysis.</td></tr><tr><td>You cannot inspect or edit intermediate data.</td><td>You can add code checks or human approval gates between steps.</td></tr></tbody></table></div>
+<blockquote><p>👔 <strong>Non-Tech Lens · The 3-Step Interactive Chat Chain:</strong> In ChatGPT or Claude, never paste a 10-page PDF and say: <em>"Analyze this and write a complete executive proposal with slides."</em> Instead, work in three conversational turns:</p>
+<ol><li><strong>Step 1 (Extract):</strong> <em>"Read this document and list the 5 biggest operational bottlenecks mentioned."</em></li><li><strong>Step 2 (Develop):</strong> <em>"For each bottleneck, outline two practical solutions, estimating the required budget and timeline."</em></li><li><strong>Step 3 (Format):</strong> <em>"Turn those solutions into an executive presentation outline with slide titles and bullet points."</em></li></ol>
+<p>This interactive approach keeps you in the driver's seat and produces vastly superior work.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Deterministic DAGs vs Fragile Prompts:</strong> In production backends, represent multi-step workflows as Directed Acyclic Graphs (DAGs). Combine parallel branches using <code>asyncio.gather()</code>, route intents using lightweight classifier models (like Claude Haiku or another small, fast model), and gate state transitions with deterministic Pydantic schema validation. A deterministic pipeline delivers predictable latency, isolated error boundaries, and zero risk of infinite runaway loops.</p></blockquote>
+<hr>
+<h2 id="2-pattern-1--the-sequential-chain">2. Pattern 1 — The Sequential Chain</h2>
+<p>The sequential chain is the simplest and most common workflow: the output of Step 1 becomes the direct input for Step 2.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/08-prompt-chaining-workflows.md">View it in the interactive reader</a>.</p>
+<pre><code># Sequential chain in Python
+raw_transcript = load_transcript(&quot;quarterly_sync.txt&quot;)
+
+# Step 1: Extract decisions
+decisions = call_llm(
+    f&quot;Extract all decisions, action items, and owners from this meeting transcript:\n&lt;transcript&gt;{raw_transcript}&lt;/transcript&gt;&quot;
+)
+
+# Step 2: Draft email
+draft = call_llm(
+    f&quot;Using these decisions and action items, write a 150-word follow-up email to the team:\n&lt;decisions&gt;{decisions}&lt;/decisions&gt;&quot;
+)
+
+# Step 3: Polish
+final_email = call_llm(
+    f&quot;Edit this email to be encouraging, direct, and under 120 words:\n&lt;draft&gt;{draft}&lt;/draft&gt;&quot;
+)</code></pre>
+<h3 id="adding-a-quality-gate">Adding a Quality Gate</h3>
+<p>A <strong>gate</strong> is a programmatic check placed between steps. If the output fails the check, the pipeline halts or retries automatically before wasting tokens on subsequent steps:</p>
+<pre><code>def validate_action_items(extracted_text: str) -&gt; bool:
+    # Verify that the model actually found owners and action items
+    return &quot;Owner:&quot; in extracted_text and len(extracted_text.splitlines()) &gt;= 3
+
+if not validate_action_items(decisions):
+    # Retry step 1 with a stricter prompt before drafting the email
+    decisions = call_llm(stricter_extraction_prompt)</code></pre>
+<hr>
+<h2 id="3-pattern-2--routing">3. Pattern 2 — Routing</h2>
+<p>Instead of sending every request to the exact same prompt, a <strong>router</strong> classifies the user's intent and sends it down the most appropriate specialized path.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/08-prompt-chaining-workflows.md">View it in the interactive reader</a>.</p>
+<h3 id="why-routing-saves-money-and-improves-accuracy">Why Routing Saves Money and Improves Accuracy</h3>
+<ul><li>A billing question doesn't need to load your entire engineering documentation.</li><li>You can route simple questions to a tiny, inexpensive model (costing fractions of a cent) and save your large flagship model for complex troubleshooting.</li></ul>
+<hr>
+<h2 id="4-pattern-3--parallelization-sectioning-and-voting">4. Pattern 3 — Parallelization (Sectioning and Voting)</h2>
+<p>When subtasks are independent of one another, running them simultaneously saves time and reduces latency.</p>
+<h3 id="sub-pattern-a-sectioning">Sub-Pattern A: Sectioning</h3>
+<p>Split an input into three independent analytical tasks, run them at the exact same moment, and merge the results:</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/08-prompt-chaining-workflows.md">View it in the interactive reader</a>.</p>
+<pre><code>import asyncio
+
+async def run_review(diff: str):
+    # Run all three specialized reviews in parallel
+    security_task = call_llm_async(f&quot;Audit this diff for security flaws:\n{diff}&quot;)
+    perf_task     = call_llm_async(f&quot;Check this diff for performance bottlenecks:\n{diff}&quot;)
+    style_task    = call_llm_async(f&quot;Review this diff for PEP 8 naming and type hints:\n{diff}&quot;)
+    
+    sec_report, perf_report, style_report = await asyncio.gather(
+        security_task, perf_task, style_task
+    )
+    
+    # Merge step
+    final_review = call_llm(
+        f&quot;Merge these three reviews into a prioritized report grouped by severity:\n&quot;
+        f&quot;&lt;sec&gt;{sec_report}&lt;/sec&gt;\n&lt;perf&gt;{perf_report}&lt;/perf&gt;\n&lt;style&gt;{style_report}&lt;/style&gt;&quot;
+    )
+    return final_review</code></pre>
+<h3 id="sub-pattern-b-voting">Sub-Pattern B: Voting</h3>
+<p>Run the exact same prompt through multiple distinct instances at temperature <code>0.7</code> and take the majority consensus (Self-Consistency, covered in Module 05).</p>
+<hr>
+<h2 id="5-pattern-4--orchestrator-workers">5. Pattern 4 — Orchestrator-Workers</h2>
+<p>In a fixed sequential chain, you know all the steps in advance. But what if a task requires an unpredictable number of steps depending on the input?</p>
+<p>In the <strong>Orchestrator-Workers</strong> pattern, a central planner model breaks a big task into dynamic subtasks, dispatches them to worker models, and synthesizes the results.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/08-prompt-chaining-workflows.md">View it in the interactive reader</a>.</p>
+<p>This pattern excels at market research, multi-file code refactoring, and complex data reconciliation.</p>
+<hr>
+<h2 id="6-pattern-5--evaluator-optimizer-the-feedback-loop">6. Pattern 5 — Evaluator-Optimizer (The Feedback Loop)</h2>
+<p>In this pattern, one model acts as the <strong>creator</strong> and a second model acts as the <strong>strict critic</strong>. The loop continues until the output passes a defined rubric or hits a maximum number of attempts.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/08-prompt-chaining-workflows.md">View it in the interactive reader</a>.</p>
+<pre><code>def generate_polished_copy(topic: str, max_iterations: int = 3) -&gt; str:
+    draft = call_llm(f&quot;Write a 100-word marketing headline and teaser for: {topic}&quot;)
+    
+    rubric = (
+        &quot;Rubric: (1) Under 100 words, (2) No empty hype words like &#x27;revolutionary&#x27;, &quot;
+        &quot;(3) Must state the price in ₹, (4) Must include an explicit call-to-action.&quot;
+    )
+    
+    for attempt in range(max_iterations):
+        critique = call_llm(
+            f&quot;Review this draft against the rubric. Output JSON with fields &#x27;score&#x27; (1-10) and &#x27;fixes_needed&#x27; (list of strings).\n&quot;
+            f&quot;&lt;rubric&gt;{rubric}&lt;/rubric&gt;\n&lt;draft&gt;{draft}&lt;/draft&gt;&quot;
+        )
+        feedback = json.loads(critique)
+        if feedback[&quot;score&quot;] &gt;= 8:
+            return draft
+            
+        # Re-draft with targeted feedback
+        draft = call_llm(
+            f&quot;Revise this draft to fix these specific issues:\n{feedback[&#x27;fixes_needed&#x27;]}\n&quot;
+            f&quot;Original draft:\n{draft}&quot;
+        )
+    return draft</code></pre>
+<hr>
+<h2 id="7-workflow-vs-agent-when-to-choose-which">7. Workflow vs. Agent: When to Choose Which</h2>
+<p>Many teams rush to build complex autonomous agents when a simple prompt chain would work better.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/08-prompt-chaining-workflows.md">View it in the interactive reader</a>.</p>
+<blockquote><p>💡 <strong>The Golden Rule:</strong> Always start with a single prompt. If that fails, build a prompt chain. Only build an autonomous agent when the sequence of steps cannot be determined in advance.</p></blockquote>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>How to fix it</th></tr></thead><tbody><tr><td>Passing Everything Everywhere</td><td>Sending 20 pages of raw chat history into Step 4 when it only needs a 3-bullet summary.</td><td>Pass only the output of the immediately preceding step. Keep token payloads small.</td></tr><tr><td>The Blind Pipeline</td><td>Never checking intermediate data. Step 1 fails, and Steps 2 and 3 produce elaborate nonsense.</td><td>Insert programmatic gates or validation checks after critical steps.</td></tr><tr><td>Endless Evaluator Loops</td><td>An Evaluator-Optimizer loop that runs 40 times and drains your API budget.</td><td>Always enforce a strict <code>max_iterations = 3</code> cap in your code.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Open your favorite chat app and test this manual 2-step chain on an article or email:</p>
+<ol><li><strong>Turn 1 (Extractor):</strong><br>```text<br>Read this customer email and extract only the factual timeline of events as a numbered list:<br>"I booked flight 6E-204 on August 10th for travel on September 1st. On August 28th, I received an SMS saying the flight was rescheduled from 10 AM to 6 PM. I replied requesting a cancellation within 2 hours as per your policy, but your agent charged me a ₹3,000 cancellation fee anyway."<br>```</li><li><strong>Turn 2 (Generator):</strong><br>```text<br>Using ONLY the timeline above, draft a formal customer dispute letter to the airline citing passenger rights for schedule changes over 6 hours. Tone: Firm, polite, and factual.<br>```</li></ol>
+<p>Notice how clean the dispute letter is because the model wasn't distracted by emotional wording while extracting the timeline.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>Chaining divides complex tasks into focused, testable, and debuggable steps.</li><li>The five foundational patterns are <strong>Sequential, Routing, Parallelization, Orchestrator-Workers, and Evaluator-Optimizer</strong>.</li><li>Place validation <strong>gates</strong> between steps to catch hallucinations or schema errors before they spread down the pipeline.</li><li>Pass only the necessary information to each step; avoid forwarding bloated conversation history.</li><li>Prefer deterministic workflows over autonomous agents whenever the operational steps can be anticipated.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-81-design-a-meeting-minutes-pipeline">Exercise 8.1: Design a Meeting Minutes Pipeline</h3>
+<p>Design a 3-step prompt chain that converts an unedited 45-minute audio transcript into:</p>
+<ol><li>A structured list of action items with owners and deadlines.</li><li>A short executive summary for department heads.</li></ol>
+<p>Include a quality gate between Step 1 and Step 2.</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>Step 1 (Extraction Prompt):</strong></p>
+<pre><code>Extract all tasks and commitments from the transcript below.
+Output as JSON:
+[
+  {&quot;task&quot;: string, &quot;owner&quot;: string, &quot;due_date&quot;: string | null, &quot;context&quot;: string}
+]
+If an owner is not mentioned, set owner to &quot;UNASSIGNED&quot;.
+&lt;transcript&gt;{{raw_transcript}}&lt;/transcript&gt;</code></pre>
+<p><strong>Quality Gate (Python code):</strong></p>
+<pre><code># Check that JSON parsed cleanly and at least one item was captured
+items = json.loads(step1_output)
+assert isinstance(items, list) and len(items) &gt; 0</code></pre>
+<p><strong>Step 2 (Executive Summary Prompt):</strong></p>
+<pre><code>Write a 3-paragraph executive summary of the meeting for department heads based on the extracted tasks and the meeting transcript:
+Paragraph 1: Primary goal of the meeting.
+Paragraph 2: Major decisions agreed upon.
+Paragraph 3: Key blockers and immediate deadlines.
+&lt;tasks&gt;{{step1_output}}&lt;/tasks&gt;</code></pre>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>What is the primary advantage of breaking a complex prompt into a sequential chain?<br>• A) Each step has a single focused task, making the system easier to test, debug, and optimize for cost.<br>• B) It makes the prompt sound more academic.<br>• C) It guarantees zero token usage.</li><li>What is a "gate" in a prompt workflow?<br>• A) A password that unlocks the model.<br>• B) A verification check between steps that halts or retries execution if quality criteria are not met.<br>• C) A type of database index.</li><li>When should you choose an Evaluator-Optimizer pattern?<br>• A) For simple, one-line classification tasks.<br>• B) Whenever you want the fastest possible latency.<br>• C) For high-value generation (like code or marketing copy) where outputs can be scored against a clear rubric and iteratively improved.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>A</strong> — Chaining isolates failure modes, enables targeted debugging, and allows pairing smaller models with simpler subtasks.</li><li><strong>B</strong> — A gate inspects intermediate outputs and prevents errors from propagating down the workflow.</li><li><strong>C</strong> — Evaluator-optimizer workflows shine when quality criteria are explicit and iterative critiques lead to measurable improvements.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="07-system-prompts-and-conversation.html">Module 07</a> · ➡️ <a href="09-context-engineering-rag.html">Module 09 — Context Engineering &amp; RAG</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="07-system-prompts-and-conversation.html">← System Prompts &amp; Conversations</a><a class="btn ghost" href="09-context-engineering-rag.html">Context Engineering &amp; RAG →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

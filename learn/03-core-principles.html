@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Core Principles: Prompt Engineering Course (Module 03)</title>
+<meta name="description" content="The 12 principles behind every effective prompt. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/03-core-principles.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Core Principles: Prompt Engineering Course (Module 03)">
+<meta property="og:description" content="The 12 principles behind every effective prompt. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/03-core-principles.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Core Principles: Prompt Engineering Course (Module 03)">
+<meta name="twitter:description" content="The 12 principles behind every effective prompt. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 03: Core Principles", "description": "The 12 principles behind every effective prompt.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/03-core-principles.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/03-core-principles.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 03</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/03-core-principles.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#the-12-principles-at-a-glance">The 12 Principles at a Glance</a></li><li><a href="#1-be-clear-and-direct">1. Be Clear and Direct</a></li><li><a href="#2-be-specific-replace-fuzzy-words-with-numbers">2. Be Specific: Replace Fuzzy Words with Numbers</a></li><li><a href="#3-give-context-and-explain-the-why">3. Give Context and Explain the &quot;Why&quot;</a></li><li><a href="#4-say-what-to-do-positive-framing">4. Say What To Do (Positive Framing)</a></li><li><a href="#5-show-examples-the-preview-of-few-shot">5. Show Examples (The Preview of Few-Shot)</a></li><li><a href="#6-structure-the-prompt-with-delimiters">6. Structure the Prompt with Delimiters</a></li><li><a href="#7-specify-the-output-format">7. Specify the Output Format</a></li><li><a href="#8-give-the-model-room-to-think">8. Give the Model Room to Think</a></li><li><a href="#9-break-complex-tasks-down">9. Break Complex Tasks Down</a></li><li><a href="#10-allow-uncertainty-kill-hallucinations">10. Allow Uncertainty (Kill Hallucinations)</a></li><li><a href="#11-avoid-leading-the-model-avoid-flattery-amp-bias">11. Avoid Leading the Model (Avoid Flattery &amp;amp; Bias)</a></li><li><a href="#12-iterate-and-test">12. Iterate and Test</a></li><li><a href="#diagnosis-table-match-the-symptom-to-the-principle">🩺 Diagnosis Table: Match the Symptom to the Principle</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>📏 Module 03: Core Principles</h1>
+<blockquote><p>🟢 Stage 1 · Foundations · ⏱️ ~2 hours</p></blockquote>
+<p>Suppose a friend visits you from out of town and asks: <em>"Where should I eat lunch?"</em></p>
+<p>If you answer: <em>"Go to a good place nearby"</em>, they will probably wander around aimlessly and end up at a mediocre fast-food joint.</p>
+<p>To help them, you naturally ask yourself: <em>Do they want quick street food or a quiet cafe? Are they vegetarian? What is their budget?</em> Then you give them exact directions: <em>"Walk 200 meters past the metro station, look for the green awning of Sharma Sweets, and order the chole bhature."</em></p>
+<p>Prompt engineering works the exact same way. When you give the AI vague directions, it wanders into generic territory. When you give it clear, structured guidance with context and boundaries, it hits the target on the first try.</p>
+<p>In this module, you will learn the 12 core principles that govern every great prompt. Once you understand these 12 rules, you will never stare at a blank prompt box wondering what to type.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Apply the 12 core principles to any everyday or technical task.</li><li>Replace fuzzy, subjective words with clear, measurable instructions.</li><li>Frame instructions positively so the model focuses on what you want.</li><li>Diagnose why an output failed and know immediately which principle fixes it.</li></ul>
+<hr>
+<h2 id="the-12-principles-at-a-glance">The 12 Principles at a Glance</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>Principle</th><th>The One-Sentence Rule</th></tr></thead><tbody><tr><td>1</td><td><strong>Be clear and direct</strong></td><td>State the exact action you want; do not drop vague hints.</td></tr><tr><td>2</td><td><strong>Be specific</strong></td><td>Replace vague adjectives with numbers, lengths, and exact criteria.</td></tr><tr><td>3</td><td><strong>Explain the "why"</strong></td><td>Tell the model why a constraint exists so it makes smart judgment calls.</td></tr><tr><td>4</td><td><strong>Say what to do</strong></td><td>Focus on the positive action rather than a long list of prohibitions.</td></tr><tr><td>5</td><td><strong>Show examples</strong></td><td>Give a sample of what great output looks like.</td></tr><tr><td>6</td><td><strong>Structure the prompt</strong></td><td>Use sections, bullet points, and delimiters to organize your thoughts.</td></tr><tr><td>7</td><td><strong>Specify the format</strong></td><td>Dictate the shape, tone, length, and structure of the final answer.</td></tr><tr><td>8</td><td><strong>Give room to think</strong></td><td>Ask the model to reason through difficult problems before giving its final answer.</td></tr><tr><td>9</td><td><strong>Break big tasks down</strong></td><td>Split complicated workflows into sequential, manageable steps.</td></tr><tr><td>10</td><td><strong>Allow uncertainty</strong></td><td>Give the model explicit permission to say "I don't know" to prevent guessing.</td></tr><tr><td>11</td><td><strong>Avoid leading the model</strong></td><td>Ask neutral questions so the model doesn't just agree with your bias.</td></tr><tr><td>12</td><td><strong>Iterate and test</strong></td><td>Treat your first prompt as a draft; refine one variable at a time.</td></tr></tbody></table></div>
+<blockquote><p>👔 <strong>Non-Tech Lens · How Great Managers Delegate:</strong> Think of these principles as how an experienced manager briefs their team. They don't say <em>"Fix this presentation"</em>. They say: <em>"Review slides 4 to 8 before 3:00 PM today. Cut the technical jargon so our non-technical sales clients understand our pricing, and present the final summary as three bullet points."</em> Clarity creates quality.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Prompts as Interface Contracts:</strong> Treat prompt authoring like designing a software interface contract. Principles 1 through 4 define input preconditions; Principles 6 and 7 define your schema guarantees; Principle 10 defines error handling; and Principle 12 defines integration testing. Ambiguous prompts introduce flaky, non-deterministic bugs into production systems.</p></blockquote>
+<hr>
+<h2 id="1-be-clear-and-direct">1. Be Clear and Direct</h2>
+<p>Models take you literally. If you hint at what you want, the model will answer the literal question rather than doing the actual work.</p>
+<p>❌ <strong>Weak</strong></p>
+<pre><code>Can you maybe take a look at this email and see if it could be better?</code></pre>
+<p><em>(The AI will reply with vague suggestions like "You could try making it friendlier.")</em></p>
+<p>✅ <strong>Strong</strong></p>
+<pre><code>Rewrite the email below to be 30% shorter and more persuasive for a potential corporate sponsor. Keep all dates and figures exactly as they are.</code></pre>
+<p><em>(The AI immediately produces the rewritten email.)</em></p>
+<blockquote><p>💡 <strong>Use strong action verbs:</strong> Say <em>"Rewrite"</em>, <em>"Extract"</em>, <em>"Classify"</em>, <em>"Summarize"</em>, or <em>"Audit"</em>. Avoid passive phrasing like <em>"Could you possibly..."</em></p></blockquote>
+<hr>
+<h2 id="2-be-specific-replace-fuzzy-words-with-numbers">2. Be Specific: Replace Fuzzy Words with Numbers</h2>
+<p>Every time you catch yourself writing a fuzzy adjective, replace it with a concrete measurement.</p>
+<div class="table-wrap"><table><thead><tr><th>Vague word</th><th>Concrete replacement</th></tr></thead><tbody><tr><td><em>"Make it short"</em></td><td><em>"Keep the response under 120 words or 4 bullet points."</em></td></tr><tr><td><em>"Keep it simple"</em></td><td><em>"Explain this so an intelligent 12-year-old can follow it without technical terms."</em></td></tr><tr><td><em>"Give me some ideas"</em></td><td><em>"Provide exactly 5 ideas, each targeting a different customer segment."</em></td></tr><tr><td><em>"Professional tone"</em></td><td><em>"Formal business tone: no slang, no contractions, and no exclamation marks."</em></td></tr><tr><td><em>"Fast code"</em></td><td><em>"Python 3.11, $O(n)$ time complexity, using only the standard library."</em></td></tr></tbody></table></div>
+<hr>
+<h2 id="3-give-context-and-explain-the-why">3. Give Context and Explain the "Why"</h2>
+<p>When you tell an AI <em>why</em> a rule exists, it applies common sense to edge cases. When you only give an arbitrary rule, it follows it blindly or misses the spirit of the instruction.</p>
+<p>❌ <strong>Weak</strong></p>
+<pre><code>Never use bullet points in this summary.</code></pre>
+<p>✅ <strong>Strong</strong></p>
+<pre><code>This summary will be read aloud as a 60-second voiceover for a company video. Write in natural, flowing conversational sentences. Do not use bullet points, tables, web links, or parenthetical acronyms because they sound awkward when read aloud.</code></pre>
+<p>By explaining that the text will be spoken aloud, the model also avoids other spoken pitfalls (like strange punctuation or URLs) without you having to list twenty separate negative rules.</p>
+<hr>
+<h2 id="4-say-what-to-do-positive-framing">4. Say What To Do (Positive Framing)</h2>
+<p>Tell the model what path to take, rather than trying to wall off every path it shouldn't take.</p>
+<p>Think about telling a toddler: <em>"Don't spill the milk!"</em> Their brain immediately visualizes spilling the milk. Saying <em>"Hold the cup with two hands"</em> tells them the exact physical action to take.</p>
+<div class="table-wrap"><table><thead><tr><th>❌ Negative prohibition</th><th>✅ Positive action</th></tr></thead><tbody><tr><td><em>"Don't write a long introduction."</em></td><td><em>"Start immediately with the first action item."</em></td></tr><tr><td><em>"Don't use corporate buzzwords."</em></td><td><em>"Use plain, everyday conversational language."</em></td></tr><tr><td><em>"Don't make up facts."</em></td><td><em>"Answer using only the text inside <code>&lt;source&gt;</code>. If an answer is not there, write: Information not available."</em></td></tr></tbody></table></div>
+<hr>
+<h2 id="5-show-examples-the-preview-of-few-shot">5. Show Examples (The Preview of Few-Shot)</h2>
+<p>A single good example communicates tone, format, length, and nuance better than a full page of written rules.</p>
+<p>If you want customer feedback categorized in a specific way, provide one sample input and your ideal output before asking it to categorize ten new ones. (We will master this technique in Module 04.)</p>
+<hr>
+<h2 id="6-structure-the-prompt-with-delimiters">6. Structure the Prompt with Delimiters</h2>
+<p>When a prompt gets longer than a couple of sentences, organize it with clear headings and tags:</p>
+<pre><code>&lt;role&gt;
+You are an experienced customer support manager for a home appliance store in Delhi.
+&lt;/role&gt;
+
+&lt;task&gt;
+Draft a polite email response to the customer complaint below.
+&lt;/task&gt;
+
+&lt;rules&gt;
+1. Acknowledge their frustration with the delayed washing machine delivery.
+2. Offer free installation and a ₹500 store voucher as compensation.
+3. Keep the entire response under 150 words.
+&lt;/rules&gt;
+
+&lt;complaint&gt;
+I ordered a washing machine 6 days ago with promised 24-hour delivery. Your delivery team hasn&#x27;t called, and customer care hung up on me twice.
+&lt;/complaint&gt;</code></pre>
+<p>Organizing your prompt like this makes it easy for the model's attention mechanism to keep instructions and data separate.</p>
+<hr>
+<h2 id="7-specify-the-output-format">7. Specify the Output Format</h2>
+<p>Never leave the visual shape of the answer to chance. State whether you want:</p>
+<ul><li>A Markdown table with specific column names.</li><li>A bulleted list ordered from highest to lowest priority.</li><li>A single concise paragraph.</li><li>Raw JSON matching a specific template.</li></ul>
+<blockquote><p>💡 <strong>Omit the chit-chat:</strong> If you are pasting AI outputs into spreadsheets or reports, add this line: <em>"Provide only the final table. Do not include introductory remarks, commentary, or sign-offs."</em></p></blockquote>
+<hr>
+<h2 id="8-give-the-model-room-to-think">8. Give the Model Room to Think</h2>
+<p>When you ask someone a difficult math or logic problem and demand they answer in half a second, they often make a careless blunder. But if you tell them: <em>"Take a piece of scrap paper, write down your working, and then tell me the answer"</em>, their accuracy skyrockets.</p>
+<p>The exact same thing happens with AI. If you force the model to output the final answer immediately, it has to guess the first token without calculating the steps.</p>
+<pre><code>Problem: A store in Jaipur sold 45 shirts on Monday, 12 fewer on Tuesday, and twice Tuesday&#x27;s total on Wednesday. What were the total sales over all three days?
+
+Before giving the final number, write out the calculation step by step on separate lines. Then state: Total = [number].</code></pre>
+<hr>
+<h2 id="9-break-complex-tasks-down">9. Break Complex Tasks Down</h2>
+<p>If you give an AI an overwhelming task with 8 different stages (researching, outlining, drafting, checking facts, formatting, translating), it will rush through each part and produce mediocre work.</p>
+<p>Instead, break the task into clear steps:</p>
+<ol><li><em>"Step 1: Outline the 4 main arguments."</em></li><li><em>"Step 2: For each argument, list one supporting piece of evidence."</em></li><li><em>"Step 3: Write the final draft using the outline and evidence."</em></li></ol>
+<hr>
+<h2 id="10-allow-uncertainty-kill-hallucinations">10. Allow Uncertainty (Kill Hallucinations)</h2>
+<p>AI models are trained to be eager assistants. If you ask a question and the answer doesn't exist, the model feels immense statistical pressure to supply something that sounds plausible.</p>
+<p>Break this pressure by giving it permission to say "I don't know":</p>
+<pre><code>Based ONLY on the employee handbook attached below, answer this question:
+&quot;What is our policy on paternity leave for contract staff?&quot;
+
+If the handbook does not explicitly mention contract staff, state: &quot;The provided handbook does not cover paternity leave for contract staff.&quot; Do not guess or extrapolate.</code></pre>
+<hr>
+<h2 id="11-avoid-leading-the-model-avoid-flattery-amp-bias">11. Avoid Leading the Model (Avoid Flattery &amp; Bias)</h2>
+<p>Models have a known tendency called <strong>sycophancy</strong>: they tend to agree with whatever opinion you suggest in your prompt.</p>
+<p>❌ <strong>Leading prompt:</strong> <em>"Don't you think our brand should switch to a bright neon logo to appeal to teenagers?"</em> <em>(The AI will agree: "Yes, neon colors are vibrant and create immediate youth appeal...")</em></p>
+<p>✅ <strong>Neutral prompt:</strong> <em>"We are evaluating whether to change our logo to bright neon to reach teenagers. Present the three strongest arguments in favor of this change, and the three biggest risks or drawbacks."</em></p>
+<hr>
+<h2 id="12-iterate-and-test">12. Iterate and Test</h2>
+<p>No prompt engineer writes a perfect prompt on their first attempt every time.</p>
+<p>Treat your first prompt as an experiment. Test it on three different examples. Look at where the model made an odd choice, adjust one single parameter or instruction, and test again.</p>
+<p><img src="../assets/iteration-loop.svg" alt="Iteration loop" loading="lazy"></p>
+<hr>
+<h2 id="diagnosis-table-match-the-symptom-to-the-principle">🩺 Diagnosis Table: Match the Symptom to the Principle</h2>
+<p>When an AI response is disappointing, use this cheat sheet to fix it:</p>
+<div class="table-wrap"><table><thead><tr><th>What went wrong</th><th>Likely cause</th><th>The principle to apply</th></tr></thead><tbody><tr><td>The output is generic, boring corporate fluff.</td><td>Missing context and audience details.</td><td><strong>Principle 2 &amp; 3</strong> (Be specific; give the "why").</td></tr><tr><td>The response is way too long and rambles.</td><td>No length or format constraint.</td><td><strong>Principle 7</strong> (Specify output format and word limit).</td></tr><tr><td>The model ignored rule #4 out of 10.</td><td>Too many rules buried in a wall of text.</td><td><strong>Principle 6 &amp; 9</strong> (Structure with tags; break into steps).</td></tr><tr><td>The model made up a fake statistic or date.</td><td>No source provided, no permission to be unsure.</td><td><strong>Principle 10</strong> (Allow uncertainty / provide source).</td></tr><tr><td>The model gave you polite conversational fluff before the answer (<em>"Certainly! I would be delighted to..."</em>).</td><td>Didn't tell it to omit preamble.</td><td><strong>Principle 7</strong> (<em>"Output only the result. No intro."</em>).</td></tr><tr><td>The model agreed with your questionable idea.</td><td>Leading question.</td><td><strong>Principle 11</strong> (Ask neutrally for pros and cons).</td></tr></tbody></table></div>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What you see</th><th>How to tell you got it right</th></tr></thead><tbody><tr><td>The Prohibition Trap</td><td>A prompt with eight lines of <em>"Don't do X, don't do Y, don't do Z"</em>.</td><td>You rewrite it into two positive sentences describing exactly what good looks like.</td></tr><tr><td>The Unrealistic Expectation</td><td>Asking for a full 20-page market analysis in one single prompt.</td><td>You ask for a table of contents first, review it, then generate one section at a time.</td></tr><tr><td>The Silent Assumption</td><td>Assuming the model knows your company's abbreviations (e.g., "PO", "PRD", "L1").</td><td>You spell out acronyms the first time they appear in the prompt.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Open your chat app and test this before-and-after prompt on a real topic you care about:</p>
+<ol><li><strong>Test Prompt A (Negative framing):</strong><br><em>"Write an email to my team about our project deadline. Don't sound mean, don't be too casual, and don't make it too long."</em></li><li><strong>Test Prompt B (Positive framing with context):</strong><br><em>"Write a 75-word email to our engineering team reminding them of our Friday 5:00 PM code freeze. Tone: Calm, encouraging, and clear. State what needs to be submitted and who to contact if a blocker arises."</em></li></ol>
+<p>Compare the two outputs. Notice how Prompt B sounds like a seasoned manager, while Prompt A sounds anxious and stiff.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>Clarity, specificity, and context solve 80% of all prompting problems.</li><li>Always explain the <em>why</em> behind your instructions. Reasons allow models to make smart judgment calls.</li><li>Frame your instructions positively: tell the model what to do, not just what to avoid.</li><li>Give the model room to think through difficult calculations or reasoning before stating the final answer.</li><li>Give explicit permission to say "I don't know" to prevent made-up facts.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-31-turn-negatives-into-positives">Exercise 3.1: Turn Negatives into Positives</h3>
+<p>Rewrite this prompt using positive instructions: <em>"Don't write like an AI, don't use long words, and don't make it boring."</em></p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>A strong positive rewrite:</strong></p>
+<pre><code>Write in a lively, conversational voice using short, plain English words—as if explaining the idea to a smart friend over a cup of coffee. Keep sentences under 15 words and include one relatable real-world comparison.</code></pre>
+<p><em>Explanation:</em> Instead of guessing what "not boring" means, the model now has actionable instructions: short words, under 15 words per sentence, and a relatable analogy.</p>
+</details>
+<h3 id="exercise-32-diagnose-and-cure-a-broken-prompt">Exercise 3.2: Diagnose and Cure a Broken Prompt</h3>
+<p>A marketing manager at an edtech startup in Delhi writes this prompt: <em>"Write a tweet announcing our new data science course."</em></p>
+<p>They receive a generic tweet filled with six rocket emojis and empty hype (<em>"Level up your career today! 🚀🚀"</em>). Identify three missing principles and write a complete prompt.</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>Missing Principles:</strong></p>
+<ol><li><strong>Principle 2 (Be specific):</strong> No course details, pricing, duration, or key highlights provided.</li><li><strong>Principle 3 (Context &amp; Audience):</strong> Who is this for? College students or working professionals?</li><li><strong>Principle 7 (Format &amp; Constraints):</strong> No limit on emojis, no hashtags specified, no call to action.</li></ol>
+<p><strong>The Strong Rewrite:</strong></p>
+<pre><code>You are a social media copywriter for an edtech institute in Delhi.
+
+Write a single post for X (formerly Twitter) announcing our new 8-week weekend Data Science boot camp starting next month.
+
+Key facts:
+- Designed for working professionals (classes on Saturday and Sunday mornings).
+- Focus: Python, SQL, and practical machine learning projects.
+- Live instructor sessions + 1-on-1 resume reviews.
+- Early bird discount: ₹5,000 off before the 15th.
+
+Constraints:
+- Length: Under 240 characters.
+- Tone: Professional, practical, and motivating. No breathless hype.
+- Include one clear call to action: &quot;Link in bio to view syllabus&quot;.
+- Maximum 1 emoji and 2 relevant hashtags (#DataScience #CareerGrowth).</code></pre>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>Why are positive instructions generally more effective than negative instructions?<br>• A) Because AI models have feelings and dislike negativity.<br>• B) Because positive instructions clearly define the target behavior, whereas negative instructions leave infinite bad alternatives open.<br>• C) Because negative words cost twice as many tokens.</li><li>Where should the model's step-by-step reasoning be placed relative to the final answer on a complex problem?<br>• A) After the final answer as a footnote.<br>• B) It makes no difference.<br>• C) Before the final answer, so the reasoning informs the token prediction of the result.</li><li>If an AI model repeatedly agrees with your flawed assumptions during a brainstorming session, what principle did you violate?<br>• A) Principle 11 (Avoid leading the model / avoid sycophancy).<br>• B) Principle 7 (Specify format).<br>• C) Principle 1 (Be clear and direct).</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>B</strong> — Telling an AI what to do provides a specific, narrow target. Telling it what <em>not</em> to do leaves all other possibilities open.</li><li><strong>C</strong> — Because autoregressive models generate text from left to right, thinking through the steps <em>first</em> ensures that the final tokens are calculated based on sound intermediate logic.</li><li><strong>A</strong> — Asking leading questions invites the model's natural sycophancy. Ask neutrally and explicitly request opposing arguments.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="02-anatomy-of-a-prompt.html">Module 02</a> · ➡️ <a href="04-zero-few-shot-and-roles.html">Module 04 — Zero-Shot, Few-Shot &amp; Role Prompting</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="02-anatomy-of-a-prompt.html">← Anatomy of a Prompt</a><a class="btn ghost" href="04-zero-few-shot-and-roles.html">Zero-Shot, Few-Shot &amp; Roles →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capstone Projects: Prompt Engineering Course (Appendix E)</title>
+<meta name="description" content="Six portfolio projects with levels and success criteria. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-e-capstone-projects.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Capstone Projects: Prompt Engineering Course (Appendix E)">
+<meta property="og:description" content="Six portfolio projects with levels and success criteria. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-e-capstone-projects.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Capstone Projects: Prompt Engineering Course (Appendix E)">
+<meta name="twitter:description" content="Six portfolio projects with levels and success criteria. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Appendix E: Capstone Projects", "description": "Six portfolio projects with levels and success criteria.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-e-capstone-projects.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/appendix/E-capstone-projects.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Appendix E</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/appendix/E-capstone-projects.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#project-1--personal-prompt-library-amp-evaluator">🥉 Project 1 — Personal Prompt Library &amp;amp; Evaluator</a></li><li><a href="#project-2--document-qampa-assistant-rag">🥈 Project 2 — Document Q&amp;amp;A Assistant (RAG)</a></li><li><a href="#project-3--tool-using-agent">🥇 Project 3 — Tool-Using Agent</a></li><li><a href="#project-4--content-pipeline-with-quality-gates">🏅 Project 4 — Content Pipeline with Quality Gates</a></li><li><a href="#project-5--red-team-amp-harden-a-chatbot">🎖️ Project 5 — Red-Team &amp;amp; Harden a Chatbot</a></li><li><a href="#project-6--multimodal-creative-kit">🎨 Project 6 — Multimodal Creative Kit</a></li><li><a href="#write-up-template">📝 Write-Up Template</a></li></ul></details>
+<h1>🏆 Appendix E: Capstone Projects</h1>
+<blockquote><p>Pick at least <strong>one</strong> project (two or more for a strong portfolio). Each has levels so you can start simple and grow.</p></blockquote>
+<blockquote><p>👔 <strong>Non-Tech Track Capstones:</strong></p>
+<ul><li><strong>Project 1 (Basic/Intermediate):</strong> Team Prompt Library &amp; Qualitative Evaluation Suite</li><li><strong>Project 4:</strong> Multi-Format Content Repurposing Pipeline with Rubric Gates</li><li><strong>Project 6:</strong> Multimodal Creative Brand Kit &amp; Visual Style Guide</li></ul>
+<p><em>(Deliverables can be created entirely in ChatGPT, Claude Projects, and Notion/Google Docs without writing code.)</em></p></blockquote>
+<blockquote><p>💻 <strong>Tech Track Capstones:</strong></p>
+<ul><li><strong>Project 2:</strong> Production Document Q&amp;A Assistant (Hybrid RAG with Vector DB)</li><li><strong>Project 3:</strong> Tool-Using Agent with MCP &amp; Function Calling</li><li><strong>Project 5:</strong> Red-Teaming &amp; Security Hardening Framework</li></ul>
+<p><em>(Deliverables require Python/TypeScript code, API integrations, and automated test evaluation.)</em></p></blockquote>
+<p>Every capstone must include a <strong>write-up</strong> with: problem · approach · prompts (with versions) · evaluation (test set + metrics + before/after) · safety analysis · demo · lessons learned.</p>
+<hr>
+<h2 id="project-1--personal-prompt-library-amp-evaluator">🥉 Project 1 — Personal Prompt Library &amp; Evaluator</h2>
+<p><strong>Skills:</strong> Modules 02–06, 13</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Deliverable</th></tr></thead><tbody><tr><td>🟢 Basic</td><td>20 prompt templates for your field, organized by category, in Markdown</td></tr><tr><td>🔵 Intermediate</td><td>A Python script that runs any template over a CSV of inputs and saves outputs</td></tr><tr><td>🟣 Advanced</td><td>Add code-based and LLM-as-judge graders; produce a score report comparing two prompt versions</td></tr></tbody></table></div>
+<p><strong>Success criteria:</strong> at least 3 templates improved with a measured gain (e.g., judge score 3.4 → 4.3).</p>
+<hr>
+<h2 id="project-2--document-qampa-assistant-rag">🥈 Project 2 — Document Q&amp;A Assistant (RAG)</h2>
+<p><strong>Skills:</strong> Modules 07, 09, 12, 13, 14</p>
+<p>Build a chatbot that answers questions about a document set (college prospectus, company handbook, product manuals, government scheme documents…).</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Deliverable</th></tr></thead><tbody><tr><td>🟢 Basic</td><td>Long-context version: paste docs into a well-structured prompt with citations</td></tr><tr><td>🔵 Intermediate</td><td>RAG with chunking, embeddings, vector store, grounded prompt, citations</td></tr><tr><td>🟣 Advanced</td><td>Hybrid search + reranking + query rewriting + eval set of 50 questions (retrieval recall@k, faithfulness) + injection tests</td></tr></tbody></table></div>
+<p><strong>Architecture</strong></p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/appendix/E-capstone-projects.md">View it in the interactive reader</a>.</p>
+<p><strong>Success criteria:</strong> ≥ 90% faithfulness, ≥ 85% answer correctness on your test set, correct refusals on out-of-scope questions.</p>
+<hr>
+<h2 id="project-3--tool-using-agent">🥇 Project 3 — Tool-Using Agent</h2>
+<p><strong>Skills:</strong> Modules 05, 08, 10, 14, 15</p>
+<p>Build an agent with 3–5 tools for a real workflow. Ideas:</p>
+<ul><li>📈 <em>Market research agent</em>: web search + page fetch + calculator → cited brief</li><li>🧾 <em>Expense assistant</em>: reads receipt images (vision) → extracts JSON → categorizes → writes to a spreadsheet</li><li>🛠️ <em>DevOps helper</em>: reads logs, queries metrics, proposes (not executes) fixes</li><li>📅 <em>Study planner</em>: reads syllabus, creates calendar plan, sends reminders (with approval)</li></ul>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Deliverable</th></tr></thead><tbody><tr><td>🟢 Basic</td><td>Single tool + loop with step limit</td></tr><tr><td>🔵 Intermediate</td><td>3–5 tools, error handling, structured final output, logging</td></tr><tr><td>🟣 Advanced</td><td>Human approval for write actions, injection defenses, eval of 20 tasks (success rate, steps, cost)</td></tr></tbody></table></div>
+<hr>
+<h2 id="project-4--content-pipeline-with-quality-gates">🏅 Project 4 — Content Pipeline with Quality Gates</h2>
+<p><strong>Skills:</strong> Modules 03, 06, 08, 13, 16</p>
+<p>Turn one input (podcast transcript, research notes, webinar) into multiple assets: blog post, LinkedIn post, newsletter, 5 tweets, FAQ.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/appendix/E-capstone-projects.md">View it in the interactive reader</a>.</p>
+<p><strong>Success criteria:</strong> all outputs pass the judge rubric ≥ 4/5; zero invented facts (verified against the transcript).</p>
+<hr>
+<h2 id="project-5--red-team-amp-harden-a-chatbot">🎖️ Project 5 — Red-Team &amp; Harden a Chatbot</h2>
+<p><strong>Skills:</strong> Modules 07, 13, 14, 15</p>
+<ol><li>Build (or use your Project 2) chatbot.</li><li>Write 40 adversarial tests: direct/indirect injection, prompt leaking, off-topic, harmful requests, PII extraction.</li><li>Measure the attack success rate.</li><li>Apply defense-in-depth; re-measure.</li><li>Publish a security report (threat model, results table, mitigations, residual risk).</li></ol>
+<p><strong>Success criteria:</strong> attack success rate reduced by ≥ 75% with no more than 5% increase in false refusals on normal questions.</p>
+<hr>
+<h2 id="project-6--multimodal-creative-kit">🎨 Project 6 — Multimodal Creative Kit</h2>
+<p><strong>Skills:</strong> Modules 04, 11, 17</p>
+<p>Create a brand kit for a fictional business using AI: logo concepts, social images, product photos, a 15-second video storyboard, and a jingle description. Make all of it from prompts you design and improve yourself.</p>
+<p><strong>Deliverable:</strong> a prompt log showing iterations (one change at a time), final assets, and a style guide for prompts so others can produce consistent images.</p>
+<hr>
+<h2 id="write-up-template">📝 Write-Up Template</h2>
+<pre><code># {{Project name}}
+
+## Problem
+Who is it for? What pain does it solve?
+
+## Approach
+Architecture diagram + key design decisions.
+
+## Prompts
+| Version | Change | Why | Score |
+|---|---|---|---|
+| v1 | baseline | — | 71% |
+| v2 | added examples | format errors | 82% |
+| v3 | quote-then-answer | hallucinations | 91% |
+
+## Evaluation
+Test set description, metrics, results table, failure analysis.
+
+## Safety
+Threats, mitigations, residual risks.
+
+## Demo
+Link / screenshots / video.
+
+## Lessons learned
+What surprised you? What would you do differently?
+
+---
+Built after completing &quot;Prompt Engineering: Zero to Pro&quot; by Vicky (abvicky.in) · Platform built by Manikarnika Technologies (manikarnikatechnologies.in)</code></pre>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved.</p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="appendix-d-final-exam.html">← Final Exam</a><a class="btn ghost" href="appendix-f-troubleshooting.html">Troubleshooting →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

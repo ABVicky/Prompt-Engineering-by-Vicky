@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Large Language Models Work: Prompt Engineering Course (Module 01)</title>
+<meta name="description" content="Tokens, context windows, attention, temperature and limits. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/01-how-llms-work.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="How Large Language Models Work: Prompt Engineering Course (Module 01)">
+<meta property="og:description" content="Tokens, context windows, attention, temperature and limits. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/01-how-llms-work.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How Large Language Models Work: Prompt Engineering Course (Module 01)">
+<meta name="twitter:description" content="Tokens, context windows, attention, temperature and limits. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 01: How Large Language Models Work", "description": "Tokens, context windows, attention, temperature and limits.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/01-how-llms-work.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/01-how-llms-work.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 01</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/01-how-llms-work.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-what-is-a-large-language-model">1. What Is a Large Language Model?</a></li><li><a href="#2-tokens--the-real-building-blocks-of-ai-text">2. Tokens — The Real Building Blocks of AI Text</a></li><li><a href="#3-how-the-model-picks-the-next-word-temperature-amp-randomness">3. How the Model Picks the Next Word: Temperature &amp;amp; Randomness</a></li><li><a href="#4-the-context-window-the-models-working-memory">4. The Context Window: The Model&#x27;s Working Memory</a></li><li><a href="#5-what-models-do-well-vs-where-they-struggle">5. What Models Do Well vs. Where They Struggle</a></li><li><a href="#6-realistic-before-and-after-stopping-hallucinations">6. Realistic Before and After: Stopping Hallucinations</a></li><li><a href="#7-how-to-think-about-different-models">7. How to Think About Different Models</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>🧠 Module 01: How Large Language Models Work</h1>
+<blockquote><p>🟢 Stage 1 · Foundations · ⏱️ ~2 hours</p></blockquote>
+<p>Think about the last time you typed a message on your smartphone. You type <em>"I am on my..."</em> and your keyboard suggests <em>"way"</em>. It doesn't suggest <em>"giraffe"</em> or <em>"refrigerator"</em>, because millions of text messages have taught the software that <em>"way"</em> almost always comes next.</p>
+<p>A Large Language Model (often called an LLM) does the exact same thing. It is essentially your phone's autocomplete, but trained on a massive portion of the world's books, articles, websites, and code.</p>
+<p>When you type a prompt, the model is not sitting in a dark room pondering the meaning of life or looking up facts in a filing cabinet. It is asking one single mathematical question: <em>Given all the words this person just typed, what is the single most likely word to write next?</em></p>
+<p>Once you grasp this simple fact, prompting stops feeling like guesswork. Every strange quirk, every hallucination, and every brilliant response suddenly makes sense.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Explain what an LLM actually does when it reads your prompt.</li><li>Understand tokens and why the model reads text differently than humans do.</li><li>Explain temperature and why the exact same prompt can give two different answers.</li><li>Recognize what AI models do well and what causes them to fail.</li><li>Use explicit instructions to stop the model from guessing when it does not know the answer.</li></ul>
+<hr>
+<h2 id="1-what-is-a-large-language-model">1. What Is a Large Language Model?</h2>
+<p>An LLM is a computer program trained on billions of sentences to predict what text comes next.</p>
+<p>When you ask a model to write a poem, translate French into Hindi, or debug a piece of code, it does not have separate engines for poetry, translation, and programming. It uses the exact same pattern-matching engine for all of them.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/01-how-llms-work.md">View it in the interactive reader</a>.</p>
+<blockquote><p>👔 <strong>Non-Tech Lens · The Brilliant New Hire With Amnesia:</strong> Imagine hiring a brilliant assistant who has read millions of books, reports, and manuals. However, they have one quirk: every time you start a new conversation, their memory is completely wiped clean. If you give them a vague one-line note (<em>"Write a proposal"</em>), they will guess what you want based on generic averages. If you give them clear background, your audience, and an example of what good looks like, they will give you executive-level work.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Autoregressive Transformers:</strong> Modern LLMs are decoder-only Transformers. Given a sequence of tokens $x_1, \dots, x_t$, the model calculates logits across its entire vocabulary using causal self-attention. It predicts one token at a time in an autoregressive loop. Because token generation is memory-bandwidth bound, the system stores previous key-value states in a KV-cache to avoid recomputing past tokens.</p></blockquote>
+<p>Here is the whole trip in one picture, from the text you type to the word that comes back. Notice the loop at the bottom: each new word is added to the input and the process runs again, one word at a time.</p>
+<p><img src="../assets/llm-pipeline.svg" alt="LLM pipeline" loading="lazy"></p>
+<hr>
+<h2 id="2-tokens--the-real-building-blocks-of-ai-text">2. Tokens — The Real Building Blocks of AI Text</h2>
+<p>Models do not see letters or full words. They read <strong>tokens</strong>, which are small chunks of text. A token can be a single character, a whole word, or part of a word.</p>
+<p>Here is how common words split into tokens:</p>
+<div class="table-wrap"><table><thead><tr><th>Text phrase</th><th>How the model breaks it down</th><th>Token count</th></tr></thead><tbody><tr><td><code>Good morning</code></td><td><code>[Good][ morning]</code></td><td>2 tokens</td></tr><tr><td><code>Prompt engineering</code></td><td><code>[Prompt][ engineering]</code></td><td>2 tokens</td></tr><tr><td><code>Unbelievable</code></td><td><code>[Un][believ][able]</code></td><td>3 tokens</td></tr><tr><td><code>12345</code></td><td><code>[12][34][5]</code> (varies by model)</td><td>2–3 tokens</td></tr><tr><td><code>नमस्ते</code></td><td>Byte-level pieces</td><td>3–6 tokens</td></tr></tbody></table></div>
+<p><strong>Simple rules of thumb:</strong></p>
+<ul><li>1 token is roughly 4 characters in English.</li><li>100 tokens is roughly 75 English words.</li><li>A standard single-spaced page of text is roughly 500 to 700 tokens.</li></ul>
+<h3 id="why-tokens-matter-to-you">Why Tokens Matter to You</h3>
+<ol><li><strong>Counting letters is hard for AI:</strong> Have you ever asked an AI how many "r"s are in the word <em>strawberry</em>, only to watch it insist there are two? The model does not see individual letters; it sees the token <code>[straw]</code> and the token <code>[berry]</code>. It is like asking a human how many syllables are in a picture.</li><li><strong>Languages other than English cost more:</strong> Because tokenizers are trained mostly on English text, languages like Hindi, Arabic, Tamil, or Japanese often get chopped into smaller fragments. A paragraph in Hindi might take twice as many tokens as the same paragraph in English, which uses up context space faster.</li><li><strong>Usage and billing:</strong> Paid AI services and developer APIs charge by the number of tokens you send and receive.</li></ol>
+<hr>
+<h2 id="3-how-the-model-picks-the-next-word-temperature-amp-randomness">3. How the Model Picks the Next Word: Temperature &amp; Randomness</h2>
+<p>If an LLM just predicts the next most likely word, why does asking the same question twice often give you two different answers?</p>
+<p>The answer is a setting called <strong>Temperature</strong>.</p>
+<p>After calculating the odds for the next word, the model doesn't always pick the number one option. If it always picked the top choice, text would feel mechanical and repetitive. Instead, it samples from the top choices based on probabilities.</p>
+<p><img src="../assets/temperature.svg" alt="Temperature" loading="lazy"></p>
+<ul><li><strong>Low Temperature (0.0 to 0.2):</strong> The model sticks tightly to the most predictable, highest-probability words. The output is focused, logical, and consistent. Use this for data extraction, code, math, and factual summaries.</li><li><strong>High Temperature (0.7 to 1.0):</strong> The model takes more risks, picking less obvious words. The output becomes more varied, colorful, and unexpected. Use this for brainstorming, fiction, creative writing, and generating varied marketing angles.</li></ul>
+<blockquote><p>👔 <strong>Non-Tech Lens:</strong> Most chat apps hide the temperature dial behind the scenes. If you want conservative, precise answers in a regular chat window, simply tell the model: <em>"Be factual, direct, and conservative. Do not guess or add flair."</em> When you want creativity, say: <em>"Give me 5 unconventional, unexpected angles."</em></p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens:</strong> In API calls, never change both <code>temperature</code> and <code>top_p</code> simultaneously. Keep <code>top_p=1.0</code> and adjust <code>temperature</code>, or keep <code>temperature=1.0</code> and adjust <code>top_p</code> (nucleus sampling). For reliable structured JSON output, set <code>temperature=0</code>.</p></blockquote>
+<hr>
+<h2 id="4-the-context-window-the-models-working-memory">4. The Context Window: The Model's Working Memory</h2>
+<p>The <strong>context window</strong> is the maximum amount of text the model can consider at one single moment.</p>
+<p>Think of it like a physical desk. Your instructions, the background information, any documents you uploaded and the whole conversation so far all have to fit on this desk at the same time.</p>
+<pre><code>┌──────────────────────── Your Context Window (Desk Space) ────────────────────────┐
+│ System Rules  │  Pasted Document / Context  │  Chat History  │  Your New Prompt  │
+└──────────────────────────────────────────────────────────────────────────────────┘</code></pre>
+<p>Important realities about working memory:</p>
+<ul><li><strong>Stateless nature:</strong> The model does not remember your chat from yesterday. When you continue a conversation in a chat app, the software silently bundles the previous messages and sends them back to the model with your new question.</li><li><strong>The "Lost in the Middle" problem:</strong> When you paste a massive 50-page document into a chat, models pay the closest attention to the very beginning and the very end. Crucial facts buried on page 24 can sometimes get overlooked. Always put your core instructions at the end of long prompts.</li></ul>
+<hr>
+<h2 id="5-what-models-do-well-vs-where-they-struggle">5. What Models Do Well vs. Where They Struggle</h2>
+<p>Understanding what an AI cannot do is just as valuable as knowing what it can do.</p>
+<div class="table-wrap"><table><thead><tr><th>What AI excels at</th><th>What causes trouble</th><th>How to fix it with prompting</th></tr></thead><tbody><tr><td>Summarizing long text</td><td>Precise math and counting</td><td>Ask it to write Python code to calculate, or do calculations step by step.</td></tr><tr><td>Rewriting tone and style</td><td>Current events after its training cutoff</td><td>Paste the source material directly into the chat prompt.</td></tr><tr><td>Brainstorming options</td><td>Confident guessing (<strong>Hallucination</strong>)</td><td>Tell it: <em>"Only answer using the text provided. If the answer is not there, reply: I do not have enough information."</em></td></tr><tr><td>Explaining complex ideas</td><td>Agreeing with your bad assumptions</td><td>Explicitly ask: <em>"Critique my proposal and identify three hidden risks."</em></td></tr></tbody></table></div>
+<hr>
+<h2 id="6-realistic-before-and-after-stopping-hallucinations">6. Realistic Before and After: Stopping Hallucinations</h2>
+<p>Hallucination happens when an AI doesn't know a fact, but its training compels it to produce text that <em>sounds</em> convincing.</p>
+<p>Suppose you want to know the return policy for a local boutique in Pune called "Deccan Handlooms".</p>
+<p>❌ <strong>Weak</strong></p>
+<pre><code>What is the return policy for Deccan Handlooms in Pune?</code></pre>
+<p><em>Why it fails:</em> The model likely has no exact data on this specific local shop. But because you asked a direct factual question, it will invent a plausible-sounding policy (e.g., <em>"Deccan Handlooms accepts returns within 14 days with original tags..."</em>). You now have false information that sounds completely real.</p>
+<p>✅ <strong>Strong</strong></p>
+<pre><code>Here is the text from Deccan Handlooms&#x27; official website FAQ:
+&quot;&quot;&quot;
+All handloom sarees and fabrics are woven by artisan collectives. Because each piece is unique, we do not offer cash refunds. Exchanges are accepted within 7 days of purchase at our FC Road store for store credit only. Custom-stitched blouses cannot be returned.
+&quot;&quot;&quot;
+
+Based strictly on the text above, answer these questions:
+1. Can a customer get cash back for an unstitched saree?
+2. What is the deadline to exchange an item?
+3. Where must the exchange take place?
+
+If a question cannot be answered using only the provided text, write &quot;Not specified in the text&quot;. Do not use outside knowledge or make assumptions.</code></pre>
+<p><em>Why it works:</em> You gave the model the source material (grounding) and gave it explicit permission to decline if the answer is missing. The model now acts like an accurate reading assistant rather than an inventive storyteller.</p>
+<hr>
+<h2 id="7-how-to-think-about-different-models">7. How to Think About Different Models</h2>
+<p>You do not need to memorize every model name that appears in the news. New versions launch every few months. Instead, understand these three main types:</p>
+<ol><li><strong>Fast, Lightweight Models:</strong> Quick and inexpensive. Ideal for classification, spelling correction, simple summaries, and high-volume tasks.</li><li><strong>Flagship Frontier Models:</strong> Deep general knowledge and strong writing ability. Ideal for complex synthesis, nuanced writing, and multi-step business analysis.</li><li><strong>Reasoning / Thinking Models:</strong> These models spend extra seconds or minutes working through internal reasoning steps before displaying an answer. Ideal for tough math, tricky logic puzzles, and difficult programming architecture.</li></ol>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What happens</th><th>How to tell you got it right</th></tr></thead><tbody><tr><td>Treating the AI like Google Search</td><td>You ask for a recent news event or local store hours, and get an outdated or made-up answer.</td><td>You provide the text or use an AI tool with live web search enabled.</td></tr><tr><td>Asking it to count characters</td><td>You ask for a 50-character headline, and get 78 characters.</td><td>You ask for words or sentences instead (<em>"Write a headline under 10 words"</em>).</td></tr><tr><td>Leading the witness</td><td><em>"Don't you agree that our marketing strategy is great?"</em> The AI will flatter you.</td><td><em>"Review this strategy as an adversarial competitor. Point out the three weakest assumptions."</em></td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Try this simple experiment in any free chat app to see how token-based thinking works:</p>
+<ol><li><strong>Prompt 1:</strong> Type: <em>"How many letters 'r' are in the word strawberry?"</em> Check the answer.</li><li><strong>Prompt 2:</strong> Type: <em>"Spell the word 'strawberry' with spaces between each letter, like s - t - r... Then count each 'r' one by one."</em></li></ol>
+<p>Notice the difference. By forcing the model to break the word into individual letters, you help its attention mechanism inspect the characters one by one.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>An LLM is a predictive engine. It generates text by repeatedly guessing the most probable next token.</li><li>A token is roughly three-quarters of an English word. Models process tokens, not letters.</li><li>The context window is the model's temporary workspace. If you start a new chat, previous context disappears.</li><li>Hallucination happens when the model generates plausible-sounding text without grounding. Always provide source material for specific factual tasks.</li><li>Give the model permission to say "I don't know" to prevent it from inventing facts.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-11-spot-the-token-pitfall">Exercise 1.1: Spot the Token Pitfall</h3>
+<p>Which of these tasks is an LLM most likely to struggle with if you ask it directly in one sentence?</p>
+<ul><li>A) Summarizing a 500-word news article into three bullet points.</li><li>B) Writing a haiku about rainy days in Mumbai.</li><li>C) Reversing the letters in the phrase "prompt engineering" backwards.</li></ul>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>C</strong> is the hardest for an LLM. Because the model sees the tokens <code>[prompt]</code> and <code>[engineering]</code>, it does not have easy access to the individual letters in reverse order. To make it succeed, you would have to instruct it to spell out each letter first or write a small Python script to reverse the string.</p>
+</details>
+<h3 id="exercise-12-grounding-a-factual-request">Exercise 1.2: Grounding a Factual Request</h3>
+<p>Take this weak prompt: <em>"Tell me about the refund policy of our SaaS product."</em> Rewrite it so that the model cannot hallucinate, assuming you have three bullet points from your company's terms of service.</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>A strong rewrite:</strong></p>
+<pre><code>Here are our company&#x27;s refund terms:
+&quot;&quot;&quot;
+- Full refunds are available within 14 days of initial signup.
+- After 14 days, subscriptions can be canceled for the next billing cycle, but past payments are non-refundable.
+- Enterprise annual contracts require a 30-day written cancellation notice.
+&quot;&quot;&quot;
+
+Based ONLY on the terms above, write a polite 3-sentence reply to a customer who signed up 20 days ago and is asking for their money back. 
+State the policy clearly. If you cannot answer a detail from these bullet points, do not guess.</code></pre>
+<p><em>Explanation:</em> By enclosing the exact policy inside delimiters (<code>&quot;&quot;&quot;</code>) and specifying that it must rely only on the provided text, you eliminate the risk of the model promising something your company doesn't offer.</p>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>What is an LLM doing mathematically when it outputs text?<br>• A) Retrieving pre-written answers from a database.<br>• B) Translating thoughts into human speech.<br>• C) Predicting the most likely next token based on training and context.</li><li>What does setting temperature to 0 do?<br>• A) Makes the output more consistent and conservative by picking the highest-probability tokens.<br>• B) Turns off the model completely.<br>• C) Makes the model faster by skipping grammar checks.</li><li>If you open a brand new chat window and ask <em>"What was the first thing I asked you?"</em>, what will the model do?<br>• A) It will check its internal hard drive and tell you.<br>• B) It cannot tell you, because each new conversation starts with an empty context window.<br>• C) It will call your browser's history.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>C</strong> — The model predicts the next token based on probabilities learned from its training data and your prompt.</li><li><strong>A</strong> — Low temperature reduces randomness, keeping responses focused and reproducible.</li><li><strong>B</strong> — LLMs are stateless. Each new chat starts with a clean context window unless the application specifically injects past memory.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="00-welcome.html">Module 00</a> · ➡️ <a href="02-anatomy-of-a-prompt.html">Module 02 — Anatomy of a Prompt</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="00-welcome.html">← Welcome &amp; How to Use This Course</a><a class="btn ghost" href="02-anatomy-of-a-prompt.html">Anatomy of a Prompt →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

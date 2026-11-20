@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zero-Shot, Few-Shot &amp; Roles: Prompt Engineering Course (Module 04)</title>
+<meta name="description" content="Examples, personas, prefilling and output priming. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/04-zero-few-shot-and-roles.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Zero-Shot, Few-Shot &amp; Roles: Prompt Engineering Course (Module 04)">
+<meta property="og:description" content="Examples, personas, prefilling and output priming. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/04-zero-few-shot-and-roles.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Zero-Shot, Few-Shot &amp; Roles: Prompt Engineering Course (Module 04)">
+<meta name="twitter:description" content="Examples, personas, prefilling and output priming. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 04: Zero-Shot, Few-Shot & Roles", "description": "Examples, personas, prefilling and output priming.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/04-zero-few-shot-and-roles.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/04-zero-few-shot-and-roles.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 04</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/04-zero-few-shot-and-roles.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-zero-shot-prompting-just-give-the-instructions">1. Zero-Shot Prompting: Just Give the Instructions</a></li><li><a href="#2-few-shot-prompting-teach-by-showing">2. Few-Shot Prompting: Teach by Showing</a></li><li><a href="#3-the-rules-of-high-quality-examples">3. The Rules of High-Quality Examples</a></li><li><a href="#4-role-persona-prompting-done-right">4. Role (Persona) Prompting Done Right</a></li><li><a href="#5-output-priming-amp-prefilling">5. Output Priming &amp;amp; Prefilling</a></li><li><a href="#6-revisiting-your-baseline-compare-your-growth">6. Revisiting Your Baseline: Compare Your Growth</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>🎭 Module 04: Zero-Shot, Few-Shot &amp; Roles</h1>
+<blockquote><p>🟢 Stage 1 · Foundations · ⏱️ ~2 hours</p></blockquote>
+<p>Think about how you train someone to make coffee at a busy cafe.</p>
+<p>You could hand them a 10-page employee manual describing the exact foam density and temperature of a cappuccino. Or you could pull two shots of espresso, steam the milk, pour a neat rosetta on top, slide the cup across the counter, and say: <em>"Make the next five look just like this."</em></p>
+<p>Almost everyone learns faster from the second method.</p>
+<p>AI models are no different. They are pattern-matching engines. When you write paragraphs of instructions explaining what you want, the model has to interpret every word. But when you show it two or three clear examples of what good looks like, it grasps the format, tone, length, and style instantly.</p>
+<p>In this module, you will learn how to use examples (few-shot prompting) and personas (role prompting) to steer AI models with precision.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Choose between <strong>zero-shot</strong> (no examples) and <strong>few-shot</strong> (with examples) for any task.</li><li>Build clean, balanced examples that teach the model your exact format and style.</li><li>Craft grounded, realistic <strong>role personas</strong> that sharpen tone and vocabulary without cartoonish fluff.</li><li>Use <strong>output priming</strong> to skip conversational filler and jump straight into the answer.</li><li>Rewrite your Module 00 baseline travel prompt and see your progress firsthand.</li></ul>
+<hr>
+<h2 id="1-zero-shot-prompting-just-give-the-instructions">1. Zero-Shot Prompting: Just Give the Instructions</h2>
+<p><strong>Zero-shot prompting</strong> simply means giving the model an instruction without providing any examples of the answer.</p>
+<pre><code>Classify the sentiment of this customer review as Positive, Neutral, or Negative:
+&quot;The battery lasts all day, but the touchscreen freezes every time it rains.&quot;
+
+Sentiment:</code></pre>
+<p>Modern models handle straightforward zero-shot requests remarkably well.</p>
+<ul><li><strong>When to use zero-shot:</strong> For everyday summaries, straightforward translations, standard grammar checks, and common coding questions.</li><li><strong>When zero-shot struggles:</strong> When you have a custom format, strict company guidelines, subtle tone requirements, or tricky edge cases. That is when you switch to few-shot prompting.</li></ul>
+<hr>
+<h2 id="2-few-shot-prompting-teach-by-showing">2. Few-Shot Prompting: Teach by Showing</h2>
+<p><strong>Few-shot prompting</strong> means giving the model 2 to 5 examples of an input paired with the ideal output before asking it to solve your new problem.</p>
+<p>This was one of the biggest milestones in AI research (popularized by OpenAI's landmark 2020 paper <em>"Language Models are Few-Shot Learners"</em>). It is still one of the most reliable techniques in a prompt engineer's toolkit.</p>
+<p>Here is a practical example. Suppose you run a customer support team and want customer complaints turned into clean, standardized ticket titles:</p>
+<pre><code>Turn each customer complaint into a short, standardized support ticket title (max 8 words).
+
+Complaint: &quot;The mobile app crashes every single time I try to upload my KYC documents.&quot;
+Title: App crash during KYC document upload
+
+Complaint: &quot;I was billed twice for my quarterly subscription on May 1st.&quot;
+Title: Duplicate charge for quarterly subscription
+
+Complaint: &quot;Can you please add a dark mode? My eyes hurt working late at night.&quot;
+Title: Feature request: Dark mode option
+
+Complaint: &quot;I haven&#x27;t received my refund of ₹1,499 even though the courier picked up my return 5 days ago.&quot;
+Title:</code></pre>
+<p>Notice what happens: you didn't have to write rules like <em>"Don't include customer names"</em>, <em>"Capitalize only the first word"</em>, or <em>"Keep it under eight words"</em>. The model absorbs all of those patterns directly from the examples.</p>
+<blockquote><p>👔 <strong>Non-Tech Lens · Show, Don't Just Tell:</strong> If you struggle to explain your company's writing tone using adjectives (<em>"Be professional yet warm, authoritative but friendly"</em>), stop writing descriptions. Instead, copy-paste two emails or LinkedIn posts you have written in the past that you love. Tell the AI: <em>"Analyze the tone, sentence length, and vocabulary in these two examples, then write the new announcement in that exact same voice."</em></p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · In-Context Learning &amp; Assistant Prefilling:</strong> Few-shot examples guide the model's self-attention layers during inference without updating model weights. When working with chat APIs, format your examples as actual conversational turns (<code>user</code> then <code>assistant</code>). When you need immediate JSON output without introductory pleasantries, use <strong>Assistant Prefilling</strong> (for instance, starting the assistant turn with <code>{</code> or <code>[</code>) to force the generation to start directly with the desired data structure.</p></blockquote>
+<hr>
+<h2 id="3-the-rules-of-high-quality-examples">3. The Rules of High-Quality Examples</h2>
+<p>A bad example will mislead the model faster than a bad instruction. Follow these six rules:</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/04-zero-few-shot-and-roles.md">View it in the interactive reader</a>.</p>
+<ol><li><strong>Be 100% Correct:</strong> Models copy mistakes faithfully. If your sample output has a spelling mistake or mislabeled category, the model assumes you want errors.</li><li><strong>Keep Labels Balanced:</strong> If you provide four positive examples and only one negative example, the model develops an artificial bias toward the positive class. Keep counts roughly equal.</li><li><strong>Include the Tricky Edge Cases:</strong> Don't just give easy examples. If a customer writes <em>"I love paying full price for broken software!"</em>, give an example showing that sarcasm should be tagged as Negative.</li><li><strong>Use Consistent Formatting:</strong> Use the exact same delimiters, capitalization, and punctuation across all examples.</li><li><strong>Use XML Tags for Clean Separation:</strong><br>Wrap examples in <code>&lt;examples&gt;</code> tags so the model knows where your demonstration ends and the real task begins:</li></ol>
+<pre><code>&lt;examples&gt;
+  &lt;example&gt;
+    &lt;customer_query&gt;Where is my order #48291?&lt;/customer_query&gt;
+    &lt;intent&gt;order_tracking&lt;/intent&gt;
+  &lt;/example&gt;
+  &lt;example&gt;
+    &lt;customer_query&gt;I want to return the red kurti I received yesterday.&lt;/customer_query&gt;
+    &lt;intent&gt;return_request&lt;/intent&gt;
+  &lt;/example&gt;
+&lt;/examples&gt;
+
+&lt;customer_query&gt;Do you deliver to pincode 560038?&lt;/customer_query&gt;
+&lt;intent&gt;</code></pre>
+<hr>
+<h2 id="4-role-persona-prompting-done-right">4. Role (Persona) Prompting Done Right</h2>
+<p>Telling the model who to act as primes its internal vocabulary, priorities, and tone.</p>
+<p>However, many beginners use cartoonish roles that do nothing:</p>
+<ul><li>❌ <em>"You are the world's most brilliant, award-winning marketing genius."</em> (This adds zero useful information; the model doesn't become smarter.)</li><li>✅ <em>"You are a direct-response copywriter for B2B SaaS companies who specializes in email onboarding sequences."</em> (This tells the model the exact domain, style, and goal.)</li></ul>
+<h3 id="the-anatomy-of-an-effective-persona">The Anatomy of an Effective Persona</h3>
+<p>A strong role includes five specific ingredients:</p>
+<ol><li><strong>Domain:</strong> What field? (Accounting, logistics, high school physics).</li><li><strong>Seniority / Experience:</strong> Senior practitioner, patient tutor, cynical critic.</li><li><strong>Target Audience:</strong> Speaking to a beginner, a busy CEO, or a child.</li><li><strong>Behavioral Constraint:</strong> <em>"Ask guiding questions instead of giving direct answers"</em> or <em>"Be concise and avoid corporate jargon."</em></li><li><strong>Point of View:</strong> <em>"Prioritize security over convenience"</em> or <em>"Focus on cost reduction over speed."</em></li></ol>
+<h3 id="multi-perspective-role-prompting">Multi-Perspective Role Prompting</h3>
+<p>When making difficult business or strategic decisions, ask the model to evaluate the issue from multiple viewpoints:</p>
+<pre><code>Evaluate our plan to switch from a free mobile app with ads to a ₹299 monthly subscription.
+
+Analyze this move from three distinct perspectives (one short paragraph each):
+1. A price-sensitive student user who uses the app daily for study notes.
+2. A power user who wants an ad-free experience and advanced export features.
+3. Our CFO who is focused on predictable monthly recurring revenue.
+
+Conclude with the single biggest adoption risk all three perspectives share.</code></pre>
+<hr>
+<h2 id="5-output-priming-amp-prefilling">5. Output Priming &amp; Prefilling</h2>
+<p>When you chat with an AI, it often starts its reply with conversational pleasantries: <em>"Sure! I would be delighted to help you write a business email. Here is the draft..."</em></p>
+<p>If you are copying text into a document or using an API, this chit-chat gets in the way.</p>
+<p><strong>Output priming</strong> means putting words right at the end of your prompt that the model is forced to continue:</p>
+<pre><code>Write a concise 3-sentence summary of the news article below.
+
+Summary:</code></pre>
+<p>By ending with <code>&quot;Summary:&quot;</code>, the model immediately starts writing the summary rather than rambling about how happy it is to help.</p>
+<p>In developer APIs (such as Anthropic Claude or local models), this is called <strong>prefilling</strong>:</p>
+<pre><code># API Prefill Example
+messages = [
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Extract the company name and funding amount in JSON from this press release: ...&quot;},
+    {&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: &quot;{\n  \&quot;company\&quot;:&quot;}  # Prefill forces JSON output immediately
+]</code></pre>
+<hr>
+<h2 id="6-revisiting-your-baseline-compare-your-growth">6. Revisiting Your Baseline: Compare Your Growth</h2>
+<p>Remember Exercise 0.1 from Module 00? You wrote a prompt asking an AI to plan a 3-day trip.</p>
+<p>Look back at the response you got. It was probably a generic list of sights with no consideration for your budget, travel style, or pace.</p>
+<p>Now look at how you can rewrite that prompt using everything you've learned in Stage 1:</p>
+<p>✅ <strong>The Pro Makeover</strong></p>
+<pre><code>You are an experienced, budget-conscious travel guide who specializes in heritage walking tours in Rajasthan.
+
+Create a detailed 3-day itinerary for two college friends visiting Jaipur in November.
+
+Context &amp; Constraints:
+- Budget: Total ₹12,000 for both travelers (excluding intercity trains).
+- Interests: Architecture, photography, and local street food; no shopping for expensive handicrafts.
+- Pace: Slow and relaxed. No wake-ups before 9:00 AM.
+- Transport: Prefer walking, e-rickshaws, and metro over taxis.
+
+Format:
+Present the plan as a day-by-day guide. For each day, include:
+- Morning (from 9:30 AM), Afternoon, and Evening activities.
+- One specific local food spot with a recommended dish and estimated cost in ₹.
+- Total estimated daily spend.
+
+At the end, provide 3 practical tips to avoid crowds at the major forts.</code></pre>
+<p>Test both prompts in your chat tool. Notice the dramatic difference in quality. That is the power of prompt engineering.</p>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>How to fix it</th></tr></thead><tbody><tr><td>The Inflated Title</td><td><em>"You are an omniscient genius who knows everything."</em> The model still hallucinates.</td><td>Replace fluff with domain, audience, and constraints (<em>"You are a patent attorney in India reviewing a software copyright"</em>).</td></tr><tr><td>The Copy-Paste Example</td><td>Your examples use the words "Item A" and "Item B", and the model outputs "Item C".</td><td>Make your examples look like real, authentic data.</td></tr><tr><td>One-Sided Training</td><td>You give 5 examples of glowing 5-star reviews and ask it to classify a 1-star review.</td><td>Balance your examples with equal numbers of positive, negative, and neutral cases.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Open your chat app and test this few-shot prompt to convert messy meeting notes into crisp action items:</p>
+<pre><code>Convert unstructured meeting notes into crisp action items.
+
+&lt;example&gt;
+Notes: &quot;Priya said she will look at the Figma wireframes by Wednesday. Arjun needs to confirm AWS budget with finance before we launch.&quot;
+Action Items:
+- [ ] Priya: Review Figma wireframes (Due: Wednesday)
+- [ ] Arjun: Get AWS budget sign-off from finance (Due: Prior to launch)
+&lt;/example&gt;
+
+&lt;example&gt;
+Notes: &quot;Vikram mentioned the client wants the slide deck updated with Q3 numbers. He said he will email them the revised PDF by tomorrow evening.&quot;
+Action Items:
+- [ ] Vikram: Update slide deck with Q3 numbers and email PDF to client (Due: Tomorrow evening)
+&lt;/example&gt;
+
+Notes: &quot;Ananya agreed to draft the vendor contract today. Rohit needs to send the revised pricing spreadsheet to the marketing team by Thursday 2 PM.&quot;
+Action Items:</code></pre>
+<p>Observe how accurately the model formats the new notes without a single extra instruction.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li><strong>Zero-shot</strong> works well for common, everyday tasks; <strong>few-shot</strong> is the gold standard when you need strict formats, unique styles, or reliable classification.</li><li>Examples must be <strong>correct, diverse, balanced, and consistent</strong>. Errors in your examples get copied.</li><li>A strong <strong>role</strong> specifies domain, experience level, target audience, and constraints. Avoid hollow compliments like "world's best".</li><li>End prompts with an <strong>output cue</strong> or use <strong>prefilling</strong> to skip conversational fluff and force the desired format.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-41-build-a-few-shot-tone-transformer">Exercise 4.1: Build a Few-Shot Tone Transformer</h3>
+<p>Write a few-shot prompt that converts technical error messages into warm, helpful customer-facing notices. Include two high-quality examples.</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>A strong solution:</strong></p>
+<pre><code>&lt;instructions&gt;
+Rewrite developer error messages into plain, reassuring notices for non-technical users. 
+Include what happened in simple words and one clear next step.
+&lt;/instructions&gt;
+
+&lt;examples&gt;
+  &lt;example&gt;
+    &lt;dev_error&gt;504 Gateway Timeout: Upstream server unresponsive on port 443.&lt;/dev_error&gt;
+    &lt;user_notice&gt;Our servers are taking a little longer than usual to respond. Please refresh the page in a minute or two.&lt;/user_notice&gt;
+  &lt;/example&gt;
+  &lt;example&gt;
+    &lt;dev_error&gt;AUTH_009: JWT expired. Signature verification failed.&lt;/dev_error&gt;
+    &lt;user_notice&gt;Your session has timed out for your security. Please log in again to continue.&lt;/user_notice&gt;
+  &lt;/example&gt;
+&lt;/examples&gt;
+
+&lt;dev_error&gt;ERR_DISK_FULL: Write failed on /var/log/uploads. No space left on device.&lt;/dev_error&gt;
+&lt;user_notice&gt;</code></pre>
+<p><em>Explanation:</em> Two clean examples clearly demonstrate the target style: calm, non-technical, and action-oriented.</p>
+</details>
+<h3 id="exercise-42-spot-the-flaw-in-the-examples">Exercise 4.2: Spot the Flaw in the Examples</h3>
+<p>Look at this prompt. Why will the model perform poorly on negative customer tweets?</p>
+<pre><code>Classify each customer tweet as Positive or Negative.
+
+Tweet: &quot;I am in love with this new phone! Best purchase ever.&quot; -&gt; Positive
+Tweet: &quot;Fast delivery, neat packaging. Very impressed.&quot; -&gt; Positive
+Tweet: &quot;Great customer care support in Mumbai today.&quot; -&gt; Positive
+Tweet: &quot;Battery life exceeds expectations.&quot; -&gt; Positive
+
+Tweet: &quot;My package arrived damaged and nobody is answering the phone.&quot; -&gt;</code></pre>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>The Flaw: Label Imbalance.</strong> All four examples are Positive. The model's attention mechanism is heavily biased toward predicting "Positive" because that is the only label it has seen in the pattern. To fix this, provide two positive examples and two negative examples.</p>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>When should you choose few-shot prompting over zero-shot prompting?<br>• A) When you want to save money on API tokens.<br>• B) Only when writing computer code.<br>• C) When zero-shot fails to capture your exact format, style, or tricky edge cases.</li><li>What happens if you include a typo or factual mistake in one of your few-shot examples?<br>• A) The model treats the mistake as an intentional pattern and may replicate it in future answers.<br>• B) The model automatically corrects it for you.<br>• C) The prompt crashes the server.</li><li>Why is "You are a direct-response copywriter for fintech startups" better than "You are the smartest writer on earth"?<br>• A) Because the word "smartest" is filtered out by safety filters.<br>• B) Because the first role provides concrete domain context and stylistic expectations, while the second is empty hype.<br>• C) It is not better; both work the same.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>C</strong> — Few-shot is ideal when you need to teach subtle formatting, tone, or specific categorization rules that instructions alone fail to communicate.</li><li><strong>A</strong> — Models are relentless pattern copiers; errors in examples teach the model that errors are acceptable.</li><li><strong>B</strong> — Specific roles shape vocabulary, tone, and practical constraints. Flattering adjectives provide no useful guidance.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="03-core-principles.html">Module 03</a> · ➡️ <a href="05-reasoning-techniques.html">Module 05 — Reasoning Techniques</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="03-core-principles.html">← Core Principles</a><a class="btn ghost" href="05-reasoning-techniques.html">Reasoning Techniques →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

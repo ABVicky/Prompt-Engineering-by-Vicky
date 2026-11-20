@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Domain Playbooks: Prompt Engineering Course (Module 16)</title>
+<meta name="description" content="Code, writing, marketing, data, research, education and more. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/16-domain-playbooks.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Domain Playbooks: Prompt Engineering Course (Module 16)">
+<meta property="og:description" content="Code, writing, marketing, data, research, education and more. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/16-domain-playbooks.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Domain Playbooks: Prompt Engineering Course (Module 16)">
+<meta name="twitter:description" content="Code, writing, marketing, data, research, education and more. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 16: Domain Playbooks", "description": "Code, writing, marketing, data, research, education and more.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/16-domain-playbooks.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/16-domain-playbooks.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 16</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/16-domain-playbooks.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1--software-development-playbook">1. 💻 Software Development Playbook</a></li><li><a href="#2--writing-editing-amp-communications">2. ✍️ Writing, Editing &amp;amp; Communications</a></li><li><a href="#3--marketing-amp-sales-playbook">3. 📣 Marketing &amp;amp; Sales Playbook</a></li><li><a href="#4--data-analysis-amp-sql-playbook">4. 📈 Data Analysis &amp;amp; SQL Playbook</a></li><li><a href="#5--research-amp-accelerated-learning">5. 🔬 Research &amp;amp; Accelerated Learning</a></li><li><a href="#6--education-amp-teaching-playbook">6. 🎓 Education &amp;amp; Teaching Playbook</a></li><li><a href="#7--business-operations-amp-strategy">7. 💼 Business, Operations &amp;amp; Strategy</a></li><li><a href="#8--customer-support-playbook">8. 🎧 Customer Support Playbook</a></li><li><a href="#9--hr-amp-talent-acquisition">9. 👥 HR &amp;amp; Talent Acquisition</a></li><li><a href="#10--high-stakes-domains-legal-medical-financial">10. ⚖️ High-Stakes Domains: Legal, Medical, Financial</a></li><li><a href="#11--personal-productivity-playbook">11. 🗂️ Personal Productivity Playbook</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>🧭 Module 16: Domain Playbooks</h1>
+<blockquote><p>🌟 Stage 4 · Pro · ⏱️ ~4 hours</p></blockquote>
+<p>Think of general prompt principles like a sturdy multi-tool pocket knife. It can open a package, tighten a loose screw, or slice an apple on a hike.</p>
+<p>However, if you take that same pocket knife into a surgical theater or an aircraft maintenance hangar, it is completely inadequate. A surgeon needs an ultra-sharp scalpel; an aerospace engineer needs a calibrated digital torque wrench.</p>
+<p>Prompt engineering works the exact same way. While the foundational principles (clarity, context, structure, examples) remain universal, every industry has its own specialized workflows, jargon, edge cases, and safety risks.</p>
+<p>In this module, you will find ready-to-use playbooks for eleven professions, from software engineering and marketing to education, HR, and high-stakes fields like legal and healthcare administration.</p>
+<blockquote><p>👔 <strong>Non-Tech Lens · Start With Your Own Job:</strong> You don't need to read all eleven playbooks. Jump to the one closest to your work (writing, marketing, teaching, business, support, HR or personal productivity), copy one template, and use it on a real task this week. Every template here works in an ordinary chat app.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Templates Become Product Features:</strong> If you build tools for other teams, each playbook is a starting spec. Turn a template into a parameterized prompt (Module 15), add a small test set for it (Module 13), and you have a reliable feature instead of a one-off chat.</p></blockquote>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Apply field-tested prompting strategies across <strong>software development, marketing, data analysis, teaching, business strategy, and operations</strong>.</li><li>Adapt generic templates into domain-specific workflows in under two minutes.</li><li>Recognize domain-specific failure modes like "package hallucination" in code or unauthorized legal advice.</li><li>Build a personal, reusable prompt library for your specific day job.</li></ul>
+<hr>
+<h2 id="1--software-development-playbook">1. 💻 Software Development Playbook</h2>
+<h3 id="what-works">What Works</h3>
+<ul><li><strong>Supply full context:</strong> Language version, frameworks, existing code snippets, and complete stack traces.</li><li><strong>Set clear acceptance criteria:</strong> Unit tests that must pass, time complexity constraints, and existing public APIs that must not change.</li><li><strong>Ask for plans before code:</strong> On complex architecture changes, ask the model to outline its approach in bullet points before generating lines of code.</li><li><strong>Debugging:</strong> State the expected behavior, actual behavior, minimal reproduction steps, and what you have already tried.</li></ul>
+<h3 id="pitfalls-to-watch-for">Pitfalls to Watch For</h3>
+<ul><li><strong>Package Hallucination:</strong> Models occasionally invent non-existent npm or pip packages. Always verify that a recommended library actually exists.</li><li><strong>Security Vulnerabilities:</strong> Check generated code for SQL injection, unescaped user inputs, and missing authentication checks.</li></ul>
+<pre><code>Context: Python 3.12, FastAPI, SQLAlchemy 2.0, PostgreSQL. Follow PEP 8 and existing project conventions.
+
+Task: Add a paginated endpoint GET /api/v1/customers/{id}/invoices.
+
+Requirements:
+- Pagination parameters: limit (default 20, max 100), offset (default 0).
+- Return HTTP 404 if the customer ID does not exist.
+- Use the existing get_db session dependency.
+- Return response validated against our InvoiceSummary Pydantic model.
+- Include pytest test cases covering: standard success, empty results, and non-existent customer ID.
+
+&lt;existing_models&gt;
+{{code_snippet}}
+&lt;/existing_models&gt;
+
+First, outline your technical approach in 3 bullet points. Then provide the implementation code and tests.</code></pre>
+<hr>
+<h2 id="2--writing-editing-amp-communications">2. ✍️ Writing, Editing &amp; Communications</h2>
+<h3 id="what-works">What Works</h3>
+<ul><li>Provide <strong>voice samples</strong> so the model mirrors your natural sentence rhythm, vocabulary, and humor.</li><li>Break writing into stages: Outline → Rough Draft → Targeted Edit.</li><li>Tell the model what words to avoid (corporate clichés, exaggerated hype).</li></ul>
+<p>❌ <strong>Weak</strong></p>
+<pre><code>Write a blog post about artificial intelligence in marketing.</code></pre>
+<p>✅ <strong>Strong</strong></p>
+<pre><code>You are my writing collaborator. Here are two sample paragraphs I wrote last week so you can analyze my voice:
+&lt;my_voice&gt;
+Most tools promise to save you 10 hours a week, but they end up creating 15 hours of extra configuration busywork. I don&#x27;t want a complex dashboard; I just want my team to get their weekly reports out before 5:00 PM on Friday without pulling their hair out.
+&lt;/my_voice&gt;
+
+Write an 800-word article on &quot;How small marketing teams can use AI without getting overwhelmed&quot;.
+
+Requirements:
+- Structure: Start with an everyday workplace scenario, introduce 3 practical steps with H2 headings, provide a short checklist, and finish with a 1-sentence punchy takeaway.
+- Voice: Match my sample—conversational, grounded, slightly self-deprecating, short sentences.
+- Strict Rule: Do not use empty buzzwords, corporate jargon, or breathless superlatives.
+- Mark any factual claim that requires a real citation with [CHECK SOURCE].</code></pre>
+<hr>
+<h2 id="3--marketing-amp-sales-playbook">3. 📣 Marketing &amp; Sales Playbook</h2>
+<pre><code>You are a direct-response copywriter for a B2B SaaS startup in Bengaluru.
+
+Product: An automated GST invoice reconciliation tool that saves accounts teams 12 hours every month.
+Target Audience: Finance heads and Chartered Accountants at mid-sized Indian companies (₹10 Cr to ₹50 Cr revenue).
+
+Draft 4 distinct outreach email subject lines and a 75-word body for cold email outreach.
+Each variation must test a different psychological hook:
+1. Pain point (wasting weekends on manual reconciliation)
+2. Social proof (trusted by 120+ accounting teams)
+3. Time savings (get 12 hours back each month)
+4. Direct Curiosity
+
+Tone: Peer-to-peer, professional, zero corporate fluff. Include one clear call to action offering a 10-minute demo.</code></pre>
+<hr>
+<h2 id="4--data-analysis-amp-sql-playbook">4. 📈 Data Analysis &amp; SQL Playbook</h2>
+<p>Language models are exceptional at writing Python, pandas, and SQL code, but mediocre at doing mental math across thousands of rows. Always instruct the model to write code that you can execute:</p>
+<pre><code>You are a senior data analyst.
+
+Here is our PostgreSQL table schema:
+&lt;schema&gt;
+CREATE TABLE customer_orders (
+    order_id SERIAL PRIMARY KEY,
+    customer_id INT,
+    order_date DATE,
+    city VARCHAR(50),
+    order_value_inr NUMERIC(10,2),
+    delivery_status VARCHAR(20)
+);
+&lt;/schema&gt;
+
+Write a clean, optimized SQL query that calculates:
+1. Total monthly revenue for Mumbai, Delhi, and Bengaluru in 2025.
+2. The month-over-month growth rate for each city.
+
+Include helpful SQL comments explaining any window functions used, and describe 2 edge cases (like months with zero orders) that the query handles safely.</code></pre>
+<hr>
+<h2 id="5--research-amp-accelerated-learning">5. 🔬 Research &amp; Accelerated Learning</h2>
+<p>Use the <strong>Feynman Technique</strong> to learn complex subjects rapidly:</p>
+<pre><code>Act as a patient Socratic tutor. 
+I want to master how Vector Databases work under the hood.
+
+Here is how we will work together:
+1. Explain the single foundational concept using an everyday physical analogy (like an organized library or physical map).
+2. Ask me 2 conceptual questions to check my understanding.
+3. Wait for my response. Do not move forward until I answer your questions.
+4. If my answer has a gap, guide me to the correct realization with a follow-up hint rather than giving the answer away.</code></pre>
+<hr>
+<h2 id="6--education-amp-teaching-playbook">6. 🎓 Education &amp; Teaching Playbook</h2>
+<pre><code>You are an experienced Grade 9 Science teacher in India following the CBSE curriculum.
+
+Create a 40-minute interactive lesson plan on &quot;Newton&#x27;s Third Law of Motion (Action and Reaction)&quot;.
+
+Structure:
+1. The Hook (5 mins): A relatable demonstration using a simple balloon or skateboard.
+2. Conceptual Explanation (10 mins): Clear explanation using everyday Indian examples (like walking, rowing a boat on a river, or swimming).
+3. Group Activity (15 mins): Hands-on challenge students can do in pairs using common classroom items.
+4. Exit Ticket (10 mins): 3 short conceptual questions (1 easy, 1 medium, 1 tricky misconception) with answer keys for the teacher.</code></pre>
+<hr>
+<h2 id="7--business-operations-amp-strategy">7. 💼 Business, Operations &amp; Strategy</h2>
+<pre><code>Act as a seasoned management consultant.
+
+Review our proposal to expand our quick-commerce delivery service from Bengaluru into Tier-2 cities (Jaipur, Indore, and Lucknow).
+
+Analyze this move across 4 dimensions:
+1. Unit Economics: Order density vs delivery rider cost.
+2. Supply Chain: Sourcing local perishables vs centralized warehousing.
+3. Customer Behavior: Price sensitivity and COD (Cash on Delivery) rates.
+4. The Top 3 Operational Risks: For each risk, state one practical mitigation.
+
+End with a clear decision rubric: What 3 milestone metrics must our pilot store hit in the first 90 days before approving full city expansion?</code></pre>
+<hr>
+<h2 id="8--customer-support-playbook">8. 🎧 Customer Support Playbook</h2>
+<pre><code>You are a empathetic customer care lead for an Indian travel booking portal.
+
+Draft a response to this customer complaint:
+&lt;complaint&gt;
+&quot;My flight from Pune to Delhi was cancelled 3 hours before departure. Your app said my refund of ₹6,200 was processed, but my bank statement shows nothing after 4 days. I had to buy an emergency ticket for ₹14,000 on another airline. I want my refund and compensation immediately.&quot;
+&lt;/complaint&gt;
+
+&lt;policy&gt;
+- Airline cancellations trigger automatic refund initiation within 24 hours.
+- Bank processing times: UPI refunds reflect in 24-48 hours; credit card refunds take 5-7 working days.
+- Consequential damages (booking replacement flights on other airlines) are not covered by platform policy.
+&lt;/policy&gt;
+
+Requirements:
+- Empathize sincerely with the stressful disruption without making illegal legal admissions.
+- Clearly explain the bank settlement timeline for their credit card payment.
+- Provide their ARN (Acquirer Reference Number) tracking steps so they can trace the funds with their bank.
+- Keep the tone calm, respectful, and reassuring. Max 140 words.</code></pre>
+<hr>
+<h2 id="9--hr-amp-talent-acquisition">9. 👥 HR &amp; Talent Acquisition</h2>
+<pre><code>Write an inclusive, bias-free job description for a &quot;Senior Product Operations Manager&quot; based in our Bengaluru office.
+
+Guidelines:
+- Avoid gender-coded adjectives (replace aggressive words like &quot;ninja&quot;, &quot;rockstar&quot;, or &quot;ruthless&quot; with &quot;collaborative&quot;, &quot;structured&quot;, and &quot;analytical&quot;).
+- Divide requirements strictly into &quot;Must-Haves&quot; (max 5 measurable skills) and &quot;Nice-to-Haves&quot; (max 3 skills).
+- Do not list arbitrary degree requirements if practical work experience suffices.
+- Include a transparent compensation range (₹24L to ₹30L CTC) and highlight our hybrid schedule (2 days in-office, 3 days remote).</code></pre>
+<hr>
+<h2 id="10--high-stakes-domains-legal-medical-financial">10. ⚖️ High-Stakes Domains: Legal, Medical, Financial</h2>
+<p>In high-stakes domains, AI should <strong>assist, summarize, and organize</strong>, but must <strong>never replace qualified human judgment</strong>.</p>
+<div class="table-wrap"><table><thead><tr><th>Safe &amp; High-Value AI Tasks</th><th>Dangerous Tasks (Do NOT Do)</th></tr></thead><tbody><tr><td>Explaining legal clauses in plain language</td><td>Generating signed contracts without human lawyer review</td></tr><tr><td>Summarizing medical research studies</td><td>Diagnosing patient symptoms or prescribing dosages</td></tr><tr><td>Extracting financial ratios from annual reports</td><td>Autonomous stock trading or tax filings without human CPA verification</td></tr></tbody></table></div>
+<pre><code>Explain the clause below from a commercial office lease agreement in plain English.
+1. What exact obligations does this clause place on the tenant?
+2. What are the financial penalties if the lease is terminated early?
+3. Suggest 3 specific clarification questions I should ask our real estate lawyer before signing.
+
+Notice: Provide this analysis as educational information to prepare for my legal consultation, not as formal legal advice.
+
+&lt;clause&gt;
+{{lease_clause_text}}
+&lt;/clause&gt;</code></pre>
+<hr>
+<h2 id="11--personal-productivity-playbook">11. 🗂️ Personal Productivity Playbook</h2>
+<pre><code>You are an executive productivity coach.
+
+Here is my raw list of tasks and commitments for this week:
+&lt;tasks&gt;
+- Prepare quarterly board deck (due Thursday 2 PM)
+- Review 4 candidate resumes for operations role
+- Fix bug #481 in checkout flow
+- 1-on-1 meetings with 5 team members
+- Submit GST expense receipts to accounting
+- Dentist appointment (Tuesday 4 PM)
+&lt;/tasks&gt;
+
+Organize these tasks using the Eisenhower Matrix:
+1. Urgent &amp; Important (Do first)
+2. Important, Not Urgent (Schedule deep-work blocks)
+3. Urgent, Not Important (Delegate or automate)
+4. Neither (Eliminate or postpone)
+
+Propose a realistic Monday-to-Friday time-blocked schedule with 45-minute buffer blocks for unexpected emergencies.</code></pre>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>The Fix</th></tr></thead><tbody><tr><td>The Unverified Citation</td><td>Asking an AI for legal precedents or academic medical papers. It invents author names and dates.</td><td>Provide the source documents directly or verify all case citations in an official law database.</td></tr><tr><td>The Trust-Me Math Problem</td><td>Letting an LLM calculate complex compounding interest or financial ratios in its head.</td><td>Instruct the model to write a Python script or Excel formula to compute the numbers.</td></tr><tr><td>The Over-Promising Support Bot</td><td>A customer support bot promises a full cash refund that violates company policy.</td><td>Ground the bot strictly in policy documentation with explicit negative constraints.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Choose the playbook above that most closely matches your day job.</p>
+<p>Copy the prompt template, fill in your real-world details (replacing the placeholders), and run it in your favorite chat app. Compare the output against what you normally write from scratch.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>Domain prompting combines universal prompt principles with industry-specific vocabulary and constraints.</li><li>In software and data analysis, force models to <strong>write and run code</strong> rather than doing calculations internally.</li><li>In writing, provide <strong>2 to 3 paragraphs of your own writing</strong> as few-shot voice samples to eliminate robotic prose.</li><li>For high-stakes fields (legal, health, finance), use AI to <strong>draft, summarize, and spot questions</strong>, but keep qualified humans in control of final decisions.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-161-build-your-personal-workplace-prompt-template">Exercise 16.1: Build Your Personal Workplace Prompt Template</h3>
+<p>Select one repetitive writing or analytical task you perform at work every week (e.g. writing weekly status updates, triaging customer tickets, or analyzing vendor quotes).</p>
+<p>Build a reusable prompt template containing:</p>
+<ol><li>A clear role and task definition.</li><li>At least two dynamic <code>{{variables}}</code> for the parts that change each week.</li><li>Format, length, and tone boundaries.</li><li>A quality constraint stating what must be avoided.</li></ol>
+<details>
+<summary>View Sample Template for a Weekly Team Status Report</summary>
+<pre><code>You are an operations project manager at {{company_name}}.
+
+Draft our weekly executive project update email for leadership based on the bulleted team notes below.
+
+Context:
+- Project: {{project_name}}
+- Week ending: {{date}}
+
+&lt;team_notes&gt;
+{{raw_notes}}
+&lt;/team_notes&gt;
+
+Requirements:
+- Structure into 3 sections with bold headings:
+  1. 🎯 Highlights &amp; Milestones Completed This Week
+  2. ⚠️ Blockers &amp; Risks (include owner for each)
+  3. 📅 Next Week&#x27;s Priorities
+- Tone: Crisp, factual, and solutions-oriented. No filler sentences or corporate hype.
+- Length: Under 200 words.</code></pre>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>Why should you ask an AI model to write Python or SQL code when doing data analysis, rather than asking it to calculate sums directly?<br>• A) Because Python code uses fewer tokens than English.<br>• B) Because SQL is easier for humans to read than English.<br>• C) Because language models can hallucinate math calculations, but executing verified code guarantees arithmetic precision.</li><li>In high-stakes domains like medicine or law, what is the proper role of an AI model?<br>• A) An assistant that drafts summaries, highlights key issues, and prepares questions for qualified human experts.<br>• B) Autonomous decision-maker that replaces doctors and lawyers.<br>• C) An automated judge that signs off on legal filings.</li><li>How can you most effectively teach an AI model to write in your unique personal voice?<br>• A) Tell it to write like a genius.<br>• B) Paste 2 or 3 sample paragraphs of your own previous writing into the prompt as few-shot voice examples.<br>• C) Set temperature to 2.0.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>C</strong> — LLMs predict tokens probabilistically; executing deterministic code eliminates arithmetic calculation mistakes.</li><li><strong>A</strong> — AI models should serve as research and drafting accelerators, keeping licensed professionals in the loop for final judgment.</li><li><strong>B</strong> — Few-shot voice samples communicate rhythm, vocabulary, and sentence length far better than abstract adjectives.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="15-production-promptops.html">Module 15</a> · ➡️ <a href="17-becoming-a-pro.html">Module 17 — Becoming a Pro</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="15-production-promptops.html">← Production PromptOps</a><a class="btn ghost" href="17-becoming-a-pro.html">Becoming a Pro →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

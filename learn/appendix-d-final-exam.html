@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Final Exam: Prompt Engineering Course (Appendix D)</title>
+<meta name="description" content="40 questions and 5 practical tasks with answers. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-d-final-exam.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Final Exam: Prompt Engineering Course (Appendix D)">
+<meta property="og:description" content="40 questions and 5 practical tasks with answers. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-d-final-exam.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Final Exam: Prompt Engineering Course (Appendix D)">
+<meta name="twitter:description" content="40 questions and 5 practical tasks with answers. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Appendix D: Final Exam", "description": "40 questions and 5 practical tasks with answers.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-d-final-exam.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/appendix/D-final-exam.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Appendix D</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/appendix/D-final-exam.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#part-1--foundations-modules-0104">Part 1 — Foundations (Modules 01–04)</a></li><li><a href="#part-2--intermediate-modules-0509">Part 2 — Intermediate (Modules 05–09)</a></li><li><a href="#part-3--advanced-modules-1014">Part 3 — Advanced (Modules 10–14)</a></li><li><a href="#part-4--pro-modules-1517">Part 4 — Pro (Modules 15–17)</a></li><li><a href="#part-5--practical-tasks-graded-by-rubric">Part 5 — Practical Tasks (graded by rubric)</a></li></ul></details>
+<h1>🎓 Appendix D: Final Exam</h1>
+<blockquote><p>40 multiple-choice questions + 5 practical tasks covering all 18 modules. <strong>Passing score:</strong> 32/40 (80%). Time yourself: 60 minutes for the MCQs. Answers and explanations are hidden at the end of each section.</p></blockquote>
+<blockquote><p>👔 <strong>Non-Tech Track Focus:</strong> Questions 1–20 (Foundations &amp; Core Techniques), Questions 31–40 (Domains, Safety &amp; Evaluation), and Practical Tasks 1 &amp; 4. 💻 <strong>Tech Track Focus:</strong> All 40 questions (including structured JSON, function calling, RAG architectures, and PromptOps) and all 5 practical tasks.</p></blockquote>
+<hr>
+<h2 id="part-1--foundations-modules-0104">Part 1 — Foundations (Modules 01–04)</h2>
+<p><strong>1.</strong> During pre-training, an LLM learns to: A) Retrieve facts from a database  B) Predict the next token  C) Follow user instructions  D) Execute code</p>
+<p><strong>2.</strong> Roughly how many tokens are in 300 English words? A) 100  B) 225  C) 400  D) 1,200</p>
+<p><strong>3.</strong> For consistent data extraction, the best temperature is: A) 0–0.3  B) 0.7  C) 1.0  D) 1.5</p>
+<p><strong>4.</strong> Why do LLMs struggle to count letters in a word? A) They see tokens, not characters  B) No math ability  C) Temperature too high  D) Context window too small</p>
+<p><strong>5.</strong> Which prompt block most often has the biggest impact? A) Role  B) Context  C) Emoji  D) Sign-off</p>
+<p><strong>6.</strong> What's the main purpose of delimiters like <code>&lt;document&gt;</code> tags? A) Decoration  B) Reduce tokens  C) Separate instructions from data  D) Increase temperature</p>
+<p><strong>7.</strong> "Don't use jargon" is weaker than "Use everyday words" because: A) It's longer  B) Models ignore the word "don't" entirely  C) It uses more tokens  D) Negative instructions don't specify the desired behavior</p>
+<p><strong>8.</strong> Few-shot examples should be: A) Diverse, correct and representative  B) Identical in structure and topic  C) All edge cases  D) As long as possible</p>
+<p><strong>9.</strong> Prefilling the assistant's response with <code>{</code> mainly helps to: A) Increase creativity  B) Force JSON output to start immediately  C) Lower cost  D) Avoid tool calls</p>
+<p><strong>10.</strong> "You are the world's greatest physicist" primarily: A) Adds physics knowledge  B) Guarantees accuracy  C) May shift tone, but adds no knowledge  D) Disables hallucinations</p>
+<details>
+<summary>✅ Answers Part 1</summary>
+<p>1-B · 2-C (300 × 1.33 ≈ 400) · 3-A · 4-A · 5-B · 6-C · 7-D · 8-A · 9-B · 10-C</p>
+</details>
+<hr>
+<h2 id="part-2--intermediate-modules-0509">Part 2 — Intermediate (Modules 05–09)</h2>
+<p><strong>11.</strong> Chain-of-thought reasoning should be placed: A) After the answer  B) In the system prompt only  C) It doesn't matter  D) Before the answer</p>
+<p><strong>12.</strong> Self-consistency requires: A) Multiple samples and a vote  B) Temperature 0 and one sample  C) A vector database  D) Fine-tuning</p>
+<p><strong>13.</strong> Step-back prompting means: A) Undoing the previous message  B) Asking a general principle question first  C) Reducing temperature  D) Removing examples</p>
+<p><strong>14.</strong> With reasoning ("thinking") models, you should usually: A) Add "think step by step" everywhere  B) Use temperature 2  C) Give goals, constraints and success criteria  D) Provide 50 examples</p>
+<p><strong>15.</strong> The most reliable way to get schema-valid JSON is: A) Asking politely  B) High temperature  C) Longer prompts  D) Native structured outputs / forced tool schemas + validation</p>
+<p><strong>16.</strong> Why place an <code>&quot;evidence&quot;</code> field before <code>&quot;label&quot;</code> in a JSON schema? A) The label is then conditioned on evidence  B) Alphabetical order  C) Parsers require it  D) It reduces tokens</p>
+<p><strong>17.</strong> Where should rules that apply to every turn of a chatbot go? A) The user message  B) The system prompt  C) The assistant prefill  D) A stop sequence</p>
+<p><strong>18.</strong> Which pattern classifies inputs and sends them to specialized prompts? A) Evaluator-optimizer  B) Self-consistency  C) Routing  D) Prefill</p>
+<p><strong>19.</strong> For long documents, place the question: A) Before the document  B) In the middle  C) In a separate API call only  D) After the document</p>
+<p><strong>20.</strong> Most RAG failures are caused by: A) Retrieval problems  B) The LLM's grammar  C) Temperature  D) Too few tokens in the answer</p>
+<details>
+<summary>✅ Answers Part 2</summary>
+<p>11-D · 12-A · 13-B · 14-C · 15-D · 16-A · 17-B · 18-C · 19-D · 20-A</p>
+</details>
+<hr>
+<h2 id="part-3--advanced-modules-1014">Part 3 — Advanced (Modules 10–14)</h2>
+<p><strong>21.</strong> In tool use, who executes the function? A) The model  B) Your application code  C) The vector DB  D) The tokenizer</p>
+<p><strong>22.</strong> A good tool description includes: A) Only the name  B) The API key  C) When to use it, parameter formats, and what it returns  D) Marketing copy</p>
+<p><strong>23.</strong> The best first guardrail for an agent that can delete files: A) Higher temperature  B) More examples  C) Longer system prompt  D) Human approval for destructive actions</p>
+<p><strong>24.</strong> MCP standardizes: A) How apps expose tools/resources/prompts to LLM clients  B) Tokenization  C) Image generation  D) Model training</p>
+<p><strong>25.</strong> For image-generation prompts, you should write: A) Instructions to a programmer  B) A visual description: subject, style, composition, lighting  C) JSON only  D) A single keyword</p>
+<p><strong>26.</strong> Output tokens are usually: A) Free  B) Cheaper than input tokens  C) More expensive than input tokens  D) Priced the same everywhere</p>
+<p><strong>27.</strong> A 429 error means: A) Bad request  B) Auth failure  C) Content filtered  D) Rate limited — retry with backoff</p>
+<p><strong>28.</strong> To benefit from prompt caching, put: A) Static content first  B) Dynamic content first  C) Timestamps at the top  D) Random IDs in the system prompt</p>
+<p><strong>29.</strong> LLM-as-judge position bias is mitigated by: A) Using temperature 1  B) Swapping the order and checking consistency  C) Longer answers  D) Removing the rubric</p>
+<p><strong>30.</strong> Every bug found in production should become: A) A new system prompt  B) A fine-tuning run  C) A test case in the eval set  D) Nothing</p>
+<p><strong>31.</strong> A healthy eval set includes: A) Only typical cases  B) Only adversarial cases  C) Only cases the prompt passes  D) Typical, edge and adversarial cases</p>
+<p><strong>32.</strong> Indirect prompt injection comes from: A) Content the model processes, like web pages or emails  B) The developer  C) The tokenizer  D) Temperature</p>
+<p><strong>33.</strong> Why can't injection be fully solved by prompts? A) Prompts are too short  B) Instructions and data share the same text channel  C) Models can't read XML  D) It's illegal</p>
+<p><strong>34.</strong> Rendering model-generated external images can cause: A) Faster loading  B) Lower cost  C) Data exfiltration via URLs  D) Better accuracy</p>
+<p><strong>35.</strong> Which is NOT a hallucination-reduction technique? A) Grounding in sources  B) Permission to say "I don't know"  C) Quote-then-answer  D) Raising temperature to 1.5</p>
+<details>
+<summary>✅ Answers Part 3</summary>
+<p>21-B · 22-C · 23-D · 24-A · 25-B · 26-C · 27-D · 28-A · 29-B · 30-C · 31-D · 32-A · 33-B · 34-C · 35-D</p>
+</details>
+<hr>
+<h2 id="part-4--pro-modules-1517">Part 4 — Pro (Modules 15–17)</h2>
+<p><strong>36.</strong> Why pin the model version together with the prompt version? A) Behavior depends on both  B) Billing  C) Legal requirement  D) Faster responses</p>
+<p><strong>37.</strong> Safe model migration order: A) Switch 100% immediately  B) Offline eval → shadow → canary → full rollout  C) Canary → offline eval  D) Fine-tune first</p>
+<p><strong>38.</strong> For data analysis, the model should ideally: A) Compute numbers mentally  B) Guess trends  C) Write and run code, then report verified results  D) Avoid charts</p>
+<p><strong>39.</strong> In high-stakes domains (legal/medical/financial), LLMs should: A) Make final decisions  B) Never be used  C) Be used without review  D) Assist and draft; qualified humans decide</p>
+<p><strong>40.</strong> The strongest portfolio evidence is: A) Measured before/after eval results with write-up  B) A flashy demo  C) A list of tools used  D) Number of prompts written</p>
+<details>
+<summary>✅ Answers Part 4</summary>
+<p>36-A · 37-B · 38-C · 39-D · 40-A</p>
+</details>
+<hr>
+<h2 id="part-5--practical-tasks-graded-by-rubric">Part 5 — Practical Tasks (graded by rubric)</h2>
+<p><strong>P1. Prompt makeover (Modules 02–04).</strong> Rewrite <em>"write about our new app"</em> into a complete prompt for a launch email.</p>
+<p><strong>P2. Extraction (Module 06).</strong> Write a prompt + JSON schema to extract event details (name, date, venue, price, organizer) from posters' text, with null handling.</p>
+<p><strong>P3. System prompt (Module 07).</strong> Write a system prompt for a college-admissions FAQ bot with escalation rules.</p>
+<p><strong>P4. Evaluation (Module 13).</strong> Design 10 test cases and the grading method for P2.</p>
+<p><strong>P5. Security (Module 14).</strong> Threat-model an assistant that reads a user's inbox and drafts replies. List 5 mitigations.</p>
+<details>
+<summary>✅ Rubric (each task scored /10)</summary>
+<div class="table-wrap"><table><thead><tr><th>Criterion</th><th>Points</th></tr></thead><tbody><tr><td>Clear task &amp; context</td><td>2</td></tr><tr><td>Specific constraints with reasons</td><td>2</td></tr><tr><td>Explicit output format</td><td>2</td></tr><tr><td>Edge cases / uncertainty handled</td><td>2</td></tr><tr><td>Safety / verification considered</td><td>2</td></tr></tbody></table></div>
+<p><strong>P5 reference mitigations:</strong> treat email bodies as untrusted data; drafts only, never auto-send (a human approves each one); no access to unrelated tools; don't render external images/links in drafts; log and flag emails containing instruction-like text; redact sensitive data in logs.</p>
+<p>Score ≥ 40/50 on Part 5 + ≥ 32/40 on MCQs = <strong>🏆 Course Complete with Distinction</strong>.</p>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved.</p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="appendix-c-glossary.html">← Glossary</a><a class="btn ghost" href="appendix-e-capstone-projects.html">Capstone Projects →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

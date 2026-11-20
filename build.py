@@ -26,6 +26,9 @@ def main() -> None:
     (ROOT / "course-data.js").write_text(js, encoding="utf-8")
     print(f"Bundled {len(files)} files into course-data.js")
 
+    import seo  # static, crawlable lesson pages for search engines
+    seo.build()
+
 
 if __name__ == "__main__":
     main()

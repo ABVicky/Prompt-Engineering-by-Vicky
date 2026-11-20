@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Context Engineering &amp; RAG: Prompt Engineering Course (Module 09)</title>
+<meta name="description" content="Long context, retrieval, grounding and citations. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/09-context-engineering-rag.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Context Engineering &amp; RAG: Prompt Engineering Course (Module 09)">
+<meta property="og:description" content="Long context, retrieval, grounding and citations. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/09-context-engineering-rag.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Context Engineering &amp; RAG: Prompt Engineering Course (Module 09)">
+<meta name="twitter:description" content="Long context, retrieval, grounding and citations. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 09: Context Engineering & RAG", "description": "Long context, retrieval, grounding and citations.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/09-context-engineering-rag.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/09-context-engineering-rag.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 09</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/09-context-engineering-rag.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-from-prompt-engineering-to-context-engineering">1. From Prompt Engineering to Context Engineering</a></li><li><a href="#2-long-context-prompting-taming-the-100-page-document">2. Long-Context Prompting: Taming the 100-Page Document</a></li><li><a href="#3-how-rag-works-indexing-and-retrieval">3. How RAG Works: Indexing and Retrieval</a></li><li><a href="#4-minimal-working-rag-in-python">4. Minimal Working RAG in Python</a></li><li><a href="#5-rag-vs-long-context-vs-fine-tuning">5. RAG vs. Long Context vs. Fine-Tuning</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>📚 Module 09: Context Engineering &amp; RAG</h1>
+<blockquote><p>🔵 Stage 2 · Intermediate · ⏱️ ~3 hours</p></blockquote>
+<p>Think back to your school or college days. Remember the difference between a closed-book exam and an open-book exam?</p>
+<p>In a closed-book exam, you had to memorize hundreds of dates, formulas, and facts. If your memory drew a blank during the test, you had two choices: leave the page empty, or make up an educated guess.</p>
+<p>In an open-book exam, you didn't have to memorize every single footnote. Instead, you kept your textbook right on your desk. When a question came up about contract law or thermodynamics, you flipped open the index, turned straight to Chapter 4, read the exact paragraph, and cited the author.</p>
+<p>Prompt engineering began as a closed-book exam: you relied on whatever the model memorized during its training.</p>
+<p><strong>Retrieval-Augmented Generation (RAG)</strong> turns the AI into an open-book researcher. Instead of expecting the model to remember your company's proprietary product manual or yesterday's pricing update, you search your documents for the exact paragraphs needed, place them on the model's digital desk, and ask it to answer using only that evidence.</p>
+<p>In this module, you will learn the art of <strong>context engineering</strong> and how to ground AI answers in verified source documents.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Understand the core principles of <strong>context engineering</strong>: what enters the context window, in what order, and with what metadata.</li><li>Prompt effectively with massive documents without suffering from the "lost in the middle" attention drop.</li><li>Master the two phases of <strong>RAG</strong>: offline indexing (chunk, embed, store) and online retrieval (search, rerank, ground).</li><li>Use <strong>quote-then-answer</strong> prompt patterns to eliminate hallucinations.</li><li>Choose accurately between long-context prompting, RAG, and model fine-tuning.</li></ul>
+<hr>
+<h2 id="1-from-prompt-engineering-to-context-engineering">1. From Prompt Engineering to Context Engineering</h2>
+<p>When people first start using AI, they focus entirely on phrasing: <em>"Should I say please? Should I tell it to act as an expert?"</em></p>
+<p>In professional applications, phrasing is only 20% of the battle. The other 80% is <strong>context engineering</strong>: <em>What exact information should the model see right now, in what order, and what should be left out?</em></p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/09-context-engineering-rag.md">View it in the interactive reader</a>.</p>
+<h3 id="the-5-golden-rules-of-context-engineering">The 5 Golden Rules of Context Engineering</h3>
+<ol><li><strong>Relevance over volume:</strong> Shoving 50 irrelevant pages into the prompt increases latency, drives up costs, and distracts the model's attention.</li><li><strong>Freshness:</strong> Inject real-time variables like today's date, current stock levels, and user account status.</li><li><strong>Structured labeling:</strong> Wrap each document in clean XML tags with source metadata so the model can cite its work.</li><li><strong>Deliberate ordering:</strong> Place reference documents at the beginning and specific questions/instructions at the very end.</li><li><strong>Budgeting:</strong> Always leave enough tokens in the context window for the model's answer and internal reasoning.</li></ol>
+<blockquote><p>👔 <strong>Non-Tech Lens · Auditable Document Q&amp;A in Chat Tools:</strong> When uploading a vendor contract, policy handbook, or financial report into ChatGPT or Claude:</p>
+<ul><li><strong>The Grounding Rule:</strong> <em>"Answer using ONLY facts directly stated in the attached document. If the document does not explicitly contain the answer, reply: 'Information not found in the provided document.' Never guess."</em></li><li><strong>The Citation Rule:</strong> <em>"For every claim in your answer, quote the exact sentence from the document and mention the section heading or page number."</em></li></ul>
+<p>This single prompt pattern eliminates 95% of hallucinations and makes the answer immediately verifiable for your team.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Production RAG Architecture:</strong> Even with 1-million-token context windows, production systems rely on RAG because reading 1M tokens on every API call is prohibitively slow and expensive. A modern production RAG pipeline uses:</p>
+<ol><li><strong>Hybrid Retrieval:</strong> Dense vector search (captures semantic intent) combined with sparse BM25 keyword search (captures exact IDs, part numbers, and names) merged via Reciprocal Rank Fusion (RRF).</li><li><strong>Cross-Encoder Reranking:</strong> Filter the top-30 retrieved candidate chunks down to the top-5 most relevant passages using a reranker model (like Cohere Rerank or BGE Reranker).</li><li><strong>Structured Grounding:</strong> Feed the reranked chunks into XML tags with strict refusal thresholds.</li></ol></blockquote>
+<hr>
+<h2 id="2-long-context-prompting-taming-the-100-page-document">2. Long-Context Prompting: Taming the 100-Page Document</h2>
+<p>When you paste an entire 50-page employee manual or legal brief into a prompt, models can suffer from an attention phenomenon known as <strong>"Lost in the Middle"</strong>: they recall facts at the very beginning and very end of the prompt far better than facts buried on page 27.</p>
+<p>Here is the most reliable way to structure a long-context prompt:</p>
+<pre><code>&lt;documents&gt;
+  &lt;document id=&quot;1&quot; source=&quot;leave_policy_2026.pdf&quot;&gt;
+    Employees are entitled to 18 days of earned leave per calendar year. Unused leave up to 10 days can be carried forward to the next year.
+  &lt;/document&gt;
+  &lt;document id=&quot;2&quot; source=&quot;parental_policy_2026.pdf&quot;&gt;
+    Primary caregivers are eligible for 26 weeks of paid maternity leave. Secondary caregivers receive 4 weeks of paid paternity leave.
+  &lt;/document&gt;
+&lt;/documents&gt;
+
+Follow this exact procedure:
+1. Locate the exact sentences in the documents that address the user&#x27;s question.
+2. Quote them inside &lt;quotes&gt; tags, mentioning the document id.
+3. Answer the question inside &lt;answer&gt; tags using ONLY those quoted sentences.
+4. If the documents do not cover the question, state: &quot;The provided documents do not contain this information.&quot;
+
+Question: Can an employee carry forward 15 days of unused earned leave into next year?</code></pre>
+<h3 id="why-quote-then-answer-works">Why "Quote-Then-Answer" Works</h3>
+<p>Because language models generate text sequentially, forcing the model to reproduce the verbatim quote <em>first</em> ensures that its attention layers focus directly on the verified source text while formulating the answer.</p>
+<hr>
+<h2 id="3-how-rag-works-indexing-and-retrieval">3. How RAG Works: Indexing and Retrieval</h2>
+<p>When your company has 10,000 documents, you cannot paste them all into one prompt. You need RAG.</p>
+<p><img src="../assets/rag-pipeline.svg" alt="RAG pipeline" loading="lazy"></p>
+<p>RAG operates in two distinct phases:</p>
+<h3 id="phase-1-indexing-done-offline">Phase 1: Indexing (Done Offline)</h3>
+<ol><li><strong>Load:</strong> Read PDFs, Word documents, Notion pages, or customer tickets.</li><li><strong>Chunk:</strong> Chop long text into small, self-contained paragraphs (typically 300 to 600 tokens).</li><li><strong>Embed:</strong> Convert each text chunk into a list of numbers (a vector) using an embedding model. Similar concepts end up with similar numbers.</li><li><strong>Store:</strong> Save the chunks, vectors, and source metadata into a <strong>Vector Database</strong> (like Chroma, pgvector, Qdrant, or Pinecone).</li></ol>
+<h3 id="phase-2-retrieval-amp-generation-done-when-a-user-asks-a-question">Phase 2: Retrieval &amp; Generation (Done When a User Asks a Question)</h3>
+<ol><li>Convert the user's question into an embedding vector.</li><li>Search the vector database for the top 3–5 chunks most semantically similar to the question.</li><li>Paste those 3–5 chunks into a grounded prompt template.</li><li>Send the prompt to the LLM to generate an answer with citations.</li></ol>
+<hr>
+<h2 id="4-minimal-working-rag-in-python">4. Minimal Working RAG in Python</h2>
+<p>Here is a self-contained RAG script in Python using <code>chromadb</code>:</p>
+<pre><code>import chromadb
+
+# 1. Sample company knowledge base
+knowledge_base = {
+    &quot;doc_wifi&quot;: &quot;Guest Wi-Fi network is &#x27;IndiraGuest&#x27; with password &#x27;Welcome2026!&#x27;. Speeds are capped at 50 Mbps.&quot;,
+    &quot;doc_expense&quot;: &quot;Meal expenses up to ₹1,500 per day are reimbursable on official domestic travel without prior approval.&quot;,
+    &quot;doc_holidays&quot;: &quot;The office will remain closed on Diwali, Independence Day, and Republic Day.&quot;,
+}
+
+# 2. Initialize in-memory vector database
+client = chromadb.Client()
+collection = client.create_collection(&quot;office_kb&quot;)
+
+# 3. Index documents (automatically creates embeddings)
+collection.add(
+    ids=list(knowledge_base.keys()),
+    documents=list(knowledge_base.values()),
+    metadatas=[{&quot;source&quot;: k} for k in knowledge_base.keys()]
+)
+
+# 4. Search and Grounding function
+def answer_query(user_question: str) -&gt; str:
+    # Retrieve top 2 most relevant chunks
+    results = collection.query(query_texts=[user_question], n_results=2)
+    
+    retrieved_chunks = &quot;\n&quot;.join(
+        f&#x27;&lt;doc id=&quot;{meta[&quot;source&quot;]}&quot;&gt;{text}&lt;/doc&gt;&#x27;
+        for text, meta in zip(results[&quot;documents&quot;][0], results[&quot;metadatas&quot;][0])
+    )
+    
+    prompt = f&quot;&quot;&quot;You are a helpful office assistant. Answer the question using ONLY the documents below.
+Always cite your source in brackets like [doc_id]. If the answer is not in the documents, reply: &quot;I do not have information on that.&quot;
+
+&lt;documents&gt;
+{retrieved_chunks}
+&lt;/documents&gt;
+
+Question: {user_question}&quot;&quot;&quot;
+    
+    return prompt
+
+# Test query
+print(answer_query(&quot;How much can I spend on food when traveling for work?&quot;))</code></pre>
+<hr>
+<h2 id="5-rag-vs-long-context-vs-fine-tuning">5. RAG vs. Long Context vs. Fine-Tuning</h2>
+<p>When you need an AI to know your company's data, which approach should you pick?</p>
+<div class="table-wrap"><table><thead><tr><th>Approach</th><th>When it is the best choice</th><th>Main drawback</th></tr></thead><tbody><tr><td><strong>Long Context (Paste into chat)</strong></td><td>When you have 1 to 5 documents (&lt; 100 pages) that change with every new task.</td><td>Higher token cost per prompt; slower first-token latency.</td></tr><tr><td><strong>RAG (Search &amp; Retrieve)</strong></td><td>When you have thousands of documents, manuals, or customer tickets that update frequently and require citations.</td><td>Requires engineering to build search, chunking, and embedding pipelines.</td></tr><tr><td><strong>Fine-Tuning (Model Training)</strong></td><td>When you need to teach a model a specific writing style, unique programming syntax, or narrow output format at scale.</td><td><strong>Terrible for factual recall.</strong> Expensive to update, prone to hallucination, and cannot cite specific source pages.</td></tr></tbody></table></div>
+<blockquote><p>🔑 <strong>The Industry Rule of Thumb:</strong> Start with prompt engineering. Add <strong>RAG</strong> when the model needs private, changing factual knowledge. Use <strong>fine-tuning</strong> only to change behavior, tone, or formatting. Never use it to teach facts.</p></blockquote>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>How to fix it</th></tr></thead><tbody><tr><td>The Blind Keyword Mismatch</td><td>A user asks: <em>"What is the cost of the subscription?"</em> but the document says <em>"Annual fee is ₹4,999"</em>. Keyword search finds nothing.</td><td>Use <strong>hybrid search</strong> (vectors + keywords) or prompt an LLM to rewrite the user's query into synonyms first.</td></tr><tr><td>Homeless Chunks</td><td>Chunking text into tiny sentences so that a chunk says: <em>"It costs ₹500"</em> without mentioning what "it" is.</td><td>Use <strong>Contextual Chunking</strong>: prepend the document title or section heading to each chunk before embedding.</td></tr><tr><td>The Over-Confident Hallucination</td><td>The model's retrieved chunks don't answer the question, but it answers anyway from memory.</td><td>Enforce a strict refusal rule: <em>"If the answer cannot be proven using the text inside <code>&lt;documents&gt;</code>, write: 'Not mentioned in sources.'"</em></td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Upload any multi-page PDF (a lease agreement, a credit card statement, or an insurance policy) into ChatGPT or Claude and test this prompt:</p>
+<pre><code>Act as a strict compliance auditor.
+
+Answer this question using ONLY facts explicitly written in the uploaded document:
+&quot;What are all conditions under which a claim can be rejected?&quot;
+
+Procedure:
+1. First, quote the exact clauses and page numbers in &lt;evidence&gt;.
+2. Then, summarize the rejection conditions in plain English as a bulleted list in &lt;summary&gt;.
+3. If any detail is not explicitly mentioned in the text, write: &quot;Not covered in the provided document.&quot; Do not guess or extrapolate.</code></pre>
+<p>Notice how the <code>&lt;evidence&gt;</code> step forces the model to verify facts before writing its summary.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li><strong>Context engineering</strong> is about curating the right information, order, and structure for the model's working memory.</li><li>For long documents, place source materials at the top and questions/instructions at the end.</li><li>Use <strong>quote-then-answer</strong> prompt patterns to eliminate hallucinations on document Q&amp;A.</li><li><strong>RAG</strong> indexes documents offline (chunk, embed, store) and retrieves relevant passages at runtime to ground the model's answer.</li><li>Prompting first, RAG for private knowledge, fine-tuning for style.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-91-write-a-grounded-hr-policy-prompt">Exercise 9.1: Write a Grounded HR Policy Prompt</h3>
+<p>Write a grounded prompt for an internal HR assistant that answers employee questions about sick leave using an attached company policy excerpt. Requirements:</p>
+<ul><li>Must cite section numbers.</li><li>Must refuse to answer questions outside the handbook.</li><li>Must highlight any requirement for a medical certificate.</li></ul>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>A strong prompt:</strong></p>
+<pre><code>&lt;handbook&gt;
+{{handbook_text_with_sections}}
+&lt;/handbook&gt;
+
+You are the internal HR assistant for Acme Corp India. Answer the employee&#x27;s inquiry below.
+
+Rules:
+1. Base your answer ONLY on the text inside &lt;handbook&gt;.
+2. For each rule you cite, include the section number in brackets (e.g., [§3.2]).
+3. If an illness lasts more than 2 consecutive working days, explicitly mention the requirement to submit a registered medical practitioner&#x27;s certificate.
+4. If the handbook does not cover the employee&#x27;s specific situation, state: &quot;Our handbook does not address this specific situation. Please reach out to hr-support@acme.example for guidance.&quot;
+
+Employee Question: {{employee_question}}</code></pre>
+</details>
+<h3 id="exercise-92-diagnose-a-rag-failure">Exercise 9.2: Diagnose a RAG Failure</h3>
+<p>An e-commerce company launches a RAG bot. When a customer asks: <em>"Can I return my mixer grinder after 10 days?"</em>, the bot replies: <em>"I do not have that information"</em>, even though their returns document clearly says: <em>"Small kitchen appliances can be returned within 14 days of delivery."</em></p>
+<p>List three potential causes in the RAG pipeline that caused this failure.</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>Three common root causes:</strong></p>
+<ol><li><strong>Vocabulary Mismatch in Search:</strong> The customer searched for "mixer grinder", but the document used the term "small kitchen appliances". A pure keyword search would miss this (fixed by semantic vector embeddings or query expansion).</li><li><strong>Chunk Size Too Small:</strong> The chunking algorithm separated the category "Small kitchen appliances" from the 14-day rule into two different chunks, so the retrieved snippet lacked context.</li><li><strong>Low Retrieval Top-K:</strong> The vector search only retrieved the top 2 chunks, and chunks about general clothing returns outranked the appliance chunk. Increasing $k$ to 5 or adding a reranker solves this.</li></ol>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>Where should reference documents be placed relative to your instructions in a long prompt?<br>• A) At the very end of the prompt.<br>• B) At the beginning, with your instructions and specific question placed at the end.<br>• C) In the middle of your sentences.</li><li>What are the four core steps of RAG offline indexing?<br>• A) Prompt, Chat, Repeat, Save.<br>• B) Write, Format, Test, Publish.<br>• C) Load, Chunk, Embed, Store in a vector database.</li><li>Why is fine-tuning generally a poor choice for teaching an AI your company's daily product pricing?<br>• A) Because fine-tuning models cannot reliably memorize exact changing numbers, cannot cite source pages, and is expensive to retrain daily.<br>• B) Because fine-tuning is too easy.<br>• C) Because fine-tuning only works for image models.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>B</strong> — Placing long documents first and instructions last counters the "lost in the middle" attention drop.</li><li><strong>C</strong> — Offline indexing loads documents, splits them into chunks, embeds them into vectors, and stores them in a vector database.</li><li><strong>A</strong> — Fine-tuning adapts style and format, but is brittle for fast-changing factual knowledge. RAG is the industry standard for factual retrieval.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="08-prompt-chaining-workflows.html">Module 08</a> · ➡️ <a href="10-tool-use-and-agents.html">Module 10 — Tool Use, Function Calling &amp; Agents</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="08-prompt-chaining-workflows.html">← Prompt Chaining &amp; Workflows</a><a class="btn ghost" href="10-tool-use-and-agents.html">Tool Use &amp; Agents →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

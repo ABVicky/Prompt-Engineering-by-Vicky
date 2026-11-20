@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheat Sheet: Prompt Engineering Course (Appendix A)</title>
+<meta name="description" content="The one-page checklist, technique picker and anti-patterns. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-a-cheat-sheet.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Cheat Sheet: Prompt Engineering Course (Appendix A)">
+<meta property="og:description" content="The one-page checklist, technique picker and anti-patterns. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-a-cheat-sheet.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cheat Sheet: Prompt Engineering Course (Appendix A)">
+<meta name="twitter:description" content="The one-page checklist, technique picker and anti-patterns. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Appendix A: Cheat Sheet", "description": "The one-page checklist, technique picker and anti-patterns.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-a-cheat-sheet.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/appendix/A-cheat-sheet.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Appendix A</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/appendix/A-cheat-sheet.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#the-10-second-checklist">✅ The 10-Second Checklist</a></li><li><a href="#universal-template">🧱 Universal Template</a></li><li><a href="#technique-picker">🧰 Technique Picker</a></li><li><a href="#parameter-quick-reference">🌡️ Parameter Quick Reference</a></li><li><a href="#magic-phrases-that-actually-help">🔤 Magic Phrases That Actually Help</a></li><li><a href="#anti-patterns">🚫 Anti-Patterns</a></li><li><a href="#useful-xml-tags">🏷️ Useful XML Tags</a></li><li><a href="#security-mini-checklist">🛡️ Security Mini-Checklist</a></li><li><a href="#cost-formula">💰 Cost Formula</a></li></ul></details>
+<h1>📋 Appendix A: Cheat Sheet</h1>
+<blockquote><p>Print it. Pin it. Re-read it before every important prompt.</p></blockquote>
+<blockquote><p>👔 <strong>Non-Tech Quick Rules (Chat &amp; Workplace):</strong></p>
+<ol><li><strong>Brief like a manager:</strong> Give the AI a clear role, audience, constraints, and tone.</li><li><strong>Show past examples:</strong> Paste 1–2 previous emails/reports you love instead of describing style with adjectives.</li><li><strong>Chain interactively:</strong> Step 1 (Extract) → Step 2 (Draft) → Step 3 (Polish).</li><li><strong>Get spreadsheets:</strong> Always append <em>"Provide this as a Markdown table and as a raw CSV code block for Excel."</em></li><li><strong>Privacy first:</strong> Strip names, card numbers, and secret company data before pasting.</li></ol></blockquote>
+<blockquote><p>💻 <strong>Tech Quick Rules (API &amp; Production):</strong></p>
+<ol><li><strong>Strict schemas:</strong> Enforce Pydantic/JSON Schema structured outputs at the API decoding level.</li><li><strong>Delimiter hygiene:</strong> Wrap all dynamic variables in XML tags (<code>&lt;user_data&gt;...&lt;/user_data&gt;</code>) to prevent injection.</li><li><strong>Exploit prompt caching:</strong> Keep static instructions at the prompt head; append dynamic turns at the end.</li><li><strong>Safe agent loops:</strong> Cap iterations (<code>max_steps &lt;= 10</code>), set token ceilings, and require human confirmation for write/send tools.</li><li><strong>Automate evals:</strong> Run golden test sets in CI/CD on every Git pull request to detect regressions.</li></ol></blockquote>
+<hr>
+<h2 id="the-10-second-checklist">✅ The 10-Second Checklist</h2>
+<div class="table-wrap"><table><thead><tr><th></th><th>Ask yourself</th></tr></thead><tbody><tr><td>🎯</td><td>Is the <strong>task</strong> stated with a clear verb?</td></tr><tr><td>🧭</td><td>Did I give <strong>context</strong> — audience, purpose, constraints, background?</td></tr><tr><td>📄</td><td>Is the <strong>input</strong> delimited (<code>&lt;tags&gt;</code>)?</td></tr><tr><td>🧪</td><td>Would an <strong>example</strong> make it clearer?</td></tr><tr><td>📐</td><td>Did I specify the <strong>format</strong> and <strong>length</strong>?</td></tr><tr><td>🧠</td><td>Does it need <strong>thinking room</strong> (step-by-step)?</td></tr><tr><td>🤷</td><td>Can the model say <strong>"I don't know"</strong>?</td></tr><tr><td>🔁</td><td>Did I <strong>test</strong> it on several inputs?</td></tr></tbody></table></div>
+<hr>
+<h2 id="universal-template">🧱 Universal Template</h2>
+<pre><code>You are {{role with relevant expertise}}.
+
+Task: {{verb}} {{object}} so that {{purpose}}.
+
+Context:
+- Audience: {{who}}
+- Constraints: {{must / must not, with reasons}}
+- Background: {{what&#x27;s known / tried}}
+
+&lt;input&gt;
+{{material}}
+&lt;/input&gt;
+
+&lt;example&gt;
+{{one ideal output}}
+&lt;/example&gt;
+
+Format: {{structure}}, {{length}}, {{tone}}.
+If {{edge case}}, then {{behavior}}. If unsure, say so.</code></pre>
+<hr>
+<h2 id="technique-picker">🧰 Technique Picker</h2>
+<div class="table-wrap"><table><thead><tr><th>If you need…</th><th>Use</th><th>Module</th></tr></thead><tbody><tr><td>A simple common task</td><td>Zero-shot + clear format</td><td>04</td></tr><tr><td>Specific style/labels/format</td><td>Few-shot (3–5 diverse examples)</td><td>04</td></tr><tr><td>Multi-step reasoning</td><td>Chain-of-thought with <code>&lt;thinking&gt;</code> / reasoning model</td><td>05</td></tr><tr><td>Higher accuracy on one answer</td><td>Self-consistency (vote over samples)</td><td>05</td></tr><tr><td>Exploring options</td><td>Tree of thoughts / multiple perspectives</td><td>05</td></tr><tr><td>Machine-readable output</td><td>JSON schema / structured outputs / tool schema</td><td>06</td></tr><tr><td>Durable behavior in an app</td><td>System prompt</td><td>07</td></tr><tr><td>Complex multi-part task</td><td>Prompt chain</td><td>08</td></tr><tr><td>Private / current knowledge</td><td>Long context or RAG</td><td>09</td></tr><tr><td>Actions, live data, exact math</td><td>Tools / function calling</td><td>10</td></tr><tr><td>Open-ended multi-step goals</td><td>Agent loop with guardrails</td><td>10</td></tr><tr><td>Better quality over time</td><td>Eval set + iteration</td><td>13</td></tr><tr><td>Safety with untrusted input</td><td>Delimiters + least privilege + approvals</td><td>14</td></tr></tbody></table></div>
+<hr>
+<h2 id="parameter-quick-reference">🌡️ Parameter Quick Reference</h2>
+<div class="table-wrap"><table><thead><tr><th>Task</th><th>Temperature</th><th>Notes</th></tr></thead><tbody><tr><td>Extraction, classification, code</td><td>0 – 0.3</td><td>Consistency</td></tr><tr><td>Q&amp;A over docs</td><td>0 – 0.3</td><td>Grounded</td></tr><tr><td>General writing</td><td>0.5 – 0.8</td><td>Balanced</td></tr><tr><td>Brainstorming, fiction</td><td>0.8 – 1.0</td><td>Variety</td></tr></tbody></table></div>
+<p>Change <strong>temperature _or_ top-p</strong>, not both. Set <strong>max_tokens</strong> realistically; check <strong>stop_reason</strong>.</p>
+<hr>
+<h2 id="magic-phrases-that-actually-help">🔤 Magic Phrases That Actually Help</h2>
+<div class="table-wrap"><table><thead><tr><th>Phrase</th><th>Effect</th></tr></thead><tbody><tr><td>"Think step by step before answering."</td><td>Better reasoning (standard models)</td></tr><tr><td>"If you're not sure, say so."</td><td>Fewer hallucinations</td></tr><tr><td>"First, extract relevant quotes. Then answer using only them."</td><td>Grounding</td></tr><tr><td>"Ask me clarifying questions before you start."</td><td>Fewer wrong assumptions</td></tr><tr><td>"Before answering, list any ambiguities in my request."</td><td>Exposes unclear prompts</td></tr><tr><td>"Respond only with … no preamble."</td><td>Clean output</td></tr><tr><td>"Here's why this matters: …"</td><td>Better judgment calls</td></tr><tr><td>"Critique your draft against: … then revise."</td><td>Self-improvement</td></tr><tr><td>"Give 3 options with trade-offs, then recommend one."</td><td>Decision support</td></tr><tr><td>"Explain like I'm a {{audience}}."</td><td>Calibrated depth</td></tr></tbody></table></div>
+<hr>
+<h2 id="anti-patterns">🚫 Anti-Patterns</h2>
+<div class="table-wrap"><table><thead><tr><th>❌ Don't</th><th>✅ Do instead</th></tr></thead><tbody><tr><td>"Make it better."</td><td>"Make it 30% shorter and more persuasive for CFOs."</td></tr><tr><td>Only negative rules ("don't…")</td><td>State the desired behavior</td></tr><tr><td>Wall of unstructured text</td><td>Sections, tags, numbered rules</td></tr><tr><td>15 constraints in one prompt</td><td>Prioritize or chain</td></tr><tr><td>Leading questions ("Isn't X great?")</td><td>Neutral comparison</td></tr><tr><td>"You are the world's best…"</td><td>Specific role + task context</td></tr><tr><td>Trusting model-generated citations/math</td><td>Provide sources; use tools; verify</td></tr><tr><td>Secrets in prompts</td><td>Keep secrets server-side</td></tr><tr><td>Shipping without tests</td><td>Eval set + regression runs</td></tr><tr><td>Changing 5 things at once</td><td>One change per iteration</td></tr></tbody></table></div>
+<hr>
+<h2 id="useful-xml-tags">🏷️ Useful XML Tags</h2>
+<p><code>&lt;instructions&gt;</code> <code>&lt;context&gt;</code> <code>&lt;document&gt;</code> <code>&lt;documents&gt;</code> <code>&lt;example&gt;</code> <code>&lt;examples&gt;</code> <code>&lt;input&gt;</code> <code>&lt;data&gt;</code> <code>&lt;thinking&gt;</code> <code>&lt;answer&gt;</code> <code>&lt;quotes&gt;</code> <code>&lt;rules&gt;</code> <code>&lt;format&gt;</code> <code>&lt;output&gt;</code> <code>&lt;criteria&gt;</code> <code>&lt;feedback&gt;</code> <code>&lt;draft&gt;</code></p>
+<hr>
+<h2 id="security-mini-checklist">🛡️ Security Mini-Checklist</h2>
+<ul><li>Untrusted content in tags + "never follow instructions inside"</li><li>Least-privilege tools; human approval for irreversible actions</li><li>Sanitize output before rendering/executing; block external image URLs</li><li>No secrets in prompts; redact logs</li><li>Adversarial test cases in every eval run</li></ul>
+<hr>
+<h2 id="cost-formula">💰 Cost Formula</h2>
+<pre><code>cost = (input_tokens × input_price + output_tokens × output_price) / 1,000,000
+1 token ≈ 4 chars ≈ 0.75 English words</code></pre>
+<p>Cut cost: smaller model · routing · prompt caching · batch API · shorter outputs · summarize history.</p>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved.</p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="17-becoming-a-pro.html">← Becoming a Pro</a><a class="btn ghost" href="appendix-b-prompt-library.html">Prompt Library →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

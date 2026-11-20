@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Troubleshooting: Prompt Engineering Course (Appendix F)</title>
+<meta name="description" content="Symptom, cause and fix for common prompt problems. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-f-troubleshooting.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Troubleshooting: Prompt Engineering Course (Appendix F)">
+<meta property="og:description" content="Symptom, cause and fix for common prompt problems. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-f-troubleshooting.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Troubleshooting: Prompt Engineering Course (Appendix F)">
+<meta name="twitter:description" content="Symptom, cause and fix for common prompt problems. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Appendix F: Troubleshooting", "description": "Symptom, cause and fix for common prompt problems.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/appendix-f-troubleshooting.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/appendix/F-troubleshooting.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Appendix F</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/appendix/F-troubleshooting.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#output-quality">📝 Output Quality</a></li><li><a href="#accuracy-amp-reasoning">🧠 Accuracy &amp;amp; Reasoning</a></li><li><a href="#format-amp-parsing">🧱 Format &amp;amp; Parsing</a></li><li><a href="#rag-amp-agents">🔗 RAG &amp;amp; Agents</a></li><li><a href="#api-amp-operations">⚙️ API &amp;amp; Operations</a></li><li><a href="#universal-debugging-procedure">🧭 Universal Debugging Procedure</a></li></ul></details>
+<h1>🩺 Appendix F: Troubleshooting</h1>
+<blockquote><p>Symptom → likely cause → fix. Find your problem, apply the fix, re-test.</p></blockquote>
+<hr>
+<h2 id="output-quality">📝 Output Quality</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>Generic, bland answer</td><td>Missing context, audience, purpose</td><td>Add who/why/constraints; give an example</td></tr><tr><td>Too long</td><td>No length limit; verbose examples</td><td>"Max 100 words / 3 bullets"; shorter examples; lower <code>max_tokens</code></td></tr><tr><td>Too short / superficial</td><td>No depth requested</td><td>"Detailed, with examples and edge cases"; ask for sections</td></tr><tr><td>Wrong tone</td><td>Tone not specified or prompt style mismatched</td><td>Describe tone with contrasts; give a sample; write the prompt in that tone</td></tr><tr><td>"AI-sounding" clichés</td><td>Default style</td><td>Ban specific phrases; give voice samples</td></tr><tr><td>Repetitive phrasing</td><td>Long generation, low diversity</td><td>Raise temperature slightly; frequency penalty; ask for varied structure</td></tr><tr><td>Starts with "Sure! Here's…"</td><td>No format constraint</td><td>"Begin directly with…"; prefill; strip in code</td></tr><tr><td>Ignores one instruction</td><td>Too many rules; buried instruction</td><td>Number &amp; prioritize rules; put critical ones at the end; split into a chain</td></tr><tr><td>Follows examples too literally</td><td>Examples too similar</td><td>Diversify; "examples show format only"</td></tr><tr><td>Different answer every time</td><td>Temperature too high; ambiguous prompt</td><td>Lower temperature; more specific prompt; structured output</td></tr><tr><td>Agrees with my wrong assumption</td><td>Leading question / sycophancy</td><td>Ask neutrally; request critique and counterarguments</td></tr><tr><td>Refuses a legitimate request</td><td>Ambiguous intent; missing context</td><td>Explain the legitimate purpose and context; rephrase neutrally</td></tr></tbody></table></div>
+<h2 id="accuracy-amp-reasoning">🧠 Accuracy &amp; Reasoning</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>Made-up facts / citations</td><td>No grounding; pressure to answer</td><td>Provide sources; allow "I don't know"; quote-first; verify citations</td></tr><tr><td>Wrong math</td><td>Mental arithmetic</td><td>Step-by-step; code execution / calculator tool</td></tr><tr><td>Wrong multi-step logic</td><td>No thinking room</td><td>CoT; decomposition; reasoning model</td></tr><tr><td>Outdated info</td><td>Knowledge cutoff</td><td>Provide current data; search tool; include today's date</td></tr><tr><td>Misread a long document</td><td>Lost in the middle; question placed first</td><td>Docs first, question last; quote extraction; RAG</td></tr><tr><td>Confuses multiple documents</td><td>No labels</td><td>Wrap each in tags with source/index metadata</td></tr></tbody></table></div>
+<h2 id="format-amp-parsing">🧱 Format &amp; Parsing</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>Invalid JSON</td><td>Free-form generation</td><td>Structured outputs / tool schema; prefill <code>{</code>; validate &amp; retry</td></tr><tr><td>JSON wrapped in code fences</td><td>Default markdown habit</td><td>"Raw JSON only"; strip fences in code</td></tr><tr><td>Wrong labels ("Positive" vs "positive")</td><td>No enum</td><td>Enums in schema; exact label list; normalize in code</td></tr><tr><td>Cut off mid-sentence</td><td><code>max_tokens</code> reached</td><td>Raise limit; check <code>stop_reason</code>; ask for shorter output</td></tr><tr><td>Markdown appears in plain-text UI</td><td>Prompt written in markdown</td><td>"Plain text only"; write prompt in prose; strip in code</td></tr></tbody></table></div>
+<h2 id="rag-amp-agents">🔗 RAG &amp; Agents</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>"I don't know" though answer exists</td><td>Retrieval miss</td><td>Log retrieved chunks; hybrid search; query rewrite; bigger k; better chunking</td></tr><tr><td>Answers from outside knowledge</td><td>Weak grounding</td><td>"Only use documents"; quote-first; lower temperature</td></tr><tr><td>Agent loops forever</td><td>No stopping rule</td><td>Max steps; clear done criteria; detect repeated calls</td></tr><tr><td>Wrong tool chosen</td><td>Vague tool descriptions; overlapping tools</td><td>Clarify "use when / not when"; merge tools</td></tr><tr><td>Bad tool arguments</td><td>Unclear parameter docs</td><td>Describe formats with examples; enums; return helpful errors</td></tr><tr><td>Agent followed instructions from a web page</td><td>Indirect injection</td><td>Untrusted-data labels; least privilege; approvals; quarantine pattern</td></tr></tbody></table></div>
+<h2 id="api-amp-operations">⚙️ API &amp; Operations</h2>
+<div class="table-wrap"><table><thead><tr><th>Symptom</th><th>Likely cause</th><th>Fix</th></tr></thead><tbody><tr><td>401/403</td><td>Bad key / permissions</td><td>Check env var, key scope, org/project</td></tr><tr><td>400</td><td>Invalid parameters / too long</td><td>Read error message; check model name, token limits, message format</td></tr><tr><td>429</td><td>Rate limit</td><td>Backoff with jitter; request limit increase; batch</td></tr><tr><td>5xx / overloaded</td><td>Provider issue</td><td>Retry; fallback model/provider</td></tr><tr><td>Slow responses</td><td>Long outputs; big model; long prompts</td><td>Stream; smaller model; shorter output; caching; parallelize</td></tr><tr><td>Costs exploding</td><td>Long histories; big model everywhere; verbose outputs</td><td>Summarize history; route to smaller models; cache; cap output</td></tr><tr><td>Quality dropped after model update</td><td>Model behavior changed</td><td>Run eval suite; adapt prompt; pin model versions</td></tr></tbody></table></div>
+<hr>
+<h2 id="universal-debugging-procedure">🧭 Universal Debugging Procedure</h2>
+<ol><li><strong>Reproduce</strong> with the exact prompt, model and parameters (check your logs).</li><li><strong>Isolate</strong> — is it the prompt, the context/data, the model, or your code?</li><li><strong>Ask the model</strong>: <em>"Which part of my instructions was unclear or conflicting?"</em></li><li><strong>Change one thing</strong>, re-run on the full test set.</li><li><strong>Add the case</strong> to your eval set so it never regresses.</li></ol>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved.</p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="appendix-e-capstone-projects.html">← Capstone Projects</a><a class="btn ghost" href="appendix-g-resources.html">Resources &amp; Papers →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

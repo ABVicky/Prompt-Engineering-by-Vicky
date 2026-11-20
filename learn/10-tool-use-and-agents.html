@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tool Use &amp; Agents: Prompt Engineering Course (Module 10)</title>
+<meta name="description" content="Function calling, agent loops, MCP and guardrails. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/10-tool-use-and-agents.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Tool Use &amp; Agents: Prompt Engineering Course (Module 10)">
+<meta property="og:description" content="Function calling, agent loops, MCP and guardrails. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/10-tool-use-and-agents.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tool Use &amp; Agents: Prompt Engineering Course (Module 10)">
+<meta name="twitter:description" content="Function calling, agent loops, MCP and guardrails. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 10: Tool Use & Agents", "description": "Function calling, agent loops, MCP and guardrails.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/10-tool-use-and-agents.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/10-tool-use-and-agents.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 10</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/10-tool-use-and-agents.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-what-is-tool-use">1. What Is Tool Use?</a></li><li><a href="#2-anatomy-of-a-great-tool-definition">2. Anatomy of a Great Tool Definition</a></li><li><a href="#3-building-an-agent-loop-in-python">3. Building an Agent Loop in Python</a></li><li><a href="#4-model-context-protocol-mcp-the-universal-usb-for-ai">4. Model Context Protocol (MCP): The Universal USB for AI</a></li><li><a href="#5-agent-safety-amp-guardrails">5. Agent Safety &amp;amp; Guardrails</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>🤖 Module 10: Tool Use &amp; Agents</h1>
+<blockquote><p>🟣 Stage 3 · Advanced · ⏱️ ~3.5 hours</p></blockquote>
+<p>Imagine hiring a brilliant research scientist, but locking them inside a soundproof room with no windows, no internet, and no phone.</p>
+<p>They have read millions of books, so they can explain quantum physics or analyze Shakespeare with incredible depth. But if you ask them: <em>"What is the weather in Mumbai right now?"</em> or <em>"Can you book a meeting room for 3:00 PM?"</em>, they are completely helpless. They have no eyes and no hands.</p>
+<p>Up until now, that is how we have used language models: as brains locked in a box.</p>
+<p><strong>Tool use</strong> (also called <strong>function calling</strong>) hands that brilliant scientist a smartphone, a calculator, and a keyboard. The model doesn't run the computer or execute the code itself; instead, it writes a structured request: <em>"Please look up the weather for Mumbai"</em> or <em>"Calculate 14,295 × 83 on the calculator"</em>. Your software runs the action and hands the answer back.</p>
+<p>When an AI model uses tools repeatedly in a loop to accomplish a larger mission, it becomes an <strong>autonomous agent</strong>.</p>
+<p>In this module, you will learn how tool use works, how to write tool descriptions that never confuse the model, and how to build safe agent loops with guardrails.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Explain the complete lifecycle of a tool call from prompt to execution to final response.</li><li>Write precise <strong>tool definitions</strong> (names, descriptions, and JSON schemas) that models call accurately.</li><li>Build a Python <strong>ReAct agent loop</strong> with strict step limits and error handling.</li><li>Understand the <strong>Model Context Protocol (MCP)</strong> and why it is becoming the universal standard for AI tools.</li><li>Implement safety guardrails (like <strong>human-in-the-loop</strong> approvals) to prevent runaway costs or destructive actions.</li></ul>
+<hr>
+<h2 id="1-what-is-tool-use">1. What Is Tool Use?</h2>
+<p>An LLM cannot directly query your PostgreSQL database, ping an external API, or send an email. It can only generate text.</p>
+<p><strong>Tool use is an agreement between the model and your application:</strong></p>
+<ol><li>You give the model a list of available tools with instructions on what each tool does.</li><li>If the user asks a question that requires live data or an action, the model pauses and responds with a structured JSON request naming the tool and its arguments.</li><li>Your application executes the real action (calling the API or database).</li><li>Your application returns the raw result to the model.</li><li>The model reads the result and composes a natural, human-friendly answer.</li></ol>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/10-tool-use-and-agents.md">View it in the interactive reader</a>.</p>
+<blockquote><p>🔑 <strong>The Critical Rule:</strong> The model never touches the outside world directly. It only <em>requests</em> tools. <strong>Your code</strong> is the gatekeeper that decides whether to run the action, reject it, or ask a human for approval.</p></blockquote>
+<blockquote><p>👔 <strong>Non-Tech Lens · Tools in Everyday Chat Apps:</strong> When you use ChatGPT to browse the web, create images with DALL-E, or analyze an Excel sheet with Python, you are using tool calling. The model didn't learn your spreadsheet during training; it wrote a snippet of Python, sent it to an internal code sandbox, read the numbers returned, and wrote a summary for you.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · ReAct Loops &amp; Token Budgets:</strong> Agents operate via the <strong>ReAct (Reason + Act)</strong> cycle: Thought → Tool Selection → Tool Execution → Observation → Repeat. Because autonomous loops can loop indefinitely when encountering unexpected errors, you must always enforce:</p>
+<ol><li>A hard <code>max_steps</code> cap (usually 5 to 10 steps).</li><li>A total token budget ceiling for the run.</li><li>Standardized tool integration via <strong>Model Context Protocol (MCP)</strong>.</li></ol></blockquote>
+<hr>
+<h2 id="2-anatomy-of-a-great-tool-definition">2. Anatomy of a Great Tool Definition</h2>
+<p>A tool definition is simply a prompt written in JSON. The model reads your description to decide <em>whether</em> to pick the tool and <em>what</em> values to fill into its parameters.</p>
+<pre><code>{
+  &quot;name&quot;: &quot;lookup_customer_orders&quot;,
+  &quot;description&quot;: &quot;Look up recent orders for a verified customer. Use this whenever the user asks about delivery dates, tracking links, or past purchases. Do NOT use this tool for processing refunds or canceling items; use &#x27;request_order_cancellation&#x27; instead. Returns up to 5 orders sorted newest first.&quot;,
+  &quot;parameters&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;customer_id&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;The unique internal customer ID (e.g. &#x27;CUST-84920&#x27;). Never guess this; it must come from verified session context.&quot;
+      },
+      &quot;order_status&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;enum&quot;: [&quot;all&quot;, &quot;shipped&quot;, &quot;delivered&quot;, &quot;returned&quot;],
+        &quot;description&quot;: &quot;Filter by order status. Default is &#x27;all&#x27;.&quot;
+      }
+    },
+    &quot;required&quot;: [&quot;customer_id&quot;]
+  }
+}</code></pre>
+<h3 id="the-6-rules-of-tool-authoring">The 6 Rules of Tool Authoring</h3>
+<ol><li><strong>Clear Action Names:</strong> Use <code>verb_noun</code> formatting like <code>get_weather</code>, <code>cancel_subscription</code>, or <code>search_kb</code>.</li><li><strong>Explicit "When to Use" and "When NOT to Use":</strong> State the exact scenarios where the tool applies, and steer the model toward alternative tools for neighboring tasks.</li><li><strong>Specify Formats in Descriptions:</strong> If a date is required, write <code>&quot;Format: YYYY-MM-DD&quot;</code>. If a phone number is needed, write <code>&quot;Include country code, e.g., +91&quot;</code>.</li><li><strong>Use Enums for Fixed Choices:</strong> Don't let the model invent parameter strings. Provide an explicit list like <code>[&quot;low&quot;, &quot;medium&quot;, &quot;high&quot;]</code>.</li><li><strong>Keep Return Payloads Compact:</strong> When your Python function runs, return only the fields the model needs. Do not dump a 5,000-line raw database row into the context window.</li><li><strong>Return Actionable Errors:</strong> If an API call fails, return <code>{&quot;error&quot;: &quot;Order #481 not found. Ask user to verify order number.&quot;}</code>. This gives the model the exact context it needs to ask a helpful follow-up question.</li></ol>
+<hr>
+<h2 id="3-building-an-agent-loop-in-python">3. Building an Agent Loop in Python</h2>
+<p>An agent is simply a model that keeps going round this loop until the job is done: it thinks about what to do next, calls a tool, looks at what came back, and decides whether it's finished. The guardrails on the right are what keep that loop safe.</p>
+<p><img src="../assets/agent-loop.svg" alt="Agent loop" loading="lazy"></p>
+<p>Here is a clean, minimal agent loop using Python and the Anthropic SDK:</p>
+<pre><code>import anthropic
+import json
+
+client = anthropic.Anthropic()
+
+# 1. Define the real Python function
+def check_pincode_delivery(pincode: str) -&gt; dict:
+    available_pincodes = {&quot;560001&quot;: 24, &quot;560038&quot;: 48, &quot;110001&quot;: 24}
+    hours = available_pincodes.get(pincode)
+    if hours:
+        return {&quot;deliverable&quot;: True, &quot;delivery_time_hours&quot;: hours}
+    return {&quot;deliverable&quot;: False, &quot;reason&quot;: &quot;Pincode not currently serviceable.&quot;}
+
+# 2. Tool definition schema
+tools = [{
+    &quot;name&quot;: &quot;check_pincode_delivery&quot;,
+    &quot;description&quot;: &quot;Check if express delivery is available for a given 6-digit Indian postal pincode.&quot;,
+    &quot;input_schema&quot;: {
+        &quot;type&quot;: &quot;object&quot;,
+        &quot;properties&quot;: {
+            &quot;pincode&quot;: {&quot;type&quot;: &quot;string&quot;, &quot;description&quot;: &quot;6-digit Indian postal code, e.g. &#x27;560038&#x27;&quot;}
+        },
+        &quot;required&quot;: [&quot;pincode&quot;]
+    }
+}]
+
+tool_registry = {&quot;check_pincode_delivery&quot;: check_pincode_delivery}
+
+# 3. The Autonomous ReAct Loop
+def run_customer_agent(user_message: str, max_steps: int = 5) -&gt; str:
+    messages = [{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: user_message}]
+    
+    for step in range(max_steps):
+        response = client.messages.create(
+            model=&quot;claude-sonnet-5-5&quot;,
+            max_tokens=1000,
+            system=&quot;You are a helpful logistics assistant for an Indian retail brand. Use tools when needed.&quot;,
+            tools=tools,
+            messages=messages
+        )
+        
+        # Save assistant message to conversational history
+        messages.append({&quot;role&quot;: &quot;assistant&quot;, &quot;content&quot;: response.content})
+        
+        # If the model didn&#x27;t request a tool, it is done!
+        if response.stop_reason != &quot;tool_use&quot;:
+            for block in response.content:
+                if block.type == &quot;text&quot;:
+                    return block.text
+                    
+        # Otherwise, find and execute each requested tool
+        tool_results = []
+        for block in response.content:
+            if block.type == &quot;tool_use&quot;:
+                func = tool_registry.get(block.name)
+                try:
+                    result = func(**block.input)
+                except Exception as e:
+                    result = {&quot;error&quot;: str(e)}
+                    
+                tool_results.append({
+                    &quot;type&quot;: &quot;tool_result&quot;,
+                    &quot;tool_use_id&quot;: block.id,
+                    &quot;content&quot;: json.dumps(result)
+                })
+                
+        # Send tool output back to the model
+        messages.append({&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: tool_results})
+        
+    return &quot;I reached my maximum reasoning steps without finding a solution. Let me connect you with a human.&quot;
+
+# Run test
+print(run_customer_agent(&quot;Can you deliver a package to Indiranagar pincode 560038 today?&quot;))</code></pre>
+<hr>
+<h2 id="4-model-context-protocol-mcp-the-universal-usb-for-ai">4. Model Context Protocol (MCP): The Universal USB for AI</h2>
+<p>Until recently, every company built custom wrappers to connect their database or GitHub repository to AI models.</p>
+<p><strong>Model Context Protocol (MCP)</strong>, launched as an open standard by Anthropic in late 2024, is like <strong>USB-C for AI tools</strong>.</p>
+<p>Instead of writing a custom integration for every tool, a developer writes one <strong>MCP Server</strong> (for example, an MCP server for PostgreSQL, a Google Drive MCP server, or a Slack MCP server). Any MCP-compatible client (like Claude Desktop, Cursor, or your backend agent) connects to that server instantly over a standard JSON-RPC protocol.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/10-tool-use-and-agents.md">View it in the interactive reader</a>.</p>
+<blockquote><p>💡 <strong>Prompting in the Age of MCP:</strong> Because MCP standardizes tool protocols, <strong>the descriptions you write for your MCP tools are the prompts</strong> that dictate how every agent navigates your software. Clear descriptions matter more than ever.</p></blockquote>
+<hr>
+<h2 id="5-agent-safety-amp-guardrails">5. Agent Safety &amp; Guardrails</h2>
+<p>When you give an AI the ability to run tools, bugs stop being just ugly text; they can delete customer records, send unintended emails, or trigger unauthorized payments.</p>
+<p>Always implement these four safety layers:</p>
+<div class="table-wrap"><table><thead><tr><th>Risk</th><th>The Guardrail</th><th>How to implement it</th></tr></thead><tbody><tr><td><strong>Infinite Loops</strong></td><td>Hard step counter</td><td>Enforce <code>max_steps = 6</code>. If the model hasn't solved the task in 6 turns, halt execution.</td></tr><tr><td><strong>Runaway Costs</strong></td><td>Token and spend ceiling</td><td>Track cumulative input/output tokens per session; abort if spending exceeds ₹50 ($0.60).</td></tr><tr><td><strong>Destructive Actions</strong></td><td><strong>Human-in-the-Loop Approval</strong></td><td>Read-only actions (searching, fetching) run automatically. Irreversible actions (issuing refunds, deleting accounts, sending emails) require an explicit human confirmation click.</td></tr><tr><td><strong>Prompt Injection via Tool Results</strong></td><td>Delimit and sanitize data</td><td>Treat text returned from external websites or customer reviews as raw data inside <code>&lt;untrusted_content&gt;</code> tags. Never let read tools trigger write tools without validation.</td></tr></tbody></table></div>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>The Fix</th></tr></thead><tbody><tr><td>The Vague Tool Name</td><td>Naming a tool <code>fetch_data</code>. The model calls it for everything or ignores it completely.</td><td>Name it <code>fetch_user_billing_history</code> and explain its exact use case.</td></tr><tr><td>The Over-Parameterized Tool</td><td>A tool with 14 optional parameters. The model gets confused and passes invalid combinations.</td><td>Split into two simpler tools or provide strong default values.</td></tr><tr><td>Unsupervised Write Permissions</td><td>Giving an agent direct API keys to delete database rows or charge credit cards.</td><td>Put an approval modal in front of every destructive endpoint.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Open ChatGPT (with Advanced Data Analysis enabled) or Claude (with Analysis tool enabled) and try this:</p>
+<pre><code>Create a sample dataset of monthly sales for 5 Indian cities (Mumbai, Delhi, Bengaluru, Hyderabad, Chennai) over the last 6 months.
+
+Use your internal Python tool to calculate:
+1. The city with the highest average monthly growth rate.
+2. The total revenue across all cities.
+
+Display the numbers and plot a quick bar chart comparing total revenue by city.</code></pre>
+<p>Watch the model pause, write Python code, execute it in its background sandbox, and inspect the output before presenting the chart. That is tool use in action.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>Tool use allows language models to request external actions; your application code performs the real execution.</li><li>Tool descriptions are prompts. A clear description specifying when to use the tool and what parameters to pass is critical.</li><li>Agents run tools in a <strong>ReAct loop</strong> (Reason + Act + Observe).</li><li>The <strong>Model Context Protocol (MCP)</strong> standardizes how applications expose tools and data to AI models.</li><li>Always enforce <strong>human-in-the-loop approvals</strong> for any destructive or financial action, and cap the maximum loop iterations.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-101-design-an-e-commerce-refund-tool-schema">Exercise 10.1: Design an E-Commerce Refund Tool Schema</h3>
+<p>Design the JSON schema for a customer refund tool. Requirements:</p>
+<ul><li><code>order_id</code> (string)</li><li><code>refund_amount_inr</code> (number)</li><li><code>reason</code> (must be an enum of: <code>item_damaged</code>, <code>wrong_item_delivered</code>, <code>order_cancelled_prior_shipping</code>)</li><li><code>requires_manager_approval</code> (boolean: true if amount &gt; ₹5,000)</li></ul>
+<details>
+<summary>View Solution & Explanation</summary>
+<pre><code>{
+  &quot;name&quot;: &quot;process_order_refund&quot;,
+  &quot;description&quot;: &quot;Issue a financial refund to a customer&#x27;s original payment method. Only call this after verifying eligibility in order history. Never guess order IDs.&quot;,
+  &quot;parameters&quot;: {
+    &quot;type&quot;: &quot;object&quot;,
+    &quot;properties&quot;: {
+      &quot;order_id&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;description&quot;: &quot;Order reference code, e.g. &#x27;ORD-98214&#x27;.&quot;
+      },
+      &quot;refund_amount_inr&quot;: {
+        &quot;type&quot;: &quot;number&quot;,
+        &quot;description&quot;: &quot;Total amount in Indian Rupees (₹) to refund.&quot;
+      },
+      &quot;reason&quot;: {
+        &quot;type&quot;: &quot;string&quot;,
+        &quot;enum&quot;: [&quot;item_damaged&quot;, &quot;wrong_item_delivered&quot;, &quot;order_cancelled_prior_shipping&quot;],
+        &quot;description&quot;: &quot;Pre-approved company refund reason.&quot;
+      },
+      &quot;requires_manager_approval&quot;: {
+        &quot;type&quot;: &quot;boolean&quot;,
+        &quot;description&quot;: &quot;Must be set to true if refund_amount_inr is strictly greater than 5000.&quot;
+      }
+    },
+    &quot;required&quot;: [&quot;order_id&quot;, &quot;refund_amount_inr&quot;, &quot;reason&quot;, &quot;requires_manager_approval&quot;]
+  }
+}</code></pre>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>Who actually runs the external code or API during a tool call?<br>• A) The neural network weights inside the LLM.<br>• B) The browser's JavaScript engine automatically.<br>• C) Your application backend.</li><li>What happens if you do not enforce a <code>max_steps</code> limit on an agent loop?<br>• A) An unexpected API error could cause the model to loop repeatedly, consuming your token budget and freezing your app.<br>• B) The agent becomes smarter.<br>• C) Nothing, agents automatically stop after 2 steps.</li><li>What is the Model Context Protocol (MCP)?<br>• A) A new programming language for data scientists.<br>• B) An open standard that normalizes how tools, databases, and resources connect to AI models.<br>• C) A type of GPU processor.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>C</strong> — The LLM outputs a structured request string; your application code inspects, validates, and executes the real action.</li><li><strong>A</strong> — Without a hard step counter, an agent can get stuck in a reasoning loop and rapidly drain your API quota.</li><li><strong>B</strong> — MCP acts as the universal standard for exposing data and functions to AI agents.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="09-context-engineering-rag.html">Module 09</a> · ➡️ <a href="11-multimodal-and-image-prompting.html">Module 11 — Multimodal &amp; Image Prompting</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="09-context-engineering-rag.html">← Context Engineering &amp; RAG</a><a class="btn ghost" href="11-multimodal-and-image-prompting.html">Multimodal &amp; Image Prompting →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

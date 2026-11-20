@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parameters, APIs &amp; Cost: Prompt Engineering Course (Module 12)</title>
+<meta name="description" content="Sampling settings, SDKs, streaming, cost and latency. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/12-parameters-apis-and-cost.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Parameters, APIs &amp; Cost: Prompt Engineering Course (Module 12)">
+<meta property="og:description" content="Sampling settings, SDKs, streaming, cost and latency. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/12-parameters-apis-and-cost.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Parameters, APIs &amp; Cost: Prompt Engineering Course (Module 12)">
+<meta name="twitter:description" content="Sampling settings, SDKs, streaming, cost and latency. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 12: Parameters, APIs & Cost", "description": "Sampling settings, SDKs, streaming, cost and latency.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/12-parameters-apis-and-cost.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/12-parameters-apis-and-cost.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 12</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/12-parameters-apis-and-cost.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-what-is-an-api-the-gentle-on-ramp">1. What Is an API? (The Gentle On-Ramp)</a></li><li><a href="#2-the-core-parameter-levers">2. The Core Parameter Levers</a></li><li><a href="#3-the-same-api-call-in-four-ecosystems">3. The Same API Call in Four Ecosystems</a></li><li><a href="#4-streaming-why-real-time-typing-matters">4. Streaming: Why Real-Time Typing Matters</a></li><li><a href="#5-token-math-how-to-calculate-real-costs">5. Token Math: How to Calculate Real Costs</a></li><li><a href="#6-practical-levers-to-slash-costs">6. Practical Levers to Slash Costs</a></li><li><a href="#7-error-handling-and-api-key-hygiene">7. Error Handling and API Key Hygiene</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>⚙️ Module 12: Parameters, APIs &amp; Cost</h1>
+<blockquote><p>🟣 Stage 3 · Advanced · ⏱️ ~2.5 hours</p></blockquote>
+<p>Imagine you need to run to the corner kirana store to buy a carton of milk.</p>
+<p>You wouldn't hire a luxury stretch limousine with a private chauffeur just to drive three blocks. You would walk, ride a bicycle, or hop on a scooter.</p>
+<p>Yet every single day, businesses make this exact mistake with artificial intelligence. They use their largest, most expensive flagship model to check spelling or classify a three-word subject line, burning through cash and waiting three seconds per response.</p>
+<p>Understanding model parameters, APIs, and token economics is what separates casual tinkerers from real professionals.</p>
+<p>In this module, you will learn the levers that control model randomness and length, how to call major AI APIs with clean code, and how to calculate and cut your costs by 70% to 90% without sacrificing quality.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Explain what an <strong>API</strong> is in plain language, even if you are not a programmer.</li><li>Master the essential generation settings: <strong>Temperature, Top-p, Max Tokens, and Stop Sequences</strong>.</li><li>Calculate exact token costs in both US Dollars ($) and Indian Rupees (₹).</li><li>Apply cost-saving techniques: <strong>model routing, prompt caching, and batch processing</strong>.</li><li>Handle API errors (like 429 rate limits) with exponential backoff and protect your secret keys.</li></ul>
+<hr>
+<h2 id="1-what-is-an-api-the-gentle-on-ramp">1. What Is an API? (The Gentle On-Ramp)</h2>
+<p>If you have only used ChatGPT, Claude, or Gemini in your web browser, you have been using the <strong>Consumer Interface</strong>. You type into a box, and the company's servers send words back to your screen.</p>
+<p>An <strong>API</strong> (Application Programming Interface) is simply a way for computer programs to talk to that same AI model directly behind the scenes.</p>
+<p>Think of a restaurant:</p>
+<ul><li><strong>The Chat Website:</strong> You walk into the dining room, sit at a table, chat with the waiter, and eat your meal.</li><li><strong>The API:</strong> The restaurant's kitchen loading dock. Delivery drivers pull up with order tickets, food is packed into standardized crates, and trucks roll out every few seconds.</li></ul>
+<p>With an API, you pay only for the exact number of words (tokens) you send and receive. You don't pay a flat monthly consumer subscription.</p>
+<blockquote><p>👔 <strong>Non-Tech Lens · What to Take From This Module:</strong> You can skip the code samples here and still get the important parts. Read the parameter table in Section 2, because chat apps and "playground" screens use the same dials (temperature, maximum length). Read the cost math in Section 5, because it helps you judge quotes from vendors and decide whether an AI idea is affordable at your company's scale. When a developer on your team says "we'll use a smaller model for this step", Section 6 explains why that saves money.</p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Same Concepts, Different Field Names:</strong> Every provider's SDK takes the same ingredients: a model ID, system instructions, a list of messages, sampling parameters, a token limit, and optional tools. Learn one SDK well and the rest is mostly renaming. Treat every model ID in the samples as a placeholder, and check the provider's model list before you ship.</p></blockquote>
+<hr>
+<h2 id="2-the-core-parameter-levers">2. The Core Parameter Levers</h2>
+<p>Whenever you send a message to an AI through an API or developer playground, you can adjust several dials:</p>
+<div class="table-wrap"><table><thead><tr><th>Setting</th><th>What does it do?</th><th>Recommended Range</th><th>When to use it</th></tr></thead><tbody><tr><td><strong>Temperature</strong></td><td>Controls randomness and creativity.</td><td><code>0.0 – 0.2</code>: Strict &amp; factual<br><code>0.7 – 1.0</code>: Creative &amp; varied</td><td>Use near <code>0</code> for JSON, classification, and code. Use higher values for brainstorming.</td></tr><tr><td><strong>Top-P (Nucleus)</strong></td><td>Restricts the pool of candidate words to the top cumulative probability $p$.</td><td><code>0.9 – 1.0</code> (Leave default)</td><td>Alternative to temperature. Adjust either temperature or Top-p, never both at once.</td></tr><tr><td><strong>Max Tokens</strong></td><td>The hard ceiling on the number of tokens the model can generate in its reply.</td><td>Task-dependent</td><td>Protects your budget against runaway loops. If your output cuts off mid-sentence, increase this.</td></tr><tr><td><strong>Stop Sequences</strong></td><td>Specific text strings that immediately halt generation.</td><td><code>[&quot;&lt;/answer&gt;&quot;, &quot;\n\nUser:&quot;]</code></td><td>Guarantees clean cutoff boundaries without trailing commentary.</td></tr><tr><td><strong>Frequency Penalty</strong></td><td>Penalizes words that have already appeared frequently in the text.</td><td><code>0.0 – 0.4</code></td><td>Stops models from getting stuck in repetitive loops during long prose.</td></tr></tbody></table></div>
+<blockquote><p>⚠️ <strong>Reasoning Model Note:</strong> Reasoning ("thinking") models often lock or ignore temperature. Instead, you control their depth of thought using a <strong>thinking budget</strong> or <strong>reasoning effort</strong> parameter (such as <code>low</code>, <code>medium</code>, or <code>high</code>).</p></blockquote>
+<hr>
+<h2 id="3-the-same-api-call-in-four-ecosystems">3. The Same API Call in Four Ecosystems</h2>
+<p>No matter which provider you choose, the underlying concept is identical: you pass a <strong>model name</strong>, a <strong>system instruction</strong>, a list of <strong>messages</strong>, and your <strong>parameters</strong>.</p>
+<h3 id="1-anthropic-claude-python">1. Anthropic Claude (Python)</h3>
+<pre><code>import anthropic
+
+client = anthropic.Anthropic()
+response = client.messages.create(
+    model=&quot;claude-sonnet-5-5&quot;,
+    max_tokens=300,
+    temperature=0.2,
+    system=&quot;You are a concise business analyst.&quot;,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Explain unit economics in 2 sentences.&quot;}]
+)
+print(response.content[0].text)</code></pre>
+<h3 id="2-openai-python">2. OpenAI (Python)</h3>
+<pre><code>from openai import OpenAI
+
+client = OpenAI()
+response = client.chat.completions.create(
+    model=&quot;YOUR_OPENAI_MODEL&quot;,  # pick a current model from OpenAI&#x27;s model list
+    max_tokens=300,
+    temperature=0.2,
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;You are a concise business analyst.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Explain unit economics in 2 sentences.&quot;}
+    ]
+)
+print(response.choices[0].message.content)</code></pre>
+<h3 id="3-google-gemini-python">3. Google Gemini (Python)</h3>
+<pre><code>from google import genai
+
+client = genai.Client()
+response = client.models.generate_content(
+    model=&quot;YOUR_GEMINI_MODEL&quot;,  # pick a current model from Google&#x27;s model list
+    contents=&quot;Explain unit economics in 2 sentences.&quot;,
+    config={&quot;system_instruction&quot;: &quot;You are a concise business analyst.&quot;, &quot;temperature&quot;: 0.2}
+)
+print(response.text)</code></pre>
+<h3 id="4-local-open-source-model-ollama-on-your-own-laptop">4. Local Open-Source Model (Ollama on your own laptop)</h3>
+<pre><code>from openai import OpenAI
+
+# Connects to your local machine at zero cost
+client = OpenAI(base_url=&quot;http://localhost:11434/v1&quot;, api_key=&quot;ollama&quot;)
+response = client.chat.completions.create(
+    model=&quot;llama3.1&quot;,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Explain unit economics in 2 sentences.&quot;}]
+)
+print(response.choices[0].message.content)</code></pre>
+<hr>
+<h2 id="4-streaming-why-real-time-typing-matters">4. Streaming: Why Real-Time Typing Matters</h2>
+<p>When an AI generates 400 words, waiting for the entire paragraph to finish can take 4 to 6 seconds. To a human user staring at a loading spinner, that feels like an eternity.</p>
+<p><strong>Streaming</strong> uses Server-Sent Events (SSE) to deliver tokens the microsecond they are generated:</p>
+<pre><code># Streaming example in Python
+with client.messages.stream(
+    model=&quot;claude-sonnet-5-5&quot;,
+    max_tokens=300,
+    messages=[{&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Write a short poem about monsoons in Mumbai.&quot;}]
+) as stream:
+    for text in stream.text_stream:
+        print(text, end=&quot;&quot;, flush=True)</code></pre>
+<p>The total generation time is the same, but the <strong>Time to First Token (TTFT)</strong> drops to under 500 milliseconds. Your application feels instant and responsive.</p>
+<hr>
+<h2 id="5-token-math-how-to-calculate-real-costs">5. Token Math: How to Calculate Real Costs</h2>
+<p>AI providers bill per one million (1M) tokens. Output tokens almost always cost <strong>3 to 4 times more</strong> than input tokens because generating text requires memory bandwidth, while reading text can be parallelized.</p>
+<h3 id="the-cost-formula">The Cost Formula</h3>
+<p>$$\text{Cost per Call} = \frac{(\text{Input Tokens} \times \text{Input Price}) + (\text{Output Tokens} \times \text{Output Price})}{1,000,000}$$</p>
+<h3 id="worked-example-customer-support-bot">Worked Example: Customer Support Bot</h3>
+<p>Suppose your company runs a support bot that handles 5,000 inquiries every day:</p>
+<ul><li>Average input per conversation: 1,200 tokens (including system prompt and user query).</li><li>Average output per conversation: 200 tokens.</li><li>Flagship Model Pricing: \$3.00 per 1M input / \$15.00 per 1M output.</li></ul>
+<p><strong>Calculation:</strong></p>
+<ul><li>Daily Input Cost: $(5,000 \times 1,200 \times \$3.00) / 1,000,000 = \$18.00$</li><li>Daily Output Cost: $(5,000 \times 200 \times \$15.00) / 1,000,000 = \$15.00$</li><li>Total Daily Cost: $\$33.00$ (approx ₹2,750)</li><li><strong>Monthly Spend:</strong> $\$33.00 \times 30 = \$990$ per month (approx ₹82,500)</li></ul>
+<p>Now look at what happens if you route simple tickets to a lightweight model (\$0.15 input / \$0.60 output):</p>
+<ul><li>Total Monthly Spend drops to <strong>\$49.50 per month (approx ₹4,100)</strong>. </li><li>You save over <strong>95% of your budget</strong> while maintaining high quality.</li></ul>
+<hr>
+<h2 id="6-practical-levers-to-slash-costs">6. Practical Levers to Slash Costs</h2>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/12-parameters-apis-and-cost.md">View it in the interactive reader</a>.</p>
+<ol><li><strong>Model Routing (Cascades):</strong> Send routine classifications and summaries to fast, cheap models. Escalate to your flagship model only when a confidence score is low.</li><li><strong>Prompt Caching:</strong> Place your static documentation and system rules at the very start of the prompt. Providers discount cached input tokens by 50% to 90%.</li><li><strong>Batch APIs:</strong> If a task does not need immediate real-time answers (for example, grading homework, tagging 5,000 blog posts, or running evals), use provider Batch endpoints for an automatic <strong>50% discount</strong>.</li><li><strong>Trim Verbosity:</strong> Output tokens are the most expensive tokens you buy. Instruct the model: <em>"Be concise. Answer in under 3 bullet points."</em></li></ol>
+<hr>
+<h2 id="7-error-handling-and-api-key-hygiene">7. Error Handling and API Key Hygiene</h2>
+<p>When running prompts in code, your software must handle common HTTP status codes gracefully:</p>
+<div class="table-wrap"><table><thead><tr><th>Status Code</th><th>What it means</th><th>How your code should handle it</th></tr></thead><tbody><tr><td><strong>400 Bad Request</strong></td><td>Your prompt exceeded the context window or had invalid JSON parameters.</td><td>Fix your prompt payload. Do not retry blindly.</td></tr><tr><td><strong>401 Unauthorized</strong></td><td>Your API key is expired, invalid, or missing.</td><td>Check your environment variables.</td></tr><tr><td><strong>429 Rate Limit</strong></td><td>You sent too many requests per minute.</td><td>Wait and retry using <strong>Exponential Backoff with Jitter</strong> (pause 1s, then 2s, then 4s with random microsecond variation).</td></tr><tr><td><strong>500 / 503 Overloaded</strong></td><td>The AI provider's servers are temporarily overwhelmed.</td><td>Retry after a brief pause, or fall back to an alternate provider.</td></tr></tbody></table></div>
+<h3 id="api-key-security-rules">API Key Security Rules</h3>
+<ul><li>🔒 <strong>Never hardcode API keys:</strong> Always store them in a <code>.env</code> file or secret manager.</li><li>🚫 <strong>Never push keys to GitHub:</strong> Add <code>.env</code> to your <code>.gitignore</code> file immediately.</li><li>💻 <strong>Never call AI APIs directly from client-side JavaScript:</strong> If you put an API key in a React or mobile app, any user can inspect network traffic, steal your key, and drain your credit card. Always call the API from your secure backend server.</li></ul>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>The Fix</th></tr></thead><tbody><tr><td>The Mid-Sentence Cutoff</td><td>Answers stop abruptly in the middle of a thought.</td><td>Check <code>stop_reason</code>. If it equals <code>max_tokens</code>, increase your <code>max_tokens</code> limit or ask for a shorter format.</td></tr><tr><td>Tuning Both Temperature and Top-P</td><td>You adjust both knobs at once and get wild, unpredictable results.</td><td>Keep <code>top_p = 1.0</code> and adjust <code>temperature</code>, or vice versa.</td></tr><tr><td>The Uncapped Loop</td><td>An automated retry loop hits an invalid prompt and burns \$50 in 3 minutes.</td><td>Set a hard cap: <code>max_retries = 3</code>.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Open your provider's developer playground (like the Anthropic Console, OpenAI Playground, or Google AI Studio):</p>
+<ol><li>Set <strong>Temperature to 0.0</strong>. Ask: <em>"Give me a 1-word name for an electric scooter startup."</em> Run it 3 times. Notice the answer is identical every time.</li><li>Now set <strong>Temperature to 1.0</strong>. Ask the exact same question 3 times. Notice the sudden burst of variety and creativity.</li></ol>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>An API is simply a programmatic doorway to the model that charges strictly for the tokens you consume.</li><li>Use low temperature (<code>0.0 – 0.2</code>) for factual tasks, data extraction, and code. Use higher temperature (<code>0.7 – 1.0</code>) for creative writing.</li><li>Output tokens are 3 to 4 times more expensive than input tokens. Keep outputs concise.</li><li>Use <strong>model routing</strong> and <strong>batch APIs</strong> to cut enterprise AI bills by up to 90%.</li><li>Always store API keys in backend environment variables, never in client-side code.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-121-calculate-monthly-architecture-costs">Exercise 12.1: Calculate Monthly Architecture Costs</h3>
+<p>A legal tech startup in Delhi runs a contract analyzer.</p>
+<ul><li>Volume: 800 contracts per business day (22 days per month).</li><li>Input per contract: 8,000 tokens of contract text + 1,000 tokens of system instructions.</li><li>Output per contract: 600 tokens of risk analysis.</li><li>Pricing: Input = \$2.50 / 1M tokens. Output = \$10.00 / 1M tokens.</li></ul>
+<p>Calculate the monthly cost in USD and INR (assume \$1 = ₹85).</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>Step 1: Tokens per contract</strong></p>
+<ul><li>Input: $8,000 + 1,000 = 9,000$ tokens</li><li>Output: $600$ tokens</li></ul>
+<p><strong>Step 2: Cost per contract</strong></p>
+<ul><li>Input Cost: $(9,000 \times \$2.50) / 1,000,000 = \$0.0225$</li><li>Output Cost: $(600 \times \$10.00) / 1,000,000 = \$0.0060$</li><li>Total per contract: $\$0.0285$</li></ul>
+<p><strong>Step 3: Monthly Total</strong></p>
+<ul><li>Total contracts per month: $800 \times 22 = 17,600$ contracts</li><li>Total Monthly Cost (USD): $17,600 \times \$0.0285 = \mathbf{\$501.60}$</li><li>Total Monthly Cost (INR): $\$501.60 \times 85 \approx \mathbf{₹42,636}$</li></ul>
+<p><em>Pro-tip:</em> If the startup uses Prompt Caching on the 1,000-token system prompt, they will save another ~10% on input costs!</p>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>Why are output tokens generally more expensive than input tokens?<br>• A) Because the AI company wants to discourage long answers.<br>• B) Because generating tokens requires sequential memory bandwidth, while input tokens can be processed in parallel.<br>• C) Because output tokens use more electricity on the user's laptop.</li><li>What does an HTTP 429 status code indicate?<br>• A) Your prompt contained a spelling error.<br>• B) The server has permanently deleted your account.<br>• C) You exceeded the API's rate limit for requests or tokens per minute.</li><li>Where should your API key be stored in a production application?<br>• A) Inside secure backend environment variables or a secrets manager.<br>• B) In your public HTML header.<br>• C) In the user's browser local storage.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>B</strong> — Autoregressive decoding is memory-bandwidth bound and occurs one step at a time, making it far more compute-intensive than parallel prefill.</li><li><strong>C</strong> — A 429 response means you are sending requests faster than your account tier allows.</li><li><strong>A</strong> — API keys must remain strictly on the backend to prevent theft and unauthorized use.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="11-multimodal-and-image-prompting.html">Module 11</a> · ➡️ <a href="13-evaluation-and-testing.html">Module 13 — Evaluation &amp; Testing</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="11-multimodal-and-image-prompting.html">← Multimodal &amp; Image Prompting</a><a class="btn ghost" href="13-evaluation-and-testing.html">Evaluation &amp; Testing →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>

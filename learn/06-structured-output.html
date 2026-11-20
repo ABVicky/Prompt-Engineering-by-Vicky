@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Structured Output: Prompt Engineering Course (Module 06)</title>
+<meta name="description" content="Reliable JSON, schemas, XML tags, tables and validation. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="author" content="Vicky Prasad Mahato">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/06-structured-output.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Prompt Engineering: Zero to Pro">
+<meta property="og:title" content="Structured Output: Prompt Engineering Course (Module 06)">
+<meta property="og:description" content="Reliable JSON, schemas, XML tags, tables and validation. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta property="og:url" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/06-structured-output.html">
+<meta property="og:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Structured Output: Prompt Engineering Course (Module 06)">
+<meta name="twitter:description" content="Reliable JSON, schemas, XML tags, tables and validation. Free lesson from Prompt Engineering: Zero to Pro, a complete prompt engineering course for beginners to pros.">
+<meta name="twitter:image" content="https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Module 06: Structured Output", "description": "Reliable JSON, schemas, XML tags, tables and validation.", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/learn/06-structured-output.html", "inLanguage": "en", "isAccessibleForFree": true, "learningResourceType": "Lesson", "author": {"@type": "Person", "name": "Vicky Prasad Mahato", "url": "https://abvicky.in"}, "isPartOf": {"@type": "Course", "name": "Prompt Engineering: Zero to Pro", "url": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"}, "image": "https://abvicky.github.io/Prompt-Engineering-by-Vicky/assets/social-card.png"}</script>
+<style>
+:root{--bg:#F5F4F9;--card:#FFFFFF;--text:#34363D;--muted:#6B6E78;--line:#E4E2EC;--primary:#F3B552;--link:#2F6AA8;--code:#F0EEF6}
+@media (prefers-color-scheme:dark){:root{--bg:#17191F;--card:#20232B;--text:#E8E8EC;--muted:#A3A6B0;--line:#33363F;--primary:#F3B552;--link:#7FB0E6;--code:#2A2D36}}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.7 Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--link)}img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:2;background:var(--card);border-bottom:1px solid var(--line)}
+.top-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between}
+.brand{font-weight:800;color:var(--text);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn{display:inline-block;background:var(--primary);color:#23252B;font-weight:700;text-decoration:none;padding:8px 14px;border-radius:10px;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+main{max-width:860px;margin:0 auto;padding:24px 16px 48px}
+.crumbs{font-size:14px;color:var(--muted)}.crumbs a{color:var(--muted)}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px 24px 24px;margin-top:12px;overflow-wrap:break-word}
+h1{font-size:2rem;line-height:1.25}h2{margin-top:2em;line-height:1.3}h3{line-height:1.35}
+pre{background:#1E2028;color:#E8E8EC;padding:14px;border-radius:10px;overflow:auto;font-size:14px;line-height:1.55}
+code{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:.88em}
+:not(pre)>code{background:var(--code);padding:1px 5px;border-radius:5px}
+blockquote{margin:1.2em 0;padding:4px 16px;border-left:4px solid var(--primary);background:var(--code);border-radius:0 10px 10px 0}
+.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:15px}th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0;padding:14px 16px;border:1px dashed var(--primary);border-radius:12px}
+.toc{font-size:15px}.toc ul{padding-left:18px;margin:6px 0}
+.pager{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.diagram-note{color:var(--muted);font-size:15px}
+footer{max-width:860px;margin:0 auto;padding:0 16px 40px;color:var(--muted);font-size:14px}
+details{border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <a class="brand" href="../index.html">🎯 Prompt Engineering: Zero to Pro</a>
+  <a class="btn" href="../index.html#/modules/06-structured-output.md">Open in reader</a>
+</div></header>
+<main>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Course home</a> › <a href="index.html">All lessons</a> › Module 06</nav>
+<article>
+<div class="cta"><span>📖 This is the text version. The <strong>interactive reader</strong> adds diagrams, search, progress tracking and Non-Tech / Tech tracks.</span><a class="btn" href="../index.html#/modules/06-structured-output.md">Read interactively</a><a class="btn ghost" href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky">⭐ Star on GitHub</a></div>
+<details class="toc"><summary>On this page</summary><ul><li><a href="#learning-objectives">🎯 Learning Objectives</a></li><li><a href="#1-why-structure-matters">1. Why Structure Matters</a></li><li><a href="#2-the-five-levels-of-json-reliability">2. The Five Levels of JSON Reliability</a></li><li><a href="#3-level-4-native-structured-outputs-in-code">3. Level 4: Native Structured Outputs in Code</a></li><li><a href="#4-level-5-code-validation-amp-self-repair">4. Level 5: Code Validation &amp;amp; Self-Repair</a></li><li><a href="#5-schema-design-tips-make-your-data-bulletproof">5. Schema Design Tips: Make Your Data Bulletproof</a></li><li><a href="#6-xml-tags-organizing-inputs-and-outputs">6. XML Tags: Organizing Inputs and Outputs</a></li><li><a href="#common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp;amp; How to Spot Them</a></li><li><a href="#try-it-now">🧪 Try It Now</a></li><li><a href="#key-takeaways">🔑 Key Takeaways</a></li><li><a href="#exercises">🏋️ Exercises</a></li><li><a href="#quick-quiz">✅ Quick Quiz</a></li></ul></details>
+<h1>🧱 Module 06: Structured Output</h1>
+<blockquote><p>🔵 Stage 2 · Intermediate · ⏱️ ~2 hours</p></blockquote>
+<p>Have you ever filled out a paper visa application or bank form?</p>
+<p>If you scribble your address across three different lines or write your birth date in words when it asks for numbers, the officer hands it back and tells you to start over.</p>
+<p>Computers are even pickier. If you are building an app, a spreadsheet, or an automated workflow, one missing comma, a misplaced quotation mark, or an unexpected introductory remark (<em>"Sure, here is your data!"</em>) will cause your computer script to crash.</p>
+<p>When humans read text, "mostly right" is good enough. But when software reads text, it needs strict, predictable structure.</p>
+<p>In this module, you will learn how to make AI models return data in clean, dependable formats: from copy-paste Excel tables for business teams to guaranteed, type-safe JSON for production code.</p>
+<hr>
+<h2 id="learning-objectives">🎯 Learning Objectives</h2>
+<p>By the end of this module, you will be able to:</p>
+<ul><li>Generate clean Markdown tables and CSV data that paste directly into Excel or Google Sheets.</li><li>Climb the five levels of JSON reliability, from simple chat prompts to schema-constrained decoding.</li><li>Design error-resistant data schemas using enums, nulls, and evidence-first fields.</li><li>Use XML tags to extract specific sections of data cleanly.</li><li>Validate and repair malformed AI responses in code with automated retries.</li></ul>
+<hr>
+<h2 id="1-why-structure-matters">1. Why Structure Matters</h2>
+<p>Unstructured text is great for reading, but terrible for automation.</p>
+<p class="diagram-note">📊 This section has a diagram. <a href="../index.html#/modules/06-structured-output.md">View it in the interactive reader</a>.</p>
+<blockquote><p>👔 <strong>Non-Tech Lens · Copy-Paste Tables for Excel &amp; Google Sheets:</strong> You do not need to write code to get the benefits of structured data. If you have messy meeting notes, receipts, or customer emails, tell your chat app: <em>"Extract this information into a Markdown table with columns: Date, Vendor, Category, Amount in ₹. Below the table, provide the exact same data as a raw CSV code block so I can copy and paste directly into Google Sheets."</em></p></blockquote>
+<blockquote><p>💻 <strong>Tech Lens · Type-Safe Contracts &amp; Constrained Sampling:</strong> Relying on prompt instructions alone to produce valid JSON will fail under high token volumes. In production backends, use schema-constrained decoding (such as OpenAI's <code>response_format={&quot;type&quot;: &quot;json_schema&quot;}</code> or Pydantic models with libraries like <code>Instructor</code> or <code>Outlines</code>). Constrained decoding modifies the token probability mask at each generation step, mathematically guaranteeing that the output conforms 100% to your schema.</p></blockquote>
+<hr>
+<h2 id="2-the-five-levels-of-json-reliability">2. The Five Levels of JSON Reliability</h2>
+<p>Depending on what you are building, you can choose how strictly to enforce structure:</p>
+<div class="table-wrap"><table><thead><tr><th>Level</th><th>Method</th><th>Reliability</th><th>Where to use it</th></tr></thead><tbody><tr><td><strong>Level 1</strong></td><td><em>"Respond in JSON"</em></td><td>😬 Low</td><td>Quick personal chat experiments</td></tr><tr><td><strong>Level 2</strong></td><td>Specify the exact schema + provide an example</td><td>🙂 Moderate</td><td>Internal scripts and prototypes</td></tr><tr><td><strong>Level 3</strong></td><td>Level 2 + Prefill <code>{</code> and forbid conversational chatter</td><td>😀 High</td><td>Standard API scripts</td></tr><tr><td><strong>Level 4</strong></td><td>Native Structured Outputs (JSON Schema constraint)</td><td>🤩 Guaranteed</td><td>Production web applications</td></tr><tr><td><strong>Level 5</strong></td><td>Level 4 + Code validation (Pydantic) and auto-repair</td><td>🏆 Enterprise</td><td>Mission-critical financial or medical pipelines</td></tr></tbody></table></div>
+<h3 id="level-2-amp-3-the-production-ready-prompt-template">Level 2 &amp; 3: The Production-Ready Prompt Template</h3>
+<p>If you are using a standard chat interface or an API without native schema enforcement, use this prompt structure:</p>
+<pre><code>Extract the invoice details from the text below.
+
+Return ONLY a valid JSON object matching this schema. Do not include markdown code fences, greetings, or conversational notes.
+
+Schema:
+{
+  &quot;vendor_name&quot;: string,
+  &quot;invoice_number&quot;: string,
+  &quot;invoice_date&quot;: &quot;YYYY-MM-DD&quot;,
+  &quot;total_amount&quot;: number,            // Numeric value only, no currency symbols
+  &quot;currency&quot;: &quot;INR&quot; | &quot;USD&quot; | &quot;EUR&quot;,
+  &quot;line_items&quot;: [
+    {
+      &quot;description&quot;: string,
+      &quot;quantity&quot;: number,
+      &quot;unit_price&quot;: number
+    }
+  ]
+}
+
+If any value is missing from the source text, use null. Do not guess or invent data.
+
+&lt;invoice&gt;
+{{invoice_text}}
+&lt;/invoice&gt;</code></pre>
+<hr>
+<h2 id="3-level-4-native-structured-outputs-in-code">3. Level 4: Native Structured Outputs in Code</h2>
+<p>Most major providers now let you supply a formal JSON schema directly to their API. The model's decoding engine literally forbids any token that would break the schema.</p>
+<h3 id="example-pydantic-with-openai-structured-outputs">Example: Pydantic with OpenAI Structured Outputs</h3>
+<pre><code>from pydantic import BaseModel, Field
+from openai import OpenAI
+from typing import Literal, List, Optional
+
+class LineItem(BaseModel):
+    description: str
+    quantity: int
+    unit_price: float
+
+class InvoiceData(BaseModel):
+    vendor_name: str
+    invoice_number: str
+    total_amount: float
+    currency: Literal[&quot;INR&quot;, &quot;USD&quot;, &quot;EUR&quot;]
+    line_items: List[LineItem]
+    notes: Optional[str] = None
+
+client = OpenAI()
+
+# The API guarantees that completion matches InvoiceData perfectly
+completion = client.beta.chat.completions.parse(
+    model=&quot;YOUR_OPENAI_MODEL&quot;,  # any current OpenAI model that supports structured outputs
+    messages=[
+        {&quot;role&quot;: &quot;system&quot;, &quot;content&quot;: &quot;Extract invoice fields accurately.&quot;},
+        {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: f&quot;Invoice text:\n{raw_invoice_text}&quot;}
+    ],
+    response_format=InvoiceData,
+)
+
+invoice = completion.choices[0].message.parsed
+print(f&quot;Vendor: {invoice.vendor_name}, Total: {invoice.total_amount}&quot;)</code></pre>
+<blockquote><p>⚠️ <strong>Important Reality Check:</strong> A schema-valid output is not necessarily factually correct. The model can output a perfectly formatted number that is completely wrong. Always evaluate factual accuracy separately from structural validity.</p></blockquote>
+<hr>
+<h2 id="4-level-5-code-validation-amp-self-repair">4. Level 5: Code Validation &amp; Self-Repair</h2>
+<p>What happens if an API returns invalid JSON or violates a business rule? Write an automatic repair loop that feeds the error back to the model:</p>
+<pre><code>import json
+from pydantic import BaseModel, ValidationError
+
+class UserProfile(BaseModel):
+    full_name: str
+    age: int
+    city: str
+
+def extract_profile_with_repair(text: str, max_retries: int = 2) -&gt; UserProfile:
+    prompt = f&quot;Extract the user profile in JSON matching schema: {UserProfile.model_json_schema()}.\nText: {text}&quot;
+    
+    for attempt in range(max_retries + 1):
+        raw_response = call_llm(prompt)
+        try:
+            # 1. Parse JSON string
+            data = json.loads(raw_response)
+            # 2. Validate against Pydantic model
+            return UserProfile.model_validate(data)
+        except (json.JSONDecodeError, ValidationError) as err:
+            if attempt == max_retries:
+                raise RuntimeError(f&quot;Failed to get valid profile after {max_retries} retries: {err}&quot;)
+            # Feed the exact error back to the model to fix itself
+            prompt += f&quot;\n\nYour previous response was invalid with error: {err}. Return ONLY the corrected JSON.&quot;</code></pre>
+<hr>
+<h2 id="5-schema-design-tips-make-your-data-bulletproof">5. Schema Design Tips: Make Your Data Bulletproof</h2>
+<ol><li><strong>Use Enums for Fixed Categories:</strong><br>Never write <code>&quot;sentiment&quot;: string</code>. Write <code>&quot;sentiment&quot;: &quot;positive&quot; | &quot;neutral&quot; | &quot;negative&quot;</code>. This prevents label drift like "Positive", "pos", or "very good".</li><li><strong>Put Evidence Fields BEFORE the Conclusion:</strong><br>Models generate text sequentially. If you put <code>&quot;evidence&quot;</code> before <code>&quot;classification&quot;</code>, the model is forced to think through the source text first:<br>```json<br>{<br>"evidence_quote": "Customer states: 'The screen turned purple after the update'",<br>"is_hardware_issue": false,<br>"confidence_score": 0.95<br>}<br>```</li><li><strong>Use Null Explicitly:</strong><br>Instruct the model: <em>"If phone number is not mentioned, return null."</em> Without this, models love to guess placeholders like <code>&quot;000-000-0000&quot;</code> or <code>&quot;N/A&quot;</code>.</li><li><strong>Descriptive Key Names:</strong><br>Keys act as instructions. <code>&quot;total_price_in_inr&quot;</code> works much better than <code>&quot;p&quot;</code>.</li></ol>
+<hr>
+<h2 id="6-xml-tags-organizing-inputs-and-outputs">6. XML Tags: Organizing Inputs and Outputs</h2>
+<p>XML tags are remarkably easy to parse using simple regular expressions, and models like Claude follow them with precision:</p>
+<pre><code>Extract customer feedback from the review below.
+Put the primary customer emotion inside &lt;emotion&gt;...&lt;/emotion&gt;.
+Put specific product complaints inside &lt;complaints&gt;, with each item inside an &lt;item&gt; tag.
+Put a 1-sentence recommended action inside &lt;action&gt;...&lt;/action&gt;.
+
+&lt;review&gt;
+{{review_text}}
+&lt;/review&gt;</code></pre>
+<p>In your application code, parsing this is straightforward:</p>
+<pre><code>import re
+
+def parse_review(response_text: str):
+    emotion = re.search(r&quot;&lt;emotion&gt;(.*?)&lt;/emotion&gt;&quot;, response_text, re.S)
+    action = re.search(r&quot;&lt;action&gt;(.*?)&lt;/action&gt;&quot;, response_text, re.S)
+    complaints = re.findall(r&quot;&lt;item&gt;(.*?)&lt;/item&gt;&quot;, response_text, re.S)
+    
+    return {
+        &quot;emotion&quot;: emotion.group(1).strip() if emotion else None,
+        &quot;action&quot;: action.group(1).strip() if action else None,
+        &quot;complaints&quot;: [c.strip() for c in complaints]
+    }</code></pre>
+<hr>
+<h2 id="common-mistakes-amp-how-to-spot-them">💡 Common Mistakes &amp; How to Spot Them</h2>
+<div class="table-wrap"><table><thead><tr><th>Mistake</th><th>What goes wrong</th><th>The Fix</th></tr></thead><tbody><tr><td>The Markdown Wrapper</td><td>The model outputs <code> </code>`<code>json { &quot;name&quot;: &quot;Vicky&quot; } </code>`<code> </code> and your <code>json.loads()</code> crashes.</td><td>Tell the model: <em>"Return only raw JSON. Do not wrap in markdown code blocks."</em> Or strip the code fences in code before parsing.</td></tr><tr><td>The Chit-Chat Trap</td><td>The model outputs: <em>"Here is your JSON object: {"status": 200}"</em>.</td><td>Add: <em>"Start your response directly with the opening curly brace <code>{</code>."</em></td></tr><tr><td>Deeply Nested Objects</td><td>Generating 5 levels of nested JSON causes frequent syntax errors.</td><td>Flatten your schema into simple key-value pairs wherever possible.</td></tr></tbody></table></div>
+<hr>
+<h2 id="try-it-now">🧪 Try It Now</h2>
+<p>Open your chat app and paste this prompt on a messy text excerpt (like an email or receipt):</p>
+<pre><code>Extract the key details from the note below into a clean Markdown table with columns:
+Item | Category | Quantity | Unit Price (₹) | Total (₹)
+
+Directly below the table, provide the exact same records as raw CSV inside a code box so I can copy it directly into Google Sheets.
+
+Do not include greetings or concluding notes.
+
+Note:
+&quot;Bought 3 packs of A4 paper for 250 each from Modern Stationers, 2 whiteboard markers at 45 rupees each, and a desk organizer for 650.&quot;</code></pre>
+<p>Notice how easy it is to copy the resulting table into a document or copy the CSV block straight into a spreadsheet.</p>
+<hr>
+<h2 id="key-takeaways">🔑 Key Takeaways</h2>
+<ul><li>Structured output transforms an AI model from a conversational toy into a reliable software component.</li><li>For business work, ask for Markdown tables and raw CSV blocks for easy spreadsheet imports.</li><li>In production code, use native structured outputs and Pydantic validation to guarantee schema compliance.</li><li>Order schema fields wisely: placing evidence fields <em>before</em> labels forces the model to think before classifying.</li><li>Always include automated retry logic that passes validation errors back to the model for self-repair.</li></ul>
+<hr>
+<h2 id="exercises">🏋️ Exercises</h2>
+<h3 id="exercise-61-design-an-e-commerce-return-schema">Exercise 6.1: Design an E-Commerce Return Schema</h3>
+<p>Design a JSON schema and prompt to extract customer return requests. You need:</p>
+<ul><li>Order number</li><li>Return reason (must be one of: <code>damaged</code>, <code>wrong_size</code>, <code>defective</code>, <code>changed_mind</code>, <code>late_delivery</code>)</li><li>Customer's preferred resolution (must be one of: <code>exchange</code>, <code>store_credit</code>, <code>original_payment_refund</code>)</li><li>Quoted customer explanation</li></ul>
+<details>
+<summary>View Solution & Explanation</summary>
+<p><strong>A strong solution:</strong></p>
+<pre><code>Extract customer return requests into JSON. 
+Return ONLY a JSON object matching this schema. No markdown fences or commentary.
+
+{
+  &quot;order_id&quot;: string,
+  &quot;quoted_reason&quot;: string,
+  &quot;return_category&quot;: &quot;damaged&quot; | &quot;wrong_size&quot; | &quot;defective&quot; | &quot;changed_mind&quot; | &quot;late_delivery&quot;,
+  &quot;preferred_resolution&quot;: &quot;exchange&quot; | &quot;store_credit&quot; | &quot;original_payment_refund&quot;,
+  &quot;additional_notes&quot;: string | null
+}
+
+If the preferred resolution is not stated, default to &quot;store_credit&quot;.
+If order_id is missing, set it to null.
+
+&lt;email&gt;
+{{customer_email}}
+&lt;/email&gt;</code></pre>
+<p><em>Explanation:</em> Using enums prevents ambiguous categories like "size issue" or "broken", and setting explicit defaults handles missing user input cleanly.</p>
+</details>
+<h3 id="exercise-62-strip-markdown-code-fences-in-python">Exercise 6.2: Strip Markdown Code Fences in Python</h3>
+<p>Write a small Python function that safely extracts JSON from a model response, even if the model accidentally included <code> </code>`<code>json </code> fences or introductory text.</p>
+<details>
+<summary>View Solution & Explanation</summary>
+<pre><code>import json
+import re
+
+def clean_and_parse_json(raw_text: str) -&gt; dict:
+    # 1. Try direct parse
+    try:
+        return json.loads(raw_text.strip())
+    except json.JSONDecodeError:
+        pass
+    
+    # 2. Extract content between first { and last }
+    match = re.search(r&quot;(\{.*\})&quot;, raw_text, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group(1))
+        except json.JSONDecodeError:
+            pass
+            
+    # 3. Strip markdown code fences if present
+    cleaned = re.sub(r&quot;^```(?:json)?\s*|\s*```$&quot;, &quot;&quot;, raw_text.strip(), flags=re.MULTILINE)
+    return json.loads(cleaned)</code></pre>
+</details>
+<hr>
+<h2 id="quick-quiz">✅ Quick Quiz</h2>
+<ol><li>Why should you place an <code>&quot;evidence&quot;</code> or <code>&quot;reasoning&quot;</code> key before the <code>&quot;verdict&quot;</code> key in a JSON schema?<br>• A) Because alphabetical order looks nicer.<br>• B) Because autoregressive models generate tokens left to right; reasoning first conditions the verdict token.<br>• C) Because JSON requires strings before booleans.</li><li>What does native structured output (schema-constrained decoding) guarantee?<br>• A) That the extracted numbers are 100% factually accurate.<br>• B) That the model runs twice as fast.<br>• C) That the output strictly adheres to the requested JSON schema syntax without parsing errors.</li><li>If an input text does not contain a requested field, what should you instruct the model to do?<br>• A) Return <code>null</code> explicitly and do not guess.<br>• B) Invent a believable value.<br>• C) Leave the JSON key out entirely.</li></ol>
+<details>
+<summary>View Answers</summary>
+<ol><li><strong>B</strong> — Writing evidence first acts as an in-schema chain of thought, improving the classification accuracy of subsequent fields.</li><li><strong>C</strong> — Schema-constrained decoding guarantees syntactic validity, but not factual correctness.</li><li><strong>A</strong> — Returning <code>null</code> explicitly prevents the model from hallucinating plausible filler data.</li></ol>
+</details>
+<hr>
+<blockquote><p>Author: <strong>Vicky</strong> (<a href="https://abvicky.in">abvicky.in</a>) · Platform built by <a href="https://www.manikarnikatechnologies.in/">Manikarnika Technologies</a> · © 2026 All rights reserved. ⬅️ <a href="05-reasoning-techniques.html">Module 05</a> · ➡️ <a href="07-system-prompts-and-conversation.html">Module 07 — System Prompts &amp; Conversation Design</a></p></blockquote>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a class="btn ghost" href="05-reasoning-techniques.html">← Reasoning Techniques</a><a class="btn ghost" href="07-system-prompts-and-conversation.html">System Prompts &amp; Conversations →</a></nav>
+</main>
+<footer>
+<p>Prompt Engineering: Zero to Pro · Author: <a href="https://abvicky.in"><strong>Vicky</strong></a> · Platform built by <a href="https://www.manikarnikatechnologies.in/"><strong>Manikarnika Technologies</strong></a> · © 2026 All rights reserved.</p>
+</footer>
+</body>
+</html>
