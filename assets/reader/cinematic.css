@@ -1,0 +1,233 @@
+/* Cinematic layer: ambient aurora, film grain, kinetic hero, scroll reveals and
+   cursor-lit cards. Sits on top of theme.css / pages.css / content.css and only
+   adds motion and light; layout and palette stay as they are.
+   Everything that moves is switched off under prefers-reduced-motion.
+   (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
+
+:root {
+  --cine-gold: #F3B552;
+  --cine-ember: #F08A5D;
+  --cine-blue: #407EBF;
+  --cine-violet: #8B7BE8;
+  --cine-aurora-opacity: .55;
+  --cine-grain-opacity: .05;
+  --cine-ease: cubic-bezier(.2, .8, .2, 1);
+  --cine-grad: linear-gradient(100deg, var(--cine-gold) 0%, var(--cine-ember) 35%, var(--cine-violet) 65%, var(--cine-blue) 100%);
+}
+:root[data-theme="dark"] {
+  --cine-blue: #6AA6E3;
+  --cine-aurora-opacity: .7;
+  --cine-grain-opacity: .07;
+}
+
+/* ---------- Ambient aurora behind the whole app ---------- */
+.cine-aurora {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden;
+  opacity: var(--cine-aurora-opacity);
+}
+.cine-aurora span {
+  position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%;
+  will-change: transform; /* gradients are already soft: no filter, so it stays cheap */
+}
+.cine-aurora span:nth-child(1) { left: -18vmax; top: -22vmax; background: radial-gradient(circle, rgba(243, 181, 82, .55), transparent 70%); animation: cineDriftA 26s ease-in-out infinite alternate; }
+.cine-aurora span:nth-child(2) { right: -20vmax; top: 10vh; background: radial-gradient(circle, rgba(64, 126, 191, .45), transparent 70%); animation: cineDriftB 32s ease-in-out infinite alternate; }
+.cine-aurora span:nth-child(3) { left: 25vw; bottom: -30vmax; background: radial-gradient(circle, rgba(139, 123, 232, .35), transparent 70%); animation: cineDriftC 38s ease-in-out infinite alternate; }
+:root[data-theme="dark"] .cine-aurora span:nth-child(1) { background: radial-gradient(circle, rgba(243, 181, 82, .32), transparent 70%); }
+:root[data-theme="dark"] .cine-aurora span:nth-child(2) { background: radial-gradient(circle, rgba(106, 166, 227, .30), transparent 70%); }
+:root[data-theme="dark"] .cine-aurora span:nth-child(3) { background: radial-gradient(circle, rgba(139, 123, 232, .28), transparent 70%); }
+
+@keyframes cineDriftA { to { transform: translate3d(18vw, 14vh, 0) scale(1.15); } }
+@keyframes cineDriftB { to { transform: translate3d(-22vw, 20vh, 0) scale(.9); } }
+@keyframes cineDriftC { to { transform: translate3d(-14vw, -24vh, 0) scale(1.2); } }
+
+/* Film grain + soft vignette, above everything but click-through */
+.cine-grain {
+  position: fixed; inset: -50%; z-index: 90; pointer-events: none;
+  opacity: var(--cine-grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: cineGrain 1.2s steps(6) infinite;
+}
+@keyframes cineGrain {
+  0% { transform: translate(0, 0); } 20% { transform: translate(-3%, 2%); } 40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); } 80% { transform: translate(3%, 3%); } 100% { transform: translate(0, 0); }
+}
+
+/* Let the aurora breathe through the chrome */
+.topbar { backdrop-filter: saturate(1.6) blur(16px); -webkit-backdrop-filter: saturate(1.6) blur(16px); }
+
+/* ---------- Reading progress: glowing gradient beam ---------- */
+#read-progress {
+  height: 3px; background: var(--cine-grad); background-size: 200% 100%;
+  box-shadow: 0 0 12px rgba(243, 181, 82, .7), 0 0 2px rgba(243, 181, 82, .9);
+  animation: cinePan 4s linear infinite;
+}
+@keyframes cinePan { to { background-position: -200% 0; } }
+
+/* ---------- Page change: a short "cut" with focus pull ---------- */
+.view.cine-cut { animation: cineCut .6s var(--cine-ease) backwards; }
+@keyframes cineCut {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Hero: cinematic frame ---------- */
+.home-hero {
+  --mx: 70%; --my: 20%;
+  background:
+    radial-gradient(600px circle at var(--mx) var(--my), rgba(243, 181, 82, .16), transparent 45%),
+    radial-gradient(100% 120% at 100% 0%, rgba(240, 138, 93, .18) 0%, transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(64, 126, 191, .26) 0%, transparent 60%),
+    radial-gradient(60% 80% at 50% 120%, rgba(139, 123, 232, .22) 0%, transparent 70%),
+    linear-gradient(160deg, #2A2C33 0%, #1B1D23 55%, #14161B 100%);
+  box-shadow: 0 40px 80px -30px rgba(20, 22, 27, .65), 0 0 0 1px rgba(255, 255, 255, .05) inset;
+}
+:root[data-theme="dark"] .home-hero {
+  background:
+    radial-gradient(600px circle at var(--mx) var(--my), rgba(243, 181, 82, .14), transparent 45%),
+    radial-gradient(100% 120% at 100% 0%, rgba(240, 138, 93, .16) 0%, transparent 55%),
+    radial-gradient(90% 120% at 0% 100%, rgba(106, 166, 227, .22) 0%, transparent 60%),
+    radial-gradient(60% 80% at 50% 120%, rgba(139, 123, 232, .2) 0%, transparent 70%),
+    linear-gradient(160deg, #23262E 0%, #181A20 55%, #111317 100%);
+}
+/* Slow light sweep across the frame */
+.home-hero::after {
+  content: ""; position: absolute; inset: -40% -20%; z-index: -1; pointer-events: none;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, .07) 50%, transparent 60%);
+  transform: translateX(-60%);
+  animation: cineSweep 9s var(--cine-ease) 1.2s infinite;
+}
+@keyframes cineSweep { 0% { transform: translateX(-60%); } 45%, 100% { transform: translateX(60%); } }
+
+/* Shimmering gradient title */
+.home-hero h1 .grad-text,
+.cine-grad-text {
+  background: var(--cine-grad); background-size: 220% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent;
+  animation: cineShimmer 7s ease-in-out infinite alternate;
+}
+.home-hero h1 .grad-text { filter: drop-shadow(0 6px 28px rgba(243, 181, 82, .28)); }
+@keyframes cineShimmer { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+
+/* Kinetic words: rise out of a blur, one after another */
+.cine-word { display: inline-block; white-space: pre; }
+.cine-ready .cine-word {
+  opacity: 0; transform: translateY(.55em) rotateX(-40deg); filter: blur(10px);
+  transform-origin: 50% 100%;
+  animation: cineWord .9s var(--cine-ease) forwards;
+  animation-delay: calc(var(--i) * 90ms + 120ms);
+}
+@keyframes cineWord { to { opacity: 1; transform: none; filter: none; } }
+/* The gradient phrase needs both its entrance and its shimmer */
+.cine-ready .home-hero h1 .grad-text.cine-word {
+  animation: cineWordGlow .9s var(--cine-ease) forwards, cineShimmer 7s ease-in-out infinite alternate;
+  animation-delay: calc(var(--i) * 90ms + 120ms), 0s;
+}
+@keyframes cineWordGlow { to { opacity: 1; transform: none; filter: drop-shadow(0 6px 28px rgba(243, 181, 82, .28)); } }
+.cine-ready .home-hero .eyebrow,
+.cine-ready .home-hero .lead,
+.cine-ready .home-hero .hero-actions,
+.cine-ready .home-hero .hero-by {
+  opacity: 0; animation: cineCut .8s var(--cine-ease) forwards;
+}
+.cine-ready .home-hero .eyebrow { animation-delay: 0s; }
+.cine-ready .home-hero .lead { animation-delay: .55s; }
+.cine-ready .home-hero .hero-actions { animation-delay: .7s; }
+.cine-ready .home-hero .hero-by { animation-delay: .85s; }
+
+/* Hero art floats and follows the cursor a little */
+.hero-art { perspective: 1000px; }
+.hero-art img {
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0) rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg));
+  transition: transform .6s var(--cine-ease);
+  animation: cineFloat 7s ease-in-out infinite alternate;
+}
+.cine-ready .hero-art img { animation: cineEnter 1.2s var(--cine-ease) .3s both, cineFloat 7s ease-in-out 1.5s infinite alternate; }
+@keyframes cineEnter { from { opacity: 0; transform: translateY(30px) scale(.94); filter: blur(12px); } to { opacity: 1; filter: none; } }
+@keyframes cineFloat { from { translate: 0 -6px; } to { translate: 0 8px; } }
+
+/* Primary buttons: light glint on hover */
+.btn.primary { position: relative; overflow: hidden; isolation: isolate; }
+.btn.primary::after {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, .55) 50%, transparent 70%);
+  transform: translateX(-120%); transition: transform .7s var(--cine-ease);
+}
+.btn.primary:hover::after { transform: translateX(120%); }
+.home-hero .btn.primary { box-shadow: 0 10px 30px -8px rgba(243, 181, 82, .65); }
+
+/* ---------- Cursor-lit, gently tilting cards ---------- */
+.mod-card, .stat-card, .feature, .track-card, .path-step, .continue-card, .author-card {
+  --mx: 50%; --my: 50%;
+  position: relative; isolation: isolate;
+  transform-style: preserve-3d;
+  transition: transform .35s var(--cine-ease), box-shadow .35s var(--cine-ease), border-color .25s;
+}
+.mod-card::before, .stat-card::before, .feature::before, .track-card::before, .path-step::before, .continue-card::before, .author-card::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1; pointer-events: none;
+  opacity: 0; transition: opacity .3s;
+  background: radial-gradient(420px circle at var(--mx) var(--my), rgba(243, 181, 82, .16), transparent 42%);
+}
+.mod-card:hover::before, .stat-card:hover::before, .feature:hover::before, .track-card:hover::before,
+.path-step:hover::before, .continue-card:hover::before, .author-card:hover::before { opacity: 1; }
+.cine-tilt:hover { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px); }
+.mod-card:hover { box-shadow: 0 24px 50px -20px rgba(243, 181, 82, .45), var(--shadow); }
+.mod-card::after { background: var(--cine-grad); }
+
+/* Gradient hairline around the continue card */
+.continue-card { border: 1px solid transparent !important;
+  background: linear-gradient(var(--surface), var(--surface)) padding-box, var(--cine-grad) border-box !important; }
+
+/* Count-up numbers get a gradient finish */
+.stat-card b { background: var(--cine-grad); background-size: 220% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Section titles: kinetic underline */
+.sec-title, .stage-head h2 { position: relative; }
+.sec-title::after, .stage-head h2::after {
+  content: ""; display: block; height: 3px; width: 56px; margin-top: 8px; border-radius: 3px;
+  background: var(--cine-grad); transform-origin: left; transform: scaleX(0);
+  transition: transform .9s var(--cine-ease) .15s;
+}
+.is-in .sec-title::after, .is-in.stage-head h2::after, .is-in .stage-head h2::after, .sec-title.is-in::after { transform: scaleX(1); }
+
+/* ---------- Scroll reveals ---------- */
+.cine-reveal {
+  opacity: 0; transform: translateY(28px) scale(.985);
+  transition: opacity .9s var(--cine-ease), transform .9s var(--cine-ease);
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+.cine-reveal.is-in { opacity: 1; transform: none; filter: none; }
+
+/* Lesson pages: chapter headings slide in, figures develop */
+.md h2.cine-reveal { transform: translateX(-18px); }
+.md h2.cine-reveal.is-in { transform: none; }
+.doc-hero h1, .md h1 {
+  background: linear-gradient(100deg, var(--text) 0%, var(--text) 55%, var(--cine-gold) 75%, var(--cine-blue) 100%);
+  background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: cineTitle 1.6s var(--cine-ease) .1s both;
+}
+@keyframes cineTitle { from { background-position: 100% 0; opacity: 0; transform: translateY(6px); } to { background-position: 0 0; opacity: 1; transform: none; } }
+
+/* Lesson header: icon pops in, gradient hairline under the card */
+.doc-hero { position: relative; }
+.doc-hero .doc-icon { animation: cinePop .8s var(--cine-ease) .1s both; }
+@keyframes cinePop { from { opacity: 0; transform: scale(.6) rotate(-12deg); } to { opacity: 1; transform: none; } }
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cine-aurora span, .cine-grain, #read-progress, .home-hero::after, .home-hero h1 .grad-text, .cine-grad-text,
+  .hero-art img, .doc-hero h1, .md h1, .doc-hero .doc-icon { animation: none !important; }
+  .cine-ready .cine-word, .cine-ready .home-hero .eyebrow, .cine-ready .home-hero .lead,
+  .cine-ready .home-hero .hero-actions, .cine-ready .home-hero .hero-by, .view.cine-cut {
+    animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important;
+  }
+  .cine-reveal { opacity: 1 !important; transform: none !important; filter: none !important; transition: none !important; }
+  .cine-tilt:hover { transform: translateY(-3px); }
+  .sec-title::after, .stage-head h2::after { transform: scaleX(1); transition: none; }
+}
+
+/* Print stays plain */
+@media print {
+  .cine-aurora, .cine-grain { display: none !important; }
+  .cine-reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
