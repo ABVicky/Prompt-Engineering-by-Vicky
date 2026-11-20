@@ -23,11 +23,9 @@
   let current = null;
   let pendingScroll = null;
 
-  const stageVars = (s) => (s ? `--c1:${s.c1};--c2:${s.c2};--stage-1:${s.c1};--stage-2:${s.c2}` : "--c1:#7c3aed;--c2:#db2777;--stage-1:#7c3aed;--stage-2:#db2777");
   const doneCount = (list) => list.filter((i) => done.has(i.p)).length;
   const label = (i) => (i.n === "i" ? i.t : `${i.n} · ${i.t}`);
   const nextUp = () => TRACKED.find((i) => !done.has(i.p)) || TRACKED[0];
-  const currentStage = () => { const it = find(current); return it && it.stage ? it.stage.c1 : null; };
   const initials = MAP.author.split(/\s+/).map((w) => w[0]).join("").toUpperCase();
   /* Author photo; if it can't load (e.g. offline) the initials underneath show instead. */
   const avatar = (size) => `<span class="avatar${size ? " " + size : ""}">` +
@@ -36,17 +34,28 @@
 
   /* ---------- Preferences ---------- */
   const root = document.documentElement;
-  PE.isDark = () => { const t = root.getAttribute("data-theme"); return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; };
-  const paintTheme = () => { $("#theme-btn").innerHTML = PE.icon(PE.isDark() ? "sun" : "moon"); };
+  PE.isDark = () => root.getAttribute("data-theme") === "dark";
+  const paintTheme = () => {
+    const dark = PE.isDark();
+    $("#theme-btn").innerHTML = PE.icon(dark ? "sun" : "moon");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", dark ? "#17191F" : "#F5F4F9");
+  };
   $("#theme-btn").addEventListener("click", () => {
+    root.classList.add("theme-anim");
     const next = PE.isDark() ? "light" : "dark";
     root.setAttribute("data-theme", next);
     PE.store.set("pe-theme", next);
     paintTheme();
-    PE.renderMermaid(true, currentStage());
+    PE.renderMermaid(true);
+    setTimeout(() => root.classList.remove("theme-anim"), 320);
   });
-  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-    if (!root.getAttribute("data-theme")) { paintTheme(); PE.renderMermaid(true, currentStage()); }
+  matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    if (localStorage.getItem("pe-theme") === null) {
+      root.setAttribute("data-theme", e.matches ? "dark" : "light");
+      paintTheme();
+      PE.renderMermaid(true);
+    }
   });
   const SIZES = { s: "Small", m: "Medium", l: "Large" };
   $("#size-btn").addEventListener("click", () => {
@@ -74,17 +83,19 @@
     const n = doneCount(TRACKED), pct = Math.round((100 * n) / TRACKED.length), C = 2 * Math.PI * 22;
     const msg = n === TRACKED.length ? "Course complete! 🎉" : n ? "Keep going, great progress" : "Start with Module 00";
     $("#sidebar").innerHTML =
-      `<div class="side-progress"><div class="ring"><svg viewBox="0 0 52 52" aria-hidden="true"><defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset=".5" stop-color="#7c3aed"/><stop offset="1" stop-color="#db2777"/></linearGradient></defs>` +
+      `<div class="side-content" id="side-content">` +
+      `<div class="side-progress"><div class="ring"><svg viewBox="0 0 52 52" aria-hidden="true">` +
       `<circle class="track" cx="26" cy="26" r="22"/><circle class="val" cx="26" cy="26" r="22" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C * (1 - pct / 100)).toFixed(1)}"/></svg><span>${pct}%</span></div>` +
       `<div><b>${n} of ${TRACKED.length} complete</b><small>${msg}</small></div></div>` +
       `<a class="side-link" data-p="home" href="#/"><span class="si">${PE.icon("home")}</span>Home</a>` +
       `<a class="side-link" data-p="${ABOUT.p}" href="#/${ABOUT.p}"><span class="si">${PE.icon("info")}</span>${esc(ABOUT.t)}</a>` +
       STAGES.map((s) => {
         const c = collapsed.has(s.id);
-        return `<section class="side-stage${c ? " collapsed" : ""}" data-stage="${s.id}" style="${stageVars(s)}">` +
+        return `<section class="side-stage${c ? " collapsed" : ""}" data-stage="${s.id}">` +
           `<button class="side-stage-head" type="button" aria-expanded="${!c}"><span class="dot"></span><span class="label">${esc(s.label)} · ${esc(s.name)}</span><span class="count">${doneCount(s.items)}/${s.items.length}</span>${PE.icon("chevronDown")}</button>` +
           `<div class="side-items">${s.items.map((i) => `<a class="side-item" data-p="${i.p}" href="#/${i.p}"><span class="num"><span>${esc(i.n)}</span></span><span class="t">${esc(i.t)}</span></a>`).join("")}</div></section>`;
       }).join("") +
+      `</div>` +
       `<div class="side-foot">${avatar("sm")}<span>© 2026 <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.author)}</a><br>${esc(MAP.siteLabel)} · All rights reserved.</span></div>`;
     markSidebar();
   }
@@ -98,7 +109,7 @@
     if (act) {
       const sec = act.closest(".side-stage");
       if (sec && sec.classList.contains("collapsed")) toggleStage(sec, false);
-      const sb = $("#sidebar"), r = act.getBoundingClientRect(), sr = sb.getBoundingClientRect();
+      const sb = $("#side-content") || $("#sidebar"), r = act.getBoundingClientRect(), sr = sb.getBoundingClientRect();
       if (r.top < sr.top + 60 || r.bottom > sr.bottom - 20) sb.scrollTop += r.top - sr.top - sr.height / 3;
     }
   }
@@ -114,7 +125,7 @@
   function renderCrumbs(item) {
     const c = $("#crumbs");
     if (!item) { c.innerHTML = `<span class="cur">Home</span>`; return; }
-    c.style.cssText = stageVars(item.stage);
+    c.style.cssText = "";
     c.innerHTML = `<a href="#/">Home</a><span class="sep">/</span>` +
       (item.stage ? `<span class="dot"></span><a href="#/" data-scroll-home="stage-${item.stage.id}">${esc(item.stage.label)} · ${esc(item.stage.name)}</a><span class="sep">/</span>` : "") +
       `<span class="cur">${esc(label(item))}</span>`;
@@ -122,7 +133,7 @@
 
   /* ---------- Shared fragments ---------- */
   const footerHTML = () => `<footer class="site-footer"><span>© 2026 <strong>${esc(MAP.author)}</strong> · All rights reserved.</span><span>Prompt Engineering: Zero to Pro · <a href="${MAP.site}" target="_blank" rel="noopener">${esc(MAP.siteLabel)}</a></span></footer>`;
-  const card = (i) => `<a class="mod-card${done.has(i.p) ? " done" : ""}" href="#/${i.p}" style="${stageVars(i.stage)}">` +
+  const card = (i) => `<a class="mod-card${done.has(i.p) ? " done" : ""}" href="#/${i.p}">` +
     `<div class="mod-top"><span class="mod-icon">${i.i}</span><span class="mod-num">${esc(i.n)}</span></div>` +
     `<h3>${esc(i.t)}</h3><p>${esc(i.d)}</p>` +
     `<div class="mod-foot"><span>⏱ ${i.time === "ref" ? "Reference" : i.time === "project" ? "Project" : esc(i.time)}</span><span class="go">${done.has(i.p) ? "✓ Completed" : "Open →"}</span></div></a>`;
@@ -155,14 +166,14 @@
       [["📚", "18", "modules in 4 stages"], ["🧰", "60", "prompt templates"], ["🎓", "40", "exam questions + 5 tasks"], ["⏱️", "~48 h", "of guided learning"]]
         .map(([ico, b, s]) => `<div class="stat-card"><span class="ico">${ico}</span><b>${b}</b><span>${s}</span></div>`).join("") +
       `</section>` +
-      `<section class="continue-card" style="${stageVars(cont.stage)}"><span class="cc-icon">${cont.i}</span><div class="cc-body">` +
+      `<section class="continue-card"><span class="cc-icon">${cont.i}</span><div class="cc-body">` +
       `<small>${n ? `Continue where you left off · ${pct}% complete` : "Your first step"}</small><h3>${esc(label(cont))}</h3>` +
       `<div class="pbar"><span style="width:${Math.max(pct, 2)}%"></span></div></div>` +
       `<a class="btn primary" href="#/${cont.p}">${n ? "Resume" : "Start"} ${PE.icon("arrowRight")}</a></section>` +
       `<section class="home-section"><h2 class="sec-title">Your learning path</h2><p class="sec-sub">Four stages from fundamentals to professional practice, plus a reference library you'll keep coming back to.</p>` +
-      `<div class="path">${STAGES.map((s, k) => `<a class="path-step" href="#/" data-scroll="stage-${s.id}" style="${stageVars(s)}"><span class="ps-dot">${s.id === "ref" ? "★" : k + 1}</span>` +
+      `<div class="path">${STAGES.map((s, k) => `<a class="path-step" href="#/" data-scroll="stage-${s.id}"><span class="ps-dot">${s.id === "ref" ? "★" : k + 1}</span>` +
         `<b>${esc(s.name)}</b><small>${esc(s.d)}</small><div class="pbar"><span style="width:${Math.round((100 * doneCount(s.items)) / s.items.length)}%"></span></div></a>`).join("")}</div></section>` +
-      STAGES.map((s) => `<section class="stage-block" id="stage-${s.id}" style="${stageVars(s)}"><div class="stage-head"><div class="sh-text">` +
+      STAGES.map((s) => `<section class="stage-block" id="stage-${s.id}"><div class="stage-head"><div class="sh-text">` +
         `<span class="stage-pill">${esc(s.label)}</span><h2>${esc(s.name)}</h2><p>${esc(s.d)}</p></div>` +
         `<span class="sh-count">${doneCount(s.items)} of ${s.items.length} done</span></div>` +
         `<div class="card-grid">${s.items.map((i) => card(Object.assign({ stage: s }, i))).join("")}</div></section>`).join("") +
@@ -206,10 +217,10 @@
     const idx = ORDER.indexOf(item), prev = ORDER[idx - 1], next = ORDER[idx + 1];
     const isDone = done.has(item.p);
     const body = window.marked ? marked.parse(md, { gfm: true }) : `<div class="callout warn"><p>The Markdown renderer couldn't load (are you offline?). Showing plain text.</p></div><pre><code>${esc(md)}</code></pre>`;
-    const pg = (i, dir) => i ? `<a class="${dir}" href="#/${i.p}" style="${stageVars(i.stage)}"><span class="pg-ico">${i.i}</span><span class="pg-body"><small>${dir === "prev" ? "← Previous" : "Next →"}</small><b>${esc(label(i))}</b></span></a>` : "";
+    const pg = (i, dir) => i ? `<a class="${dir}" href="#/${i.p}"><span class="pg-ico">${i.i}</span><span class="pg-body"><small>${dir === "prev" ? "← Previous" : "Next →"}</small><b>${esc(label(i))}</b></span></a>` : "";
 
     view.innerHTML =
-      `<article class="doc" style="${stageVars(s)}">` +
+      `<article class="doc">` +
       `<header class="doc-hero"><div class="doc-hero-top"><a class="stage-pill" href="#/" ${s ? `data-scroll-home="stage-${s.id}"` : ""}>${s ? `${esc(s.label)} · ${esc(s.name)}` : "Overview"}</a><span class="pos">${pos}</span></div>` +
       `<div class="doc-hero-main"><div class="doc-icon">${item.i}${item.n !== "i" ? `<span>${esc(item.n)}</span>` : ""}</div><div><h1>${esc(item.t)}</h1><p>${esc(item.d)}</p></div></div>` +
       `<div class="doc-hero-chips"><span class="chip">${PE.icon("clock")}${esc(study)}</span><span class="chip">${PE.icon("book")}${mins} min read</span>` +
@@ -230,7 +241,7 @@
     const btn = $("#complete-btn");
     if (btn) btn.addEventListener("click", () => toggleDone(item));
 
-    await PE.renderMermaid(false, s ? s.c1 : null);
+    await PE.renderMermaid(false);
     if (seq !== renderSeq) return;
     if (anchor) {
       const el = document.getElementById(decodeURIComponent(anchor));

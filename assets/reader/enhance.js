@@ -241,22 +241,82 @@
   };
 
   /* ---------- Mermaid ---------- */
-  PE.renderMermaid = async function (reset, c1) {
+  PE.renderMermaid = async function (reset) {
     if (!window.mermaid) return;
+    const cs = getComputedStyle(document.documentElement);
+    const getVal = (name, fallback) => cs.getPropertyValue(name).trim() || fallback;
     const dark = PE.isDark();
-    const line = c1 || "#7c3aed";
-    const v = dark
-      ? { darkMode: true, background: "#0f152a", primaryColor: "#1d2550", primaryTextColor: "#e9ecf8", primaryBorderColor: line, secondaryColor: "#12324a", tertiaryColor: "#2c1a46",
-          lineColor: "#93a0d8", textColor: "#e9ecf8", mainBkg: "#1d2550", nodeBorder: line, clusterBkg: "#141b34", edgeLabelBackground: "#141b34",
-          actorBkg: "#1d2550", actorBorder: line, actorTextColor: "#e9ecf8", actorLineColor: "#93a0d8", signalColor: "#e9ecf8", signalTextColor: "#e9ecf8",
-          noteBkgColor: "#2c1a46", noteTextColor: "#e9ecf8", pieSectionTextColor: "#fff", pieLegendTextColor: "#e9ecf8", pieStrokeColor: "#0f152a", pieOuterStrokeColor: "#212a4a" }
-      : { darkMode: false, background: "#ffffff", primaryColor: "#f1edff", primaryTextColor: "#1e1b4b", primaryBorderColor: line, secondaryColor: "#e0f7fb", tertiaryColor: "#fdeef6",
-          lineColor: "#6b7392", textColor: "#0e1328", mainBkg: "#f1edff", nodeBorder: line, clusterBkg: "#f5f6fb", edgeLabelBackground: "#ffffff",
-          actorBkg: "#f1edff", actorBorder: line, actorTextColor: "#1e1b4b", noteBkgColor: "#fff7d6", noteTextColor: "#0e1328",
-          pieSectionTextColor: "#fff", pieStrokeColor: "#ffffff", pieOuterStrokeColor: "#e2e5ef" };
-    ["#7c3aed", "#0891b2", "#db2777", "#f59e0b", "#10b981", "#6366f1", "#ef4444", "#14b8a6"].forEach((c, i) => { v[`pie${i + 1}`] = c; });
-    mermaid.initialize({ startOnLoad: false, securityLevel: "loose", theme: "base", themeVariables: v,
-      fontFamily: "Inter, system-ui, sans-serif", flowchart: { htmlLabels: true, curve: "basis", padding: 14 }, mindmap: { padding: 12 } });
+
+    const bgPrimary = getVal("--bg-primary", dark ? "#17191F" : "#F5F4F9");
+    const bgSurface = getVal("--bg-surface", dark ? "#22252D" : "#FFFFFF");
+    const colorPrimary = getVal("--color-primary", "#F3B552");
+    const colorSecondary = getVal("--color-secondary", dark ? "#6AA6E3" : "#407EBF");
+    const textPrimary = getVal("--text-primary", dark ? "#F4F1EA" : "#34363D");
+    const textSecondary = getVal("--text-secondary", dark ? "#A8A9B0" : "#777982");
+    const borderColor = getVal("--border-color", dark ? "#393D47" : "#E8E6E1");
+    const highlight = getVal("--highlight", dark ? "#3B3021" : "#FFF2D9");
+
+    const v = {
+      darkMode: dark,
+      background: bgSurface,
+      // Nodes: highlight fill, mustard border, primary text
+      primaryColor: highlight,
+      primaryTextColor: textPrimary,
+      primaryBorderColor: colorPrimary,
+      mainBkg: highlight,
+      nodeBorder: colorPrimary,
+      textColor: textPrimary,
+      // Lines: text-secondary
+      lineColor: textSecondary,
+      // Clusters: bg-primary
+      clusterBkg: bgPrimary,
+      clusterBorder: borderColor,
+      // Edge labels: surface
+      edgeLabelBackground: bgSurface,
+      // Actors / Sequence
+      actorBkg: highlight,
+      actorBorder: colorPrimary,
+      actorTextColor: textPrimary,
+      actorLineColor: textSecondary,
+      signalColor: textPrimary,
+      signalTextColor: textPrimary,
+      // Notes
+      noteBkgColor: highlight,
+      noteTextColor: textPrimary,
+      noteBorderColor: colorPrimary,
+      // Pie
+      pieSectionTextColor: "#17191F",
+      pieLegendTextColor: textPrimary,
+      pieStrokeColor: bgSurface,
+      pieOuterStrokeColor: borderColor,
+      // Mindmap root & branches
+      git0: textPrimary,
+      gitBranchLabel0: bgPrimary
+    };
+
+    const pieColors = ["#F3B552", "#6AA6E3", "#E6C98F", "#A8A9B0", "#407EBF", "#C9C7C2", "#E8A33F", "#9FC3EA"];
+    pieColors.forEach((c, i) => { v[`pie${i + 1}`] = c; });
+
+    // Mindmap: cScale0-11 to mid-tones with cScaleLabel #17191F
+    const cScales = [
+      "#F3B552", "#6AA6E3", "#E6C98F", "#9FC3EA",
+      "#E5A33F", "#82B7EC", "#F6D28B", "#A8A9B0",
+      "#D4932E", "#5B96D6", "#F9E4B7", "#B8B9C0"
+    ];
+    cScales.forEach((c, i) => {
+      v[`cScale${i}`] = c;
+      v[`cScaleLabel${i}`] = "#17191F";
+    });
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "loose",
+      theme: "base",
+      themeVariables: v,
+      fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+      flowchart: { htmlLabels: true, curve: "basis", padding: 14 },
+      mindmap: { padding: 12 }
+    });
     const nodes = [...document.querySelectorAll("#view .mermaid")];
     if (!nodes.length) return;
     if (reset) nodes.forEach((n) => { n.removeAttribute("data-processed"); n.innerHTML = ""; n.textContent = n.dataset.src; });

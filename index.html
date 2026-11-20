@@ -6,8 +6,8 @@
 <title>Prompt Engineering: Zero to Pro</title>
 <meta name="description" content="A complete prompt engineering course from beginner to professional, by Vicky Prasad Mahato (abvicky.in).">
 <meta name="author" content="Vicky Prasad Mahato">
-<meta name="theme-color" content="#0a0e1c">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2306b6d4'/%3E%3Cstop offset='.55' stop-color='%237c3aed'/%3E%3Cstop offset='1' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#F5F4F9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23F3B552'/%3E%3Cpath d='M17 22h30M17 32h22M17 42h13' stroke='%2334363D' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,7 +19,10 @@
   /* Apply saved preferences before first paint (no flash). */
   try {
     var t = localStorage.getItem("pe-theme"), s = localStorage.getItem("pe-size");
-    if (t) document.documentElement.setAttribute("data-theme", JSON.parse(t));
+    var theme = t ? JSON.parse(t) : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === "dark" ? "#17191F" : "#F5F4F9");
     if (s) document.documentElement.setAttribute("data-size", JSON.parse(s));
   } catch (e) {}
 </script>
@@ -32,7 +35,7 @@
   <button class="icon-btn only-mobile" id="menu-btn" aria-label="Open course navigation" data-icon="menu"></button>
   <a class="brand" href="#/" aria-label="Course home">
     <span class="brand-logo" aria-hidden="true">
-      <svg viewBox="0 0 64 64"><defs><linearGradient id="bl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset=".55" stop-color="#7c3aed"/><stop offset="1" stop-color="#db2777"/></linearGradient></defs><rect width="64" height="64" rx="16" fill="url(#bl)"/><path d="M17 22h30M17 32h22M17 42h13" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
+      <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#F3B552"/><path d="M17 22h30M17 32h22M17 42h13" stroke="#34363D" stroke-width="5" stroke-linecap="round"/></svg>
     </span>
     <span class="brand-text"><strong>Prompt Engineering</strong><small>Zero to Pro · by Vicky Prasad Mahato</small></span>
   </a>

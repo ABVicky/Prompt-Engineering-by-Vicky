@@ -11,7 +11,7 @@ window.PE_MAP = {
   about: { p: "README.md", n: "i", t: "About this course", i: "📘", d: "Overview, curriculum, how to read, copyright." },
   stages: [
     {
-      id: "s1", label: "Stage 1", name: "Foundations", c1: "#10b981", c2: "#06b6d4",
+      id: "s1", label: "Stage 1", name: "Foundations",
       d: "How LLMs work and how to write clear, complete prompts.",
       items: [
         { p: "modules/00-welcome.md", n: "00", t: "Welcome & How to Use This Course", i: "🚀", time: "30 min", d: "Roadmap, practice lab setup, study plans and the pro mindset." },
@@ -22,7 +22,7 @@ window.PE_MAP = {
       ]
     },
     {
-      id: "s2", label: "Stage 2", name: "Intermediate", c1: "#3b82f6", c2: "#6366f1",
+      id: "s2", label: "Stage 2", name: "Intermediate",
       d: "Reasoning, structure, system prompts, chains and context.",
       items: [
         { p: "modules/05-reasoning-techniques.md", n: "05", t: "Reasoning Techniques", i: "🧮", time: "3 h", d: "Chain-of-thought, self-consistency, ToT and reasoning models." },
@@ -33,7 +33,7 @@ window.PE_MAP = {
       ]
     },
     {
-      id: "s3", label: "Stage 3", name: "Advanced", c1: "#8b5cf6", c2: "#d946ef",
+      id: "s3", label: "Stage 3", name: "Advanced",
       d: "Agents, multimodal, APIs, evaluation and security.",
       items: [
         { p: "modules/10-tool-use-and-agents.md", n: "10", t: "Tool Use & Agents", i: "🤖", time: "3.5 h", d: "Function calling, agent loops, MCP and guardrails." },
@@ -44,7 +44,7 @@ window.PE_MAP = {
       ]
     },
     {
-      id: "s4", label: "Stage 4", name: "Pro", c1: "#f59e0b", c2: "#f43f5e",
+      id: "s4", label: "Stage 4", name: "Pro",
       d: "Production practice, domain playbooks and your career.",
       items: [
         { p: "modules/15-production-promptops.md", n: "15", t: "Production PromptOps", i: "🏭", time: "3 h", d: "Versioning, templates, observability and migrations." },
@@ -53,7 +53,7 @@ window.PE_MAP = {
       ]
     },
     {
-      id: "ref", label: "Reference", name: "Appendices", c1: "#ec4899", c2: "#8b5cf6",
+      id: "ref", label: "Reference", name: "Appendices",
       d: "Cheat sheet, templates, glossary, exam and projects.",
       items: [
         { p: "appendix/A-cheat-sheet.md", n: "A", t: "Cheat Sheet", i: "📋", time: "ref", d: "The one-page checklist, technique picker and anti-patterns." },
