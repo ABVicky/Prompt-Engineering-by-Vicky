@@ -31,6 +31,8 @@
   const avatar = (size) => `<span class="avatar${size ? " " + size : ""}">` +
     (MAP.avatar ? `<img src="${esc(MAP.avatar)}" alt="${esc(MAP.author)}" referrerpolicy="no-referrer" onerror="this.remove()">` : "") +
     `<span aria-hidden="true">${initials}</span></span>`;
+  const platformLogo = (size) => `<span class="avatar platform-avatar${size ? " " + size : ""}" title="${esc(MAP.platformBuilder || 'Manikarnika Technologies')}">` +
+    `<img src="${esc(MAP.platformLogo || 'assets/manikarnika-logo.png')}" alt="${esc(MAP.platformBuilder || 'Manikarnika Technologies')}" onerror="this.src='assets/manikarnika-logo.png'"></span>`;
 
   /* ---------- Preferences ---------- */
   const root = document.documentElement;
@@ -145,7 +147,7 @@
           `<div class="side-items">${s.items.map((i) => `<a class="side-item" data-p="${i.p}" href="#/${i.p}"><span class="num"><span>${esc(i.n)}</span></span><span class="t">${esc(i.t)}</span></a>`).join("")}</div></section>`;
       }).join("") +
       `</div>` +
-      `<div class="side-foot">${avatar("sm")}<span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a><br>© 2026 All rights reserved.</span></div>`;
+      `<div class="side-foot"><div class="side-foot-logos">${avatar("sm")}${platformLogo("sm")}</div><span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a><br>© 2026 All rights reserved.</span></div>`;
     markSidebar();
   }
   function markSidebar() {
@@ -181,7 +183,7 @@
   }
 
   /* ---------- Shared fragments ---------- */
-  const footerHTML = () => `<footer class="site-footer"><span>Prompt Engineering: Zero to Pro · Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a></span><span>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a> · © 2026 All rights reserved.</span></footer>`;
+  const footerHTML = () => `<footer class="site-footer"><span>Prompt Engineering: Zero to Pro · Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a></span><span>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><img class="foot-logo" src="${esc(MAP.platformLogo || 'assets/manikarnika-logo.png')}" alt="" width="16" height="16" onerror="this.src='assets/manikarnika-logo.png'"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a> · © 2026 All rights reserved.</span></footer>`;
   const card = (i) => `<a class="mod-card${done.has(i.p) ? " done" : ""}" href="#/${i.p}">` +
     `<div class="mod-top"><span class="mod-icon">${i.i}</span><span class="mod-num">${esc(i.n)}</span></div>` +
     `<h3>${esc(i.t)}</h3><p>${esc(i.d)}</p>` +
@@ -209,7 +211,7 @@
       `<p class="lead">Learn to communicate with AI models so they reliably do what you want, from your very first prompt to tested, secure, production-ready systems.</p>` +
       `<div class="hero-actions"><a class="btn primary" href="#/${cont.p}">${PE.icon("play")}${n ? "Continue learning" : "Start the course"}</a>` +
       `<a class="btn ghost" href="#/appendix/A-cheat-sheet.md">${PE.icon("bulb")}Cheat sheet</a></div>` +
-      `<div class="hero-by">${avatar()}<span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a></span></div>` +
+      `<div class="hero-by"><div class="hero-avatars">${avatar()}${platformLogo()}</div><span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a></span></div>` +
       `</div><div class="hero-art"><img src="assets/cover.svg" alt="" width="640" height="520"></div></section>` +
       `<section class="stats-row">` +
       [["📚", "18", "modules in 4 stages"], ["🧰", "60", "prompt templates"], ["🎓", "40", "exam questions + 5 tasks"], ["⏱️", "~48 h", "of guided learning"]]
@@ -246,8 +248,8 @@
         `<div class="card-grid">${s.items.map((i) => card(Object.assign({ stage: s }, i))).join("")}</div></section>`).join("") +
       `<section class="home-section"><h2 class="sec-title">What's inside every module</h2><p class="sec-sub">Everything you need in one place, so you never have to look elsewhere.</p>` +
       `<div class="feature-grid">${features.map(([i, b, s]) => `<div class="feature"><span class="f-ico">${i}</span><b>${b}</b><span>${s}</span></div>`).join("")}</div></section>` +
-      `<section class="author-card">${avatar()}<div><h3>${esc(MAP.authorFullName || MAP.author)}</h3>` +
-      `<p>Course author: <strong>${esc(MAP.authorFullName || MAP.author)}</strong> · System Architect (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc((MAP.authorSite || 'https://abvicky.in').replace('https://',''))}</a> · <a href="${MAP.authorLinkedIn || 'https://www.linkedin.com/in/abvicky/'}" target="_blank" rel="noopener">LinkedIn</a> · <a href="${MAP.authorGitHub || 'https://github.com/ABVicky'}" target="_blank" rel="noopener">GitHub</a>)</p>` +
+      `<section class="author-card"><div class="dual-card-avatars">${avatar()}${platformLogo()}</div><div><h3>${esc(MAP.authorFullName || MAP.author)}</h3>` +
+      `<p>Course author: <strong>${esc(MAP.authorFullName || MAP.author)}</strong> · System Architect (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc((MAP.authorSite || 'https://abvicky.in').replace('https://', ''))}</a> · <a href="${MAP.authorLinkedIn || 'https://www.linkedin.com/in/abvicky/'}" target="_blank" rel="noopener">LinkedIn</a> · <a href="${MAP.authorGitHub || 'https://github.com/ABVicky'}" target="_blank" rel="noopener">GitHub</a>)</p>` +
       `<p>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a> (<a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformSiteLabel || 'manikarnikatechnologies.in')}</a>)</p>` +
       `<p>© 2026 <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformBuilder || "Manikarnika Technologies")}</a> · All rights reserved. <a href="#/${ABOUT.p}">About this course →</a></p></div></section>` +
       footerHTML();

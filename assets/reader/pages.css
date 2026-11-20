@@ -32,6 +32,12 @@
 .avatar { position: relative; overflow: hidden; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; font-size: 13px; color: var(--primary-ink); background: var(--highlight); border: 1px solid var(--color-primary); flex: none; }
 .avatar img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 .avatar.sm { width: 34px; height: 34px; font-size: 11px; }
+.platform-avatar { border-radius: 12px !important; background: var(--surface-2) !important; border-color: var(--color-secondary) !important; }
+.platform-avatar img { border-radius: 12px !important; object-fit: contain !important; padding: 4px; }
+.side-foot-logos, .dual-card-avatars, .hero-avatars { display: flex; align-items: center; gap: 8px; flex: none; }
+.author-card .dual-card-avatars .avatar { width: 64px; height: 64px; font-size: 18px; box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--color-primary), 0 12px 28px -10px rgba(243, 181, 82, .4); }
+.author-card .dual-card-avatars .avatar.platform-avatar { box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--color-secondary), 0 12px 28px -10px rgba(64, 126, 191, .4); }
+.site-footer .foot-logo { display: inline-block; vertical-align: -3px; margin-right: 6px; border-radius: 4px; }
 .hero-art img { width: 100%; height: auto; display: block; filter: drop-shadow(0 30px 50px rgba(0,0,0,.45)); }
 
 /* ---------- Stats & continue ---------- */
