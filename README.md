@@ -1,172 +1,175 @@
 # 🎯 Prompt Engineering: Zero to Pro
 
-### The complete course: from your first prompt to production AI systems
-
-| ✍️ Author | 🌐 Author Website | 🛠️ Platform Built By | 📅 Edition | 📈 Level |
-|---|---|---|---|---|
-| **Vicky** | [abvicky.in](https://abvicky.in) | [Manikarnika Technologies](https://www.manikarnikatechnologies.in/) | 2026 | Absolute beginner → Professional |
+### The complete, practical guide: from your first prompt to production AI systems
 
 ![Prompt Engineering: Zero to Pro](assets/cover.svg)
 
----
-
-## 📌 About This Course
-
-This is a **complete, self-contained** prompt engineering course. Every concept, technique, template, exercise, and reference you need is inside these pages, so you don't need to look anywhere else.
-
-You'll learn how Large Language Models actually work, how to write prompts that reliably produce what you want, and how professionals design, evaluate, secure and ship prompt-powered products.
-
-### ✨ What's inside
-
-| | |
-|---|---|
-| 📚 **18 modules** | From "what is a token?" to agents, RAG, evaluation, security and production |
-| 🖼️ **Visuals** | Custom diagrams, flowcharts and illustrations in every stage |
-| ❌➡️✅ **Before/after makeovers** | See exactly what turns a weak prompt into a strong one |
-| 🏋️ **60+ exercises** | With hidden, worked solutions |
-| ✅ **Quizzes** | After every module, plus a 40-question final exam |
-| 📋 **Cheat sheet** | One-page reference for daily use |
-| 📚 **60 prompt templates** | Ready to copy for writing, code, data, business, education and more |
-| 📖 **Glossary** | 90+ terms, A–Z |
-| 🩺 **Troubleshooting guide** | Symptom → cause → fix |
-| 🏆 **6 capstone projects** | Portfolio-ready, with levels and success criteria |
+> 💡 **Welcome to the course!** Every concept, technique, blueprint, and template you need is inside this reader. There are no paid upgrades, no locked chapters, and no hidden dependencies. Whether you are leading a team or writing backend code, this guide was built to take you from day one to professional mastery.
 
 ---
 
-## 🎯 Two Tailored Tracks: Non-Tech vs Tech
+## 1. Why Prompt Engineering Matters
 
-This course is designed with dual pathways so that whether you are writing business memos in a web browser or shipping production LLM microservices in Python, every lesson gives you actionable, relevant depth.
+Most people use AI chatbots like a search engine or a slot machine: they type a vague question, hope for a miracle, and feel let down when the answer comes out generic, inaccurate, or fabricated.
+
+Much of the advice online swings between two extremes:
+- **Superficial "magic prompt cheat sheets"** that break down the moment your task changes.
+- **Dense academic papers** filled with equations that never explain how to solve real problems at work.
+
+This course takes a practical path. It treats prompts as **clear interface contracts** between your intent and probabilistic language models. 
+
+When you learn the underlying mechanics — how tokens work, how attention directs generation, how to constrain outputs with schemas, and how to chain steps together — prompting stops being a guessing game. It becomes a reliable, repeatable craft.
 
 ```mermaid
-flowchart TD
-    User["Learner Profile"] --> NonTech["👔 Non-Tech Track<br/>Business, Creators & Leaders"]
-    User --> Tech["💻 Tech Track<br/>Developers & Engineers"]
-
-    NonTech --> NTFocus["• Everyday workplace mental models<br/>• Zero-code prompting in ChatGPT / Claude<br/>• Copy-paste templates for writing & analysis<br/>• Custom Instructions & Claude Projects<br/>• Fast-track 4-week timeline"]
-
-    Tech --> TFocus["• Tokenization math, embeddings & attention<br/>• Pydantic schemas & strict JSON enforcement<br/>• Tool-use, MCP & autonomous agent loops<br/>• Hybrid RAG & vector database search<br/>• Automated eval suites & PromptOps CI/CD"]
+flowchart LR
+    A["Raw Intent<br/>(Vague idea)"] --> B["Engineered Contract<br/>(Role + Context + Schema + Examples)"]
+    B --> C["LLM Execution<br/>(Predictable token generation)"]
+    C --> D["Reliable Output<br/>(Actionable business result or clean code)"]
 ```
+
+---
+
+## 2. Two Tailored Pathways: Non-Tech vs. Tech
+
+We designed this course with dual pathways so every lesson gives you direct, actionable depth regardless of your technical background. 
+
+You can switch between tracks anytime using the **audience switcher on the top navigation bar** (`🌟 All`, `👔 Non-Tech`, `💻 Tech`):
+
+> 👔 **Non-Tech Track · Everyday & Business:**
+> Built for product managers, marketers, writers, founders, analysts, educators, and team leads. You will use everyday chat tools like ChatGPT, Claude Projects, Google Gemini, and Microsoft Copilot to draft executive memos, analyze messy spreadsheets, summarize lengthy documents, and build custom no-code assistants that save hours every week.
+
+> 💻 **Tech Track · Developer & Engineering:**
+> Built for software engineers, full-stack developers, data scientists, and ML architects. You will treat prompts as versioned code components using Python SDKs, strict Pydantic schemas, function calling, Model Context Protocol (MCP), autonomous ReAct agent loops, hybrid vector RAG pipelines, and automated CI/CD eval regression suites.
 
 | Dimension | 👔 Non-Tech Track | 💻 Tech Track |
 |---|---|---|
-| **Audience** | Product managers, marketers, writers, founders, analysts, educators | Software engineers, full-stack devs, data scientists, ML architects |
-| **Primary Tools** | ChatGPT, Claude Projects, Google Gemini, MS Copilot | Python / Node SDKs, OpenAI/Anthropic APIs, Pydantic, Ollama, Git |
-| **Prerequisites** | None! Clear communication and domain knowledge | Basic comfort with Python or JavaScript |
-| **Core Modules** | 00–08, 09 (doc chat), 11, 14 (privacy), 16 (playbooks), 17 | All 18 modules (00–17) with deep focus on 06, 09, 10, 12, 13, 14, 15 |
-| **Deliverable** | High-impact workflow prompts, Custom GPTs, business playbook | Production-tested prompt pipelines, function-calling agents, eval suites |
+| **Primary Audience** | Business leaders, creators, managers, analysts, educators | Developers, data teams, software architects |
+| **Primary Tools** | ChatGPT, Claude Projects, Microsoft Copilot, Gemini | Python/Node SDKs, OpenAI/Anthropic APIs, Pydantic, Git |
+| **Prerequisites** | None! Clear communication and domain knowledge | Familiarity with Python or JavaScript |
+| **Core Skills** | The workplace briefing method, Custom GPTs, chat chains | Structured schemas, tool use, RAG pipelines, CI/CD evals |
+| **Final Deliverable** | A team prompt library and automated business assistants | A production-ready LLM service with automated tests |
+
+> 💡 **Live Track Filtering:** Selecting **👔 Non-Tech** on the top bar cleanly hides technical code blocks and developer notes across the entire reader. Selecting **💻 Tech** hides the non-tech callouts so engineers can focus directly on architecture and code. Selecting **🌟 All** keeps everything visible.
 
 ---
 
-## 🗺️ Curriculum
+## 3. The 4-Stage Curriculum Roadmap
 
-![Course roadmap](assets/roadmap.svg)
+The curriculum is divided into four sequential stages, plus an extensive reference vault. You can complete the full course in sequence or jump directly to the modules you need today:
 
-### 🟢 Stage 1: Foundations
+![Course Roadmap](assets/roadmap.svg)
 
-| # | Module | You'll learn | Track Fit |
-|---|---|---|---|
-| 00 | [Welcome & How to Use This Course](modules/00-welcome.md) | Roadmap, dual lab setup, study plans, the pro mindset | 🌟 Both |
-| 01 | [How Large Language Models Work](modules/01-how-llms-work.md) | Tokens, context windows, attention, temperature, training, limits | 🌟 Both (plain analogies + math) |
-| 02 | [Anatomy of a Prompt](modules/02-anatomy-of-a-prompt.md) | Role, task, context, input, examples, format; delimiters | 🌟 Both (Executive brief + API schemas) |
-| 03 | [Core Principles](modules/03-core-principles.md) | The 12 principles behind every good prompt | 🌟 Both |
-| 04 | [Zero-Shot, Few-Shot & Role Prompting](modules/04-zero-few-shot-and-roles.md) | Examples, personas, prefilling, in-context learning | 🌟 Both |
+### 🟢 Stage 1: Foundations (Modules 00–04)
+*Build reliable mental models and master core prompt mechanics.*
+- **[Module 00: Welcome & How to Use This Course](modules/00-welcome.md)** — The professional mindset, setting up your 5-minute practice lab (no-code or Python), study plans, and privacy rules.
+- **[Module 01: How Large Language Models Work](modules/01-how-llms-work.md)** — Tokens, context windows, next-token prediction, temperature, top-p, training stages, and why models hallucinate.
+- **[Module 02: Anatomy of a Prompt](modules/02-anatomy-of-a-prompt.md)** — The six essential prompt elements, delimiters, dynamic variable separation, and clear task framing.
+- **[Module 03: Core Principles](modules/03-core-principles.md)** — The 12 battle-tested rules behind every high-performing prompt.
+- **[Module 04: Zero-Shot, Few-Shot & Role Prompting](modules/04-zero-few-shot-and-roles.md)** — Example formatting, assistant prefilling, in-context learning, and crafting domain personas.
 
-### 🔵 Stage 2: Intermediate
+### 🔵 Stage 2: Intermediate Techniques (Modules 05–09)
+*Solve complex problems, enforce formats, and connect private data.*
+- **[Module 05: Reasoning Techniques](modules/05-reasoning-techniques.md)** — Chain-of-Thought (CoT), Tree of Thoughts, and working with modern test-time compute reasoning models (o1, o3, Claude 3.7 Sonnet).
+- **[Module 06: Structured Output](modules/06-structured-output.md)** — Clean tables and CSVs for spreadsheets, strict JSON Schemas, Pydantic validation, and XML boundaries.
+- **[Module 07: System Prompts & Conversation Design](modules/07-system-prompts-and-conversation.md)** — Custom Instructions, Claude Projects, prompt caching, conversation state, and memory.
+- **[Module 08: Prompt Chaining & Workflows](modules/08-prompt-chaining-workflows.md)** — Step-by-step chat workflows, deterministic DAG pipelines, routing, parallel execution, and evaluator gates.
+- **[Module 09: Context Engineering & RAG](modules/09-context-engineering-rag.md)** — Long-context limits, "lost in the middle," document Q&A, citations, embeddings, chunking, and hybrid vector search.
 
-| # | Module | You'll learn | Track Fit |
-|---|---|---|---|
-| 05 | [Reasoning Techniques](modules/05-reasoning-techniques.md) | CoT, self-consistency, ToT, reasoning models (o1/o3/Claude 3.7) | 🌟 Both |
-| 06 | [Structured Output](modules/06-structured-output.md) | JSON schemas, Pydantic, XML, Markdown tables, CSVs | 👔 Tables/CSVs · 💻 Strict Schemas |
-| 07 | [System Prompts & Conversation Design](modules/07-system-prompts-and-conversation.md) | Personas, Custom Instructions, memory, state management | 👔 Projects · 💻 State serialization |
-| 08 | [Prompt Chaining & Workflows](modules/08-prompt-chaining-workflows.md) | Sequential, routing, parallel, evaluator patterns | 👔 Chat chains · 💻 DAG pipelines |
-| 09 | [Context Engineering & RAG](modules/09-context-engineering-rag.md) | Long context, retrieval, grounding, citations, vector DBs | 👔 Doc uploads · 💻 Embeddings/hybrid search |
+### 🟣 Stage 3: Advanced Architectures (Modules 10–14)
+*Build autonomous agents, integrate external tools, and secure your systems.*
+- **[Module 10: Tool Use, Function Calling & Agents](modules/10-tool-use-and-agents.md)** — Tool definitions, the ReAct loop, Model Context Protocol (MCP), and human-in-the-loop guardrails.
+- **[Module 11: Multimodal & Image Prompting](modules/11-multimodal-and-image-prompting.md)** — Vision analysis, document OCR extraction, UI code from mockups, and image generation prompts.
+- **[Module 12: Model Parameters, APIs & Cost](modules/12-parameters-apis-and-cost.md)** — Sampling dials, streaming responses, provider SDKs, latency optimization, and token cost economics.
+- **[Module 13: Evaluation & Testing](modules/13-evaluation-and-testing.md)** — Creating golden test sets, rubrics, LLM-as-a-Judge, automated scoring, and CI/CD regression gates.
+- **[Module 14: Safety, Security & Ethics](modules/14-safety-security-ethics.md)** — Direct and indirect prompt injection, jailbreaking, data leakage, red-teaming, and defense-in-depth architectures.
 
-### 🟣 Stage 3: Advanced
+### 🌟 Stage 4: Production & Career (Modules 15–17)
+*Ship production software, lead AI operations, and build your career.*
+- **[Module 15: Production Prompt Engineering](modules/15-production-promptops.md)** — Version control with Git, prompt telemetry, tracing, observability, and fallback cascades.
+- **[Module 16: Domain Playbooks](modules/16-domain-playbooks.md)** — 11 detailed field guides (Software Development, Writing & Editing, Marketing & Sales, Data & SQL, Research, Teaching, Operations, Support, HR, Legal/Finance, and Personal Productivity).
+- **[Module 17: Becoming a Pro](modules/17-becoming-a-pro.md)** — Meta-prompting, portfolio building, freelancing, and career roadmaps for AI Operations Leaders and Production AI Engineers.
 
-| # | Module | You'll learn | Track Fit |
-|---|---|---|---|
-| 10 | [Tool Use, Function Calling & Agents](modules/10-tool-use-and-agents.md) | Tool schemas, ReAct loop, MCP, guardrails | 👔 Agent capabilities · 💻 Full code |
-| 11 | [Multimodal & Image Prompting](modules/11-multimodal-and-image-prompting.md) | Vision, image generation, video/audio prompts | 🌟 Both |
-| 12 | [Model Parameters, APIs & Cost](modules/12-parameters-apis-and-cost.md) | Sampling settings, SDKs, streaming, cost & latency | 👔 Cost tuning · 💻 SDKs & streaming |
-| 13 | [Evaluation & Testing](modules/13-evaluation-and-testing.md) | Test sets, rubrics, LLM-as-judge, automated metrics | 👔 Rubrics/A-B · 💻 Automated CI/CD |
-| 14 | [Safety, Security & Ethics](modules/14-safety-security-ethics.md) | Prompt injection, jailbreaks, data privacy, responsible AI | 👔 Data privacy · 💻 Red teaming & defenses |
-
-### 🌟 Stage 4: Pro
-
-| # | Module | You'll learn | Track Fit |
-|---|---|---|---|
-| 15 | [Production Prompt Engineering](modules/15-production-promptops.md) | Versioning, telemetry, observability, PromptOps | 👔 Team prompt libraries · 💻 PromptOps |
-| 16 | [Domain Playbooks](modules/16-domain-playbooks.md) | Code, writing, marketing, data, research, education, business | 🌟 Both (customized by domain) |
-| 17 | [Becoming a Pro](modules/17-becoming-a-pro.md) | Meta-prompting, optimization, portfolio, dual career paths | 🌟 Both (AI Champion vs AI Engineer) |
-
-### 📚 Appendices
-
-| | Appendix | Track Fit |
-|---|---|---|
-| A | [Cheat Sheet](appendix/A-cheat-sheet.md) | 🌟 Both (dual checklists) |
-| B | [Prompt Pattern Library (60 templates)](appendix/B-prompt-library.md) | 👔 Business templates · 💻 Code/Dev templates |
-| C | [Glossary](appendix/C-glossary.md) | 🌟 Both (plain English + technical definitions) |
-| D | [Final Exam](appendix/D-final-exam.md) | 🌟 Both (Part 1 Foundations · Part 2 Engineering) |
-| E | [Capstone Projects](appendix/E-capstone-projects.md) | 👔 3 Non-Tech Capstones · 💻 3 Tech Capstones |
-| F | [Troubleshooting Guide](appendix/F-troubleshooting.md) | 🌟 Both |
-| G | [Resources, Papers & Practice Plan](appendix/G-resources.md) | 🌟 Both |
+### 📚 The Reference Vault (Appendices A–G)
+*Your permanent desktop reference library.*
+- **[Appendix A: Cheat Sheet](appendix/A-cheat-sheet.md)** — Rapid-lookup rules, syntax patterns, and checklists for daily prompting.
+- **[Appendix B: Prompt Library](appendix/B-prompt-library.md)** — 60 tested, copy-paste prompt templates across 10 business and technical categories.
+- **[Appendix C: Glossary](appendix/C-glossary.md)** — 90+ prompt engineering and AI terms, defined in plain English with technical context.
+- **[Appendix D: Final Exam](appendix/D-final-exam.md)** — 40 comprehensive questions and 5 practical tasks to validate your understanding.
+- **[Appendix E: Capstone Projects](appendix/E-capstone-projects.md)** — 6 end-to-end portfolio projects (3 Non-Tech and 3 Tech) with evaluation rubrics.
+- **[Appendix F: Troubleshooting Guide](appendix/F-troubleshooting.md)** — Systematic diagnosis matrix: symptom → root cause → proven fix.
+- **[Appendix G: Resources & Practice Plan](appendix/G-resources.md)** — Recommended papers, official documentation, benchmarks, and a structured 30-day study plan.
 
 ---
 
-## 💻 How to Read This Course
+## 4. What Makes This Reader Special
 
-**Option 1: In your browser (recommended)**
-Double-click **`index.html`**. You get a full course reader:
+We built this learning environment to be fast, distraction-free, and respectful of your privacy:
 
-- 🏠 A home page with your progress, a "continue where you left off" card and every module as a card
-- 🔎 Instant search across the whole course (press **/** or **⌘K / Ctrl K**), including jumping straight to a section
-- 🌗 Dark and light mode, three text sizes and a distraction-free focus mode
-- ✅ Progress tracking with "mark as complete", per-stage counters and a progress ring
-- 🧩 Styled tips, warnings, before/after prompts, exercise and quiz cards, and code blocks with copy buttons
-- 🔍 Click any diagram or illustration to enlarge it
-- ⌨️ Use the **←** and **→** keys to move between pages
-
-It works straight from your computer; fonts, the Markdown renderer and diagrams load from a CDN when you're online.
-
-**Option 2: As Markdown**
-Open the `.md` files in any Markdown viewer (VS Code, Obsidian, Typora, GitHub). Mermaid diagrams render on GitHub and in most modern viewers.
-
-**Editing the course?** After changing any `.md` file, run `python3 build.py` to refresh the browser reader's bundled content (`course-data.js`). To add a new module or appendix, also add a line for it in `assets/reader/course-map.js`.
-
-```text
-Prompt Engineering/
-├── index.html            ← open this in your browser
-├── README.md             ← you are here
-├── build.py              ← rebuilds course-data.js from the .md files
-├── course-data.js        ← bundled content for index.html
-├── assets/               ← cover art and SVG illustrations
-│   └── reader/           ← the reader's styles, scripts and course map
-├── modules/              ← 18 course modules (00–17)
-└── appendix/             ← cheat sheet, library, glossary, exam, capstones…
-```
+- 🏠 **Home Hub:** View overall progress, continue from your last read module, and scan stage overviews.
+- 🎯 **Track Lens Switcher:** Toggle between **🌟 All**, **👔 Non-Tech**, and **💻 Tech** at any time. Content and Table of Contents update immediately.
+- 🔎 **Instant Search:** Press **⌘K** or **/** anywhere in the app to find any term, prompt pattern, or section across the entire curriculum.
+- 🌗 **High-Contrast Design System:** Custom light and dark themes using a focused Mustard (`#F3B552`), Navy Blue (`#407EBF`), and Charcoal palette tested for readability.
+- 📱 **100% Offline & Private:** Zero third-party trackers, zero cookies, zero analytics. Your module completion progress stays in your local browser storage.
+- ⌨️ **Keyboard-First Navigation:** Use the **←** and **→** arrow keys to step between modules, and **Esc** to dismiss palettes or zoom windows.
 
 ---
 
-## 🧑‍🏫 Course Author & Platform Developer
+## 5. Meet the Author
 
-<p align="center">
-  <img src="https://avatars.githubusercontent.com/u/103195071?v=4" alt="Vicky" width="128">
-</p>
-
-- **Course Author:** **Vicky** ([abvicky.in](https://abvicky.in))
-  Vicky builds and teaches practical AI, bringing together the techniques, patterns, and habits that make prompts work reliably, from everyday use to production systems.
-
-- **Platform Built By:** **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**
-  The course reader platform, design tokens, interactive learning tools, and technical infrastructure are designed and built by Manikarnika Technologies.
-
-🌐 **[manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)** · **[abvicky.in](https://abvicky.in)**
+<div class="profile-card">
+  <div class="profile-avatar">
+    <img src="https://avatars.githubusercontent.com/u/103195071?v=4" alt="Vicky Prasad Mahato" width="104" height="104">
+  </div>
+  <div class="profile-body">
+    <h3>Vicky Prasad Mahato</h3>
+    <span class="profile-role">Course Author · System Architect</span>
+    <p>
+      Vicky Prasad Mahato (online as <strong>abvicky</strong>) is a system architect, software engineer, and digital product builder based in Kolkata, India. He builds resilient digital systems and software tools, with a strong focus on offline-first architectures, personal data sovereignty, and practical artificial intelligence.
+    </p>
+    <p>
+      As the founder of the <strong>Coders' Club at BBIT Kolkata</strong> and former student coordinator at the Innovation and Incubation Center (IIC) and Entrepreneurship Development Cell (EDC), Vicky has mentored hundreds of student developers in software design, problem solving, and modern development practices. He is also the creator of open-source projects including <em>Mera Paisaa</em>, an offline-first personal expense and financial tracking system.
+    </p>
+    <p>
+      <strong>Author's Teaching Philosophy:</strong> <em>"Prompt engineering is not about finding 'magic spells' — it is the engineering discipline of providing clear, unambiguous interface contracts to generative models. When you understand how language models interpret context, you gain an unfair advantage in whatever work you do."</em>
+    </p>
+    <div class="profile-pills">
+      <a class="pill-btn primary" href="https://abvicky.in" target="_blank" rel="noopener">🌐 abvicky.in</a>
+      <a class="pill-btn" href="https://www.linkedin.com/in/abvicky/" target="_blank" rel="noopener">💼 LinkedIn Profile</a>
+      <a class="pill-btn" href="https://github.com/ABVicky" target="_blank" rel="noopener">💻 GitHub (@ABVicky)</a>
+    </div>
+  </div>
+</div>
 
 ---
 
-## ©️ Copyright
+## 6. Platform & Technical Infrastructure
+
+<div class="profile-card">
+  <div class="profile-avatar">
+    <div class="profile-badge-icon">🛠️</div>
+  </div>
+  <div class="profile-body">
+    <h3>Manikarnika Technologies</h3>
+    <span class="profile-role platform">Platform Architecture & Development</span>
+    <p>
+      The custom reading experience, interactive design system, live audience lens engine, client-side search infrastructure, and responsive web components were designed and engineered by <strong>Manikarnika Technologies</strong>.
+    </p>
+    <p>
+      Manikarnika Technologies builds high-performance, distraction-free educational platforms, developer tooling, and modern digital infrastructure. The platform was created from the ground up without heavy external frameworks, providing instantaneous page loads, zero runtime bloat, and full privacy for learners worldwide.
+    </p>
+    <div class="profile-pills">
+      <a class="pill-btn primary" href="https://www.manikarnikatechnologies.in/" target="_blank" rel="noopener">🌐 manikarnikatechnologies.in</a>
+    </div>
+  </div>
+</div>
+
+---
+
+## 7. Copyright & Terms of Use
 
 © 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved.
 
-Course authored by **Vicky** ([abvicky.in](https://abvicky.in)). Platform designed and built by **Manikarnika Technologies** ([manikarnikatechnologies.in](https://www.manikarnikatechnologies.in/)).
+- **Course Author:** **[Vicky Prasad Mahato](https://abvicky.in)** ([LinkedIn](https://www.linkedin.com/in/abvicky/) · [GitHub](https://github.com/ABVicky))
+- **Platform Architecture & Development:** **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**
 
-This course, including its text, structure, illustrations and exercises, is for personal learning. Redistribution, resale, or republication, in whole or in part, requires written permission from Manikarnika Technologies. Third-party product names mentioned are trademarks of their respective owners and are used for identification only.
+This course, including its text, diagrams, exercises, code examples, and instructional designs, is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. All product names, logos, and brands mentioned are property of their respective owners and are used solely for identification and educational reference.

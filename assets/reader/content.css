@@ -196,10 +196,141 @@
 .md .figure:hover .zoom-btn, .md .diagram:hover .zoom-btn, .md .zoom-btn:focus-visible { opacity: 1; }
 .md .zoom-btn svg.i { width: 16px; height: 16px; }
 
-/* ---------- Author photo (README "About the Author") ---------- */
+/* ---------- Author photo & Profile Cards ---------- */
 .md img[src*="avatars.githubusercontent.com"] {
-  display: inline-block; width: 128px; height: 128px; object-fit: cover; border-radius: 50%; margin: 6px 0 4px;
-  box-shadow: 0 0 0 4px var(--surface), 0 0 0 6px var(--color-primary), 0 14px 30px -10px rgba(243, 181, 82, .4);
+  display: inline-block; width: 104px; height: 104px; object-fit: cover; border-radius: 50%; margin: 4px 0;
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--color-primary), 0 12px 24px -8px rgba(243, 181, 82, .45);
+}
+
+.md .profile-card {
+  display: flex;
+  gap: 22px;
+  align-items: flex-start;
+  padding: 24px;
+  margin: 1.6em 0;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.md .profile-avatar {
+  flex: none;
+}
+.md .profile-badge-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 42px;
+  background: color-mix(in srgb, var(--color-secondary) 12%, var(--surface));
+  border: 2px solid var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--surface), 0 10px 24px -8px rgba(64, 126, 191, .35);
+}
+.md .profile-body {
+  flex: 1;
+  min-width: 0;
+}
+.md .profile-body h3 {
+  margin: 0 0 6px;
+  font-size: 1.35em;
+  font-weight: 800;
+}
+.md .profile-role {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--primary-ink);
+  background: var(--highlight);
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--color-primary);
+  margin-bottom: 12px;
+}
+.md .profile-role.platform {
+  color: var(--link);
+  background: color-mix(in srgb, var(--color-secondary) 14%, var(--surface));
+  border-color: var(--color-secondary);
+}
+.md .profile-body p {
+  margin: 0 0 .8em;
+  color: var(--text-2);
+  line-height: 1.55;
+  font-size: 14.5px;
+}
+.md .profile-body p:last-of-type {
+  margin-bottom: 0;
+}
+.md .profile-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.md .pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 10px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  text-decoration: none;
+  transition: all .15s ease;
+}
+.md .pill-btn:hover {
+  background: var(--highlight);
+  border-color: var(--color-primary);
+  color: var(--primary-ink);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.md .pill-btn.primary {
+  background: var(--color-primary);
+  color: var(--on-primary);
+  border-color: var(--color-primary);
+}
+.md .pill-btn.primary:hover {
+  background: var(--color-primary-strong);
+  color: var(--on-primary);
+}
+
+.md .stage-card {
+  margin: 1.4em 0;
+  padding: 20px 22px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+.md .stage-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--color-primary);
+}
+.md .stage-card.tech-accent::before {
+  background: var(--color-secondary);
+}
+.md .stage-card h3 {
+  margin: 0 0 6px;
+  font-size: 1.2em;
+}
+.md .stage-card p {
+  margin: 0 0 10px;
+  color: var(--text-2);
+  font-size: 14px;
 }
 
 /* ---------- Checklists ---------- */
@@ -215,4 +346,13 @@
   .md .code pre { padding: 14px; }
   .md .code pre code { font-size: 12.5px; }
   .md .zoom-btn { opacity: 1; }
+  .md .profile-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+  .md .profile-pills {
+    justify-content: center;
+  }
 }

@@ -246,8 +246,8 @@
         `<div class="card-grid">${s.items.map((i) => card(Object.assign({ stage: s }, i))).join("")}</div></section>`).join("") +
       `<section class="home-section"><h2 class="sec-title">What's inside every module</h2><p class="sec-sub">Everything you need in one place, so you never have to look elsewhere.</p>` +
       `<div class="feature-grid">${features.map(([i, b, s]) => `<div class="feature"><span class="f-ico">${i}</span><b>${b}</b><span>${s}</span></div>`).join("")}</div></section>` +
-      `<section class="author-card">${avatar()}<div><h3>${esc(MAP.author)}</h3>` +
-      `<p>Course author: <strong>${esc(MAP.author)}</strong> (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc((MAP.authorSite || 'https://abvicky.in').replace('https://',''))}</a>)</p>` +
+      `<section class="author-card">${avatar()}<div><h3>${esc(MAP.authorFullName || MAP.author)}</h3>` +
+      `<p>Course author: <strong>${esc(MAP.authorFullName || MAP.author)}</strong> · System Architect (<a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener">${esc((MAP.authorSite || 'https://abvicky.in').replace('https://',''))}</a> · <a href="${MAP.authorLinkedIn || 'https://www.linkedin.com/in/abvicky/'}" target="_blank" rel="noopener">LinkedIn</a> · <a href="${MAP.authorGitHub || 'https://github.com/ABVicky'}" target="_blank" rel="noopener">GitHub</a>)</p>` +
       `<p>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a> (<a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformSiteLabel || 'manikarnikatechnologies.in')}</a>)</p>` +
       `<p>© 2026 <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener">${esc(MAP.platformBuilder || "Manikarnika Technologies")}</a> · All rights reserved. <a href="#/${ABOUT.p}">About this course →</a></p></div></section>` +
       footerHTML();

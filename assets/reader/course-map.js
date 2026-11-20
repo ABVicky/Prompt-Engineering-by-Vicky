@@ -7,6 +7,8 @@ window.PE_MAP = {
   author: "Vicky",
   authorFullName: "Vicky Prasad Mahato",
   authorSite: "https://abvicky.in",
+  authorLinkedIn: "https://www.linkedin.com/in/abvicky/",
+  authorGitHub: "https://github.com/ABVicky",
   avatar: "https://avatars.githubusercontent.com/u/103195071?v=4",
   platformBuilder: "Manikarnika Technologies",
   platformSite: "https://www.manikarnikatechnologies.in/",
