@@ -18,12 +18,13 @@
 <script>
   /* Apply saved preferences before first paint (no flash). */
   try {
-    var t = localStorage.getItem("pe-theme"), s = localStorage.getItem("pe-size");
+    var t = localStorage.getItem("pe-theme"), s = localStorage.getItem("pe-size"), a = localStorage.getItem("pe-audience");
     var theme = t ? JSON.parse(t) : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     document.documentElement.setAttribute("data-theme", theme);
     var meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute("content", theme === "dark" ? "#17191F" : "#F5F4F9");
     if (s) document.documentElement.setAttribute("data-size", JSON.parse(s));
+    if (a) document.documentElement.setAttribute("data-audience", JSON.parse(a));
   } catch (e) {}
 </script>
 </head>
@@ -44,6 +45,12 @@
     <button class="search-trigger" id="search-btn" aria-label="Search the course">
       <span data-icon="search"></span><span class="st-label">Search the course</span><kbd class="st-kbd">⌘K</kbd>
     </button>
+    <div class="lens-toggle hide-mobile" id="lens-toggle" role="group" aria-label="Audience track lens">
+      <button type="button" class="lt-btn active" data-aud="all" title="View all content">🌟 All</button>
+      <button type="button" class="lt-btn" data-aud="non-tech" title="Focus on Non-Tech & Business track">👔 Non-Tech</button>
+      <button type="button" class="lt-btn" data-aud="tech" title="Focus on Developer & Tech track">💻 Tech</button>
+    </div>
+    <button class="icon-btn only-mobile" id="lens-btn" aria-label="Toggle audience track" title="Toggle track lens">🌟</button>
     <button class="icon-btn hide-mobile" id="size-btn" aria-label="Change text size" title="Text size" data-icon="type"></button>
     <button class="icon-btn hide-mobile" id="focus-btn" aria-label="Toggle focus mode" title="Focus mode" data-icon="focus"></button>
     <button class="icon-btn" id="theme-btn" aria-label="Toggle dark mode" title="Light / dark"></button>

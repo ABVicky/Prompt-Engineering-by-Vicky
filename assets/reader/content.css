@@ -100,49 +100,6 @@
   opacity: .78;
 }
 
-/* Document audience bar */
-.doc-audience-bar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px dashed var(--border);
-  flex-wrap: wrap;
-}
-.dab-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--text-secondary);
-}
-.dab-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-2);
-  cursor: pointer;
-  transition: all .18s ease;
-}
-.dab-btn:hover {
-  border-color: var(--color-primary);
-  color: var(--text);
-}
-.dab-btn.active {
-  background: var(--highlight);
-  border-color: var(--color-primary);
-  color: var(--primary-ink);
-  font-weight: 700;
-  box-shadow: var(--shadow-sm);
-}
-
 /* ---------- Section cards: objectives, takeaways, exercises, quiz ---------- */
 .md .sec-card {
   --c: var(--color-primary);
