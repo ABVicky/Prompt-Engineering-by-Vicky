@@ -328,15 +328,55 @@ def build():
         jsonld=json.dumps(idx_json, ensure_ascii=False))
     (out_dir / "index.html").write_text(page, encoding="utf-8")
 
-    urls = [SITE, SITE + "learn/"] + [SITE + "learn/" + slug(it["p"]) for it in items]
-    sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    sm += [f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>" for u in urls]
+    sm = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
+        '  <url>',
+        f'    <loc>{SITE}</loc>',
+        f'    <lastmod>{today}</lastmod>',
+        '    <changefreq>weekly</changefreq>',
+        '    <priority>1.0</priority>',
+        '    <image:image>',
+        f'      <image:loc>{SITE}assets/social-card.png</image:loc>',
+        f'      <image:title>{COURSE} — Free Study Guide</image:title>',
+        '    </image:image>',
+        '  </url>',
+        '  <url>',
+        f'    <loc>{SITE}learn/</loc>',
+        f'    <lastmod>{today}</lastmod>',
+        '    <changefreq>weekly</changefreq>',
+        '    <priority>0.9</priority>',
+        '  </url>',
+    ]
+    for it in items:
+        p = it["p"]
+        u = SITE + "learn/" + slug(p)
+        if p == "README.md" or p.startswith("modules/00") or p.startswith("modules/01"):
+            prio = "0.85"
+        elif p.startswith("modules/"):
+            prio = "0.8"
+        else:
+            prio = "0.7"
+        sm.extend([
+            '  <url>',
+            f'    <loc>{u}</loc>',
+            f'    <lastmod>{today}</lastmod>',
+            '    <changefreq>monthly</changefreq>',
+            f'    <priority>{prio}</priority>',
+            '  </url>',
+        ])
     sm.append("</urlset>")
     (ROOT / "sitemap.xml").write_text("\n".join(sm) + "\n", encoding="utf-8")
-    # robots.txt only counts at the domain root (abvicky.github.io), so submit the sitemap in
-    # Google Search Console instead. .nojekyll stops Pages from publishing raw Markdown copies.
+
+    robots = [
+        "User-agent: *",
+        "Allow: /",
+        "",
+        f"Sitemap: {SITE}sitemap.xml",
+    ]
+    (ROOT / "robots.txt").write_text("\n".join(robots) + "\n", encoding="utf-8")
     (ROOT / ".nojekyll").write_text("", encoding="utf-8")
-    print(f"Generated {len(items) + 1} SEO pages in learn/ and sitemap.xml")
+    print(f"Generated {len(items) + 1} SEO pages in learn/, robots.txt, and sitemap.xml")
 
 
 if __name__ == "__main__":
