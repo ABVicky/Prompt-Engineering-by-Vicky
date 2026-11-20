@@ -2,239 +2,254 @@
 
 > 🌟 Stage 4 · Pro · ⏱️ ~3 hours
 
+Think about the difference between making a cup of tea for yourself at home versus operating an industrial kitchen that brews 5,000 cups of chai for an airline flight every morning.
+
+At home, you eyeball the sugar, toss in a crushed cardamom pod, taste it from the spoon, and call it done. 
+
+In a commercial airline kitchen, you cannot afford guesswork. Ingredients are measured to the milligram, water temperature is logged on digital sensors, allergens are tracked, batch numbers are stamped on every container, and there is a documented procedure if a milk shipment arrives late.
+
+Most people treat prompt engineering like making tea at home: they type a prompt into a web browser, like the response, and copy-paste it into an application.
+
+**Production PromptOps** is running your prompts like that industrial kitchen. It is the discipline of treating prompts as versioned, tested, monitored, and dependable software assets that survive model upgrades, traffic spikes, and real-world edge cases.
+
+In this module, you will learn how to organize prompts in code repositories, trace every token in production, manage model migrations without outages, and build reliability guardrails that keep your systems running smoothly.
+
+---
+
 ## 🎯 Learning Objectives
 
-- Manage prompts as **versioned, reviewed, tested artifacts**
-- Build **prompt templates** with variables safely
-- Set up **observability**: logging, tracing, metrics, alerts
-- Plan **model migrations** and **fallbacks**
-- Run the full **prompt lifecycle** from idea to deprecation
+By the end of this module, you will be able to:
+- Manage prompts as **versioned software assets** stored in Git with clear changelogs.
+- Render dynamic prompt templates safely using tools like Jinja2 with strict variable validation.
+- Set up **telemetry and tracing** to monitor token spend, latency, and failure rates in real time.
+- Execute zero-downtime **model migrations** using offline evals, shadow testing, and canary rollouts.
+- Apply production reliability patterns like circuit breakers, fallbacks, and feature kill switches.
 
 ---
 
 ## 1. The Prompt Lifecycle
 
+In a professional organization, a prompt moves through six distinct phases:
+
 ```mermaid
 flowchart LR
-    A["💡 Design"] --> B["🧪 Evaluate<br/>(offline)"] --> C["👀 Review"] --> D["🚦 Staged rollout<br/>(A/B, canary)"] --> E["📈 Monitor<br/>(online)"] --> F["🔁 Improve"] --> B
-    E --> G["🗄️ Deprecate"]
+    Design["💡 1. Design & Draft<br/>Write prompt with R-T-C-I-E-F"] --> Eval["🧪 2. Offline Evals<br/>Run 50+ test cases in CI"]
+    Eval --> Review["👀 3. Peer Review<br/>Check security & cost impact"]
+    Review --> Canary["🚦 4. Canary Rollout<br/>5% traffic → 25% → 100%"]
+    Canary --> Monitor["📈 5. Live Telemetry<br/>Track latency & user thumbs"]
+    Monitor --> Iterate["🔁 6. Version & Improve"]
+    Iterate --> Eval
 ```
 
-> 👔 **Non-Tech Lens · Building a Shared Team Prompt Wiki:**
-> Without organization, team members waste hours rewriting prompts or getting inconsistent outputs for the same job. Build a shared "Prompt Library" in Notion or Google Workspace:
-> - Document the 5-part brief, tested examples, and model recommendations.
+> 👔 **Non-Tech Lens · Building a Shared Team Prompt Library:**
+> Without organization, team members waste hours rewriting prompts from scratch or getting inconsistent outputs for identical jobs. Build a shared "Prompt Playbook" in your company wiki (Notion, Google Docs, or Confluence):
+> - Document the approved 5-part prompt brief, tested examples, and model recommendations.
 > - Add a simple change log: *"March 2026 update: Added rule to format pricing in local currency."*
-> - Designate an internal "AI Lead" to review and approve prompt templates for team-wide use.
+> - Designate an internal "AI Champion" to review and approve prompt templates for team-wide use.
 
-> 💻 **Tech Lens · Production PromptOps Infrastructure & Telemetry:**
-> In engineering organizations, prompts are version-controlled assets. Practice modern PromptOps:
+> 💻 **Tech Lens · Production PromptOps Infrastructure:**
+> In engineering organizations, prompts are version-controlled code assets. Follow three core rules:
 > 1. **Decoupled Architecture:** Store prompts as versioned Markdown or Jinja templates in Git; never hardcode prompts inside application source files.
-> 2. **Telemetry & Tracing:** Instrument all LLM calls with tracing tools (Langfuse, Arize Phoenix, or OpenTelemetry) to track latency (TTFT), token consumption, model IDs, and downstream errors.
+> 2. **Telemetry & Tracing:** Instrument all LLM calls with tracing tools (such as Langfuse, Arize Phoenix, or OpenTelemetry) to track latency (TTFT), token consumption, model IDs, and downstream errors.
 > 3. **Canary Rollouts:** Gradually shift traffic from `prompt:v1` to `prompt:v2` using feature flags, monitoring user thumbs-up/down ratings and error rates in real time.
 
 ---
 
-## 2. Prompts as Code
+## 2. Prompts as Code: Folder Structure & Versioning
 
-### Store prompts separately from logic
+Never bury prompt text inside Python or TypeScript functions. Separate prompts into their own dedicated directory:
 
 ```text
-prompts/
-├── support_bot/
-│   ├── system.v3.md
-│   ├── system.v4.md          ← current
-│   └── CHANGELOG.md
-├── summarizer/
-│   └── summarize.v2.jinja
+my-project/
+├── prompts/
+│   ├── customer_support/
+│   │   ├── system.v2.md
+│   │   ├── system.v3.md          ← Current production version
+│   │   ├── config.yaml           ← Model parameters & thresholds
+│   │   └── CHANGELOG.md          ← Why changes were made
+│   └── document_summarizer/
+│       ├── summarize.v1.jinja
+│       └── summarize.v2.jinja
 └── evals/
-    ├── support_bot.jsonl
-    └── summarizer.jsonl
+    ├── customer_support.jsonl
+    └── document_summarizer.jsonl
 ```
+
+### The Configuration Contract (`config.yaml`)
+Tie the prompt text directly to its model version and evaluation benchmarks:
 
 ```yaml
-# prompts/support_bot/config.yaml
-id: support_bot
-version: 4
+id: customer_support_triage
+version: 3
 model: claude-sonnet-5-5
 fallback_model: claude-haiku-5-5
-temperature: 0.3
-max_tokens: 600
-system_prompt_file: system.v4.md
-eval_set: ../evals/support_bot.jsonl
-min_eval_score: 0.92
-owner: vicky
+temperature: 0.2
+max_tokens: 500
+prompt_file: system.v3.md
+eval_dataset: ../evals/customer_support.jsonl
+minimum_eval_pass_rate: 0.94
+owner: vicky@company.example
 ```
 
-### Versioning rules
-- **Every change = new version**, with a changelog entry: what changed, why, eval results.
-- Pin the **model version** together with the prompt version — a prompt tuned for one model may behave differently on another.
-- Use **pull requests** with eval results attached; require review for production prompts.
-- Keep old versions for instant **rollback**.
-
-Prompt-management platforms (e.g., Langfuse, LangSmith, PromptLayer, Humanloop-style tools, or your provider console) can store versions, labels (`production`, `staging`) and link them to traces.
+### The Rules of Versioning
+1. **Never mutate an existing version:** When you change a single word, create `system.v4.md`. Never edit `system.v3.md` in place.
+2. **Pin Prompt and Model Together:** A prompt designed for Claude 3.7 Sonnet will behave differently on GPT-4o. Always pin the model ID inside the configuration file.
+3. **Mandatory Changelogs:** Every update must state: *What changed*, *Why it changed*, and *Evaluation results on the golden test set*.
 
 ---
 
-## 3. Safe Templating
+## 3. Safe Templating with Jinja2
+
+Building prompts by slapping strings together with Python `f-strings` is dangerous: missing variables fail silently, and unescaped customer text can accidentally break XML delimiters.
+
+Use a dedicated templating engine like **Jinja2** with strict variable checks:
 
 ```python
 from jinja2 import Environment, StrictUndefined
 
-env = Environment(undefined=StrictUndefined, autoescape=False)
-template = env.from_string(open("prompts/summarizer/summarize.v2.jinja").read())
+# 1. Enforce strict variable checking (fails loudly if a variable is missing)
+env = Environment(undefined=StrictUndefined)
 
-prompt = template.render(
-    audience="executives",
-    max_words=120,
-    document=sanitize(user_document),        # escape tag-like text, trim length
-)
-```
-
-```jinja
-Summarize the document for {{ audience }} in at most {{ max_words }} words.
+template_str = """
+You are an executive assistant for {{ company_name }}.
+Summarize the document below in at most {{ max_words }} words for a {{ audience }} audience.
 
 <document>
-{{ document }}
+{{ document_text | trim }}
 </document>
+"""
+
+template = env.from_string(template_str)
+
+# 2. Render safely
+try:
+    rendered_prompt = template.render(
+        company_name="FreshHarvest India",
+        max_words=100,
+        audience="department head",
+        document_text="Q3 revenue grew by 14% across Mumbai and Pune..."
+    )
+except Exception as e:
+    print(f"Template rendering failed: {e}")
 ```
 
-Templating rules:
-- **StrictUndefined** — fail loudly on missing variables rather than sending `{{ name }}` to the model.
-- **Sanitize** user content: strip/escape your delimiter tags (e.g., a user typing `</document>`), enforce length limits.
-- Keep **static parts first** for prompt caching.
-- Don't build prompts by ad-hoc string concatenation scattered across the codebase.
+> 💡 **Input Sanitization:** Before injecting user text into `{{ document_text }}`, sanitize it: strip any accidental `</document>` closing tags that could trick the model's delimiter parser.
 
 ---
 
-## 4. Observability
+## 4. Observability: Tracing Every Token
 
-Log every LLM call as a **trace**:
+In traditional software, you log database query execution times and HTTP status codes. In AI applications, you must log **traces**:
 
-| Field | Why |
+| Field to Record | Why it matters |
 |---|---|
-| Request ID, user/session ID (pseudonymous) | Debugging, joins |
-| Prompt version, model, parameters | Reproducibility |
-| Full input & output (redacted) | Failure analysis |
-| Tool calls & results | Agent debugging |
-| Tokens in/out, cost | Budgeting |
-| Latency (TTFT, total) | Performance |
-| Stop reason, errors, retries | Reliability |
-| User feedback | Quality signal |
+| **Trace ID & Session ID** | Allows you to reconstruct the entire multi-turn conversation. |
+| **Prompt Version & Model ID** | Guarantees exact reproducibility when investigating bugs. |
+| **Input Tokens & Output Tokens** | Tracks token spend per user and flags unexpected cost spikes. |
+| **Time to First Token (TTFT)** | Measures user-perceived responsiveness. |
+| **Stop Reason** | Alerts you if responses are getting truncated by `max_tokens`. |
+| **Raw Input & Output (Sanitized)** | Essential for post-incident debugging and expanding your golden test set. |
 
-### Dashboards & alerts
-- Cost per day/feature, tokens per request
-- Latency p50/p95/p99
-- Error & retry rates; fallback usage
-- Quality: thumbs-down rate, judge scores on sampled traffic
-- Safety: flagged inputs/outputs, injection attempts
-
-> Tools: OpenTelemetry-based tracing, Langfuse, LangSmith, Arize Phoenix, Helicone, Datadog/New Relic LLM observability, or your own logging + dashboard.
+> 🛠️ **Modern Tracing Tools:** Production teams use tools like **Langfuse**, **Arize Phoenix**, **LangSmith**, and **Helicone** to capture trace spans and visualize conversational latencies.
 
 ---
 
-## 5. Reliability Patterns
+## 5. Production Reliability Patterns
 
-| Pattern | Description |
+| Pattern | How it protects your system |
 |---|---|
-| **Retries with backoff** | For 429/5xx (Module 12) |
-| **Fallback model/provider** | If primary fails or is overloaded |
-| **Timeouts** | Avoid hanging requests; stream long outputs |
-| **Validation + repair** | Schema check → retry with error message (Module 06) |
-| **Circuit breaker** | Stop calling a failing dependency for a cooldown period |
-| **Graceful degradation** | Show cached/simple answer or "try again" rather than crash |
-| **Idempotency** | Don't repeat side effects (payments, emails) on retries |
-| **Kill switch / feature flag** | Disable an AI feature instantly |
+| **Exponential Backoff with Jitter** | Retries 429 rate limits after 1s, 2s, 4s with random microsecond variation to avoid thundering-herd spikes. |
+| **Fallback Models** | If your primary model encounters an outage or returns a 503 error, automatically route the request to a secondary provider (e.g. falling back from Claude to GPT-4o). |
+| **Circuit Breakers** | If an API dependency fails 5 times in 60 seconds, pause all calls for 30 seconds and return cached answers rather than stalling user threads. |
+| **Validation & Self-Repair** | Validate JSON outputs with Pydantic; if validation fails, send the error back to the model for an immediate one-turn correction. |
+| **Feature Flags / Kill Switches** | A remote toggle that lets you disable an AI feature in under 5 seconds without redeploying backend code. |
 
 ---
 
-## 6. Model Migration Playbook
+## 6. The Model Migration Playbook
 
-New models arrive constantly. Upgrading blindly can break things.
+Providers release upgraded foundation models every few months. Upgrading your application blindly is a recipe for disaster: newer models follow instructions more literally, format lists differently, and may drop subtle conversational traits.
 
-1. **Run your full eval suite** on the new model with the current prompt.
-2. **Compare** quality, cost, latency side by side.
-3. **Read failures** — newer models often follow instructions more literally, or have different default verbosity/format.
-4. **Adapt the prompt** (remove workarounds that are no longer needed; add explicit format guidance).
-5. **Shadow test** — run the new model on live traffic without showing results; compare.
-6. **Canary rollout** — 5% → 25% → 100% with monitoring.
-7. Keep the **old version available** for rollback.
+Follow this 4-step migration playbook:
 
 ```mermaid
-flowchart LR
-    E["Offline eval"] --> S["Shadow traffic"] --> C1["Canary 5%"] --> C2["25%"] --> F["100%"]
-    C1 -.->|"metrics drop"| R["⏪ Rollback"]
-    C2 -.-> R
+flowchart TD
+    Step1["Step 1: Offline Evaluation<br/>Run existing prompt on New Model across 100+ test cases"] --> Step2["Step 2: Read Failures & Adapt<br/>Tweak prompt rules; verify pass rate meets baseline"]
+    Step2 --> Step3["Step 3: Shadow Traffic Testing<br/>Run New Model in background on live traffic (0% visible to users)"]
+    Step3 --> Step4["Step 4: Canary Rollout<br/>5% live traffic → 25% → 100% with live error monitoring"]
 ```
 
----
-
-## 7. Team Practices
-
-- **Prompt style guide** for your org (tags, sections, tone, forbidden patterns).
-- **Shared prompt library** of approved templates (see Appendix B).
-- **Review checklist** for prompt PRs: clarity, injection safety, eval results, cost impact.
-- **Ownership** — each production prompt has an owner.
-- **Documentation** — why each rule exists (future you will want to delete it).
-- **Privacy review** for prompts that handle personal data.
-
-### Prompt PR checklist
-
-- [ ] Changelog entry with rationale
-- [ ] Eval suite run: score ≥ threshold, no new safety failures
-- [ ] Cost & latency impact estimated
-- [ ] Untrusted inputs delimited and sanitized
-- [ ] No secrets or PII in the prompt
-- [ ] Rollback plan
+1. **Offline Evaluation:** Run your existing prompt on the new model across your entire golden evaluation dataset. Compare pass rates, cost, and latency side by side.
+2. **Read Failures & Adapt:** Inspect where the new model struggled. Often, newer models don't need workarounds you wrote for older models. Simplify the prompt and re-run evals.
+3. **Shadow Testing:** Run the new model silently in the background on live production requests. Do not show the new model's output to real users; compare its responses against the current production model.
+4. **Canary Rollout:** Shift 5% of real user traffic to the new model. If error rates remain flat and user ratings stay positive for 24 hours, increase to 25%, then 100%.
 
 ---
 
-## 8. When to Fine-Tune Instead
+## 💡 Common Mistakes & How to Spot Them
 
-Consider fine-tuning (or distillation into a smaller model) when:
-- You have **thousands** of high-quality examples of the desired behavior.
-- Prompting reaches a quality plateau or prompts become very long/costly at scale.
-- You need a **specific style/format** consistently at high volume or lower latency.
+| Mistake | What goes wrong | The Fix |
+|---|---|---|
+| Hardcoding Prompts | Embedding prompt text deep inside Python code. Updating a prompt requires a full code deployment. | Move prompts into separate `.md` or `.jinja` files loaded at runtime. |
+| Blind Upgrades | Switching from `gpt-4o-mini` to a newer model overnight. Formatting breaks for 10% of users. | Follow the 4-step migration playbook: Evals → Shadow → Canary → Rollout. |
+| Missing Spend Caps | A crawler hits your AI endpoint and runs 50,000 queries, billing you \$2,000 in one night. | Enforce per-user rate limits and set hard monthly spend ceilings in your provider billing dashboard. |
 
-Don't fine-tune to inject frequently changing knowledge (use RAG) or before exhausting prompt engineering and evaluation.
+---
+
+## 🧪 Try It Now
+
+Create a mock **Prompt Version Card** in your notebook for a prompt you use regularly at work:
+
+```markdown
+# Prompt Card: Executive Meeting Summarizer
+- **Version:** v1.2 (2026-11-20)
+- **Primary Model:** claude-sonnet-5-5 | **Fallback:** claude-haiku-5-5
+- **Purpose:** Converts messy call transcripts into 3 action bullets with owners.
+- **Recent Change:** Added rule requiring deadlines in DD-MMM format.
+- **Eval Score:** 28/30 test cases passing (93.3%).
+- **Owner:** [Your Name]
+```
+
+Notice how documenting your prompt changes makes your workflow disciplined and team-ready.
 
 ---
 
 ## 🔑 Key Takeaways
 
-- Treat prompts as **code**: versioned, reviewed, tested, owned, documented.
-- Use **strict templates** and sanitize inputs.
-- **Trace everything**; dashboard cost, latency, errors, quality, safety.
-- Build **fallbacks, validation, timeouts, kill switches**.
-- Migrate models with **evals → shadow → canary → rollout**.
+- Treat prompts as **version-controlled code**: store them in Git, write changelogs, and pin model IDs.
+- Use safe templating engines like **Jinja2** with strict variable definitions to prevent silent failures.
+- **Trace every token**: log prompt versions, latencies, token counts, and error codes for total visibility.
+- Build production reliability: retries with jitter, fallback models, and feature kill switches.
+- Never upgrade models blindly. Always use **evals, shadow testing, and canary rollouts**.
 
 ---
 
 ## 🏋️ Exercises
 
-**15.1 — Write a CHANGELOG entry** for a prompt change that fixes the bot answering in English when users write Hindi.
+### Exercise 15.1: Write a Production Prompt CHANGELOG
+Write a clean `CHANGELOG.md` entry for an e-commerce support prompt updating from `v2` to `v3`.
+The change: Added a rule requiring all refund amounts to be formatted in Indian Rupees (₹) with commas, fixing an issue where users were confused by unformatted numbers.
 
 <details>
-<summary>✅ Sample solution</summary>
+<summary>View Solution & Explanation</summary>
 
 ```markdown
-## v5 — 2026-11-20
-**Change:** Added rule "Reply in the same language/script the user writes in
-(Hindi, Hinglish, English). If mixed, mirror the user's dominant language."
-**Why:** 7% of Hindi-language chats received English replies (ticket #482).
-**Evals:** support_bot.jsonl 0.93 → 0.95; new language cases 12/12 pass;
-no regressions in safety set (40/40).
-**Cost impact:** +18 tokens per request (negligible).
-**Owner:** Vicky
+## [v3] — 2026-11-20
+### Added
+- Explicit currency formatting rule: "Always format monetary amounts with the ₹ symbol and standard Indian commas (e.g. ₹12,500, not 12500 INR)."
+
+### Fixed
+- Fixed issue where 14% of customer chats showed unformatted numbers, causing confusion regarding currency units (Support Ticket #619).
+
+### Evaluation Results
+- Golden Test Suite (`support_evals.jsonl`): 48/50 passing (96.0%, up from 92.0% in v2).
+- Zero formatting regressions on billing and order status test categories.
+- Average latency: 1.4s (no change).
+
+### Metadata
+- Target Model: `claude-sonnet-5-5`
+- Owner: Vicky Prasad Mahato
 ```
-
-</details>
-
-**15.2 — Observability.** Which 5 fields would you log first for a RAG chatbot, and why?
-
-<details>
-<summary>✅ Solution</summary>
-
-1. User question; 2. **retrieved chunk IDs & scores** (most RAG bugs are retrieval bugs); 3. final prompt version/model; 4. answer + citations; 5. tokens/latency/cost. Plus user feedback when available.
 
 </details>
 
@@ -242,18 +257,25 @@ no regressions in safety set (40/40).
 
 ## ✅ Quick Quiz
 
-1. Why pin the model version together with the prompt version?
-2. What does StrictUndefined protect against?
-3. List the steps of a safe model migration.
-4. Name three reliability patterns.
+1. Why should you store prompts in separate files rather than hardcoding them inside application source code?
+   - A) Because Python cannot store text longer than 100 characters.
+   - B) To decouple prompt iteration and versioning from software code deployments.
+   - C) Because Git cannot track strings inside code.
+2. What is "shadow testing" in model migration?
+   - A) Running the AI model late at night in dark mode.
+   - B) Running a new prompt or model on live traffic in the background without showing the results to users, allowing side-by-side performance comparisons.
+   - C) Hiding the model behind an encrypted password.
+3. What does Jinja2's `StrictUndefined` setting do?
+   - A) Automatically translates prompts into Spanish.
+   - B) Raises an immediate error if a template variable is missing, preventing half-empty prompts from reaching the model.
+   - C) Deletes unused files.
 
 <details>
-<summary>Show answers</summary>
+<summary>View Answers</summary>
 
-1. A prompt's behavior depends on the model; changing either can change results.
-2. Silently sending unfilled template variables to the model.
-3. Offline eval → compare → read failures/adapt prompt → shadow → canary → full rollout (with rollback ready).
-4. Any three: retries/backoff, fallback model, timeouts, validation+repair, circuit breaker, graceful degradation, idempotency, kill switch.
+1. **B** — Decoupling prompts allows prompt engineers to iterate, version, and evaluate prompts without requiring full application rebuilds.
+2. **B** — Shadow testing provides real-world production validation without exposing users to potential regressions.
+3. **B** — StrictUndefined prevents silent failures by ensuring all required variables are supplied before prompt execution.
 
 </details>
 

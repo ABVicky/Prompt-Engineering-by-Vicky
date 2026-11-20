@@ -2,229 +2,233 @@
 
 > 🟢 Stage 1 · Foundations · ⏱️ ~2 hours
 
+Think about the last time you typed a message on your smartphone. You type *"I am on my..."* and your keyboard suggests *"way"*. It doesn't suggest *"giraffe"* or *"refrigerator"*, because millions of text messages have taught the software that *"way"* almost always comes next.
+
+A Large Language Model (often called an LLM) does the exact same thing. It is essentially your phone's autocomplete, but trained on a massive portion of the world's books, articles, websites, and code. 
+
+When you type a prompt, the model is not sitting in a dark room pondering the meaning of life or looking up facts in a filing cabinet. It is asking one single mathematical question: *Given all the words this person just typed, what is the single most likely word to write next?*
+
+Once you grasp this simple fact, prompting stops feeling like guesswork. Every strange quirk, every hallucination, and every brilliant response suddenly makes sense.
+
+---
+
 ## 🎯 Learning Objectives
 
-By the end of this module you will be able to:
-
-- Explain in plain words what a Large Language Model (LLM) is and how it produces text
-- Describe **tokens**, **context windows**, **embeddings**, and **attention**
-- Explain **temperature**, **top-p**, and why the same prompt can give different answers
-- Understand the training stages (**pre-training → instruction tuning → RLHF/RLAIF**) and why they matter for prompting
-- Name the main limitations of LLMs (hallucination, knowledge cutoff, math, bias) and how prompting mitigates them
+By the end of this module, you will be able to:
+- Explain what an LLM actually does when it reads your prompt.
+- Understand tokens and why the model reads text differently than humans do.
+- Explain temperature and why the exact same prompt can give two different answers.
+- Recognize what AI models do well and what causes them to fail.
+- Use explicit instructions to stop the model from guessing when it does not know the answer.
 
 ---
 
 ## 1. What Is a Large Language Model?
 
-An LLM is a neural network trained on enormous amounts of text to do one deceptively simple thing:
+An LLM is a computer program trained on billions of sentences to predict what text comes next. 
 
-> **Given some text, predict the most likely next piece of text.**
-
-That's it. Translation, coding, summarizing, reasoning, role-play — all of it emerges from *next-token prediction* done extremely well, at massive scale.
-
-![LLM pipeline](../assets/llm-pipeline.svg)
-
-### The autocomplete analogy (and where it breaks)
-
-Your phone keyboard suggests the next word. An LLM is like that — but trained on a large fraction of the public internet, books, and code, with billions of parameters, and able to consider **hundreds of thousands of tokens** of context at once. The difference in scale produces a difference in kind: it can follow instructions, keep a persona, write working programs, and reason through multi-step problems.
-
-> 👔 **Non-Tech Lens · The Brilliant Intern with Amnesia:**
-> Think of an LLM not as a computer program that looks up answers in a database, but as a brilliant intern who has read millions of books but has amnesia between conversations. If you give them a vague one-sentence task ("Write a marketing email"), they have to guess what you want, producing bland, generic output. If you give them clear constraints, target audience, tone, and examples, they perform at an expert executive level.
-
-> 💻 **Tech Lens · Autoregressive Transformer Architecture:**
-> Modern LLMs are decoder-only Transformers. Given token sequence $x_1, \dots, x_t$, the model computes next-token logits $z_{t+1} \in \mathbb{R}^{|V|}$ using causal multi-head self-attention:
-> $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
-> During generation, previously computed keys and values are stored in a **KV-cache**. This makes prompt processing (prefill) parallel and compute-bound ($O(N)$ in tokens), whereas token generation (decode) is memory-bandwidth bound ($O(1)$ per step).
-
-> 💡 **Why this matters for you:** a prompt is the *beginning of a document* the model will continue. The better your "beginning" describes the document you want, the better the continuation.
-
----
-
-## 2. Tokens — The Atoms of LLM Text
-
-Models don't read characters or words; they read **tokens** — chunks of text produced by a *tokenizer*.
-
-| Text | Possible tokenization | Token count |
-|---|---|---|
-| `Hello world` | `[Hello][ world]` | 2 |
-| `prompt engineering` | `[prompt][ engineering]` | 2 |
-| `unbelievably` | `[un][believ][ably]` | 3 |
-| `नमस्ते` (Hindi) | often 3–6 byte-level pieces | 3–6 |
-| `{"name": "Vicky"}` | `[{"][name][":][ "][V][icky]["}]` | ~7 |
-
-**Rules of thumb (English):**
-- 1 token ≈ 4 characters ≈ ¾ of a word
-- 100 tokens ≈ 75 words
-- 1 page of text ≈ 500–700 tokens
-
-### Why tokens matter to a prompt engineer
-
-1. **Cost** — APIs charge per input token and per output token.
-2. **Limits** — every model has a maximum **context window** (input + output).
-3. **Quirks** — tasks like "count the letters in *strawberry*" or "reverse this word" are hard because the model sees tokens, not letters.
-4. **Languages** — non-English text often uses more tokens per word, so it costs more and fills the context faster.
-
-🧪 **Try it:** Search for a "tokenizer playground" for your model provider (most have one) and paste a paragraph in English, then the same paragraph in another language. Compare token counts.
-
----
-
-## 3. Embeddings and Attention (the 5-minute version)
-
-### Embeddings
-Each token is turned into a long list of numbers (a **vector**) that captures meaning. Words with similar meanings end up with similar vectors: *king* is close to *queen*, *Paris* is close to *France*. Embeddings are also used directly in **RAG** search (Module 09).
-
-### Attention
-The **Transformer** architecture (2017, "Attention Is All You Need") lets every token "look at" every other token and decide how relevant it is. In *"The trophy didn't fit in the suitcase because **it** was too big"*, attention helps the model link **it** to *trophy*.
+When you ask a model to write a poem, translate French into Hindi, or debug a piece of code, it does not have separate engines for poetry, translation, and programming. It uses the exact same pattern-matching engine for all of them.
 
 ```mermaid
 flowchart LR
-    T1["The"] --> L["Attention layers<br/>(dozens stacked)"]
-    T2["trophy"] --> L
-    T3["...because"] --> L
-    T4["it"] --> L
-    L --> O["'it' ≈ trophy"]
+    A["Your Prompt<br/>'The capital of France is...'"] --> B["LLM Neural Engine<br/>Calculates probability for every word"]
+    B --> C["Next Word Prediction<br/>'Paris' (98.4% likely)"]
 ```
 
-> 🧠 **Deep dive:** Each layer refines every token's representation by mixing in information from other tokens. After dozens of layers, the final vector of the last token is converted into a probability for every token in the vocabulary (often 50k–250k tokens).
+> 👔 **Non-Tech Lens · The Brilliant New Hire With Amnesia:**
+> Imagine hiring a brilliant assistant who has read millions of books, reports, and manuals. However, they have one quirk: every time you start a new conversation, their memory is completely wiped clean. If you give them a vague one-line note (*"Write a proposal"*), they will guess what you want based on generic averages. If you give them clear background, your audience, and an example of what good looks like, they will give you executive-level work.
+
+> 💻 **Tech Lens · Autoregressive Transformers:**
+> Modern LLMs are decoder-only Transformers. Given a sequence of tokens $x_1, \dots, x_t$, the model calculates logits across its entire vocabulary using causal self-attention. It predicts one token at a time in an autoregressive loop. Because token generation is memory-bandwidth bound, the system stores previous key-value states in a KV-cache to avoid recomputing past tokens.
 
 ---
 
-## 4. Generation: Sampling the Next Token
+## 2. Tokens — The Real Building Blocks of AI Text
 
-After the model computes probabilities, it **samples** one token, appends it, and repeats. This loop is called **autoregressive generation**.
+Models do not see letters or full words. They read **tokens**, which are small chunks of text. A token can be a single character, a whole word, or part of a word.
+
+Here is how common words split into tokens:
+
+| Text phrase | How the model breaks it down | Token count |
+|---|---|---|
+| `Good morning` | `[Good][ morning]` | 2 tokens |
+| `Prompt engineering` | `[Prompt][ engineering]` | 2 tokens |
+| `Unbelievable` | `[Un][believ][able]` | 3 tokens |
+| `12345` | `[12][34][5]` (varies by model) | 2–3 tokens |
+| `नमस्ते` | Byte-level pieces | 3–6 tokens |
+
+**Simple rules of thumb:**
+- 1 token is roughly 4 characters in English.
+- 100 tokens is roughly 75 English words.
+- A standard single-spaced page of text is roughly 500 to 700 tokens.
+
+### Why Tokens Matter to You
+1. **Counting letters is hard for AI:** Have you ever asked an AI how many "r"s are in the word *strawberry*, only to watch it insist there are two? The model does not see individual letters; it sees the token `[straw]` and the token `[berry]`. It is like asking a human how many syllables are in a picture.
+2. **Languages other than English cost more:** Because tokenizers are trained mostly on English text, languages like Hindi, Arabic, Tamil, or Japanese often get chopped into smaller fragments. A paragraph in Hindi might take twice as many tokens as the same paragraph in English, which uses up context space faster.
+3. **Usage and billing:** Paid AI services and developer APIs charge by the number of tokens you send and receive.
+
+---
+
+## 3. How the Model Picks the Next Word: Temperature & Randomness
+
+If an LLM just predicts the next most likely word, why does asking the same question twice often give you two different answers?
+
+The answer is a setting called **Temperature**.
+
+After calculating the odds for the next word, the model doesn't always pick the number one option. If it always picked the top choice, text would feel mechanical and repetitive. Instead, it samples from the top choices based on probabilities.
 
 ![Temperature](../assets/temperature.svg)
 
-### Key sampling parameters
+- **Low Temperature (0.0 to 0.2):** The model sticks tightly to the most predictable, highest-probability words. The output is focused, logical, and consistent. Use this for data extraction, code, math, and factual summaries.
+- **High Temperature (0.7 to 1.0):** The model takes more risks, picking less obvious words. The output becomes more varied, colorful, and unexpected. Use this for brainstorming, fiction, creative writing, and generating varied marketing angles.
 
-| Parameter | What it does | Typical values | Use |
-|---|---|---|---|
-| **Temperature** | Sharpens (low) or flattens (high) the probability curve | 0 – 1 (some APIs allow up to 2) | 0–0.3 for facts, extraction, code; 0.7–1.0 for brainstorming, fiction |
-| **Top-p** (nucleus) | Only sample from the smallest set of tokens whose probabilities sum to *p* | 0.9 – 1.0 | Alternative to temperature; change one, not both |
-| **Top-k** | Only sample from the *k* most likely tokens | 20 – 100 | Some APIs only |
-| **Max tokens** | Hard limit on output length | task-dependent | Prevents runaway cost; can truncate answers |
-| **Stop sequences** | Strings that end generation early | e.g. `"\n\nUser:"`, `"</answer>"` | Clean cut-offs |
+> 👔 **Non-Tech Lens:** Most chat apps hide the temperature dial behind the scenes. If you want conservative, precise answers in a regular chat window, simply tell the model: *"Be factual, direct, and conservative. Do not guess or add flair."* When you want creativity, say: *"Give me 5 unconventional, unexpected angles."*
 
-> ⚠️ **Temperature 0 is not perfectly deterministic** on most hosted models (batching and floating-point effects), but it is *much* more consistent. Some newer reasoning models fix or ignore temperature — check your provider's docs.
-
-> 👔 **Non-Tech Lens · Setting Your AI's Personality:**
-> Think of Temperature as a "Focus Dial". If you are drafting a legal clause, financial summary, or extracting data from a table, you want temperature near `0` (conservative, factual, consistent). If you are naming a brand, writing ad copy, or brainstorming marketing campaigns, set it to `0.7–1.0` (exploratory, varied, creative).
-
-> 💻 **Tech Lens · Softmax Temperature & Nucleus Sampling:**
-> Given logits $z_i$, probability is defined as $P(w_i) = \frac{\exp(z_i / T)}{\sum_j \exp(z_j / T)}$. As $T \to 0$, $P(w)$ collapses to greedy $\operatorname{argmax}$. Top-P (nucleus sampling) filters the tail by selecting the smallest token set with cumulative probability $\ge p$. In production APIs, use $T=0$ for JSON schema validation, classification, and code; adjust either $T$ or Top-P, never both.
+> 💻 **Tech Lens:** In API calls, never change both `temperature` and `top_p` simultaneously. Keep `top_p=1.0` and adjust `temperature`, or keep `temperature=1.0` and adjust `top_p` (nucleus sampling). For reliable structured JSON output, set `temperature=0`.
 
 ---
 
-## 5. How Models Are Trained — and Why It Changes How You Prompt
+## 4. The Context Window: The Model's Working Memory
 
-```mermaid
-flowchart LR
-    A["📚 Pre-training<br/>predict next token on<br/>trillions of tokens"] --> B["🧑‍🏫 Instruction tuning (SFT)<br/>learn to follow<br/>instructions & chat"]
-    B --> C["👍 Preference tuning<br/>RLHF / RLAIF / constitutional<br/>helpful, honest, harmless"]
-    C --> D["🧠 Reasoning training<br/>(newer models)<br/>think before answering"]
-    D --> E["🤖 The assistant you prompt"]
-```
+The **context window** is the maximum amount of text the model can consider at one single moment.
 
-| Stage | What the model learns | Prompting implication |
-|---|---|---|
-| **Pre-training** | Language, facts, code, styles — a "world model" of text | The model *knows* a lot; your job is to *activate* the right knowledge |
-| **Instruction tuning** | Follow requests, answer in chat format | Direct instructions work; you don't need tricks like "Q: … A:" anymore |
-| **Preference tuning** | Be helpful, polite, safe; refuse harmful requests | Clear, legitimate context gets better help; vague "edgy" requests may be refused |
-| **Reasoning training** | Produce internal step-by-step thinking | For reasoning models, give the goal and constraints; don't micromanage the steps |
-
-### Base models vs chat/instruct models
-
-- **Base model:** pure next-token predictor. You prompt it by *starting a document* (e.g., the first lines of an article).
-- **Instruct/chat model:** fine-tuned to follow instructions. You prompt it by *asking*. Almost all products you use are this type.
-
----
-
-## 6. The Context Window — The Model's Working Memory
-
-The **context window** is everything the model can "see" in one call: system prompt + conversation history + documents + your message + its own reply.
+Think of it like a physical desk. Everything you want the model to think about—your instructions, the background information, any documents you uploaded, and the conversation so far—must fit on this desk.
 
 ```text
-┌──────────────────────── Context window (e.g. 200k tokens) ────────────────────────┐
-│ System prompt │ Tool definitions │ Retrieved docs │ Chat history │ User msg │ Reply │
-└────────────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────── Your Context Window (Desk Space) ────────────────────────┐
+│ System Rules  │  Pasted Document / Context  │  Chat History  │  Your New Prompt  │
+└──────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Important facts:
-- **No memory between calls.** A chat app "remembers" by resending the history each turn. (Some apps add a separate memory feature that injects saved notes into the context.)
-- **Bigger isn't free.** More tokens = more cost and latency, and relevant details can get "lost in the middle" of very long contexts.
-- **Order matters.** Instructions and the question placed *after* a long document often work better than before it (more in Module 09).
+Important realities about working memory:
+- **Stateless nature:** The model does not remember your chat from yesterday. When you continue a conversation in a chat app, the software silently bundles the previous messages and sends them back to the model with your new question.
+- **The "Lost in the Middle" problem:** When you paste a massive 50-page document into a chat, models pay the closest attention to the very beginning and the very end. Crucial facts buried on page 24 can sometimes get overlooked. Always put your core instructions at the end of long prompts.
 
 ---
 
-## 7. What LLMs Are Bad At (and the Prompt Fix)
+## 5. What Models Do Well vs. Where They Struggle
 
-| Limitation | Example | Prompting mitigation |
+Understanding what an AI cannot do is just as valuable as knowing what it can do.
+
+| What AI excels at | What causes trouble | How to fix it with prompting |
 |---|---|---|
-| **Hallucination** — confident fabrication | Invents a citation or API function | Provide sources; ask for quotes; allow "I don't know"; verify (M09, M13) |
-| **Knowledge cutoff** | Doesn't know last month's news | Paste current info; use search/RAG tools |
-| **Exact arithmetic & counting** | Miscounts letters or large multiplications | Ask for step-by-step work or use a code/calculator tool (M05, M10) |
-| **Following too many constraints at once** | Forgets constraint #9 of 12 | Prioritize; use structure; split into a chain (M08) |
-| **Sycophancy** — agreeing with the user | "You're right!" to a wrong claim | Ask for critique explicitly; don't reveal your preferred answer |
-| **Bias** | Stereotyped outputs | Specify diversity / neutrality; review outputs (M14) |
-| **Non-determinism** | Different answer each run | Lower temperature; structured output; evaluation over many runs |
-| **Prompt injection** | Obeys instructions hidden in a document | Delimit untrusted data; least-privilege tools (M14) |
+| Summarizing long text | Precise math and counting | Ask it to write Python code to calculate, or do calculations step by step. |
+| Rewriting tone and style | Current events after its training cutoff | Paste the source material directly into the chat prompt. |
+| Brainstorming options | Confident guessing (**Hallucination**) | Tell it: *"Only answer using the text provided. If the answer is not there, reply: I do not have enough information."* |
+| Explaining complex ideas | Agreeing with your bad assumptions | Explicitly ask: *"Critique my proposal and identify three hidden risks."* |
 
 ---
 
-## 8. The Landscape of Models (concepts that don't expire)
+## 6. Realistic Before and After: Stopping Hallucinations
 
-Instead of memorizing model names (they change every few months), understand the **dimensions** you choose along:
+Hallucination happens when an AI doesn't know a fact, but its training compels it to produce text that *sounds* convincing.
 
-| Dimension | Options |
-|---|---|
-| **Access** | Closed/hosted (Anthropic Claude, OpenAI GPT, Google Gemini…) vs open-weight (Llama, Mistral, Qwen, Gemma, DeepSeek…) |
-| **Size / tier** | Small & fast & cheap ↔ Large & smart & expensive (most providers offer 3 tiers) |
-| **Reasoning** | Standard vs "thinking"/reasoning modes that spend extra tokens deliberating |
-| **Modality** | Text-only vs vision, audio, video input; image/audio output |
-| **Context length** | From a few thousand to a million+ tokens |
-| **Specialty** | Coding, embeddings, speech, image generation, safety classifiers |
+Suppose you want to know the return policy for a local boutique in Pune called "Deccan Handlooms".
 
-> 💡 **Pro habit:** prototype with a strong model to learn what's *possible*, then try a smaller/cheaper one and measure whether quality holds (Module 13).
+❌ **Weak**
+```text
+What is the return policy for Deccan Handlooms in Pune?
+```
+
+*Why it fails:* The model likely has no exact data on this specific local shop. But because you asked a direct factual question, it will invent a plausible-sounding policy (e.g., *"Deccan Handlooms accepts returns within 14 days with original tags..."*). You now have false information that sounds completely real.
+
+✅ **Strong**
+```text
+Here is the text from Deccan Handlooms' official website FAQ:
+"""
+All handloom sarees and fabrics are woven by artisan collectives. Because each piece is unique, we do not offer cash refunds. Exchanges are accepted within 7 days of purchase at our FC Road store for store credit only. Custom-stitched blouses cannot be returned.
+"""
+
+Based strictly on the text above, answer these questions:
+1. Can a customer get cash back for an unstitched saree?
+2. What is the deadline to exchange an item?
+3. Where must the exchange take place?
+
+If a question cannot be answered using only the provided text, write "Not specified in the text". Do not use outside knowledge or make assumptions.
+```
+
+*Why it works:* You gave the model the source material (grounding) and gave it explicit permission to decline if the answer is missing. The model now acts like an accurate reading assistant rather than an inventive storyteller.
+
+---
+
+## 7. How to Think About Different Models
+
+You do not need to memorize every model name that appears in the news. New versions launch every few months. Instead, understand these three main types:
+
+1. **Fast, Lightweight Models:** Quick and inexpensive. Ideal for classification, spelling correction, simple summaries, and high-volume tasks.
+2. **Flagship Frontier Models:** Deep general knowledge and strong writing ability. Ideal for complex synthesis, nuanced writing, and multi-step business analysis.
+3. **Reasoning / Thinking Models:** These models spend extra seconds or minutes working through internal reasoning steps before displaying an answer. Ideal for tough math, tricky logic puzzles, and difficult programming architecture.
+
+---
+
+## 💡 Common Mistakes & How to Spot Them
+
+| Mistake | What happens | How to tell you got it right |
+|---|---|---|
+| Treating the AI like Google Search | You ask for a recent news event or local store hours, and get an outdated or made-up answer. | You provide the text or use an AI tool with live web search enabled. |
+| Asking it to count characters | You ask for a 50-character headline, and get 78 characters. | You ask for words or sentences instead (*"Write a headline under 10 words"*). |
+| Leading the witness | *"Don't you agree that our marketing strategy is great?"* The AI will flatter you. | *"Review this strategy as an adversarial competitor. Point out the three weakest assumptions."* |
+
+---
+
+## 🧪 Try It Now
+
+Try this simple experiment in any free chat app to see how token-based thinking works:
+
+1. **Prompt 1:** Type: *"How many letters 'r' are in the word strawberry?"* Check the answer.
+2. **Prompt 2:** Type: *"Spell the word 'strawberry' with spaces between each letter, like s - t - r... Then count each 'r' one by one."*
+
+Notice the difference. By forcing the model to break the word into individual letters, you help its attention mechanism inspect the characters one by one.
 
 ---
 
 ## 🔑 Key Takeaways
 
-- LLMs **predict the next token**, repeatedly. Your prompt is the start of the text they continue.
-- **Tokens** drive cost, limits, and some quirks (counting letters, non-English cost).
-- **Temperature/top-p** control randomness: low for precision, higher for creativity.
-- The **context window** is the model's only working memory — no memory between API calls.
-- Training stages explain behavior: instruct models follow instructions; preference tuning makes them helpful and cautious; reasoning models think before answering.
-- Know the limitations — most "bad AI" outputs are prompt or context problems you can fix.
+- An LLM is a predictive engine. It generates text by repeatedly guessing the most probable next token.
+- A token is roughly three-quarters of an English word. Models process tokens, not letters.
+- The context window is the model's temporary workspace. If you start a new chat, previous context disappears.
+- Hallucination happens when the model generates plausible-sounding text without grounding. Always provide source material for specific factual tasks.
+- Give the model permission to say "I don't know" to prevent it from inventing facts.
 
 ---
 
 ## 🏋️ Exercises
 
-**1.1 — Token estimation.** Estimate the tokens in this module's first paragraph (≈ 60 words). Then check with a tokenizer tool.
+### Exercise 1.1: Spot the Token Pitfall
+Which of these tasks is an LLM most likely to struggle with if you ask it directly in one sentence?
+- A) Summarizing a 500-word news article into three bullet points.
+- B) Writing a haiku about rainy days in Mumbai.
+- C) Reversing the letters in the phrase "prompt engineering" backwards.
 
 <details>
-<summary>✅ Solution</summary>
+<summary>View Solution & Explanation</summary>
 
-60 words × ~1.33 tokens/word ≈ **80 tokens**. Real tokenizers typically land within ±15% for English prose. If your number was way off, check whether the text had many numbers, code, or rare words — those inflate token counts.
+**C** is the hardest for an LLM. Because the model sees the tokens `[prompt]` and `[engineering]`, it does not have easy access to the individual letters in reverse order. To make it succeed, you would have to instruct it to spell out each letter first or write a small Python script to reverse the string.
 
 </details>
 
-**1.2 — Temperature experiment.** Ask *"Give me a name for a coffee shop"* five times at temperature 0 and five times at temperature 1 (use a playground). Record the outputs.
+### Exercise 1.2: Grounding a Factual Request
+Take this weak prompt: *"Tell me about the refund policy of our SaaS product."*
+Rewrite it so that the model cannot hallucinate, assuming you have three bullet points from your company's terms of service.
 
 <details>
-<summary>✅ What you should observe</summary>
+<summary>View Solution & Explanation</summary>
 
-At **T=0**, you'll get the same or nearly the same name each time (the highest-probability continuation). At **T=1**, names vary widely, some more creative, some odd. Lesson: use low temperature for consistency, high for idea generation — and when you need *variety* at low temperature, ask for "10 different names" in a single response instead.
+**A strong rewrite:**
 
-</details>
+```text
+Here are our company's refund terms:
+"""
+- Full refunds are available within 14 days of initial signup.
+- After 14 days, subscriptions can be canceled for the next billing cycle, but past payments are non-refundable.
+- Enterprise annual contracts require a 30-day written cancellation notice.
+"""
 
-**1.3 — Hallucination hunt.** Ask a model: *"Summarize the 2019 paper 'Quantum Banana Networks' by Dr. A. Fakename."* Then re-ask with: *"If you are not certain this paper exists, say so."*
+Based ONLY on the terms above, write a polite 3-sentence reply to a customer who signed up 20 days ago and is asking for their money back. 
+State the policy clearly. If you cannot answer a detail from these bullet points, do not guess.
+```
 
-<details>
-<summary>✅ Discussion</summary>
-
-Many models will invent a plausible summary for the first prompt (less often for recent, well-aligned models). The second prompt gives explicit **permission to say "I don't know"**, which significantly reduces fabrication. This is one of the most powerful anti-hallucination techniques.
+*Explanation:* By enclosing the exact policy inside delimiters (`"""`) and specifying that it must rely only on the provided text, you eliminate the risk of the model promising something your company doesn't offer.
 
 </details>
 
@@ -232,22 +236,25 @@ Many models will invent a plausible summary for the first prompt (less often for
 
 ## ✅ Quick Quiz
 
-1. What is the single task an LLM is trained to do during pre-training?
-2. Roughly how many English words fit in 1,000 tokens?
-3. You need the same JSON extraction every time. Which temperature range do you choose?
-4. True or false: the API remembers your previous request automatically.
-5. Why might a model fail to count the "r"s in "strawberry"?
-6. What does top-p = 0.9 mean?
+1. What is an LLM doing mathematically when it outputs text?
+   - A) Retrieving pre-written answers from a database.
+   - B) Predicting the most likely next token based on training and context.
+   - C) Translating thoughts into human speech.
+2. What does setting temperature to 0 do?
+   - A) Turns off the model completely.
+   - B) Makes the model faster by skipping grammar checks.
+   - C) Makes the output more consistent and conservative by picking the highest-probability tokens.
+3. If you open a brand new chat window and ask *"What was the first thing I asked you?"*, what will the model do?
+   - A) It cannot tell you, because each new conversation starts with an empty context window.
+   - B) It will check its internal hard drive and tell you.
+   - C) It will call your browser's history.
 
 <details>
-<summary>Show answers</summary>
+<summary>View Answers</summary>
 
-1. Predict the next token given the previous tokens.
-2. About **750 words**.
-3. **Low: 0 – 0.3.**
-4. **False.** Each call is stateless; history must be resent.
-5. It sees **tokens** (e.g., `straw` + `berry`), not individual letters.
-6. Sample only from the smallest set of tokens whose cumulative probability reaches 90%.
+1. **B** — The model predicts the next token based on probabilities learned from its training data and your prompt.
+2. **C** — Low temperature reduces randomness, keeping responses focused and reproducible.
+3. **A** — LLMs are stateless. Each new chat starts with a clean context window unless the application specifically injects past memory.
 
 </details>
 

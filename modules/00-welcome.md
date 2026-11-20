@@ -7,24 +7,30 @@
 
 ---
 
-## 👋 Welcome
+Have you ever opened an AI chat, typed a quick question, and received an answer so generic it felt like a soggy bowl of cornflakes?
 
-Prompt engineering is the skill of **communicating with AI models so they reliably do what you want**. It is part writing, part logic, part experimentation, and — at the professional level — part software engineering.
+You are not alone. Almost everyone begins the exact same way. You ask something like *"Write a marketing email for my new cafe"*, and the AI spits out three paragraphs of cheerleading cliches packed with exclamation marks. You sigh, delete half of it, and wonder why people on the internet keep calling this technology magical.
 
-This course takes you from *"I've typed a few questions into ChatGPT"* to *"I can design, test, secure, and ship prompt-powered systems in production."* Everything you need is inside: concepts, visuals, worked examples, templates, exercises with solutions, quizzes, a glossary, a cheat sheet, and capstone projects. You should never need to look anywhere else to finish it.
+Here is the secret: AI models do not read minds. They read instructions. When you give them vague instructions, they average out everything they read during training and hand you the most generic response possible. But when you learn how to steer them with clear context, structure, and intent, they become the sharpest, most capable assistant you have ever worked with.
 
-### What you will be able to do by the end
-
-| Level | You will be able to… |
-|---|---|
-| 🟢 Beginner | Explain how LLMs generate text, write clear prompts with role / task / context / format, and fix common bad outputs |
-| 🔵 Intermediate | Use few-shot, chain-of-thought, structured JSON/XML output, system prompts, and multi-step prompt chains |
-| 🟣 Advanced | Build RAG pipelines, tool-using agents, multimodal prompts; evaluate prompts quantitatively; defend against prompt injection |
-| 🌟 Pro | Run prompts in production (versioning, monitoring, cost/latency tuning), apply domain playbooks, and build a portfolio that gets you hired |
+That is what prompt engineering is. It is simply the skill of communicating with an AI so that it reliably gives you what you actually need on the very first try.
 
 ---
 
-## 🗺️ Course Map
+## 🎯 Learning Objectives
+
+By the end of this module, you will be able to:
+- Understand how this course takes you step-by-step from beginner to pro.
+- Pick the right track (Non-Tech or Tech) for your goals.
+- Set up your practice environment in five minutes.
+- Follow essential safety rules so you never leak private data into an AI tool.
+- Run your baseline prompt to measure your growth across the course.
+
+---
+
+## 1. What You Will Learn (From Ground Zero to Pro)
+
+Whether you write software for a living or haven't written a single line of code in your life, this course was designed so you never need another tab open.
 
 ```mermaid
 flowchart LR
@@ -34,193 +40,195 @@ flowchart LR
     D --> E["🏆 Capstone<br/>Projects"]
 ```
 
-| # | Module | Stage | Est. time |
-|---|---|---|---|
-| 00 | Welcome & How to Use This Course | 🟢 | 30 min |
-| 01 | How Large Language Models Work | 🟢 | 2 h |
-| 02 | Anatomy of a Prompt | 🟢 | 1.5 h |
-| 03 | Core Principles of Effective Prompting | 🟢 | 2 h |
-| 04 | Zero-Shot, Few-Shot & Role Prompting | 🟢 | 2 h |
-| 05 | Reasoning Techniques (CoT, Self-Consistency, ToT…) | 🔵 | 3 h |
-| 06 | Structured Output: JSON, XML, Tables & Schemas | 🔵 | 2 h |
-| 07 | System Prompts, Personas & Conversation Design | 🔵 | 2 h |
-| 08 | Prompt Chaining & Workflows | 🔵 | 2.5 h |
-| 09 | Context Engineering & RAG | 🔵 | 3 h |
-| 10 | Tool Use, Function Calling & Agents | 🟣 | 3.5 h |
-| 11 | Multimodal & Image-Generation Prompting | 🟣 | 2.5 h |
-| 12 | Model Parameters, APIs & Cost | 🟣 | 2.5 h |
-| 13 | Evaluation & Testing of Prompts | 🟣 | 3 h |
-| 14 | Safety, Security & Ethics | 🟣 | 3 h |
-| 15 | Production Prompt Engineering (PromptOps) | 🌟 | 3 h |
-| 16 | Domain Playbooks (Code, Writing, Data, Business…) | 🌟 | 4 h |
-| 17 | Becoming a Pro: Meta-Prompting, Optimization & Career | 🌟 | 2.5 h |
-| A–G | Appendices: Cheat Sheet, Prompt Library, Glossary, Final Exam, Capstones, Troubleshooting, Resources | 📚 | reference |
+Here is how your progression works:
 
-**Total:** roughly **45–50 hours** of study + practice, plus capstone time.
+| Stage | What you master | Real-world outcome |
+|---|---|---|
+| **🟢 Stage 1: Foundations** (M00–M04) | How models think, tokens, prompt anatomy, the 12 core principles, examples and personas. | Stop getting vague fluff. Get crisp, tailored answers for daily work. |
+| **🔵 Stage 2: Intermediate** (M05–M09) | Step-by-step reasoning, clean JSON and tables, system prompts, prompt chains, and search grounding (RAG). | Handle multi-step analysis, format data for spreadsheets, and build custom assistants. |
+| **🟣 Stage 3: Advanced** (M10–M14) | Autonomous agents, tool use, image inputs, model settings, test suites, and security defenses. | Build reliable AI workflows that connect to outside tools and test them systematically. |
+| **🌟 Stage 4: Pro** (M15–M17) | Production PromptOps, domain playbooks (business, sales, code, health), portfolio, and career prep. | Design enterprise-ready prompt systems, lead AI projects at work, or freelance. |
 
 ---
 
-## 🧰 Prerequisites & Audience Tracks
+## 2. Choose Your Track
 
-This course is built from the ground up for two distinct audiences:
+You can take this course through two different lenses. Switch between them anytime using the toggle on the top navigation bar.
 
 > 👔 **Non-Tech Track · Everyday & Business:**
-> If you are a marketer, product manager, writer, analyst, founder, teacher, or everyday professional, you need zero coding experience. You will learn to use AI chat apps (ChatGPT, Claude, Gemini, Copilot) as power tools for writing, analysis, research, and daily workflow automation. Your focus is high-leverage prompting without touching code.
+> If you are a marketer, manager, creator, teacher, accountant, or founder, you do not need code. You will use everyday chat tools like ChatGPT, Claude, and Gemini to draft executive briefs, analyze reports, polish customer emails, and build custom assistants that save you hours every week.
 
 > 💻 **Tech Track · Developer & Engineering:**
-> If you are a software engineer, data scientist, or ML practitioner, you will learn to treat prompts as software components: deterministic output schemas (JSON/Pydantic), tool calling, autonomous agent loops, hybrid RAG pipelines, automated eval suites (G-Eval, assertion testing), and production PromptOps CI/CD.
+> If you build software or work with data, you will treat prompts as software components. You will write code with Python SDKs, enforce strict JSON schemas with Pydantic, connect external tools via function calling, test outputs with automated graders, and manage prompts with Git.
 
-| Track | Who it is for | Primary tools | What you master |
+| Track | Who it is for | Everyday tools | What you build |
 |---|---|---|---|
-| 👔 **Non-Tech** | Creators, managers, analysts, domain experts | ChatGPT, Claude Projects, Copilot, Gemini | 5-part prompt briefs, few-shot templates, custom GPTs, document Q&A, workflow chains |
-| 💻 **Tech** | Developers, engineers, architects, data scientists | Python/Node SDKs, APIs, Pydantic, Vector DBs, Git | API parameters, structured output, function calling, agent loops, RAG, automated evals, PromptOps |
+| 👔 **Non-Tech** | Managers, writers, analysts, educators | ChatGPT, Claude Projects, Copilot, Gemini | Reusable prompt libraries, meeting summarizers, policy analyzers, content engines |
+| 💻 **Tech** | Software engineers, data teams, architects | Python/Node, APIs, Pydantic, Vector databases, Git | Structured API pipelines, automated test suites, customer support agents, hybrid RAG |
 
 ---
 
-## 🛠️ Set Up Your Practice Lab
+## 3. Set Up Your Practice Lab in 5 Minutes
 
-Choose the setup that fits your track:
+You learn prompting by doing, not by passively reading. Let's get your setup ready right now.
 
-### 👔 Non-Tech Track Setup (Zero Code · 5 minutes)
+### For Non-Tech Learners (Zero Code)
+1. **Choose one free chat app:**
+   - [Claude](https://claude.ai) (Anthropic) — exceptional for thoughtful writing, clear explanations, and analyzing pasted documents.
+   - [ChatGPT](https://chatgpt.com) (OpenAI) — great all-rounder with web search and data handling.
+   - [Google Gemini](https://gemini.google.com) — handy for quick searches and Google Workspace tasks.
+2. **Open a clean notebook:**
+   - Create a single document in Google Docs, Apple Notes, or Notion called `My Prompt Notebook`.
+   - Every time you find a prompt that works well in this course, paste it there. By the end, you will have your own personal productivity toolkit.
 
-You only need access to at least one modern conversational AI tool. Free versions work, but paid subscriptions offer higher-tier reasoning models and document upload capabilities:
-
-1. **Pick your primary assistant:**
-   - **Claude.ai** (Anthropic) — excellent for nuanced writing, complex reasoning, and large document analysis with *Projects*.
-   - **ChatGPT** (OpenAI) — great for web browsing, code interpreter / data analysis, image generation, and *Custom GPTs*.
-   - **Google Gemini** or **Microsoft Copilot** — strong for workspace integration, deep search, and multimodal inputs.
-2. **Set up a personal prompt notebook:**
-   - Create a folder in Notion, Apple Notes, Obsidian, or Google Docs named `Prompt Engineering Lab`.
-   - Save your prompt templates, versions, and interesting model outputs as you practice each module.
-
-### 💻 Tech Track Setup (Code & APIs · 10 minutes)
-
-For developers building applications with LLMs, set up a local development environment:
+### For Tech Learners (Code & APIs)
+If you plan to complete the coding exercises, set up a Python environment:
 
 ```bash
-# 1. Create a project folder and a virtual environment
+# 1. Create a workspace folder and virtual environment
 mkdir pe-lab && cd pe-lab
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 
-# 2. Install SDKs (install the ones you will use)
-pip install anthropic openai google-genai pydantic python-dotenv
-
-# 3. Store your API key in a .env file (never commit this file!)
-echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
+# 2. Install provider SDKs
+pip install anthropic openai pydantic python-dotenv
 ```
 
 ```python
-# hello_llm.py — your first API call
+# test_call.py — test your setup
+import os
 from dotenv import load_dotenv
-import anthropic
 
-load_dotenv()                       # reads ANTHROPIC_API_KEY from .env
-client = anthropic.Anthropic()
-
-response = client.messages.create(
-    model="claude-sonnet-5-5",      # use any current model name your provider lists
-    max_tokens=300,
-    messages=[{"role": "user", "content": "Explain prompt engineering in one sentence."}],
-)
-print(response.content[0].text)
+load_dotenv()
+print("Environment ready! Add your API keys to .env when you reach Stage 3.")
 ```
 
-> 💡 **Model names change often.** Wherever this course shows a model ID, replace it with a current one from your provider's documentation. The *techniques* don't expire; model names do.
+> 💡 **Model names change often.** Whenever you see a model name in code, treat it as an example. Check your provider's official documentation for the current version. The core prompting principles remain the same regardless of which model is in vogue.
 
 ---
 
-## 📖 How Each Module Is Structured
+## 4. Safety Rules: What Never to Paste
 
-Every module follows the same rhythm so you always know where you are:
+Before you type another word into an AI model, memorize these basic safety rules. Think of an AI chat window like a public whiteboard in a busy office hallway:
 
-1. 🎯 **Learning objectives** — what you'll be able to do
-2. 📘 **Concepts** — explained plainly with diagrams
-3. ❌➡️✅ **Bad vs good examples** — side-by-side prompt makeovers
-4. 🧪 **Try it** — mini-experiments to run immediately
-5. 🔑 **Key takeaways** — the summary to re-read before interviews
-6. 🏋️ **Exercises** — with hidden solutions (click to reveal)
-7. ✅ **Quick quiz** — with hidden answers
-
-### Icon legend
-
-| Icon | Meaning |
-|---|---|
-| 👔 | **Non-Tech Track** — Business & everyday productivity lens |
-| 💻 | **Tech Track** — Developer, architecture & code lens |
-| 💡 | Tip / insight |
-| ⚠️ | Warning / common mistake |
-| 🧪 | Try it yourself |
-| 🔑 | Key takeaway |
-| 🏋️ | Exercise |
-| ✅ | Quiz |
-| 🧠 | Deep dive (optional, for the curious) |
-| 🛡️ | Security note |
+1. **Never paste personal secrets:** Leave out credit card numbers, passwords, OTPs, Aadhaar numbers, PAN numbers, or home addresses.
+2. **Never paste unreleased company data:** If your company has not published its quarterly revenue, customer email list, or confidential source code, do not paste it into a consumer chat tool.
+3. **Turn off training on your chats:**
+   - In ChatGPT: Go to *Settings → Data Controls → Turn off "Improve the model for everyone"*.
+   - In Claude: Anthropic does not train on paid consumer accounts or API inputs by default, but check your privacy settings.
+   - In Gemini: Go to *Gemini Apps Activity* and review your retention settings.
+4. **Assume the model can be wrong:** Always verify facts, dates, citations, and calculations before sending an AI-written report to your boss or a client.
 
 ---
 
-## 📅 Suggested Study Plans by Track
+## 5. Realistic Before and After: The Power of Intent
 
-### 👔 Non-Tech Track — 4 Weeks (≈ 4–5 h/week)
-*Goal: Automate everyday work, write high-leverage prompts, master Claude Projects & Custom GPTs.*
+Let's look at what happens when you treat the AI like an inexperienced intern who needs clear directions, rather than a magical mind reader.
 
-| Week | Focus Modules | Key Milestone |
+Suppose you manage an operations team in Bengaluru and want to email your team about switching to hybrid work.
+
+❌ **Weak**
+```text
+Write an email to my team about returning to the office 3 days a week.
+```
+
+*Why it fails:* The AI doesn't know who you are, why you are doing this, which days matter, what tone to take, or what concerns your team has. You will get a robotic, corporate-sounding broadcast that feels cold and defensive.
+
+✅ **Strong**
+```text
+You are a warm, empathetic operations director at a 50-person logistics firm in Bengaluru.
+
+Write a 200-word email to our team announcing our new hybrid schedule starting next month: Tuesdays and Thursdays in the Indiranagar office, with Wednesdays as an optional team lunch day. 
+
+Tone: Friendly, supportive, but clear.
+Key points to cover:
+- Why we're doing this: in-person collaboration for sprint planning.
+- Flexibility: core hours are 10:00 AM to 4:00 PM to help avoid peak traffic.
+- Next step: reply with any commute or scheduling questions by Friday.
+
+Avoid buzzwords like "synergy" or "new normal".
+```
+
+*Why it works:* You gave it a persona (warm operations director), clear context (Bengaluru traffic, Indiranagar office), exact constraints (200 words, specific days, core hours), and boundaries on what words to avoid. The resulting email sounds human and requires almost zero editing.
+
+---
+
+## 💡 Common Mistakes & How to Spot Them
+
+| Mistake | What it looks like | How to fix it |
 |---|---|---|
-| 1 | 00, 01 (concepts), 02, 03 | Write 5-part executive prompts; fix vague outputs |
-| 2 | 04, 05, 06 (tables/CSVs) | Build role-based templates; format Excel-ready tables |
-| 3 | 07, 08, 09 (doc chat), 11 | Set up Claude Projects/GPTs; chain multi-step tasks |
-| 4 | 14 (privacy), 16, 17 + Capstone | Build a team prompt playbook or content engine (Project 1, 4 or 6) |
-
-### 💻 Tech Track — 8 Weeks (≈ 6 h/week)
-*Goal: Build production LLM systems with code, function calling, RAG, and eval suites.*
-
-| Week | Focus Modules | Key Milestone |
-|---|---|---|
-| 1 | 00, 01, 02, 03 | Tokens, logits, temperature math, message roles |
-| 2 | 04, 05, 06 | Few-shot prefilling, reasoning models, strict Pydantic JSON schemas |
-| 3 | 07, 08 | System prompt caching, multi-turn state, DAG workflow chaining |
-| 4 | 09, 10 | Hybrid RAG with vector DBs; tool-calling agents & MCP |
-| 5 | 11, 12 | Multimodal inputs, API streaming, token cost & latency profiling |
-| 6 | 13, 14 | Automated eval test suites (LLM-as-judge, assertions); injection defenses |
-| 7 | 15, 16 | PromptOps (Git versioning, Langfuse tracing, CI/CD gates); domain playbooks |
-| 8 | 17 + Capstone | Ship a production-grade portfolio agent or RAG system (Project 2, 3 or 5) |
-
-### 🐇 Intensive — 2 weeks (≈ 25 h/week)
-Do two modules per day, exercises included, and spend the last three days on a capstone.
-
-### 🎯 Just-in-time
-Already using AI at work? Take the **Final Exam (Appendix D)** first, then study only the modules where you missed questions.
+| The One-Sentence Wish | *"Help me with my budget."* | Tell the model who you are, what figures you have, and what decision you need to make. |
+| The Unending Prompt | Typing three paragraphs of disorganized thoughts without bullet points. | Break your prompt into labeled sections: Background, Task, Constraints, and Desired Output. |
+| Forgetting Format | Expecting a tidy table but receiving five sprawling paragraphs. | Explicitly state: *"Format your answer as a 3-column table with headers: Step, Responsible Person, Due Date."* |
 
 ---
 
-## 🧠 The Pro Mindset (read this twice)
+## 🧪 Try It Now
 
-1. **Prompts are programs written in natural language.** Treat them with the same rigor: version, test, review.
-2. **The model is a brilliant new colleague with zero context.** It knows a lot about the world and nothing about *your* situation unless you say it.
-3. **Show, then tell.** One good example often beats ten sentences of instructions.
-4. **Measure, don't guess.** "It looks better" is not evidence. A test set is.
-5. **Models change; principles don't.** Clarity, context, structure, and evaluation outlive any specific model or trick.
+Open your favorite chat app right now and test this quick prompt:
 
----
+```text
+I want to improve my daily focus at work. 
 
-## 🏋️ Exercise 0.1 — Your Baseline
+Before giving me advice, ask me 3 targeted questions about my current routine, my biggest distractions, and the type of work I do. Wait for my answers before making recommendations.
+```
 
-Before learning anything, write a prompt asking an AI to *"plan a 3-day trip to a city of your choice"*. Save the prompt and the output in a file called `baseline.md`. At the end of Module 04, you'll rewrite it and compare.
-
-<details>
-<summary>💡 Why do this?</summary>
-
-Seeing your own before/after is the fastest way to internalize what changed. Most learners discover their baseline prompt lacked: a budget, traveler profile, pace preference, output format, and constraints (dietary, accessibility, season). You'll learn to add all of these in Modules 02–04.
-
-</details>
+Notice what happens: instead of dumping ten generic productivity tips on you, the model pauses, interviews you, and customizes its advice. You just turned the AI from a search engine into a collaborative thinking partner.
 
 ---
 
 ## 🔑 Key Takeaways
 
-- The course has **4 stages, 18 modules, 7 appendices** and a capstone.
-- You only need a chat app to start; APIs become useful from Module 10.
-- Every module ends with exercises and a quiz — **do them**; skill comes from practice.
+- AI models do not read minds; they predict likely words based on your instructions.
+- Give the model the same context you would give a smart human colleague who just joined your team this morning.
+- Always protect private data. Never paste sensitive customer info, credentials, or internal trade secrets into a public chat.
+- The best prompt engineers experiment constantly. When an output is mediocre, don't give up; change your instructions.
+
+---
+
+## 🏋️ Exercises
+
+### Exercise 0.1: Record Your Baseline Prompt
+Before you read another page, open your chat tool and write a prompt asking it to:
+*"Plan a 3-day trip to a city of your choice."*
+
+Copy both your prompt and the AI's response into a note titled `baseline.md`. Keep it safe. At the end of Stage 1 (Module 04), you will rewrite this prompt using everything you have learned and compare the two results side by side.
+
+<details>
+<summary>💡 What should you look for in your baseline?</summary>
+
+Most beginner prompts produce a superficial checklist (Day 1: Visit Museum. Day 2: Eat lunch in city center). 
+
+Notice what your initial prompt forgot:
+- Who is traveling? (A solo backpacker, a family with small kids, or a business traveler?)
+- What is the budget? (Budget ₹3,000/day or luxury hotel?)
+- What are the physical constraints? (Walking only, public transit, rental car?)
+- What format do you want? (A morning-by-morning table, a map-friendly itinerary, or a packing list?)
+
+You will learn how to build all of these elements naturally in the next three modules.
+
+</details>
+
+---
+
+## ✅ Quick Quiz
+
+1. Why do vague prompts lead to generic, cliché-filled AI responses?
+   - A) Because the AI is lazy and conserves compute.
+   - B) Because the AI predicts the most statistically common response when it lacks specific constraints.
+   - C) Because free AI tools intentionally degrade answer quality.
+2. What should you do before pasting an internal company document into a public AI chat?
+   - A) Check company policy, remove sensitive names or financials, and ensure training data sharing is disabled.
+   - B) Translate it to another language first.
+   - C) Add a sentence saying "Please keep this confidential".
+
+<details>
+<summary>View Answers</summary>
+
+1. **B** — Large language models predict the next most likely words. Without constraints, the most likely words are broad, average generalizations.
+2. **A** — AI models cannot read contractual non-disclosure requests in your prompt text. You must actively clean sensitive data and configure your privacy settings.
+
+</details>
 
 ---
 

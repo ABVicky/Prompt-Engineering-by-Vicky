@@ -2,257 +2,329 @@
 
 > 🟢 Stage 1 · Foundations · ⏱️ ~2 hours
 
+Suppose a friend visits you from out of town and asks: *"Where should I eat lunch?"*
+
+If you answer: *"Go to a good place nearby"*, they will probably wander around aimlessly and end up at a mediocre fast-food joint. 
+
+To help them, you naturally ask yourself: *Do they want quick street food or a quiet cafe? Are they vegetarian? What is their budget?* Then you give them exact directions: *"Walk 200 meters past the metro station, look for the green awning of Sharma Sweets, and order the chole bhature."*
+
+Prompt engineering works the exact same way. When you give the AI vague directions, it wanders into generic territory. When you give it clear, structured guidance with context and boundaries, it hits the target on the first try.
+
+In this module, you will learn the 12 core principles that govern every great prompt. Once you understand these 12 rules, you will never stare at a blank prompt box wondering what to type.
+
+---
+
 ## 🎯 Learning Objectives
 
-- Apply the **12 core principles** that underpin every advanced technique
-- Diagnose a bad output and map it to the principle that was violated
-- Write instructions the model follows reliably: specific, positive, prioritized, and explained
+By the end of this module, you will be able to:
+- Apply the 12 core principles to any everyday or technical task.
+- Replace fuzzy, subjective words with clear, measurable instructions.
+- Frame instructions positively so the model focuses on what you want.
+- Diagnose why an output failed and know immediately which principle fixes it.
 
 ---
 
 ## The 12 Principles at a Glance
 
-| # | Principle | One-line rule |
+| # | Principle | The One-Sentence Rule |
 |---|---|---|
-| 1 | **Be clear and direct** | Say exactly what you want; don't hint |
-| 2 | **Be specific** | Quantities, audiences, lengths, criteria |
-| 3 | **Give context and the "why"** | Purpose lets the model make smart judgment calls |
-| 4 | **Say what to do, not only what not to do** | Positive instructions beat prohibitions |
-| 5 | **Show examples** | Demonstrate the target output |
-| 6 | **Structure the prompt** | Sections, delimiters, numbered steps |
-| 7 | **Specify the output format** | Shape, length, style, file type |
-| 8 | **Give the model room to think** | Ask for reasoning before the answer on hard tasks |
-| 9 | **Break complex tasks down** | Steps or chains instead of one mega-prompt |
-| 10 | **Allow uncertainty** | Permission to say "I don't know" |
-| 11 | **Match your prompt style to the desired output** | Formal prompt → formal answer |
-| 12 | **Iterate and test** | First drafts are hypotheses |
+| 1 | **Be clear and direct** | State the exact action you want; do not drop vague hints. |
+| 2 | **Be specific** | Replace vague adjectives with numbers, lengths, and exact criteria. |
+| 3 | **Explain the "why"** | Tell the model why a constraint exists so it makes smart judgment calls. |
+| 4 | **Say what to do** | Focus on the positive action rather than a long list of prohibitions. |
+| 5 | **Show examples** | Give a sample of what great output looks like. |
+| 6 | **Structure the prompt** | Use sections, bullet points, and delimiters to organize your thoughts. |
+| 7 | **Specify the format** | Dictate the shape, tone, length, and structure of the final answer. |
+| 8 | **Give room to think** | Ask the model to reason through difficult problems before giving its final answer. |
+| 9 | **Break big tasks down** | Split complicated workflows into sequential, manageable steps. |
+| 10 | **Allow uncertainty** | Give the model explicit permission to say "I don't know" to prevent guessing. |
+| 11 | **Avoid leading the model** | Ask neutral questions so the model doesn't just agree with your bias. |
+| 12 | **Iterate and test** | Treat your first prompt as a draft; refine one variable at a time. |
 
-> 👔 **Non-Tech Lens · The Manager's Delegation Secret:**
-> Think of these 12 principles as how top executives delegate to staff: they never say *"Make this look nice"*; they say *"Draft an executive memo for Friday's board meeting, maximum 1 page, highlight Q3 revenue growth in bold, and explain why customer churn dropped 4%."* Clarity in instructions guarantees quality in execution.
+> 👔 **Non-Tech Lens · How Great Managers Delegate:**
+> Think of these principles as how an experienced manager briefs their team. They don't say *"Fix this presentation"*. They say: *"Review slides 4 to 8 before 3:00 PM today. Cut the technical jargon so our non-technical sales clients understand our pricing, and present the final summary as three bullet points."* Clarity creates quality.
 
-> 💻 **Tech Lens · Prompts as Interface Specifications:**
-> Treat prompt authoring with the same rigor as designing an API interface. Principles 1–4 define input preconditions; Principles 6–7 define the schema contract; Principle 10 defines failure mode handling; and Principle 12 defines integration testing. Ambiguity in prompts produces non-deterministic bugs in downstream parsers.
+> 💻 **Tech Lens · Prompts as Interface Contracts:**
+> Treat prompt authoring like designing a software interface contract. Principles 1 through 4 define input preconditions; Principles 6 and 7 define your schema guarantees; Principle 10 defines error handling; and Principle 12 defines integration testing. Ambiguous prompts introduce flaky, non-deterministic bugs into production systems.
 
 ---
 
 ## 1. Be Clear and Direct
 
-Models are very literal and very eager to please. Vague requests get generic answers.
+Models take you literally. If you hint at what you want, the model will answer the literal question rather than doing the actual work.
 
-❌ `Can you maybe look at this and see if it could be better?`
-✅ `Rewrite this paragraph to be 30% shorter and more persuasive for a CFO audience. Keep all numbers unchanged.`
+❌ **Weak**
+```text
+Can you maybe take a look at this email and see if it could be better?
+```
+*(The AI will reply with vague suggestions like "You could try making it friendlier.")*
 
-> 💡 If you want the model to *do* something (edit, write, decide), say the verb. "Can you suggest changes?" gets suggestions; "Make these changes" gets an edited text.
+✅ **Strong**
+```text
+Rewrite the email below to be 30% shorter and more persuasive for a potential corporate sponsor. Keep all dates and figures exactly as they are.
+```
+*(The AI immediately produces the rewritten email.)*
+
+> 💡 **Use strong action verbs:** Say *"Rewrite"*, *"Extract"*, *"Classify"*, *"Summarize"*, or *"Audit"*. Avoid passive phrasing like *"Could you possibly..."*
 
 ---
 
-## 2. Be Specific
+## 2. Be Specific: Replace Fuzzy Words with Numbers
 
-Replace every fuzzy word with a measurable one.
+Every time you catch yourself writing a fuzzy adjective, replace it with a concrete measurement.
 
-| Fuzzy | Specific |
+| Vague word | Concrete replacement |
 |---|---|
-| short | under 100 words / 3 bullets |
-| simple | readable by a 12-year-old; no jargon |
-| some examples | 5 examples, each from a different industry |
-| professional tone | formal, no contractions, no emojis, active voice |
-| recent | from 2023 or later |
-| good code | Python 3.12, type hints, docstrings, no external libraries, O(n log n) or better |
+| *"Make it short"* | *"Keep the response under 120 words or 4 bullet points."* |
+| *"Keep it simple"* | *"Explain this so an intelligent 12-year-old can follow it without technical terms."* |
+| *"Give me some ideas"* | *"Provide exactly 5 ideas, each targeting a different customer segment."* |
+| *"Professional tone"* | *"Formal business tone: no slang, no contractions, and no exclamation marks."* |
+| *"Fast code"* | *"Python 3.11, $O(n)$ time complexity, using only the standard library."* |
 
 ---
 
-## 3. Give Context and Explain *Why*
+## 3. Give Context and Explain the "Why"
 
-Rules without reasons are applied rigidly or inconsistently. Reasons let the model generalize correctly.
+When you tell an AI *why* a rule exists, it applies common sense to edge cases. When you only give an arbitrary rule, it follows it blindly or misses the spirit of the instruction.
 
-❌ `Never use ellipses.`
-✅ `Your response will be read aloud by a text-to-speech engine, so never use ellipses — the engine can't pronounce them.`
+❌ **Weak**
+```text
+Never use bullet points in this summary.
+```
 
-With the reason, the model also avoids *other* things TTS can't handle (tables, emojis, URLs) without being told.
+✅ **Strong**
+```text
+This summary will be read aloud as a 60-second voiceover for a company video. Write in natural, flowing conversational sentences. Do not use bullet points, tables, web links, or parenthetical acronyms because they sound awkward when read aloud.
+```
 
-Useful context to include:
-- **Audience** — who reads the output, their expertise
-- **Purpose** — what the output will be used for
-- **Environment** — where it will appear (email, slide, app UI, voice)
-- **Success criteria** — what makes it "good" for you
-- **Background** — what has been tried, what you already know
+By explaining that the text will be spoken aloud, the model also avoids other spoken pitfalls (like strange punctuation or URLs) without you having to list twenty separate negative rules.
 
 ---
 
 ## 4. Say What To Do (Positive Framing)
 
-Telling a model *not* to do X keeps X "in mind." Tell it what to do instead.
+Tell the model what path to take, rather than trying to wall off every path it shouldn't take.
 
-| ❌ Negative | ✅ Positive |
+Think about telling a toddler: *"Don't spill the milk!"* Their brain immediately visualizes spilling the milk. Saying *"Hold the cup with two hands"* tells them the exact physical action to take.
+
+| ❌ Negative prohibition | ✅ Positive action |
 |---|---|
-| Don't use markdown | Write in plain flowing paragraphs |
-| Don't be too long | Keep it under 150 words |
-| Don't use technical jargon | Use everyday words a high-school student knows |
-| Don't make things up | Use only facts from the provided document; if something isn't covered, say "Not in the document." |
-
-> Prohibitions are still useful for hard boundaries ("never reveal customer emails"). Pair them with the positive alternative.
+| *"Don't write a long introduction."* | *"Start immediately with the first action item."* |
+| *"Don't use corporate buzzwords."* | *"Use plain, everyday conversational language."* |
+| *"Don't make up facts."* | *"Answer using only the text inside `<source>`. If an answer is not there, write: Information not available."* |
 
 ---
 
-## 5. Show Examples (Preview of Module 04)
+## 5. Show Examples (The Preview of Few-Shot)
 
-Examples are the strongest signal you can give. The model copies **format, length, tone, and level of detail** from them — including mistakes. Make examples diverse and correct.
+A single good example communicates tone, format, length, and nuance better than a full page of written rules. 
+
+If you want customer feedback categorized in a specific way, provide one sample input and your ideal output before asking it to categorize ten new ones. (We will master this technique in Module 04.)
 
 ---
 
-## 6. Structure the Prompt
+## 6. Structure the Prompt with Delimiters
 
-Long prompts benefit from visible structure:
+When a prompt gets longer than a couple of sentences, organize it with clear headings and tags:
 
 ```xml
-<role>You are a senior code reviewer.</role>
+<role>
+You are an experienced customer support manager for a home appliance store in Delhi.
+</role>
 
 <task>
-Review the pull request diff for bugs, security issues, and readability.
+Draft a polite email response to the customer complaint below.
 </task>
 
 <rules>
-1. Prioritize: security > correctness > performance > style.
-2. Quote the exact line for each issue.
-3. Suggest a concrete fix for each issue.
+1. Acknowledge their frustration with the delayed washing machine delivery.
+2. Offer free installation and a ₹500 store voucher as compensation.
+3. Keep the entire response under 150 words.
 </rules>
 
-<diff>
-...
-</diff>
-
-<output_format>
-A markdown list grouped by severity (Critical, Major, Minor).
-End with an overall verdict: APPROVE, REQUEST CHANGES, or COMMENT.
-</output_format>
+<complaint>
+I ordered a washing machine 6 days ago with promised 24-hour delivery. Your delivery team hasn't called, and customer care hung up on me twice.
+</complaint>
 ```
+
+Organizing your prompt like this makes it easy for the model's attention mechanism to keep instructions and data separate.
 
 ---
 
 ## 7. Specify the Output Format
 
-Always decide: **structure** (prose, bullets, table, JSON), **length**, **style**, and **what to exclude** (preamble, apologies, sign-offs).
+Never leave the visual shape of the answer to chance. State whether you want:
+- A Markdown table with specific column names.
+- A bulleted list ordered from highest to lowest priority.
+- A single concise paragraph.
+- Raw JSON matching a specific template.
 
-```text
-Return only the corrected sentence, with no explanation or quotation marks.
-```
-
-> 💡 **Format mirroring:** the model tends to answer in the style of the prompt. A prompt written in heavy markdown invites markdown back; plain prose invites prose.
+> 💡 **Omit the chit-chat:** If you are pasting AI outputs into spreadsheets or reports, add this line: *"Provide only the final table. Do not include introductory remarks, commentary, or sign-offs."*
 
 ---
 
 ## 8. Give the Model Room to Think
 
-For tasks needing reasoning (math, logic, multi-factor decisions), ask for thinking *before* the final answer:
+When you ask someone a difficult math or logic problem and demand they answer in half a second, they often make a careless blunder. But if you tell them: *"Take a piece of scrap paper, write down your working, and then tell me the answer"*, their accuracy skyrockets.
+
+The exact same thing happens with AI. If you force the model to output the final answer immediately, it has to guess the first token without calculating the steps.
 
 ```text
-First, think through the problem step by step inside <thinking> tags.
-Then give only the final answer inside <answer> tags.
-```
+Problem: A store in Jaipur sold 45 shirts on Monday, 12 fewer on Tuesday, and twice Tuesday's total on Wednesday. What were the total sales over all three days?
 
-Reasoning written *after* an answer is just a justification; reasoning *before* the answer improves it. (Full coverage in Module 05.)
+Before giving the final number, write out the calculation step by step on separate lines. Then state: Total = [number].
+```
 
 ---
 
 ## 9. Break Complex Tasks Down
 
-One huge prompt that asks for research + analysis + writing + formatting will be mediocre at all four. Either number the steps in one prompt or chain separate prompts (Module 08).
+If you give an AI an overwhelming task with 8 different stages (researching, outlining, drafting, checking facts, formatting, translating), it will rush through each part and produce mediocre work.
+
+Instead, break the task into clear steps:
+1. *"Step 1: Outline the 4 main arguments."*
+2. *"Step 2: For each argument, list one supporting piece of evidence."*
+3. *"Step 3: Write the final draft using the outline and evidence."*
+
+---
+
+## 10. Allow Uncertainty (Kill Hallucinations)
+
+AI models are trained to be eager assistants. If you ask a question and the answer doesn't exist, the model feels immense statistical pressure to supply something that sounds plausible.
+
+Break this pressure by giving it permission to say "I don't know":
 
 ```text
-Do this in order:
-1. List the 5 main claims in the article.
-2. For each claim, rate the evidence provided (strong / weak / none).
-3. Write a 100-word overall assessment based on steps 1–2.
+Based ONLY on the employee handbook attached below, answer this question:
+"What is our policy on paternity leave for contract staff?"
+
+If the handbook does not explicitly mention contract staff, state: "The provided handbook does not cover paternity leave for contract staff." Do not guess or extrapolate.
 ```
 
 ---
 
-## 10. Allow Uncertainty
+## 11. Avoid Leading the Model (Avoid Flattery & Bias)
 
-Models fabricate partly because they're trained to be helpful. Give explicit permission to not know:
+Models have a known tendency called **sycophancy**—they tend to agree with whatever opinion you suggest in your prompt.
 
-```text
-If the answer is not in the provided text, reply exactly: "I couldn't find that in the document."
-If you are unsure, say so and explain what information would resolve it.
-```
+❌ **Leading prompt:** *"Don't you think our brand should switch to a bright neon logo to appeal to teenagers?"*
+*(The AI will agree: "Yes, neon colors are vibrant and create immediate youth appeal...")*
 
----
-
-## 11. Match Style and Avoid Leading the Model
-
-- If you write `Isn't it true that X is better?`, you'll get agreement (**sycophancy**). Ask neutrally: `Compare X and Y on cost, speed, and risk. Which is better for our case and why?`
-- If you want critique, *ask for critique* and make it safe: `Be blunt. I want the 3 biggest weaknesses, not reassurance.`
+✅ **Neutral prompt:** *"We are evaluating whether to change our logo to bright neon to reach teenagers. Present the three strongest arguments in favor of this change, and the three biggest risks or drawbacks."*
 
 ---
 
 ## 12. Iterate and Test
 
-![Iteration loop](../assets/iteration-loop.svg)
+No prompt engineer writes a perfect prompt on their first attempt every time. 
 
-Your first prompt is a hypothesis. Run it on several realistic inputs, look at failures, change **one thing at a time**, and re-run. Module 13 makes this rigorous.
+Treat your first prompt as an experiment. Test it on three different examples. Look at where the model made an odd choice, adjust one single parameter or instruction, and test again.
+
+![Iteration loop](../assets/iteration-loop.svg)
 
 ---
 
-## 🩺 Diagnosis Table — Symptom → Principle
+## 🩺 Diagnosis Table: Match the Symptom to the Principle
 
-| Symptom | Likely cause | Fix |
+When an AI response is disappointing, use this cheat sheet to fix it:
+
+| What went wrong | Likely cause | The principle to apply |
 |---|---|---|
-| Generic, bland output | Missing context/specificity (P2, P3) | Add audience, purpose, constraints |
-| Wrong length | No length spec (P7) | Give word/bullet/paragraph counts |
-| Ignored one instruction | Too many rules, no priority (P6, P9) | Number rules, put critical ones first and last, split task |
-| Made-up facts | No grounding / no permission to be unsure (P10) | Provide source; allow "I don't know"; ask for quotes |
-| Unwanted preamble ("Sure! Here's…") | No format constraint (P7) | "Start directly with the answer." / prefill |
-| Wrong style | Prompt style mismatched (P11) | Write the prompt in the style you want; give an example |
-| Wrong reasoning | No thinking room (P8) | Ask for step-by-step reasoning first |
-| Agrees with your wrong premise | Leading question (P11) | Ask neutrally; request counter-arguments |
+| The output is generic, boring corporate fluff. | Missing context and audience details. | **Principle 2 & 3** (Be specific; give the "why"). |
+| The response is way too long and rambles. | No length or format constraint. | **Principle 7** (Specify output format and word limit). |
+| The model ignored rule #4 out of 10. | Too many rules buried in a wall of text. | **Principle 6 & 9** (Structure with tags; break into steps). |
+| The model made up a fake statistic or date. | No source provided, no permission to be unsure. | **Principle 10** (Allow uncertainty / provide source). |
+| The model gave you polite conversational fluff before the answer (*"Certainly! I would be delighted to..."*). | Didn't tell it to omit preamble. | **Principle 7** (*"Output only the result. No intro."*). |
+| The model agreed with your questionable idea. | Leading question. | **Principle 11** (Ask neutrally for pros and cons). |
+
+---
+
+## 💡 Common Mistakes & How to Spot Them
+
+| Mistake | What you see | How to tell you got it right |
+|---|---|---|
+| The Prohibition Trap | A prompt with eight lines of *"Don't do X, don't do Y, don't do Z"*. | You rewrite it into two positive sentences describing exactly what good looks like. |
+| The Unrealistic Expectation | Asking for a full 20-page market analysis in one single prompt. | You ask for a table of contents first, review it, then generate one section at a time. |
+| The Silent Assumption | Assuming the model knows your company's abbreviations (e.g., "PO", "PRD", "L1"). | You spell out acronyms the first time they appear in the prompt. |
+
+---
+
+## 🧪 Try It Now
+
+Open your chat app and test this before-and-after prompt on a real topic you care about:
+
+1. **Test Prompt A (Negative framing):**
+   *"Write an email to my team about our project deadline. Don't sound mean, don't be too casual, and don't make it too long."*
+2. **Test Prompt B (Positive framing with context):**
+   *"Write a 75-word email to our engineering team reminding them of our Friday 5:00 PM code freeze. Tone: Calm, encouraging, and clear. State what needs to be submitted and who to contact if a blocker arises."*
+
+Compare the two outputs. Notice how Prompt B sounds like a seasoned manager, while Prompt A sounds anxious and stiff.
 
 ---
 
 ## 🔑 Key Takeaways
 
-- **Clarity + specificity + context** solve the majority of prompt problems.
-- Explain **why** — models generalize from reasons.
-- Prefer **positive** instructions; always specify **format**.
-- Hard tasks need **thinking room** and **decomposition**.
-- Let the model **say "I don't know."**
-- Every prompt is a **hypothesis** to test.
+- Clarity, specificity, and context solve 80% of all prompting problems.
+- Always explain the *why* behind your instructions. Reasons allow models to make smart judgment calls.
+- Frame your instructions positively: tell the model what to do, not just what to avoid.
+- Give the model room to think through difficult calculations or reasoning before stating the final answer.
+- Give explicit permission to say "I don't know" to prevent made-up facts.
 
 ---
 
 ## 🏋️ Exercises
 
-**3.1 — Fix the negatives.** Rewrite positively: *"Don't write long sentences, don't use passive voice, don't sound robotic."*
+### Exercise 3.1: Turn Negatives into Positives
+Rewrite this prompt using positive instructions:
+*"Don't write like an AI, don't use long words, and don't make it boring."*
 
 <details>
-<summary>✅ Solution</summary>
+<summary>View Solution & Explanation</summary>
 
-"Write in short sentences (under 20 words), active voice, and a warm conversational tone — as if explaining to a friend over coffee."
-
-</details>
-
-**3.2 — Diagnose.** A user asks *"Write a product description for our water bottle"* and gets a generic 300-word essay. List three missing pieces and rewrite.
-
-<details>
-<summary>✅ Solution</summary>
-
-Missing: product details (features, materials, price), audience & platform (e.g., Amazon listing vs Instagram), length/format, brand voice.
+**A strong positive rewrite:**
 
 ```text
-Write an Amazon product description for "HydroPeak", a 750 ml insulated steel
-bottle (keeps drinks cold 24 h / hot 12 h, leak-proof lid, fits car cup holders,
-BPA-free, ₹1,299). Audience: gym-goers and office commuters aged 20–35.
-Format: a 1-line headline, then 5 bullet points starting with a bold benefit,
-then a 40-word closing paragraph. Tone: energetic, confident, no exaggerated claims.
+Write in a lively, conversational voice using short, plain English words—as if explaining the idea to a smart friend over a cup of coffee. Keep sentences under 15 words and include one relatable real-world comparison.
 ```
+
+*Explanation:* Instead of guessing what "not boring" means, the model now has actionable instructions: short words, under 15 words per sentence, and a relatable analogy.
 
 </details>
 
-**3.3 — Add the why.** Improve: *"Keep answers under 50 words."*
+### Exercise 3.2: Diagnose and Cure a Broken Prompt
+A marketing manager at an edtech startup in Delhi writes this prompt:
+*"Write a tweet announcing our new data science course."*
+
+They receive a generic tweet filled with six rocket emojis and empty hype (*"Level up your career today! 🚀🚀"*). 
+Identify three missing principles and write a complete prompt.
 
 <details>
-<summary>✅ Solution</summary>
+<summary>View Solution & Explanation</summary>
 
-"Keep answers under 50 words, because they appear in a small chat bubble on a mobile screen and users skim. If a full answer needs more, give the key point and offer to elaborate."
+**Missing Principles:**
+1. **Principle 2 (Be specific):** No course details, pricing, duration, or key highlights provided.
+2. **Principle 3 (Context & Audience):** Who is this for? College students or working professionals?
+3. **Principle 7 (Format & Constraints):** No limit on emojis, no hashtags specified, no call to action.
+
+**The Strong Rewrite:**
+
+```text
+You are a social media copywriter for an edtech institute in Delhi.
+
+Write a single post for X (formerly Twitter) announcing our new 8-week weekend Data Science boot camp starting next month.
+
+Key facts:
+- Designed for working professionals (classes on Saturday and Sunday mornings).
+- Focus: Python, SQL, and practical machine learning projects.
+- Live instructor sessions + 1-on-1 resume reviews.
+- Early bird discount: ₹5,000 off before the 15th.
+
+Constraints:
+- Length: Under 240 characters.
+- Tone: Professional, practical, and motivating. No breathless hype.
+- Include one clear call to action: "Link in bio to view syllabus".
+- Maximum 1 emoji and 2 relevant hashtags (#DataScience #CareerGrowth).
+```
 
 </details>
 
@@ -260,18 +332,25 @@ then a 40-word closing paragraph. Tone: energetic, confident, no exaggerated cla
 
 ## ✅ Quick Quiz
 
-1. Why is "Don't use jargon" weaker than "Use everyday words"?
-2. Where should reasoning go relative to the final answer, and why?
-3. A model keeps agreeing with your flawed plan. Which principle helps?
-4. What should you change between test runs when iterating?
+1. Why are positive instructions generally more effective than negative instructions?
+   - A) Because AI models have feelings and dislike negativity.
+   - B) Because positive instructions clearly define the target behavior, whereas negative instructions leave infinite bad alternatives open.
+   - C) Because negative words cost twice as many tokens.
+2. Where should the model's step-by-step reasoning be placed relative to the final answer on a complex problem?
+   - A) After the final answer as a footnote.
+   - B) Before the final answer, so the reasoning informs the token prediction of the result.
+   - C) It makes no difference.
+3. If an AI model repeatedly agrees with your flawed assumptions during a brainstorming session, what principle did you violate?
+   - A) Principle 7 (Specify format).
+   - B) Principle 11 (Avoid leading the model / avoid sycophancy).
+   - C) Principle 1 (Be clear and direct).
 
 <details>
-<summary>Show answers</summary>
+<summary>View Answers</summary>
 
-1. Negative instructions keep the unwanted concept salient and don't specify the alternative.
-2. **Before** the answer — reasoning after is only a justification and doesn't improve the result.
-3. **Avoid leading questions / ask for critique explicitly** (Principle 11).
-4. **One thing at a time**, so you know what caused the change.
+1. **B** — Telling an AI what to do provides a specific, narrow target. Telling it what *not* to do leaves all other possibilities open.
+2. **B** — Because autoregressive models generate text from left to right, thinking through the steps *first* ensures that the final tokens are calculated based on sound intermediate logic.
+3. **B** — Asking leading questions invites the model's natural sycophancy. Ask neutrally and explicitly request opposing arguments.
 
 </details>
 

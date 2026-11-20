@@ -2,280 +2,291 @@
 
 > 🌟 Stage 4 · Pro · ⏱️ ~2.5 hours
 
+Think about learning to drive a car.
+
+Almost anyone can learn to steer, press the accelerator, and stop at a red light after two weeks of driving school. That is enough to get you to the grocery store.
+
+A professional rally driver, however, operates on a completely different level. They understand vehicle weight transfer, tire friction on wet gravel, how to brake without locking the wheels, and how to navigate hairpin mountain turns at speed without flinching.
+
+You have now completed the core curriculum of prompt engineering. You understand tokens, prompt anatomy, few-shot examples, reasoning models, structured schemas, RAG pipelines, agents, and security guardrails.
+
+Becoming a true pro is not about memorizing more "hacks" or copying so-called "magic prompts" from social media. It is about cultivating the disciplined instincts, meta-prompting skills, and rigorous habits of an empirical engineer.
+
+In this final module, you will learn how to make AI write and optimize prompts for you, build an impressive portfolio that proves your expertise, prepare for high-paying AI roles, and map out your next 30 days of mastery.
+
+---
+
 ## 🎯 Learning Objectives
 
-- Use **meta-prompting**: LLMs that write, critique and improve prompts
-- Understand **automatic prompt optimization** (APE, OPRO, DSPy-style approaches)
-- Develop the **habits** of expert prompt engineers
-- Build a **portfolio**, prepare for **interviews**, and plan your **career** path
-- Stay current without chasing hype
+By the end of this module, you will be able to:
+- Use **meta-prompting** to make LLMs draft, critique, and debug your prompts.
+- Understand **automatic prompt optimization** frameworks like DSPy and OPRO.
+- Adopt the **10 daily habits** of top-tier prompt engineers.
+- Build a compelling, metrics-driven **portfolio** for either a Non-Tech or Tech career track.
+- Master answers to the top 12 AI engineering and prompt design interview questions.
+- Execute a practical **30-day mastery roadmap** after completing this course.
 
 ---
 
-## 1. Meta-Prompting — Prompts That Write Prompts
+## 1. Meta-Prompting: Prompts That Write Prompts
 
-### Prompt generator
+One of the best-kept secrets of senior prompt engineers is that they rarely write long prompts from a blank page. They use **meta-prompts** to make the model write its own instructions.
 
-```text
-You are an expert prompt engineer. I'll describe a task; you write a
-production-quality prompt for it.
-
-Your prompt must include: role, task, context, input placeholders in
-{{double_braces}}, constraints with reasons, output format, and handling for
-missing/ambiguous input. Use XML tags for sections. After the prompt, list 5
-test inputs (including 2 edge cases) I should try it on.
-
-Task description: {{what you want}}
-```
-
-### Prompt critic
+### The Production Prompt Generator
+Copy and paste this into any frontier model to generate a structured prompt for a new task:
 
 ```text
-Critique this prompt as a senior prompt engineer. Score 1–5 on: clarity,
-specificity, context, structure, output format, robustness to edge cases,
-injection safety. For each score below 5, give the specific fix.
-Then output an improved version.
-<prompt>{{prompt}}</prompt>
+You are an expert prompt engineer. I will describe a task, and you will write a complete, production-grade prompt for it.
+
+Your generated prompt must follow these architectural rules:
+1. Role & Mission: Specific expertise, target audience, and primary goal.
+2. Context & Input: Place dynamic inputs inside clear XML tags (e.g. <document>{{text}}</document>).
+3. Explicit Rules: Numbered constraints with brief rationales explaining why they exist.
+4. Output Format: Exact visual shape, length limits, and negative boundaries (what to omit).
+5. Error / Edge Case Handling: Instructions on how to handle ambiguous, missing, or contradictory input.
+
+After presenting the prompt, provide:
+- 3 representative test inputs.
+- 2 tricky edge-case inputs to verify that the prompt doesn't break.
+
+Task description: {{describe what you need the AI to do}}
 ```
 
-### Failure-driven improvement
+### The Failure-Driven Prompt Debugger
+When your prompt fails in testing, do not guess what went wrong. Hand the failure to the model:
 
 ```text
-Here is a prompt and examples where it failed (input, bad output, expected).
-Diagnose the root cause of each failure, group them, and propose the minimal
-prompt edits that would fix them without breaking the passing cases.
-<prompt>…</prompt>
-<failures>…</failures>
-```
+You are a senior prompt optimization specialist.
 
-> 💡 Provider consoles often include prompt generators/improvers. Use them as a starting draft — then evaluate like any other prompt.
+Below is an existing prompt, an input that produced an error, the bad output the model generated, and my ideal expected output.
+
+<existing_prompt>
+{{current_prompt_text}}
+</existing_prompt>
+
+<test_input>
+{{input_text}}
+</test_input>
+
+<bad_output>
+{{actual_bad_output}}
+</bad_output>
+
+<expected_output>
+{{what_it_should_have_said}}
+</expected_output>
+
+Task:
+1. Diagnose the root cause: Why did the prompt's instructions allow the model to produce this bad output?
+2. Propose the minimal surgical edits to the prompt that fix this failure without over-constraining the model or breaking other general inputs.
+3. Output the complete revised prompt.
+```
 
 ---
 
-## 2. Automatic Prompt Optimization
+## 2. Automatic Prompt Optimization (DSPy & APE)
 
-When you have an eval set (Module 13), you can let algorithms search for better prompts.
-
-| Approach | Idea |
-|---|---|
-| **APE** (Automatic Prompt Engineer, Zhou et al., 2022) | LLM proposes many candidate instructions; keep the best-scoring |
-| **OPRO** (Yang et al., 2023) | LLM sees past prompts + scores and proposes better ones iteratively |
-| **DSPy** (Stanford) | Write the program as modules with signatures; optimizers tune instructions & few-shot examples against a metric |
-| **Evolutionary / TextGrad-style** | Mutate and select prompts, or use LLM "textual gradients" (critiques) to update them |
+Why tune prompt wording by hand when code can search for optimal prompts automatically?
 
 ```mermaid
 flowchart LR
-    P["Candidate prompts"] --> E["Run on eval set"] --> S["Scores"] --> G["LLM proposes<br/>better candidates"] --> P
+    Seed["Initial Prompt & Dataset"] --> Eval["Run on Golden Set<br/>Record Accuracy"]
+    Eval --> Optimizer["LLM Optimizer<br/>(e.g. DSPy / OPRO)"]
+    Optimizer --> Mutate["Mutate wording &<br/>select best few-shot examples"]
+    Mutate --> ReEval["Test New Version"]
+    ReEval --> Keep{"Score improved?"}
+    Keep -->|Yes| Save["Save as New Champion"]
+    Keep -->|No| Discard["Discard & Try Again"]
 ```
 
-⚠️ Optimizers overfit to small eval sets. Use a held-out set and read the winning prompt — it should make sense to a human.
+- **APE (Automatic Prompt Engineer):** An LLM generates 20 candidate prompt variations, tests each across an evaluation set, and picks the highest-scoring candidate.
+- **DSPy (Declarative Self-improving Python):** A framework created by Stanford researchers that replaces fragile string prompts with programmatic modules and optimizers. DSPy automatically compiles and tunes instructions and selects the best few-shot examples against a metric you define.
+
+> ⚠️ **Watch for Overfitting:** Automated optimizers can easily overfit to small test sets (finding bizarre prompt phrases that work on your 15 test cases but fail on real users). Always validate the winning prompt on a **held-out test set** and verify that the instructions make logical sense to a human reader.
 
 ---
 
-## 3. The Habits of Expert Prompt Engineers
+## 3. The 10 Habits of Expert Prompt Engineers
 
-1. **Read the outputs.** Lots of them. Patterns appear only in volume.
-2. **Think like the model.** "Given only this text, what would a smart reader do?"
-3. **Simplify relentlessly.** Remove instructions and check if anything breaks.
-4. **Keep a prompt journal** — what worked, what didn't, per model.
-5. **Test edge cases first** — empty, huge, foreign-language, adversarial.
-6. **Separate concerns** — one prompt, one job.
-7. **Measure** before claiming improvement.
-8. **Respect the model's strengths** — don't over-constrain capable models; give them goals and context.
-9. **Stay model-agnostic** — principles over tricks.
-10. **Collaborate with the model** — ask it what's unclear in your prompt: *"Before answering, list any ambiguities in my instructions."*
+1. **Read the raw outputs:** Review hundreds of actual generation traces. Patterns and edge cases only reveal themselves at volume.
+2. **Think from the model's perspective:** Ask yourself: *"Given ONLY the text inside this prompt, what is the most statistically probable continuation?"*
+3. **Simplify relentlessly:** Every extra sentence of instructions increases attention competition. If an instruction isn't fixing a measured failure, remove it.
+4. **Keep a Prompt Journal:** Document every prompt breakthrough and failure, noting the exact model ID and date.
+5. **Test edge cases first:** Test empty inputs, massive inputs, Hinglish, emojis, and adversarial injection attempts before celebrating success.
+6. **Separate concerns:** Give each prompt one clear job. Use prompt chains for multi-step tasks.
+7. **Measure before claiming victory:** "It looks better to me" is an opinion. A 12% jump on your evaluation dataset is an achievement.
+8. **Stay model-agnostic:** Do not build your entire architecture around temporary quirks of one specific model version. Anchor your work in timeless principles.
+9. **Use delimiters religiously:** Separate data from instructions using XML tags like `<context>` and `<instructions>`.
+10. **Ask the model for feedback:** When stuck, ask: *"Read this prompt and list 3 ambiguities that could cause you to misunderstand my intent."*
 
-### The prompt-debugging decision tree
+---
+
+## 4. Career Pathways: Two Paths to Pro
+
+Prompt engineering is rarely a standalone title anymore. It is a high-impact capability that supercharges two distinct career paths:
 
 ```mermaid
 flowchart TD
-    A["Output is wrong"] --> B{"Is the task clear to<br/>a human expert?"}
-    B -- No --> B1["Clarify task,<br/>add context"]
-    B -- Yes --> C{"Does the model have<br/>the needed info?"}
-    C -- No --> C1["Add documents / RAG / tools"]
-    C -- Yes --> D{"Is the format wrong?"}
-    D -- Yes --> D1["Specify format,<br/>examples, schema, prefill"]
-    D -- No --> E{"Is the reasoning wrong?"}
-    E -- Yes --> E1["CoT, decomposition,<br/>reasoning model"]
-    E -- No --> F{"Inconsistent<br/>across runs?"}
-    F -- Yes --> F1["Lower temperature,<br/>self-consistency, eval"]
-    F -- No --> G["Model limitation →<br/>stronger model, tools, chain,<br/>or fine-tune"]
+    Skills["Your Prompt Engineering Mastery"] --> NonTech["👔 Track 1: AI Operations & Strategy Leader<br/>• Chief AI Officer / AI Champion<br/>• AI Operations Manager<br/>• Workflow Automation Strategist"]
+    Skills --> Tech["💻 Track 2: Production AI Engineer<br/>• LLM Application Developer<br/>• PromptOps & MLOps Engineer<br/>• AI Solutions Architect"]
 ```
 
+### 👔 Track 1: The AI Operations & Strategy Leader (Non-Tech Track)
+- **Who it is for:** Managers, writers, operations heads, founders, domain consultants.
+- **Your superpower:** Bridging messy business operations and AI tools. You turn chaotic 5-hour human workflows into automated custom assistants that save hundreds of team hours every month.
+- **Your portfolio:** Case studies showing business ROI: *"Redesigned customer email triage with Claude Projects, cutting response time from 4 hours to 12 minutes while maintaining a 96% customer satisfaction score."*
+
+### 💻 Track 2: The Production AI Engineer (Tech Track)
+- **Who it is for:** Software developers, data scientists, full-stack engineers.
+- **Your superpower:** Building type-safe, scalable, secure software powered by LLM APIs. You write Pydantic schemas, connect external databases with MCP, build hybrid RAG pipelines, and maintain CI/CD automated eval suites.
+- **Your portfolio:** Public GitHub repositories with clean code, unit tests, architectural diagrams, and quantitative before-and-after eval benchmarks.
+
 ---
 
-## 4. Careers in Prompt Engineering
+## 5. Building a Standout Portfolio
 
-Pure "Prompt Engineer" job titles exist, but the skill is more often part of broader roles:
+Clients and hiring managers do not care how many chat screenshots you have saved. They look for **evidence of rigorous problem-solving**.
 
-| Role | How prompt engineering is used |
-|---|---|
-| **AI / LLM Engineer** | Builds LLM apps: RAG, agents, evals, production |
-| **AI Product Manager** | Specs AI features, defines success metrics, reviews outputs |
-| **Applied AI / Solutions Engineer** | Helps customers design prompts & systems |
-| **Conversation / AI UX Designer** | Designs assistant personas, flows, tone |
-| **AI Content Strategist / Writer** | Scales content with quality control |
-| **AI Trainer / Data Specialist** | Writes examples, evaluates outputs, red-teams |
-| **AI Safety / Red-Teamer** | Finds failure modes and vulnerabilities |
-| **Automation Consultant / Freelancer** | Builds AI workflows for businesses |
-| **Domain expert + AI** (doctor, lawyer, teacher, marketer…) | Uses AI to multiply output in their field |
+Build **3 to 5 capstone projects** (see **[Appendix E — Capstone Projects](../appendix/E-capstone-projects.md)**). For each project, write a crisp 1-page case study following this structure:
 
-### Skill stack for 2026+
+1. **The Business Problem:** Who is this for, and why does it matter?
+2. **The Architecture:** Diagram showing how data moves from user to model to database.
+3. **The Prompts & Evolutions:** Show Prompt V1, the failures it caused, and how Prompt V2 solved them.
+4. **The Evaluation Scorecard:** Hard numbers showing before-and-after metrics:
+   ```text
+   Baseline Prompt V1: 68.0% pass rate (failed on regional addresses and date formats)
+   Refined Prompt V4:  94.5% pass rate on 100-case golden dataset
+   Latency: Reduced from 3.8s to 1.2s via prompt caching
+   ```
+5. **Security & Guardrails:** What prompt injections did you test, and how did your defense-in-depth shield hold up?
+6. **Lessons Learned:** What failed during development, and what did you learn about the model?
 
-```mermaid
-mindmap
-  root((Pro Prompt Engineer))
-    Core
-      Clear writing
-      Prompt techniques
-      Evaluation
-    Technical
-      Python / JS
-      LLM APIs
-      RAG & vector DBs
-      Agents & tools / MCP
-    Product
-      Problem framing
-      UX for AI
-      Metrics
-    Safety
-      Injection defense
-      Privacy
-      Responsible AI
-    Domain
-      Your industry expertise
+---
+
+## 6. Interview Preparation: Master the Tough Questions
+
+Practice answering these core interview questions aloud:
+
+### 1. "How do you handle a model that hallucinates facts?"
+*Model Answer Structure:* 
+"First, I identify whether the model lacks the data or is merely guessing. If it lacks data, I connect a grounded RAG retrieval pipeline or API tool call. In the prompt, I enforce a quote-then-answer pattern and explicitly give the model permission to say 'Information not found'. Finally, I validate the generated answer against the source text using an automated faithfulness grader and lower the temperature to 0.0."
+
+### 2. "How would you cut the cost of our production LLM system by 50% without hurting quality?"
+*Model Answer Structure:*
+"I implement a three-tiered approach:
+1. **Model Routing:** I classify incoming queries with a fast classifier, sending routine tasks to lightweight models (like GPT-4o mini or Claude Haiku) and reserving frontier models for complex edge cases.
+2. **Prompt Caching:** I place static system prompts, schemas, and reference documents at the very start of the prompt prefix to take advantage of provider cache discounts.
+3. **Output Brevity:** Since output tokens cost 3 to 4 times more than input tokens, I tighten output formatting instructions to eliminate conversational filler."
+
+---
+
+## 7. Your 30-Day Pro Action Plan
+
+| Week | Focus | Action Milestones |
+|---|---|---|
+| **Week 1** | **Personal Toolkit** | Build your personal prompt library (Appendix B) tailored to your day job. Set up Custom Instructions / Projects in your daily chat tool. |
+| **Week 2** | **Capstone Project 1** | Build and evaluate Capstone Project 1 or 2 (Appendix E). Create a 50-case golden evaluation dataset. |
+| **Week 3** | **Advanced Systems** | Build a RAG workflow, tool-using agent, or structured extraction pipeline. Red-team it with 10 adversarial injection tests. |
+| **Week 4** | **Public Proof** | Publish your case study on GitHub or LinkedIn. Take the **[Final Exam](../appendix/D-final-exam.md)** to verify your mastery. |
+
+---
+
+## 💡 Common Mistakes & How to Spot Them
+
+| Mistake | What goes wrong | The Fix |
+|---|---|---|
+| Chasing "Magic Words" | Believing there is a secret phrase that makes models 10x smarter. | Focus on fundamentals: clarity, context, clean data, and systematic evals. |
+| The Unmeasured Portfolio | Showing impressive-looking demo videos without a single test metric. | Always include an evaluation table showing pass rates and error reductions. |
+| Drowning in AI News | Spending 3 hours a day reading social media hype and never building anything. | Read provider release notes and landmark research papers; spend 80% of your time running prompts on real data. |
+
+---
+
+## 🧪 Try It Now
+
+Open your chat app right now and test the **Prompt Critic** meta-prompt from Section 1 on one of your existing work prompts:
+
+```text
+Critique this prompt as a senior prompt optimization engineer. 
+Score it from 1 to 5 on: Clarity, Specificity, Context, Structure, and Output Format.
+For any score below 5, explain the exact flaw and provide an improved drop-in revision.
+
+<prompt>
+{{paste your work prompt here}}
+</prompt>
 ```
 
----
-
-## 5. Building Your Portfolio & Career Pathways
-
-> 👔 **Non-Tech Career Path · The AI Operations & Strategy Leader:**
-> - **Job Titles:** AI Champion, AI Workflow Strategist, Prompt Architect (Content & Operations), Executive AI Specialist.
-> - **Core Value:** Translating messy human business processes into repeatable prompt templates and custom assistants. You build team prompt wikis, create company custom GPTs/Projects, and coach non-technical colleagues to reclaim 10+ hours a week.
-> - **Portfolio Focus:** Case studies showing business impact (e.g. "Automated customer email classification from 4 hours/day to 15 mins with 94% accuracy").
-
-> 💻 **Tech Career Path · The Production AI Engineer:**
-> - **Job Titles:** AI Engineer, LLM Application Architect, PromptOps / MLOps Engineer, GenAI Software Developer.
-> - **Core Value:** Architecting scalable, secure, type-safe software powered by LLMs. You implement function calling, MCP servers, hybrid RAG with vector databases, streaming API backends, automated CI/CD eval gates, and prompt injection defenses.
-> - **Portfolio Focus:** GitHub repositories with full code, Pydantic schemas, unit test eval suites, and architectural diagrams.
-
-Employers and clients want **evidence**. Build 3–5 projects that each show a different skill (see **Appendix E — Capstone Projects**).
-
-For each project, publish (GitHub / personal site / blog):
-1. **Problem** — who it's for, why it matters
-2. **Approach** — prompt design, architecture diagram
-3. **Prompts** — versions and what changed
-4. **Evaluation** — test set, metrics, before/after numbers
-5. **Safety** — threats considered, mitigations
-6. **Demo** — screenshots, video, or live link
-7. **Lessons** — what failed and what you learned
-
-> A project with an eval table showing "v1: 71% → v4: 94%" is far more impressive than a flashy demo with no measurement.
-
----
-
-## 6. Interview Preparation
-
-### Common questions (practice answering aloud)
-
-1. Explain how an LLM generates text to a non-technical stakeholder.
-2. What's the difference between zero-shot, few-shot and chain-of-thought prompting? When would you use each?
-3. How would you get reliable JSON output from an LLM in production?
-4. A model hallucinates product prices. Walk me through how you'd fix it.
-5. How do you evaluate a summarization feature?
-6. What is prompt injection and how do you defend an agent against it?
-7. RAG vs fine-tuning — how do you decide?
-8. How would you reduce the cost of an LLM feature by 50% without hurting quality?
-9. Describe a prompt you improved. How did you know it was better?
-10. How do you migrate a product to a new model safely?
-11. Design a customer-support bot for an e-commerce company end to end.
-12. How do you handle a conversation that exceeds the context window?
-
-<details>
-<summary>✅ Model answer outline for Q4 (hallucinated prices)</summary>
-
-1. **Diagnose:** does the model have the price data at all? Log a few failures.
-2. **Ground:** retrieve prices from the product DB via RAG or a `get_price` tool — never from model memory.
-3. **Prompt:** "Only state prices returned by the tool; if unavailable, say so."
-4. **Validate:** code checks that every price in the answer matches the tool result.
-5. **Evaluate:** a test set of price questions; measure price-accuracy before/after.
-6. **Monitor:** alert if price mismatches appear in production.
-
-</details>
-
-<details>
-<summary>✅ Model answer outline for Q11 (support bot design)</summary>
-
-- **Requirements & metrics:** resolution rate, CSAT, escalation rate, latency, cost, safety.
-- **Architecture:** router (intent/urgency) → RAG over help center & policies → tools (order lookup, return initiation) with least privilege → human handoff.
-- **Prompts:** system prompt with identity, policies, tone, escalation; grounded-answer template; tool descriptions.
-- **Safety:** injection defenses, no PII leakage, approval for refunds above a threshold.
-- **Eval:** golden set of 200 real tickets (typical/edge/adversarial), LLM-judge calibrated with humans.
-- **Ops:** prompt versioning, tracing, dashboards, canary releases, feedback loop.
-
-</details>
-
-### Practical take-home tasks you may get
-- Improve a provided prompt and show eval results
-- Build a small RAG or extraction pipeline
-- Red-team a chatbot and report vulnerabilities
-- Write a system prompt for a given persona and edge cases
-
----
-
-## 7. Freelancing & Consulting
-
-Services businesses pay for:
-- Custom GPTs/assistants & internal chatbots over company docs
-- Workflow automation (email triage, lead qualification, report generation)
-- Prompt libraries & team training workshops
-- Content pipelines with quality control
-- AI audits: evaluate and secure existing AI features
-
-Package them with **clear scope, measurable outcomes, and a maintenance plan**.
-
----
-
-## 8. Staying Current (without drowning)
-
-- **Primary sources first:** official docs, prompt engineering guides and cookbooks from model providers (Anthropic, OpenAI, Google), model release notes.
-- **Research:** skim abstracts on arXiv for topics you use; read deeply only what's relevant.
-- **Practice:** when a new model ships, re-run your personal eval set on it — you'll learn more than from any blog post.
-- **Community:** open-source repos, conference talks, and practitioners' write-ups — favor those with measurements.
-- **Rule:** if a "magic prompt trick" claims huge gains without evaluation, test it yourself before believing it.
-
----
-
-## 9. Your 30-Day Pro Plan (after this course)
-
-| Days | Goal |
-|---|---|
-| 1–5 | Build your personal **prompt library** (Appendix B) adapted to your field |
-| 6–12 | Capstone project 1 with full eval (Appendix E) |
-| 13–18 | Capstone project 2 involving RAG or agents |
-| 19–22 | Red-team both projects; write up mitigations |
-| 23–26 | Publish write-ups + demos; update résumé/LinkedIn |
-| 27–30 | Mock interviews using Section 6; take the Final Exam (Appendix D) again |
+Notice how the model identifies blind spots and ambiguities that you overlooked.
 
 ---
 
 ## 🔑 Key Takeaways
 
-- Use LLMs to **generate, critique and optimize prompts** — then evaluate.
-- Expert habits: read outputs, simplify, measure, test edge cases, stay model-agnostic.
-- Careers combine prompt skill with **engineering, product, safety, or domain expertise**.
-- A portfolio with **measured improvements** beats flashy demos.
-- Stay current through **primary sources and your own evals**.
+- Meta-prompting uses AI models to draft, critique, and debug your prompts, saving hours of manual trial-and-error.
+- Expert prompt engineers read real outputs, simplify instructions, and test edge cases before declaring success.
+- A standout portfolio features **measured before-and-after improvements** and transparent failure analyses.
+- Stay current by reading primary sources (official provider documentation and research papers) and testing new models on your personal evaluation dataset.
+
+---
+
+## 🏋️ Exercises
+
+### Exercise 17.1: Build Your 30-Day Commitment Card
+Write down your personal 30-day prompt engineering roadmap:
+1. Which track are you prioritizing? (👔 Non-Tech Track or 💻 Tech Track?)
+2. What specific real-world problem at work will you solve with AI in the next 14 days?
+3. Which Capstone Project from Appendix E will you build and publish?
+
+<details>
+<summary>View Sample Completed Commitment Card</summary>
+
+```markdown
+# 30-Day Prompt Engineering Commitment
+- **Selected Track:** 💻 Tech Track (Production AI Engineering)
+- **Workplace Project:** Building an automated customer feedback triage pipeline for our Indian retail app using FastAPI, Claude 3.5 Haiku, and Pydantic.
+- **Capstone Project:** Project 2 (Document Q&A Assistant with Hybrid RAG and Citation Verification).
+- **Target Completion Date:** 30 days from today.
+```
+
+</details>
+
+---
+
+## ✅ Quick Quiz
+
+1. What is the primary benefit of meta-prompting?
+   - A) It eliminates the need to learn prompt engineering.
+   - B) It uses the model's pattern recognition to generate, critique, and optimize prompt structures faster than manual drafting.
+   - C) It makes API calls completely free.
+2. In an AI engineering job interview, what carries more weight with hiring managers?
+   - A) Showing a video of a flashy prototype with no test data.
+   - B) Showing an evaluation table detailing baseline pass rates, specific failure analyses, and measured accuracy improvements on a golden dataset.
+   - C) Memorizing model release dates.
+3. Why should you always test automatically optimized prompts on a held-out test set?
+   - A) Because optimizers can easily overfit to small training sets, performing well on known examples but failing on new real-world queries.
+   - B) Because held-out sets reduce latency.
+   - C) Because DSPy requires two computers.
+
+<details>
+<summary>View Answers</summary>
+
+1. **B** — Meta-prompting uses the LLM as an expert assistant to identify ambiguities and draft standardized prompt components.
+2. **B** — Empirical evaluation and clear debugging methodology prove genuine engineering competence.
+3. **A** — Automated prompt optimizers risk overfitting to specific test inputs; held-out evaluation guarantees real-world generalization.
+
+</details>
 
 ---
 
 ## 🎓 Congratulations!
 
-You've completed all 18 modules. Next steps:
-1. Take the **[Final Exam](../appendix/D-final-exam.md)**
-2. Build a **[Capstone Project](../appendix/E-capstone-projects.md)**
-3. Keep the **[Cheat Sheet](../appendix/A-cheat-sheet.md)** and **[Prompt Library](../appendix/B-prompt-library.md)** handy
+You have completed all 18 modules of **Prompt Engineering: Zero to Pro**!
+
+You now possess the foundational theory, intermediate patterns, advanced architectures, and operational practices required to build world-class AI systems.
+
+### Your Next Steps:
+1. Test your mastery by taking the **[Final Exam (Appendix D)](../appendix/D-final-exam.md)**.
+2. Build a portfolio-grade capstone with **[Capstone Projects (Appendix E)](../appendix/E-capstone-projects.md)**.
+3. Bookmark the **[Cheat Sheet (Appendix A)](../appendix/A-cheat-sheet.md)** and **[Prompt Library (Appendix B)](../appendix/B-prompt-library.md)** for daily reference.
 
 ---
 

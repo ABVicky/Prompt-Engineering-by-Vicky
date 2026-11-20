@@ -2,274 +2,272 @@
 
 > 🔵 Stage 2 · Intermediate · ⏱️ ~3 hours
 
+Think back to your school or college days. Remember the difference between a closed-book exam and an open-book exam?
+
+In a closed-book exam, you had to memorize hundreds of dates, formulas, and facts. If your memory drew a blank during the test, you had two choices: leave the page empty, or make up an educated guess.
+
+In an open-book exam, you didn't have to memorize every single footnote. Instead, you kept your textbook right on your desk. When a question came up about contract law or thermodynamics, you flipped open the index, turned straight to Chapter 4, read the exact paragraph, and cited the author.
+
+Prompt engineering began as a closed-book exam: you relied on whatever the model memorized during its training. 
+
+**Retrieval-Augmented Generation (RAG)** turns the AI into an open-book researcher. Instead of expecting the model to remember your company's proprietary product manual or yesterday's pricing update, you search your documents for the exact paragraphs needed, place them on the model's digital desk, and ask it to answer using only that evidence.
+
+In this module, you will learn the art of **context engineering** and how to ground AI answers in verified source documents.
+
+---
+
 ## 🎯 Learning Objectives
 
-- Understand **context engineering**: deciding *what* goes into the context window, in *what order*, and *how much*
-- Prompt effectively with **long documents** (placement, quoting, citations)
-- Build the mental model and a minimal implementation of **RAG**
-- Write **grounded** prompts that cite sources and refuse when information is missing
+By the end of this module, you will be able to:
+- Understand the core principles of **context engineering**: what enters the context window, in what order, and with what metadata.
+- Prompt effectively with massive documents without suffering from the "lost in the middle" attention drop.
+- Master the two phases of **RAG**: offline indexing (chunk, embed, store) and online retrieval (search, rerank, ground).
+- Use **quote-then-answer** prompt patterns to eliminate hallucinations.
+- Choose accurately between long-context prompting, RAG, and model fine-tuning.
 
 ---
 
 ## 1. From Prompt Engineering to Context Engineering
 
-As apps grow, the hard question shifts from *"how do I phrase this?"* to *"what information should the model see right now?"* — that's **context engineering**.
+When people first start using AI, they focus entirely on phrasing: *"Should I say please? Should I tell it to act as an expert?"*
 
-**What fills a typical production context window (illustrative %):**
+In professional applications, phrasing is only 20% of the battle. The other 80% is **context engineering**: *What exact information should the model see right now, in what order, and what should be left out?*
 
 ```mermaid
 pie
-    "System prompt & rules" : 10
-    "Tool definitions" : 10
-    "Retrieved documents" : 45
-    "Conversation history / memory" : 20
-    "User message" : 5
-    "Room for the answer" : 10
+    title What Fills a Production Context Window
+    "Retrieved Document Passages" : 45
+    "Conversation History / User Memory" : 20
+    "System Rules & Company Policies" : 15
+    "Tool & Function Definitions" : 10
+    "User Message & Question" : 5
+    "Reserved Output Buffer" : 5
 ```
 
-Principles:
-1. **Relevant > more.** Irrelevant context distracts and costs money.
-2. **Fresh > stale.** Inject current data (dates, prices, user profile).
-3. **Structured > dumped.** Label each piece with tags and metadata.
-4. **Order deliberately.** Long documents first, instructions & question last.
-5. **Budget tokens.** Leave room for the answer (and thinking).
+### The 5 Golden Rules of Context Engineering
+1. **Relevance over volume:** Shoving 50 irrelevant pages into the prompt increases latency, drives up costs, and distracts the model's attention.
+2. **Freshness:** Inject real-time variables like today's date, current stock levels, and user account status.
+3. **Structured labeling:** Wrap each document in clean XML tags with source metadata so the model can cite its work.
+4. **Deliberate ordering:** Place reference documents at the beginning and specific questions/instructions at the very end.
+5. **Budgeting:** Always leave enough tokens in the context window for the model's answer and internal reasoning.
 
-> 👔 **Non-Tech Lens · Safe Document Q&A in Chat Apps:**
-> When uploading PDFs, vendor contracts, or reports into Claude or ChatGPT:
-> - Give a strict grounding rule: *"Answer using ONLY facts directly stated in the attached document. If the document doesn't explicitly answer the question, state 'Not mentioned in document'—never guess."*
-> - Demand verbatim citations: *"For each point in your answer, quote the exact sentence from the text and provide the page number."*
-> This eliminates 95% of hallucinations and makes the output immediately auditable for your team.
+> 👔 **Non-Tech Lens · Auditable Document Q&A in Chat Tools:**
+> When uploading a vendor contract, policy handbook, or financial report into ChatGPT or Claude:
+> - **The Grounding Rule:** *"Answer using ONLY facts directly stated in the attached document. If the document does not explicitly contain the answer, reply: 'Information not found in the provided document.' Never guess."*
+> - **The Citation Rule:** *"For every claim in your answer, quote the exact sentence from the document and mention the section heading or page number."*
+> This single prompt pattern eliminates 95% of hallucinations and makes the answer immediately verifiable for your team.
 
-> 💻 **Tech Lens · Production RAG Pipeline Architecture:**
-> Long context windows (128k–1M+ tokens) do not eliminate the need for RAG due to cost, TTFT latency, and the "Lost in the Middle" attention degradation phenomenon. Production RAG relies on:
-> 1. **Hybrid Retrieval:** Dense vector embeddings (e.g. `text-embedding-3-small` / Voyage) combined with sparse BM25 keyword search via Reciprocal Rank Fusion (RRF).
-> 2. **Cross-Encoder Re-ranking:** Filter the top-30 retrieved candidates down to the top-5 most relevant chunks using a reranker model (e.g., Cohere Rerank / BGE).
-> 3. **Structured Grounding:** Feed re-ranked chunks into XML tags with strict schema-constrained refusal thresholds.
+> 💻 **Tech Lens · Production RAG Architecture:**
+> Even with 1-million-token context windows, production systems rely on RAG because reading 1M tokens on every API call is prohibitively slow and expensive. A modern production RAG pipeline uses:
+> 1. **Hybrid Retrieval:** Dense vector search (captures semantic intent) combined with sparse BM25 keyword search (captures exact IDs, part numbers, and names) merged via Reciprocal Rank Fusion (RRF).
+> 2. **Cross-Encoder Reranking:** Filter the top-30 retrieved candidate chunks down to the top-5 most relevant passages using a reranker model (like Cohere Rerank or BGE Reranker).
+> 3. **Structured Grounding:** Feed the reranked chunks into XML tags with strict refusal thresholds.
 
 ---
 
-## 2. Long-Context Prompting
+## 2. Long-Context Prompting: Taming the 100-Page Document
 
-Modern models accept very long inputs (hundreds of thousands of tokens or more), but quality still depends on how you present it.
+When you paste an entire 50-page employee manual or legal brief into a prompt, models can suffer from an attention phenomenon known as **"Lost in the Middle"**: they recall facts at the very beginning and very end of the prompt far better than facts buried on page 27.
 
-### ✅ Best practices
+Here is the most reliable way to structure a long-context prompt:
 
 ```xml
 <documents>
-  <document index="1">
-    <source>annual_report_2025.pdf</source>
-    <content>
-      ...
-    </content>
+  <document id="1" source="leave_policy_2026.pdf">
+    Employees are entitled to 18 days of earned leave per calendar year. Unused leave up to 10 days can be carried forward to the next year.
   </document>
-  <document index="2">
-    <source>board_minutes_q3.docx</source>
-    <content>
-      ...
-    </content>
+  <document id="2" source="parental_policy_2026.pdf">
+    Primary caregivers are eligible for 26 weeks of paid maternity leave. Secondary caregivers receive 4 weeks of paid paternity leave.
   </document>
 </documents>
 
-First, find the quotes from the documents most relevant to the question and
-put them in <quotes> tags with the document index.
-Then answer the question in <answer> tags, using only those quotes.
-If the documents don't contain the answer, say so.
+Follow this exact procedure:
+1. Locate the exact sentences in the documents that address the user's question.
+2. Quote them inside <quotes> tags, mentioning the document id.
+3. Answer the question inside <answer> tags using ONLY those quoted sentences.
+4. If the documents do not cover the question, state: "The provided documents do not contain this information."
 
-Question: What were the three main risks the board discussed regarding expansion?
+Question: Can an employee carry forward 15 days of unused earned leave into next year?
 ```
 
-| Practice | Why |
-|---|---|
-| Put long documents **at the top**, question **at the end** | Often noticeably improves answer quality on long inputs |
-| Wrap each document with **source metadata** | Enables citations and disambiguation |
-| **Quote-then-answer** | Forces the model to locate evidence, reducing hallucination |
-| Ask for **citations** like `[doc 2]` | Lets users verify |
-| Keep instructions **outside** the data tags | Prevents confusion & injection |
-
-### "Lost in the middle"
-Research (Liu et al., 2023) found models used information at the start and end of long contexts better than in the middle. Newer models are much better, but the habits above still help: put key instructions at the end, and retrieve only relevant chunks.
+### Why "Quote-Then-Answer" Works
+Because language models generate text sequentially, forcing the model to reproduce the verbatim quote *first* ensures that its attention layers focus directly on the verified source text while formulating the answer.
 
 ---
 
-## 3. RAG — Retrieval-Augmented Generation
+## 3. How RAG Works: Indexing and Retrieval
 
-When your knowledge base is too large (or changes too often) to paste into every prompt, **retrieve** only the relevant pieces at query time.
+When your company has 10,000 documents, you cannot paste them all into one prompt. You need RAG.
 
 ![RAG pipeline](../assets/rag-pipeline.svg)
 
-### The two phases
+RAG operates in two distinct phases:
 
-**Indexing (offline)**
-1. **Load** documents (PDF, HTML, DB rows).
-2. **Chunk** them into passages (≈ 200–800 tokens, with some overlap; split on headings/paragraphs when possible).
-3. **Embed** each chunk into a vector using an embedding model.
-4. **Store** vectors + text + metadata in a vector database (pgvector, Chroma, Qdrant, Pinecone, Weaviate, FAISS…).
+### Phase 1: Indexing (Done Offline)
+1. **Load:** Read PDFs, Word documents, Notion pages, or customer tickets.
+2. **Chunk:** Chop long text into small, self-contained paragraphs (typically 300 to 600 tokens).
+3. **Embed:** Convert each text chunk into a list of numbers (a vector) using an embedding model. Similar concepts end up with similar numbers.
+4. **Store:** Save the chunks, vectors, and source metadata into a **Vector Database** (like Chroma, pgvector, Qdrant, or Pinecone).
 
-**Retrieval & generation (online)**
-1. Embed the user's question.
-2. Find the top-k most similar chunks (often combined with keyword/BM25 search = **hybrid search**).
-3. Optionally **rerank** the results with a reranker model.
-4. Insert the chunks into a **grounded prompt**.
-5. Generate an answer with citations.
+### Phase 2: Retrieval & Generation (Done When a User Asks a Question)
+1. Convert the user's question into an embedding vector.
+2. Search the vector database for the top 3–5 chunks most semantically similar to the question.
+3. Paste those 3–5 chunks into a grounded prompt template.
+4. Send the prompt to the LLM to generate an answer with citations.
 
-### Minimal RAG in Python (concept demo)
+---
+
+## 4. Minimal Working RAG in Python
+
+Here is a self-contained RAG script in Python using `chromadb`:
 
 ```python
-# pip install anthropic chromadb
-import chromadb, anthropic
+import chromadb
 
-docs = {
-    "refund.md":   "Refunds are available within 7 days if less than 20% of the course is watched.",
-    "certs.md":    "Certificates are issued after 100% completion and passing the final quiz.",
-    "pricing.md":  "The Pro plan costs ₹999/month and includes all courses.",
+# 1. Sample company knowledge base
+knowledge_base = {
+    "doc_wifi": "Guest Wi-Fi network is 'IndiraGuest' with password 'Welcome2026!'. Speeds are capped at 50 Mbps.",
+    "doc_expense": "Meal expenses up to ₹1,500 per day are reimbursable on official domestic travel without prior approval.",
+    "doc_holidays": "The office will remain closed on Diwali, Independence Day, and Republic Day.",
 }
 
-db = chromadb.Client()
-col = db.create_collection("kb")                       # uses a default embedding model
-col.add(ids=list(docs), documents=list(docs.values()), metadatas=[{"source": k} for k in docs])
+# 2. Initialize in-memory vector database
+client = chromadb.Client()
+collection = client.create_collection("office_kb")
 
-def answer(question: str) -> str:
-    hits = col.query(query_texts=[question], n_results=2)
-    context = "\n".join(
-        f'<doc source="{m["source"]}">{d}</doc>'
-        for d, m in zip(hits["documents"][0], hits["metadatas"][0])
+# 3. Index documents (automatically creates embeddings)
+collection.add(
+    ids=list(knowledge_base.keys()),
+    documents=list(knowledge_base.values()),
+    metadatas=[{"source": k} for k in knowledge_base.keys()]
+)
+
+# 4. Search and Grounding function
+def answer_query(user_question: str) -> str:
+    # Retrieve top 2 most relevant chunks
+    results = collection.query(query_texts=[user_question], n_results=2)
+    
+    retrieved_chunks = "\n".join(
+        f'<doc id="{meta["source"]}">{text}</doc>'
+        for text, meta in zip(results["documents"][0], results["metadatas"][0])
     )
-    prompt = f"""Answer the question using ONLY the documents below.
-Cite the source in brackets, e.g. [refund.md].
-If the documents don't contain the answer, reply: "I don't have that information."
+    
+    prompt = f"""You are a helpful office assistant. Answer the question using ONLY the documents below.
+Always cite your source in brackets like [doc_id]. If the answer is not in the documents, reply: "I do not have information on that."
 
 <documents>
-{context}
+{retrieved_chunks}
 </documents>
 
-Question: {question}"""
-    resp = anthropic.Anthropic().messages.create(
-        model="claude-sonnet-5-5", max_tokens=300,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return resp.content[0].text
+Question: {user_question}"""
+    
+    return prompt
 
-print(answer("Can I get a refund after 5 days if I watched 10%?"))
-```
-
-### The grounded-answer prompt template
-
-```text
-You are a support assistant. Answer using ONLY the information in <documents>.
-
-Rules:
-1. Cite sources for every claim using [source].
-2. If the documents don't fully answer the question, say what's missing.
-3. If documents conflict, mention both and prefer the most recent.
-4. Never use outside knowledge for facts about our products.
-
-<documents>
-{{retrieved_chunks}}
-</documents>
-
-<question>{{question}}</question>
+# Test query
+print(answer_query("How much can I spend on food when traveling for work?"))
 ```
 
 ---
 
-## 4. Improving RAG Quality
+## 5. RAG vs. Long Context vs. Fine-Tuning
 
-Most RAG failures are **retrieval** failures, not generation failures.
+When you need an AI to know your company's data, which approach should you pick?
 
-| Problem | Fix |
-|---|---|
-| Right chunk not retrieved | Better chunking; hybrid search; increase k; **query rewriting** |
-| Chunk lacks context ("It costs ₹999" — what does?) | **Contextual chunking**: prepend a short summary of the source document/section to each chunk before embedding |
-| Too many irrelevant chunks | **Reranking**; metadata filters (date, product, language) |
-| User question vague | Ask the LLM to **rewrite the query** or generate multiple queries; **HyDE** (embed a hypothetical answer) |
-| Multi-hop questions | Iterative retrieval / agentic RAG (retrieve → reason → retrieve again) |
-| Answer ignores sources | Quote-then-answer; stricter grounding rules; lower temperature |
-| Stale data | Re-index on change; store timestamps; prefer newest |
-
-### Query rewriting prompt
-
-```text
-Rewrite the user's question into 3 search queries that would find relevant
-passages in a company knowledge base. Expand abbreviations, include synonyms.
-Output a JSON array of strings.
-Conversation so far: {{history}}
-Latest question: {{question}}
-```
-
----
-
-## 5. RAG vs Long Context vs Fine-Tuning
-
-| Approach | Best when | Weakness |
+| Approach | When it is the best choice | Main drawback |
 |---|---|---|
-| **Paste into prompt (long context)** | Knowledge fits in the window (<~100–200 pages) and changes often | Cost/latency per call (mitigate with prompt caching) |
-| **RAG** | Large or frequently updated knowledge; need citations | Retrieval engineering; can miss info |
-| **Fine-tuning** | Teach a *style, format, or narrow behavior* at scale; reduce prompt length | Poor for adding facts; costly to update; needs data |
-| **Prompting alone** | Model already knows the domain | No private knowledge |
+| **Long Context (Paste into chat)** | When you have 1 to 5 documents (< 100 pages) that change with every new task. | Higher token cost per prompt; slower first-token latency. |
+| **RAG (Search & Retrieve)** | When you have thousands of documents, manuals, or customer tickets that update frequently and require citations. | Requires engineering to build search, chunking, and embedding pipelines. |
+| **Fine-Tuning (Model Training)** | When you need to teach a model a specific writing style, unique programming syntax, or narrow output format at scale. | **Terrible for factual recall.** Expensive to update, prone to hallucination, and cannot cite specific source pages. |
 
-> 🔑 **Rule of thumb:** prompting first → add context/RAG for knowledge → fine-tune only for behavior that prompting can't achieve reliably.
+> 🔑 **The Industry Rule of Thumb:** 
+> Start with prompt engineering. Add **RAG** when the model needs private, changing factual knowledge. Use **fine-tuning** only to change behavior, tone, or formatting—never to teach factual knowledge.
 
 ---
 
-## 6. Prompt Caching (context cost saver)
+## 💡 Common Mistakes & How to Spot Them
 
-Many providers can **cache** a long, unchanging prompt prefix (system prompt, documents, tool definitions) so repeated calls are cheaper and faster. Design for it:
+| Mistake | What goes wrong | How to fix it |
+|---|---|---|
+| The Blind Keyword Mismatch | A user asks: *"What is the cost of the subscription?"* but the document says *"Annual fee is ₹4,999"*. Keyword search finds nothing. | Use **hybrid search** (vectors + keywords) or prompt an LLM to rewrite the user's query into synonyms first. |
+| Homeless Chunks | Chunking text into tiny sentences so that a chunk says: *"It costs ₹500"* without mentioning what "it" is. | Use **Contextual Chunking**: prepend the document title or section heading to each chunk before embedding. |
+| The Over-Confident Hallucination | The model's retrieved chunks don't answer the question, but it answers anyway from memory. | Enforce a strict refusal rule: *"If the answer cannot be proven using the text inside `<documents>`, write: 'Not mentioned in sources.'"* |
 
-- Put **static content first** (instructions, documents), **dynamic content last** (user question).
-- Don't insert timestamps or random IDs at the top of a cached prefix — any change breaks the cache.
+---
+
+## 🧪 Try It Now
+
+Upload any multi-page PDF (a lease agreement, a credit card statement, or an insurance policy) into ChatGPT or Claude and test this prompt:
+
+```text
+Act as a strict compliance auditor.
+
+Answer this question using ONLY facts explicitly written in the uploaded document:
+"What are all conditions under which a claim can be rejected?"
+
+Procedure:
+1. First, quote the exact clauses and page numbers in <evidence>.
+2. Then, summarize the rejection conditions in plain English as a bulleted list in <summary>.
+3. If any detail is not explicitly mentioned in the text, write: "Not covered in the provided document." Do not guess or extrapolate.
+```
+
+Notice how the `<evidence>` step forces the model to verify facts before writing its summary.
 
 ---
 
 ## 🔑 Key Takeaways
 
-- **Context engineering** = choosing the right information, structure, order and size.
-- Long docs: **docs first, question last, tags + metadata, quote-then-answer, citations**.
-- **RAG** = index (chunk → embed → store) + retrieve (search → rerank → grounded prompt).
-- Most RAG bugs are **retrieval** bugs; fix chunking, search, and query rewriting.
-- Prompting → RAG → fine-tuning, in that order.
+- **Context engineering** is about curating the right information, order, and structure for the model's working memory.
+- For long documents, place source materials at the top and questions/instructions at the end.
+- Use **quote-then-answer** prompt patterns to eliminate hallucinations on document Q&A.
+- **RAG** indexes documents offline (chunk, embed, store) and retrieves relevant passages at runtime to ground the model's answer.
+- Prompting first, RAG for private knowledge, fine-tuning for style.
 
 ---
 
 ## 🏋️ Exercises
 
-**9.1 — Grounded prompt.** Write a prompt for answering HR policy questions from a 40-page handbook, with citations and a refusal rule.
+### Exercise 9.1: Write a Grounded HR Policy Prompt
+Write a grounded prompt for an internal HR assistant that answers employee questions about sick leave using an attached company policy excerpt. 
+Requirements:
+- Must cite section numbers.
+- Must refuse to answer questions outside the handbook.
+- Must highlight any requirement for a medical certificate.
 
 <details>
-<summary>✅ Sample solution</summary>
+<summary>View Solution & Explanation</summary>
+
+**A strong prompt:**
 
 ```xml
 <handbook>
-{{handbook_text_with_section_numbers}}
+{{handbook_text_with_sections}}
 </handbook>
 
-You answer employee questions about company policy.
-1. Find the relevant passages and copy them into <quotes>, each with its section number.
-2. Answer in <answer> in plain language, citing sections like (§4.2).
-3. If the handbook doesn't cover it, say: "The handbook doesn't cover this —
-   please contact hr@company.example." Do not guess.
+You are the internal HR assistant for Acme Corp India. Answer the employee's inquiry below.
 
-Question: {{question}}
+Rules:
+1. Base your answer ONLY on the text inside <handbook>.
+2. For each rule you cite, include the section number in brackets (e.g., [§3.2]).
+3. If an illness lasts more than 2 consecutive working days, explicitly mention the requirement to submit a registered medical practitioner's certificate.
+4. If the handbook does not cover the employee's specific situation, state: "Our handbook does not address this specific situation. Please reach out to hr-support@acme.example for guidance."
+
+Employee Question: {{employee_question}}
 ```
 
 </details>
 
-**9.2 — Debug RAG.** Users ask "How much is Pro?" and the bot says it doesn't know, although pricing.md says "The Pro plan costs ₹999/month." Suggest 3 causes.
+### Exercise 9.2: Diagnose a RAG Failure
+An e-commerce company launches a RAG bot. When a customer asks: *"Can I return my mixer grinder after 10 days?"*, the bot replies: *"I do not have that information"*, even though their returns document clearly says: *"Small kitchen appliances can be returned within 14 days of delivery."*
+
+List three potential causes in the RAG pipeline that caused this failure.
 
 <details>
-<summary>✅ Solution</summary>
+<summary>View Solution & Explanation</summary>
 
-1. The chunk wasn't retrieved (embedding mismatch "how much" ↔ "costs"; try hybrid/keyword search or query rewriting).
-2. k too small and other chunks ranked higher (increase k / add a reranker).
-3. Chunking split "Pro plan" and the price into separate chunks, or the prompt's refusal rule is too strict. Inspect the retrieved chunks — always log them.
-
-</details>
-
-**9.3 — Choose an approach.** A law firm wants answers from 50,000 case files updated daily, with citations. Which approach?
-
-<details>
-<summary>✅ Solution</summary>
-
-**RAG** (with hybrid search, metadata filters by jurisdiction/date, reranking, and mandatory citations). Long context can't hold 50k files, and fine-tuning is unsuitable for daily-changing facts and citations.
+**Three common root causes:**
+1. **Vocabulary Mismatch in Search:** The customer searched for "mixer grinder", but the document used the term "small kitchen appliances". A pure keyword search would miss this (fixed by semantic vector embeddings or query expansion).
+2. **Chunk Size Too Small:** The chunking algorithm separated the category "Small kitchen appliances" from the 14-day rule into two different chunks, so the retrieved snippet lacked context.
+3. **Low Retrieval Top-K:** The vector search only retrieved the top 2 chunks, and chunks about general clothing returns outranked the appliance chunk. Increasing $k$ to 5 or adding a reranker solves this.
 
 </details>
 
@@ -277,20 +275,25 @@ Question: {{question}}
 
 ## ✅ Quick Quiz
 
-1. Where should a long document go relative to the question?
-2. Name the four steps of RAG indexing.
-3. What is hybrid search?
-4. Why is fine-tuning a poor way to add frequently changing facts?
-5. How do you design prompts to benefit from caching?
+1. Where should reference documents be placed relative to your instructions in a long prompt?
+   - A) At the very end of the prompt.
+   - B) At the beginning, with your instructions and specific question placed at the end.
+   - C) In the middle of your sentences.
+2. What are the four core steps of RAG offline indexing?
+   - A) Prompt, Chat, Repeat, Save.
+   - B) Load, Chunk, Embed, Store in a vector database.
+   - C) Write, Format, Test, Publish.
+3. Why is fine-tuning generally a poor choice for teaching an AI your company's daily product pricing?
+   - A) Because fine-tuning is too easy.
+   - B) Because fine-tuning models cannot reliably memorize exact changing numbers, cannot cite source pages, and is expensive to retrain daily.
+   - C) Because fine-tuning only works for image models.
 
 <details>
-<summary>Show answers</summary>
+<summary>View Answers</summary>
 
-1. Document **first**, question/instructions **last**.
-2. Load → chunk → embed → store.
-3. Combining semantic (vector) search with keyword (e.g., BM25) search.
-4. It's costly and slow to retrain, it doesn't reliably store facts, and it can't cite sources.
-5. Put static content at the beginning and dynamic content at the end; keep the prefix byte-identical.
+1. **B** — Placing long documents first and instructions last counters the "lost in the middle" attention drop.
+2. **B** — Offline indexing loads documents, splits them into chunks, embeds them into vectors, and stores them in a vector database.
+3. **B** — Fine-tuning adapts style and format, but is brittle for fast-changing factual knowledge. RAG is the industry standard for factual retrieval.
 
 </details>
 

@@ -53,7 +53,7 @@ flowchart TD
 | **Primary Tools** | ChatGPT, Claude Projects, Google Gemini, MS Copilot | Python / Node SDKs, OpenAI/Anthropic APIs, Pydantic, Ollama, Git |
 | **Prerequisites** | None! Clear communication and domain knowledge | Basic comfort with Python or JavaScript |
 | **Core Modules** | 00–08, 09 (doc chat), 11, 14 (privacy), 16 (playbooks), 17 | All 18 modules (00–17) with deep focus on 06, 09, 10, 12, 13, 14, 15 |
-| **Deliverable** | High-leverage workflow prompts, Custom GPTs, business playbook | Production-tested prompt pipelines, function-calling agents, eval suites |
+| **Deliverable** | High-impact workflow prompts, Custom GPTs, business playbook | Production-tested prompt pipelines, function-calling agents, eval suites |
 
 ---
 
