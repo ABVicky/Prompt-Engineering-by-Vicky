@@ -145,7 +145,8 @@
           `<div class="side-items">${s.items.map((i) => `<a class="side-item" data-p="${i.p}" href="#/${i.p}"><span class="num"><span>${esc(i.n)}</span></span><span class="t">${esc(i.t)}</span></a>`).join("")}</div></section>`;
       }).join("") +
       `</div>` +
-      `<div class="side-foot">${avatar("sm")}<span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a><br>© 2026 All rights reserved.</span></div>`;
+      `<div class="side-foot">${avatar("sm")}<span>Author: <a href="${MAP.authorSite || 'https://abvicky.in'}" target="_blank" rel="noopener"><strong>${esc(MAP.author)}</strong></a><br>Platform built by <a href="${MAP.platformSite || 'https://www.manikarnikatechnologies.in/'}" target="_blank" rel="noopener"><strong>${esc(MAP.platformBuilder || "Manikarnika Technologies")}</strong></a><br>© 2026 All rights reserved.</span></div>` +
+      `<div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="Resize sidebar" title="Drag to resize · Double-click to reset (300px)"></div>`;
     markSidebar();
   }
   function markSidebar() {
@@ -393,8 +394,10 @@
   document.addEventListener("keydown", (e) => {
     const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); PE.palette.isOpen() ? PE.palette.close() : PE.palette.open(); return; }
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "b") { e.preventDefault(); setSidebarCollapsed(); return; }
     if (e.key === "Escape") { if (PE.lightbox.isOpen()) PE.lightbox.close(); else if (PE.palette.isOpen()) PE.palette.close(); else closeDrawer(); return; }
     if (typing || PE.palette.isOpen() || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === "[") { e.preventDefault(); setSidebarCollapsed(); return; }
     if (e.key === "/") { e.preventDefault(); PE.palette.open(); return; }
     if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
       const idx = ORDER.findIndex((i) => i.p === current);
@@ -410,12 +413,110 @@
     $("#to-top").classList.toggle("show", scrollY > 700);
   }, { passive: true });
 
+  /* ---------- Sidebar Collapsible & Resizable ---------- */
+  const DEFAULT_SIDEBAR_W = 300;
+  const MIN_SIDEBAR_W = 200;
+
+  function updateSidebarToggleUI() {
+    const isCollapsed = document.body.classList.contains("sidebar-collapsed");
+    const btn = $("#sidebar-toggle-btn");
+    if (btn) {
+      btn.setAttribute("aria-expanded", String(!isCollapsed));
+      btn.classList.toggle("active", isCollapsed);
+      btn.title = isCollapsed ? "Expand sidebar ([)" : "Collapse sidebar ([)";
+    }
+  }
+
+  function setSidebarCollapsed(collapse) {
+    if (window.innerWidth <= 960) {
+      toggleDrawer();
+      return;
+    }
+    const willCollapse = typeof collapse === "boolean" ? collapse : !document.body.classList.contains("sidebar-collapsed");
+    document.body.classList.toggle("sidebar-collapsed", willCollapse);
+    PE.store.set("pe-sidebar-collapsed", willCollapse);
+    updateSidebarToggleUI();
+  }
+
+  function initSidebarInteractions() {
+    const savedW = parseInt(PE.store.get("pe-sidebar-w", DEFAULT_SIDEBAR_W), 10);
+    if (savedW && savedW >= MIN_SIDEBAR_W && savedW <= Math.round(window.innerWidth * 0.6)) {
+      document.documentElement.style.setProperty("--sidebar-w", `${savedW}px`);
+    }
+
+    const savedCollapsed = PE.store.get("pe-sidebar-collapsed", false);
+    if (savedCollapsed && window.innerWidth > 960) {
+      document.body.classList.add("sidebar-collapsed");
+    }
+    updateSidebarToggleUI();
+
+    const toggleBtn = $("#sidebar-toggle-btn");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => setSidebarCollapsed());
+    }
+
+    const expandTab = $("#sidebar-expand-tab");
+    if (expandTab) {
+      expandTab.addEventListener("click", () => setSidebarCollapsed(false));
+    }
+
+    let isDragging = false;
+    let startX = 0;
+    let startW = 0;
+
+    document.addEventListener("pointerdown", (e) => {
+      const resizer = e.target.closest(".sidebar-resizer");
+      if (!resizer || window.innerWidth <= 960 || e.button !== 0) return;
+      e.preventDefault();
+      isDragging = true;
+      if (resizer.setPointerCapture) {
+        try { resizer.setPointerCapture(e.pointerId); } catch (_) {}
+      }
+      startX = e.clientX;
+      const sb = $("#sidebar");
+      startW = sb ? sb.getBoundingClientRect().width : DEFAULT_SIDEBAR_W;
+      document.body.classList.add("is-resizing-sidebar");
+    });
+
+    document.addEventListener("pointermove", (e) => {
+      if (!isDragging) return;
+      const maxW = Math.min(540, Math.round(window.innerWidth * 0.48));
+      const delta = e.clientX - startX;
+      const newW = Math.max(MIN_SIDEBAR_W, Math.min(maxW, Math.round(startW + delta)));
+      document.documentElement.style.setProperty("--sidebar-w", `${newW}px`);
+    });
+
+    function endDrag() {
+      if (!isDragging) return;
+      isDragging = false;
+      document.body.classList.remove("is-resizing-sidebar");
+      const sb = $("#sidebar");
+      if (sb) {
+        const finalW = Math.round(sb.getBoundingClientRect().width);
+        PE.store.set("pe-sidebar-w", finalW);
+      }
+    }
+
+    document.addEventListener("pointerup", endDrag);
+    document.addEventListener("pointercancel", endDrag);
+
+    document.addEventListener("dblclick", (e) => {
+      const resizer = e.target.closest(".sidebar-resizer");
+      if (!resizer || window.innerWidth <= 960) return;
+      e.preventDefault();
+      document.documentElement.style.setProperty("--sidebar-w", `${DEFAULT_SIDEBAR_W}px`);
+      PE.store.set("pe-sidebar-w", DEFAULT_SIDEBAR_W);
+      toast("Sidebar width reset to 300px");
+    });
+  }
+
   /* ---------- Boot ---------- */
   if (/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) { /* keep ⌘K */ } else { const k = document.querySelector(".st-kbd"); if (k) k.textContent = "Ctrl K"; }
   PE.hydrateIcons();
   paintTheme();
   setFocus(!!PE.store.get("pe-focus", false));
   renderSidebar();
+  initSidebarInteractions();
   PE.palette.init();
   route();
 })();
