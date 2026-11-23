@@ -4,6 +4,13 @@
 
 ![Prompt Engineering: Zero to Pro](assets/cover.svg)
 
+<p align="center">
+  <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="https://img.shields.io/badge/Read_the_guide-online-3CC9A0?style=for-the-badge&logo=readthedocs&logoColor=15181E" alt="Read the guide online"></a>
+  <a href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky/stargazers"><img src="https://img.shields.io/github/stars/ABVicky/Prompt-Engineering-by-Vicky?style=for-the-badge&logo=github&label=Stars&color=2F6AA8" alt="GitHub stars"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-All_Rights_Reserved-3CC9A0?style=for-the-badge" alt="License: All Rights Reserved"></a>
+  <img src="https://img.shields.io/badge/Level-Beginner_to_pro-F3B552?style=for-the-badge" alt="Level: beginner to pro">
+</p>
+
 > ✍️ **Why this exists:** When I set out to learn prompt engineering, I struggled to find good study material. Most of it was either "magic prompt" lists that broke as soon as my task changed, or research papers that never showed how to use the ideas at work. So I wrote my own notes as I learned, and organized them from zero to pro so I could build the skill and use it in my work. This is that guide. Everything is in one place, free, with nothing locked. I'm sharing it in case it helps you too. — *Vicky*
 
 ---
@@ -167,9 +174,17 @@ We built this learning environment to be fast, distraction-free, and respectful 
 
 ## 7. Copyright & Terms of Use
 
-© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved.
+© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)** and **[Vicky Prasad Mahato](https://abvicky.in)**. **All Rights Reserved.**
 
-- **Author:** **[Vicky Prasad Mahato](https://abvicky.in)** ([LinkedIn](https://www.linkedin.com/in/abvicky/) · [GitHub](https://github.com/ABVicky))
-- **Platform Architecture & Development:** **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**
+This repository is publicly accessible on GitHub for **viewing, reading, study, and educational inspection only**. All rights to the original source code, scripts, software architecture, curriculum structure, instructional lessons, prompt templates, exercises, and written documentation are reserved by the copyright owners.
 
-This guide, including its text, diagrams, exercises, code examples, and instructional designs, is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. All product names, logos, and brands mentioned are property of their respective owners and are used solely for identification and educational reference.
+Without prior written permission from the copyright owners, nobody is permitted to:
+- **Copy or redistribute** the source code, curriculum, or materials in whole or in part.
+- **Re-upload or republish** the code, reader platform, prompt templates, or content in another repository or platform.
+- **Claim the original code or content** as their own.
+- **Modify and distribute** derivative versions or adaptations of this work.
+- **Use the code or curriculum commercially** (including paid courses, bootcamps, client work, or books).
+- **Reuse substantial portions** of the code, user interface, or reader architecture in other projects.
+- **AI Training & Dataset Extraction:** Ingest, scrape, or extract this curriculum, prompt templates, or codebase for training, fine-tuning, or evaluating commercial AI models or proprietary machine learning datasets without explicit prior authorization.
+
+For complete license terms, restrictions, permissions, and third-party dependency notices (including Marked.js, Highlight.js, Mermaid.js, and Google Fonts), please see the full **[LICENSE](LICENSE)** file.

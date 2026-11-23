@@ -6,7 +6,7 @@
 
 <a href="https://abvicky.github.io/Prompt-Engineering-by-Vicky/"><img src="https://img.shields.io/badge/Read_the_guide-online-F7AE2E?style=for-the-badge&logo=readthedocs&logoColor=111318" alt="Read the guide online"></a>
 <a href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky/stargazers"><img src="https://img.shields.io/github/stars/ABVicky/Prompt-Engineering-by-Vicky?style=for-the-badge&logo=github&label=Stars&color=2F7FE0" alt="GitHub stars"></a>
-<img src="https://img.shields.io/badge/Price-Free-3DD68C?style=for-the-badge" alt="Free">
+<a href="../LICENSE"><img src="https://img.shields.io/badge/License-All_Rights_Reserved-3CC9A0?style=for-the-badge" alt="License: All Rights Reserved"></a>
 <img src="https://img.shields.io/badge/Level-Beginner_→_Pro-7B5CFF?style=for-the-badge" alt="Beginner to pro">
 <a href="https://github.com/ABVicky/Prompt-Engineering-by-Vicky/commits/master"><img src="https://img.shields.io/github/last-commit/ABVicky/Prompt-Engineering-by-Vicky?style=for-the-badge&label=Updated&color=FF6B3D" alt="Last updated"></a>
 
@@ -285,7 +285,11 @@ Platform built by **[Manikarnika Technologies](https://www.manikarnikatechnologi
 
 ## © Copyright
 
-© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)**. All rights reserved. This guide is provided for personal learning and educational use. Redistribution, commercial resale, republication, or training on these materials without express written authorization is prohibited. See the [full terms](../README.md#7-copyright--terms-of-use).
+© 2026 **[Manikarnika Technologies](https://www.manikarnikatechnologies.in/)** and **[Vicky Prasad Mahato](https://abvicky.in)**. **All Rights Reserved.**
+
+This repository is publicly accessible on GitHub for **viewing, reading, study, and educational inspection only**. All rights to original source code, curriculum, prompt templates, and software architecture are reserved.
+
+Without prior written permission from the copyright owners, nobody is permitted to copy, redistribute, re-upload, claim ownership of, commercially exploit, or create derivative versions of this codebase or curriculum. For full legal terms, see the **[LICENSE](../LICENSE)** file.
 
 <div align="center">
 <br>

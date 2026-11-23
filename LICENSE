@@ -1,0 +1,63 @@
+# Copyright and Terms of Use
+
+Copyright (c) 2026 Manikarnika Technologies (https://www.manikarnikatechnologies.in/) and Vicky Prasad Mahato (https://abvicky.in).
+All Rights Reserved.
+
+---
+
+### 1. Ownership of Original Source Code & Materials
+
+All original source code, scripts, software architecture, stylesheets, user interface designs, curriculum structure, instructional lessons, exercises, prompt templates, evaluation rubrics, diagrams, and written documentation contained within this repository are the exclusive intellectual property of the Copyright Owners:
+- **Platform Architecture & Development:** Manikarnika Technologies (https://www.manikarnikatechnologies.in/)
+- **Author & Content Creator:** Vicky Prasad Mahato (https://abvicky.in)
+
+All rights not expressly granted herein are strictly reserved by the Copyright Owners.
+
+---
+
+### 2. Public Visibility & Permitted Use
+
+This repository is maintained as a public repository on GitHub for the sole purpose of enabling **public viewing, reading, study, and educational inspection**.
+
+Under this notice, you are permitted to:
+- View, browse, and read the repository's original source code, curriculum documents, prompt libraries, and instructional materials for personal study and non-commercial educational inspection.
+- Access, read, and interact with the live public reader web application hosted at https://abvicky.github.io/Prompt-Engineering-by-Vicky/.
+- Star or fork the repository exclusively for personal study and bookmarking within GitHub, provided that no prohibited actions listed below are undertaken.
+
+No license or permission is granted to reproduce, publish, or distribute the materials outside of this personal inspection scope.
+
+---
+
+### 3. Usage Restrictions & Prohibitions
+
+Without prior written permission from the Copyright Owners, no individual, entity, or organization is permitted to:
+
+1. **Copy or Redistribute:** Copy, download for redistribution, mirror, scrape, host, sublicense, publish, or redistribute the source code, curriculum, or instructional assets, in whole or in part, through any digital or physical medium.
+2. **Re-upload or Republish:** Re-upload, mirror, or republish the source code, reading platform, prompt templates, or curriculum files in another repository (on GitHub, GitLab, Bitbucket, or any other hosting service), website, portal, learning management system (LMS), or online course platform.
+3. **Claim Attribution or Ownership:** Claim the original source code, platform architecture, instructional framework, prompt templates, or written content as their own, or remove, alter, or obscure any copyright, trademark, authorship, or ownership notices.
+4. **Modify or Distribute Derivative Versions:** Modify, translate, adapt, alter, remix, or create derivative versions of this codebase, reader application, or curriculum for public distribution, sharing, or republication.
+5. **Commercial Use:** Use the code, materials, templates, frameworks, or curriculum for any commercial purpose, including but not limited to paid courses, commercial bootcamps, corporate training, client engagements, books, subscription services, or paid digital products.
+6. **Reuse Substantial Portions:** Extract, port, or reuse substantial portions of the application logic, custom design system, or interactive reader code in other software projects, products, or platforms.
+7. **AI Training & Dataset Extraction:** Ingest, scrape, or extract this curriculum, prompt templates, or codebase for training, fine-tuning, or evaluating commercial AI models or proprietary machine learning datasets without explicit prior authorization.
+
+---
+
+### 4. Third-Party Dependencies and Open-Source Notices
+
+This repository utilizes certain third-party open-source libraries and fonts loaded via public content delivery networks (CDNs). The Copyright Owners do not claim ownership of these third-party components, which remain the property of their respective creators and are governed by their respective licenses:
+
+- **Marked.js** (https://marked.js.org/) — MIT License (Copyright (c) 2011–2024 Christopher Jeffrey). Used for client-side Markdown parsing.
+- **Highlight.js** (https://highlightjs.org/) — BSD 3-Clause License (Copyright (c) 2006 Ivan Sagalaev). Used for code syntax highlighting.
+- **Mermaid.js** (https://mermaid.js.org/) — MIT License (Copyright (c) 2014–2024 Knut Sveidqvist). Used for rendering diagrams and flowcharts.
+- **Google Fonts (Inter, Plus Jakarta Sans, JetBrains Mono)** — SIL Open Font License 1.1.
+
+All other product names, registered trademarks, service marks, and logos mentioned in the study guide (including but not limited to OpenAI, Anthropic, ChatGPT, Claude, Google Gemini, Microsoft Copilot, Meta Llama, LangChain, LlamaIndex, and Pydantic) are the property of their respective owners and are used solely for identification, technical illustration, and educational reference.
+
+---
+
+### 5. Inquiries and Permissions
+
+For commercial licensing requests, corporate training inquiries, institutional partnerships, or permissions beyond the scope of this notice, please contact:
+
+- **Manikarnika Technologies:** https://www.manikarnikatechnologies.in/
+- **Vicky Prasad Mahato:** https://abvicky.in · Email: vickyprasadmahato34@gmail.com
