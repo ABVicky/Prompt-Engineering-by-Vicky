@@ -298,7 +298,6 @@ main { min-width: 0; padding: 36px 48px 64px; outline: none; }
   display: flex; flex-direction: column; padding: 0;
   border-right: 1px solid var(--border); background: var(--surface);
   width: var(--sidebar-w); min-width: 0;
-  position: relative;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease, width 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
