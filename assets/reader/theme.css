@@ -206,6 +206,7 @@ svg.i { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor;
 .brand-logo svg { width: 36px; height: 36px; display: block; border-radius: 11px; box-shadow: 0 4px 14px -3px rgba(243, 181, 82, .6); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
 .brand-text strong { font-family: var(--font-head); font-size: 15.5px; font-weight: 800; letter-spacing: -.01em; }
+.brand-text strong .brand-by { font-weight: 500; opacity: .72; margin-left: .28em; }
 .brand-text small { font-size: 11.5px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .crumbs { display: flex; align-items: center; gap: 6px; min-width: 0; flex: 1; font-size: 13.5px; color: var(--text-3); white-space: nowrap; overflow: hidden; }
 .crumbs a { color: var(--text-3); text-decoration: none; }

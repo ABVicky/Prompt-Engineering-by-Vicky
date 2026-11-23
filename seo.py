@@ -16,7 +16,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 SITE = "https://abvicky.github.io/Prompt-Engineering-by-Vicky/"
 REPO = "https://github.com/ABVicky/Prompt-Engineering-by-Vicky"
-COURSE = "Prompt Engineering: Zero to Pro"
+COURSE = "Prompt Engineering by Vicky: Zero to Pro"
 
 
 def lessons():

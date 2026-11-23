@@ -2,7 +2,7 @@
    Add a new module here (and run build.py) to make it appear in the reader.
    (c) 2026 Manikarnika Technologies - manikarnikatechnologies.in */
 window.PE_MAP = {
-  title: "Prompt Engineering",
+  title: "Prompt Engineering by Vicky",
   subtitle: "Zero to Pro",
   author: "Vicky",
   authorFullName: "Vicky Prasad Mahato",
